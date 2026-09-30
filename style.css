@@ -46,7 +46,9 @@
 
 /* RAYA GULA V2 VISUAL ADJUSTMENT */
 body{font-size:16px;line-height:1.75;}
-.site-header{height:88px;padding:0 6vw;}
+.site-header{
+    height:100px;
+}
 .brand{width:155px;height:62px;}
 .nav a{
     font-size:18px;

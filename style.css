@@ -42,3 +42,30 @@
 .cert-wrap{align-self:center}.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cert-card{min-height:220px;border:1px solid #cbbda8;background:#f7f0e4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.cert-seal{width:67px;height:67px;border:1px solid #a78552;border-radius:50%;display:grid;place-items:center;color:#89642e;font:600 20px "Playfair Display";margin-bottom:15px}.cert-card b{font:600 16px "Playfair Display";color:var(--brown)}.cert-card span{font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:5px}.cert-card small{font-size:7px;color:#a49482;margin-top:18px}.cert-note{font-size:9px;line-height:1.7;color:var(--muted);padding:16px 0}.business{background:#2b1b12;color:#f4e7d4}.business-inner{max-width:900px}.business h2{font:500 clamp(50px,6vw,82px)/.96 "Playfair Display";letter-spacing:-.05em;margin:0;color:#f5e8d4}.business h2 em{font-style:normal;color:var(--gold2)}.business p{font-size:13px;line-height:1.85;color:#cbbba6;max-width:600px;margin:24px 0}.business-tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 32px}.business-tags span{font-size:7px;letter-spacing:.16em;border:1px solid #ffffff2b;border-radius:100px;padding:9px 12px;color:#d9cbb8}.faq{background:#eee4d5}.faq-list{max-width:900px;margin:auto;border-top:1px solid #c8bba8}.faq-list details{border-bottom:1px solid #c8bba8;padding:20px 0}.faq-list summary{list-style:none;cursor:pointer;font:500 22px "Playfair Display";color:var(--brown);display:flex;justify-content:space-between;gap:20px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";font:400 22px "DM Sans";color:var(--gold)}.faq-list details[open] summary:after{content:"−"}.faq-list p{font-size:12px;line-height:1.8;color:var(--muted);max-width:700px;margin:13px 0 0}.recipes{background:#f5eee2}.recipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.recipe-card{background:#fbf8f1;border:1px solid #ded2c0;display:block;overflow:hidden;transition:.25s}.recipe-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #3c281412}.recipe-art{height:260px;position:relative;display:flex;align-items:end;padding:18px}.recipe-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,#1b110bb8)}.recipe-art span{position:relative;z-index:2;color:white;font-size:8px;letter-spacing:.2em}.rcoffee{background:linear-gradient(145deg,#c79e6b,#2c1a10)}.rdessert{background:linear-gradient(145deg,#c8a06d,#68411f)}.rbaking{background:linear-gradient(145deg,#e0c28e,#735034)}.recipe-card>div:last-child{padding:18px 20px 22px}.recipe-card small{font-size:7px;letter-spacing:.18em;color:var(--gold)}.recipe-card h3{font:500 25px "Playfair Display";margin:7px 0;color:var(--brown)}.recipe-card p{font-size:10px;line-height:1.6;color:var(--muted);margin:0}
 @media(max-width:900px){.origin-grid{grid-template-columns:1fr}.origin-image{height:480px}.recipe-grid{grid-template-columns:1fr 1fr}.cert-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.origin-image{height:400px}.origin-points{grid-template-columns:1fr}.origin-points div{border-right:0;border-bottom:1px solid var(--line);padding:10px 0}.origin-points div:last-child{border-bottom:0}.cert-grid{grid-template-columns:1fr 1fr}.cert-card:last-child{grid-column:1/-1}.recipe-grid{grid-template-columns:1fr}.business-tags{gap:6px}}
+
+
+/* RAYA GULA V2 VISUAL ADJUSTMENT */
+body{font-size:16px;line-height:1.75;}
+.site-header{height:88px;padding:0 6vw;}
+.brand{width:155px;height:62px;}
+.nav a{font-size:11px;letter-spacing:.08em;}
+.header-cta{font-size:11px;padding:14px 20px;}
+.hero-content{max-width:560px;}
+.hero h1{font-size:clamp(52px,5.5vw,82px);}
+.hero-content>p{font-size:16px;line-height:1.85;max-width:520px;}
+.btn{font-size:12px;padding:17px 26px;}
+.section{padding-top:110px;padding-bottom:110px;}
+.about-copy p,.section-heading>p,.product-copy>p:not(.lead),.why-list p{font-size:15px;line-height:1.85;}
+.product-copy h3{font-size:clamp(42px,4vw,64px);}
+.cert-item strong{font-size:10px;}
+.cert-item span{font-size:10px;}
+.journal-card h3{font-size:30px;line-height:1.2;}
+.footer a,.footer span{font-size:12px;}
+@media(max-width:760px){
+.site-header{height:76px;}
+.hero h1{font-size:42px;}
+.hero-content>p{font-size:15px;}
+.section{padding-top:75px;padding-bottom:75px;}
+.about-copy p,.section-heading>p,.product-copy>p:not(.lead){font-size:14px;}
+.btn{width:auto;font-size:11px;}
+}

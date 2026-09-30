@@ -37,49 +37,160 @@
 .shop-strip{background:#2b1b12;color:#f4e7d4;padding:95px 8vw}.shop-strip-inner{display:grid;grid-template-columns:1fr .9fr;gap:8vw;align-items:center}.shop-strip h2{font:500 clamp(48px,5.2vw,72px)/.96 "Playfair Display";letter-spacing:-.05em;margin:0;color:#f3e7d5}.shop-strip h2 em{font-style:normal;color:var(--gold2)}.shop-strip p{max-width:500px;color:#cbbba6;font-size:12px;line-height:1.8;margin:22px 0 0}.shop-strip-links{display:grid;border-top:1px solid #ffffff25}.shop-strip-links a{display:grid;grid-template-columns:45px 1fr auto auto;align-items:center;gap:12px;padding:20px 0;border-bottom:1px solid #ffffff25}.shop-strip-links a:hover{color:var(--gold2)}.shop-strip-links span{width:34px;height:34px;border:1px solid #cba65e;border-radius:50%;display:grid;place-items:center;color:var(--gold2);font:600 16px "Playfair Display"}.shop-strip-links b{font:500 22px "Playfair Display"}.shop-strip-links small{font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:#a99a86}.shop-strip-links i{font-style:normal;color:var(--gold2)}
 @media(max-width:760px){.header-actions{display:none}.shop-strip{padding:75px 7vw}.shop-strip-inner{grid-template-columns:1fr;gap:35px}.shop-strip-links b{font-size:19px}.shop-actions{display:grid;grid-template-columns:1fr 1fr}.shop-card{min-width:0}.shop-actions .btn{grid-column:1/-1;justify-content:center}}
 
-/* RAYA GULA V5 — brand, origin, B2B, recipes, FAQ */
+/* RAYA GULA V5 â€” brand, origin, B2B, recipes, FAQ */
 .origin{background:#f5eee2}.origin-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:8vw;align-items:center}.origin-image{height:620px;position:relative;overflow:hidden;background:#35452b}.origin-photo{position:absolute;inset:0;background:linear-gradient(180deg,#1b29152a,#21140ebc),url("assets/hero-landscape.svg") center/cover}.origin-stamp{position:absolute;left:28px;bottom:28px;color:white;display:grid;gap:4px}.origin-stamp span{font-size:8px;letter-spacing:.2em;color:var(--gold2)}.origin-stamp b{font:500 32px "Playfair Display"}.origin-stamp small{font-size:7px;letter-spacing:.18em;color:#d6c8b4}.origin-copy h2{font:500 clamp(48px,5vw,72px)/.98 "Playfair Display";letter-spacing:-.05em;color:var(--brown);margin:0}.origin-copy h2 em{font-style:normal;color:var(--gold)}.origin-copy>p{font-size:13px;line-height:1.9;color:var(--muted);max-width:530px;margin:27px 0}.origin-points{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);margin:30px 0;padding:17px 0}.origin-points div{display:grid;gap:4px;padding-right:10px;border-right:1px solid var(--line)}.origin-points div:last-child{border:0}.origin-points b{font-size:8px;color:var(--gold);letter-spacing:.1em}.origin-points span{font:500 20px "Playfair Display";color:var(--brown)}.origin-points small{font-size:7px;color:var(--muted);line-height:1.4}
-.cert-wrap{align-self:center}.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cert-card{min-height:220px;border:1px solid #cbbda8;background:#f7f0e4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.cert-seal{width:67px;height:67px;border:1px solid #a78552;border-radius:50%;display:grid;place-items:center;color:#89642e;font:600 20px "Playfair Display";margin-bottom:15px}.cert-card b{font:600 16px "Playfair Display";color:var(--brown)}.cert-card span{font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:5px}.cert-card small{font-size:7px;color:#a49482;margin-top:18px}.cert-note{font-size:9px;line-height:1.7;color:var(--muted);padding:16px 0}.business{background:#2b1b12;color:#f4e7d4}.business-inner{max-width:900px}.business h2{font:500 clamp(50px,6vw,82px)/.96 "Playfair Display";letter-spacing:-.05em;margin:0;color:#f5e8d4}.business h2 em{font-style:normal;color:var(--gold2)}.business p{font-size:13px;line-height:1.85;color:#cbbba6;max-width:600px;margin:24px 0}.business-tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 32px}.business-tags span{font-size:7px;letter-spacing:.16em;border:1px solid #ffffff2b;border-radius:100px;padding:9px 12px;color:#d9cbb8}.faq{background:#eee4d5}.faq-list{max-width:900px;margin:auto;border-top:1px solid #c8bba8}.faq-list details{border-bottom:1px solid #c8bba8;padding:20px 0}.faq-list summary{list-style:none;cursor:pointer;font:500 22px "Playfair Display";color:var(--brown);display:flex;justify-content:space-between;gap:20px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";font:400 22px "DM Sans";color:var(--gold)}.faq-list details[open] summary:after{content:"−"}.faq-list p{font-size:12px;line-height:1.8;color:var(--muted);max-width:700px;margin:13px 0 0}.recipes{background:#f5eee2}.recipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.recipe-card{background:#fbf8f1;border:1px solid #ded2c0;display:block;overflow:hidden;transition:.25s}.recipe-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #3c281412}.recipe-art{height:260px;position:relative;display:flex;align-items:end;padding:18px}.recipe-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,#1b110bb8)}.recipe-art span{position:relative;z-index:2;color:white;font-size:8px;letter-spacing:.2em}.rcoffee{background:linear-gradient(145deg,#c79e6b,#2c1a10)}.rdessert{background:linear-gradient(145deg,#c8a06d,#68411f)}.rbaking{background:linear-gradient(145deg,#e0c28e,#735034)}.recipe-card>div:last-child{padding:18px 20px 22px}.recipe-card small{font-size:7px;letter-spacing:.18em;color:var(--gold)}.recipe-card h3{font:500 25px "Playfair Display";margin:7px 0;color:var(--brown)}.recipe-card p{font-size:10px;line-height:1.6;color:var(--muted);margin:0}
+.cert-wrap{align-self:center}.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cert-card{min-height:220px;border:1px solid #cbbda8;background:#f7f0e4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.cert-seal{width:67px;height:67px;border:1px solid #a78552;border-radius:50%;display:grid;place-items:center;color:#89642e;font:600 20px "Playfair Display";margin-bottom:15px}.cert-card b{font:600 16px "Playfair Display";color:var(--brown)}.cert-card span{font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:5px}.cert-card small{font-size:7px;color:#a49482;margin-top:18px}.cert-note{font-size:9px;line-height:1.7;color:var(--muted);padding:16px 0}.business{background:#2b1b12;color:#f4e7d4}.business-inner{max-width:900px}.business h2{font:500 clamp(50px,6vw,82px)/.96 "Playfair Display";letter-spacing:-.05em;margin:0;color:#f5e8d4}.business h2 em{font-style:normal;color:var(--gold2)}.business p{font-size:13px;line-height:1.85;color:#cbbba6;max-width:600px;margin:24px 0}.business-tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 32px}.business-tags span{font-size:7px;letter-spacing:.16em;border:1px solid #ffffff2b;border-radius:100px;padding:9px 12px;color:#d9cbb8}.faq{background:#eee4d5}.faq-list{max-width:900px;margin:auto;border-top:1px solid #c8bba8}.faq-list details{border-bottom:1px solid #c8bba8;padding:20px 0}.faq-list summary{list-style:none;cursor:pointer;font:500 22px "Playfair Display";color:var(--brown);display:flex;justify-content:space-between;gap:20px}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";font:400 22px "DM Sans";color:var(--gold)}.faq-list details[open] summary:after{content:"âˆ’"}.faq-list p{font-size:12px;line-height:1.8;color:var(--muted);max-width:700px;margin:13px 0 0}.recipes{background:#f5eee2}.recipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.recipe-card{background:#fbf8f1;border:1px solid #ded2c0;display:block;overflow:hidden;transition:.25s}.recipe-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #3c281412}.recipe-art{height:260px;position:relative;display:flex;align-items:end;padding:18px}.recipe-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,#1b110bb8)}.recipe-art span{position:relative;z-index:2;color:white;font-size:8px;letter-spacing:.2em}.rcoffee{background:linear-gradient(145deg,#c79e6b,#2c1a10)}.rdessert{background:linear-gradient(145deg,#c8a06d,#68411f)}.rbaking{background:linear-gradient(145deg,#e0c28e,#735034)}.recipe-card>div:last-child{padding:18px 20px 22px}.recipe-card small{font-size:7px;letter-spacing:.18em;color:var(--gold)}.recipe-card h3{font:500 25px "Playfair Display";margin:7px 0;color:var(--brown)}.recipe-card p{font-size:10px;line-height:1.6;color:var(--muted);margin:0}
 @media(max-width:900px){.origin-grid{grid-template-columns:1fr}.origin-image{height:480px}.recipe-grid{grid-template-columns:1fr 1fr}.cert-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.origin-image{height:400px}.origin-points{grid-template-columns:1fr}.origin-points div{border-right:0;border-bottom:1px solid var(--line);padding:10px 0}.origin-points div:last-child{border-bottom:0}.cert-grid{grid-template-columns:1fr 1fr}.cert-card:last-child{grid-column:1/-1}.recipe-grid{grid-template-columns:1fr}.business-tags{gap:6px}}
 
 
-/* RAYA GULA V2 VISUAL ADJUSTMENT */
-body{font-size:16px;line-height:1.75;}
+/* RAYA GULA V2 â€” VISUAL ADJUSTMENT
+   Clean premium typography + balanced spacing
+*/
+body{
+    font-size:16px;
+    line-height:1.75;
+}
+
 .site-header{
     height:100px;
+    padding:0 5.5vw;
 }
-.brand{width:155px;height:62px;}
-.nav a{
-    font-size:18px;
-    font-weight:500;
-    letter-spacing:.08em;
+
+.brand{
+    width:155px;
+    height:62px;
 }
 
 .nav{
-    gap:45px;
-
+    display:flex;
+    align-items:center;
+    gap:40px;
 }
-..header-cta{
-    font-size:16px;
+
+.nav a{
+    font-size:18px !important;
+    font-weight:500;
+    letter-spacing:.05em;
+    line-height:1;
+    white-space:nowrap;
+}
+
+.header-cta{
+    font-size:15px !important;
+    font-weight:700;
     padding:14px 24px;
 }
-.hero-content{max-width:560px;}
-.hero h1{font-size:clamp(52px,5.5vw,82px);}
-.hero-content>p{font-size:16px;line-height:1.85;max-width:520px;}
-.btn{font-size:12px;padding:17px 26px;}
-.section{padding-top:110px;padding-bottom:110px;}
-.about-copy p,.section-heading>p,.product-copy>p:not(.lead),.why-list p{font-size:15px;line-height:1.85;}
-.product-copy h3{font-size:clamp(42px,4vw,64px);}
-.cert-item strong{font-size:10px;}
-.cert-item span{font-size:10px;}
-.journal-card h3{font-size:30px;line-height:1.2;}
-.footer a,.footer span{font-size:12px;}
+
+.hero-content{
+    max-width:560px;
+}
+
+.hero h1{
+    font-size:clamp(52px,5.5vw,82px);
+}
+
+.hero-content>p{
+    font-size:16px;
+    line-height:1.85;
+    max-width:520px;
+}
+
+.btn{
+    font-size:12px;
+    padding:17px 26px;
+}
+
+.section{
+    padding-top:110px;
+    padding-bottom:110px;
+}
+
+.about-copy p,
+.section-heading>p,
+.product-copy>p:not(.lead),
+.why-list p{
+    font-size:15px;
+    line-height:1.85;
+}
+
+.product-copy h3{
+    font-size:clamp(42px,4vw,64px);
+}
+
+.cert-item strong{
+    font-size:10px;
+}
+
+.cert-item span{
+    font-size:10px;
+}
+
+.journal-card h3{
+    font-size:30px;
+    line-height:1.2;
+}
+
+.footer a,
+.footer span{
+    font-size:12px;
+}
+
+/* Tablet */
+@media(max-width:1000px){
+    .nav{
+        gap:24px;
+    }
+
+    .nav a{
+        font-size:16px !important;
+    }
+
+    .header-cta{
+        font-size:14px !important;
+    }
+}
+
+/* Mobile */
 @media(max-width:760px){
-.site-header{height:76px;}
-.hero h1{font-size:42px;}
-.hero-content>p{font-size:15px;}
-.section{padding-top:75px;padding-bottom:75px;}
-.about-copy p,.section-heading>p,.product-copy>p:not(.lead){font-size:14px;}
-.btn{width:auto;font-size:11px;}
+    .site-header{
+        height:76px;
+    }
+
+    .brand{
+        width:125px;
+        height:52px;
+    }
+
+    .nav{
+        gap:18px;
+    }
+
+    .nav a{
+        font-size:16px !important;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero-content>p{
+        font-size:15px;
+    }
+
+    .section{
+        padding-top:75px;
+        padding-bottom:75px;
+    }
+
+    .about-copy p,
+    .section-heading>p,
+    .product-copy>p:not(.lead){
+        font-size:14px;
+    }
+
+    .btn{
+        width:auto;
+        font-size:11px;
+    }
 }

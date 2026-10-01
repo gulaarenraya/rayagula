@@ -1,198 +1,173 @@
-        width:125px;
-        height:52px;
-    }
+/* =====================================================
+   RAYA GULA - FINAL STYLE CSS
+   Premium Brand Layout + Responsive
+   Font: Montserrat
+===================================================== */
 
-    .nav{
-        gap:18px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .nav a{
-        font-size:16px !important;
-    }
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 
-    .hero h1{
-        font-size:42px;
-    }
+/* ================= HEADER ================= */
 
-    .hero-content>p{
-        font-size:15px;
-    }
+.site-header {
+  display: flex;
+  align-items: center;
+}
 
-    .section{
-        padding-top:75px;
-        padding-bottom:75px;
-    }
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
 
-    .about-copy p,
-    .section-heading>p,
-    .product-copy>p:not(.lead){
-        font-size:14px;
-    }
-
-    .btn{
-        width:auto;
-        font-size:11px;
-    }
+.nav-right a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
 }
 
 
-/* ===== RAYA GULA FINAL RESPONSIVE ADJUSTMENT ===== */
-
-/* Desktop navbar: menu aligned to the right */
-@media(min-width:1001px){
-  .site-header{
-    display:flex;
-    align-items:center;
-  }
-
-  .nav-right{
-    margin-left:auto;
-    margin-right:35px;
-  }
-}
-
-/* Hero banner using marketplace banner */
-.hero-photo{
-  background-image:none !important;
-  overflow:hidden;
-}
-
-.hero-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-}
-
-/* Better mobile navigation */
-@media(max-width:760px){
-  .site-header{
-    padding:0 20px;
-  }
-
-  .nav.open{
-    display:flex;
-    width:100%;
-  }
-
-  .nav a{
-    padding:12px 0;
-    width:100%;
-  }
-
-  .hero{
-    min-height:620px;
-  }
-
-  .hero-photo img{
-    object-position:center;
-  }
-
-  .hero-product{
-    display:none !important;
-  }
-
-  .hero h1{
-    font-size:40px;
-  }
-}
-
-/* Tablet optimization */
-@media(min-width:761px) and (max-width:1000px){
-  .nav a{
-    font-size:14px !important;
-  }
-
-  .hero-content{
-    width:80%;
-  }
-}
-
-/* Better touch targets */
-button,
-a{
-  -webkit-tap-highlight-color:transparent;
-}
-
-.header-cta,
-.btn{
-  min-height:44px;
-}
-
-
-/* ===== RAYA GULA HERO MARKETPLACE FINAL ===== */
+/* ================= HERO BANNER ================= */
 
 .hero {
-    overflow: hidden;
-    position: relative;
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
 }
 
 .hero-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: none !important;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
+/* Hilangkan elemen lama */
+.hero-product,
 .hero-overlay {
-    display: none !important;
+  display: none !important;
 }
 
-.hero-product {
-    display: none !important;
+
+/* ================= PRODUCT ================= */
+
+.product-showcase img {
+  max-width: 380px;
+  height: auto;
+  object-fit: contain;
 }
 
-/* Desktop navigation alignment */
-@media (min-width: 1001px) {
-    .site-header {
-        display: flex;
-        align-items: center;
-    }
 
-    .nav-right {
-        margin-left: auto;
-        justify-content: flex-end;
-    }
-}
+/* ================= CERTIFICATION ================= */
 
-/* Certification bar */
 .cert-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.cert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cert-icon img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
 }
+
+
+/* ================= BUTTON ================= */
+
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1000px) {
+
+  .hero {
+    min-height: 520px;
+  }
+
+  .nav-right {
+    gap: 18px;
+  }
+
+  .product-showcase img {
+    max-width: 320px;
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
 
 @media (max-width: 760px) {
 
-    .hero {
-        min-height: 560px;
-    }
+  .hero {
+    min-height: 430px;
+  }
 
-    .hero-photo img {
-        object-position: center;
-    }
+  .hero-photo img {
+    object-position: center;
+  }
 
-    .cert-bar {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .hero h1 {
+    font-size: 34px;
+  }
 
-    .hero h1 {
-        font-size: 36px;
-    }
+  .nav-right {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .product-showcase img {
+    max-width: 260px;
+  }
+
+  .cert-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .cert-icon img {
+    width: 45px;
+    height: 45px;
+  }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .hero {
+    min-height: 390px;
+  }
+
+  .cert-bar {
+    grid-template-columns: 1fr;
+  }
+
 }

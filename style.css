@@ -1,173 +1,257 @@
+
 /* =====================================================
-   RAYA GULA - FINAL STYLE CSS
-   Premium Brand Layout + Responsive
-   Font: Montserrat
+   RAYA GULA PREMIUM BROWN GOLD THEME
+   Font : Montserrat
 ===================================================== */
 
-* {
-  box-sizing: border-box;
+:root{
+  --brown-dark:#2B1A12;
+  --brown:#4A2C1A;
+  --brown-light:#6B4525;
+  --gold:#C99A3B;
+  --gold-light:#E8C875;
+  --cream:#F6E9D2;
+  --white:#FFFFFF;
+  --text:#3A2415;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
+*{
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--cream);
+  color:var(--text);
 }
 
 /* ================= HEADER ================= */
 
-.site-header {
-  display: flex;
-  align-items: center;
+.site-header{
+  background:rgba(43,26,18,.95);
+  backdrop-filter:blur(10px);
 }
 
-.nav-right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 28px;
+.nav-right{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:32px;
 }
 
-.nav-right a {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+.nav-right a{
+  color:#F6E9D2;
+  font-weight:500;
+  transition:.3s;
 }
 
-
-/* ================= HERO BANNER ================= */
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  min-height: 620px;
+.nav-right a:hover{
+  color:var(--gold-light);
 }
 
-.hero-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-/* Hilangkan elemen lama */
-.hero-product,
-.hero-overlay {
-  display: none !important;
+.header-cta{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--brown-dark)!important;
+  border-radius:40px;
 }
 
 
-/* ================= PRODUCT ================= */
+/* ================= HERO ================= */
 
-.product-showcase img {
-  max-width: 380px;
-  height: auto;
-  object-fit: contain;
+.hero{
+  position:relative;
+  min-height:620px;
+  overflow:hidden;
+  background:var(--brown-dark);
+}
+
+.hero-photo{
+  position:absolute;
+  inset:0;
+}
+
+.hero-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.hero-photo:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    rgba(43,26,18,.75),
+    rgba(43,26,18,.25)
+  );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  color:var(--white);
+}
+
+.hero h1 em{
+  color:var(--gold-light);
+}
+
+.hero p{
+  color:#F6E9D2;
 }
 
 
 /* ================= CERTIFICATION ================= */
 
-.cert-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  align-items: center;
+.cert-dark{
+  background:var(--brown-dark);
+  color:var(--cream);
 }
 
-.cert-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cert-item{
+  display:flex;
+  align-items:center;
+  gap:15px;
 }
 
-.cert-icon img {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
+.cert-icon img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
+}
+
+.cert-item strong{
+  color:var(--gold-light);
+}
+
+.cert-item span{
+  color:var(--cream);
+}
+
+
+/* ================= SECTION ================= */
+
+.section-cream{
+  background:var(--cream);
+}
+
+.section-gold{
+  background:linear-gradient(
+    135deg,
+    #F7E8C5,
+    #D8AF59
+  );
+}
+
+.section-dark,
+.process{
+  background:var(--brown-dark);
+  color:var(--cream);
+}
+
+
+/* ================= PRODUCT ================= */
+
+.product-showcase{
+  align-items:center;
+}
+
+.product-images img{
+  max-width:380px;
+  height:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 25px 25px rgba(43,26,18,.25));
+}
+
+.product-copy h3{
+  color:var(--brown-dark);
+}
+
+.specs div{
+  background:rgba(255,255,255,.55);
+  border-radius:18px;
 }
 
 
 /* ================= BUTTON ================= */
 
-.btn {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+.btn.gold{
+  background:linear-gradient(
+    135deg,
+    var(--gold),
+    var(--gold-light)
+  );
+  color:var(--brown-dark);
+}
+
+.btn.dark{
+  background:var(--brown-dark);
+  color:var(--cream);
 }
 
 
-/* ================= TABLET ================= */
+/* ================= FOOTER ================= */
 
-@media (max-width: 1000px) {
+.footer{
+  background:#21130D;
+  color:var(--cream);
+}
 
-  .hero {
-    min-height: 520px;
-  }
-
-  .nav-right {
-    gap: 18px;
-  }
-
-  .product-showcase img {
-    max-width: 320px;
-  }
-
+.footer b{
+  color:var(--gold-light);
 }
 
 
-/* ================= MOBILE ================= */
+/* ================= RESPONSIVE ================= */
 
-@media (max-width: 760px) {
+@media(max-width:900px){
 
-  .hero {
-    min-height: 430px;
+  .hero{
+    min-height:520px;
   }
 
-  .hero-photo img {
-    object-position: center;
+  .nav-right{
+    gap:18px;
   }
 
-  .hero h1 {
-    font-size: 34px;
+  .product-images img{
+    max-width:300px;
   }
 
-  .nav-right {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .product-showcase img {
-    max-width: 260px;
-  }
-
-  .cert-bar {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-
-  .cert-icon img {
-    width: 45px;
-    height: 45px;
+  .cert-bar{
+    grid-template-columns:repeat(2,1fr);
   }
 
 }
 
 
-/* ================= SMALL MOBILE ================= */
+@media(max-width:600px){
 
-@media (max-width: 480px) {
-
-  .hero {
-    min-height: 390px;
+  .hero{
+    min-height:430px;
   }
 
-  .cert-bar {
-    grid-template-columns: 1fr;
+  .hero-photo img{
+    object-position:center;
+  }
+
+  .product-images img{
+    max-width:250px;
+  }
+
+  .cert-bar{
+    grid-template-columns:1fr;
+  }
+
+  .cert-icon img{
+    width:50px;
+    height:50px;
   }
 
 }

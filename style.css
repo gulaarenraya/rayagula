@@ -90,7 +90,7 @@
   }
 
   .hero-product{
-    opacity:.95;
+    display:none !important;
   }
 
   .hero h1{
@@ -118,4 +118,81 @@ a{
 .header-cta,
 .btn{
   min-height:44px;
+}
+
+
+/* ===== RAYA GULA HERO MARKETPLACE FINAL ===== */
+
+.hero {
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: none !important;
+}
+
+.hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.hero-overlay {
+    display: none !important;
+}
+
+.hero-product {
+    display: none !important;
+}
+
+/* Desktop navigation alignment */
+@media (min-width: 1001px) {
+    .site-header {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-right {
+        margin-left: auto;
+        justify-content: flex-end;
+    }
+}
+
+/* Certification bar */
+.cert-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.cert-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+@media (max-width: 760px) {
+
+    .hero {
+        min-height: 560px;
+    }
+
+    .hero-photo img {
+        object-position: center;
+    }
+
+    .cert-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
 }

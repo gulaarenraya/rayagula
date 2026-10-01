@@ -100,6 +100,33 @@
   ]
 }
 </script>
+
+<style>
+.site-header{
+  display:flex;
+  align-items:center;
+}
+
+.nav-right{
+  margin-left:auto;
+  margin-right:32px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:36px;
+}
+
+.header-cta{
+  flex-shrink:0;
+}
+
+@media(max-width:900px){
+  .nav-right{
+    margin:0;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -108,13 +135,13 @@
     <img src="logo.png" alt="Raya Gula">
   </a>
   <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
-  <nav class="nav nav-right">
+  <nav class="nav nav-right" aria-label="Navigasi utama">
     <a href="#home">Beranda</a>
     <a href="#about">Tentang Kami</a>
     <a href="#product">Produk</a>
     <a href="#process">Proses</a>
     <a href="#journal">Journal</a>
-    <a href="articles/apa-itu-gula-aren.html">Kontak</a>
+    <a href="#contact">Kontak</a>
   </nav>
   <a class="header-cta" href="https://wa.me/6281211213090" target="_blank" rel="noopener noreferrer">Hubungi Kami <span>↗</span></a>
 </header>

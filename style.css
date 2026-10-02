@@ -2057,144 +2057,149 @@ h3 em {
 }
 
 
+/* =========================================================
+   RAYA GULA — SOFT PALM SUGAR SCROLL EFFECT
+   ========================================================= */
+
+.rg-sugar-layer {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 9980;
+}
+
+
+/* =========================================================
+   PALM SUGAR PARTICLE
+   ========================================================= */
+
+.rg-sugar-particle {
+  position: absolute;
+
+  display: block;
+
+  top: -12px;
+  left: 0;
+
+  width: var(--size);
+  height: var(--size);
+
+  padding: 0;
+  margin: 0;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #f8e7c5 0%,
+      #d1a263 42%,
+      #8c5b2d 100%
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 1px 3px rgba(70,42,18,.22);
+
+  will-change:
+    transform,
+    opacity;
+
+  /*
+   * PENTING:
+   * Tidak ada animation di sini.
+   *
+   * Animasi dikontrol langsung oleh
+   * JavaScript Web Animation API.
+   */
+}
+
+
+/* =========================================================
+   VERY SOFT SUGAR HIGHLIGHT
+   ========================================================= */
+
+.rg-sugar-particle::after {
+  content: "";
+
+  position: absolute;
+
+  left: 20%;
+  top: 20%;
+
+  width: 45%;
+  height: 45%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,245,218,.5);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER STAYS ABOVE SUGAR
+   ========================================================= */
+
+.site-header {
+  z-index: 9990;
+}
+
+
+/* =========================================================
+   FLOATING MENU STAYS ABOVE SUGAR
+   ========================================================= */
+
+.floating-social {
+  z-index: 99999;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
 @media (prefers-reduced-motion:reduce) {
 
   html {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: .01ms !important;
-
-    animation-iteration-count: 1 !important;
-
-    transition-duration: .01ms !important;
-  }
-
   .reveal {
     opacity: 1;
-
     transform: none;
   }
 
+  /*
+   * Sugar particle tetap aman.
+   * Animasi dikendalikan JavaScript.
+   */
+
 }
+
+
 /* =========================================================
-   RAYA GULA — SOFT PALM SUGAR SCROLL PARTICLES
+   MOBILE SUGAR
    ========================================================= */
 
-.rg-sugar-layer {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 9990;
-}
-
-.rg-sugar-particle {
-  position: absolute;
-  top: -20px;
-  left: 0;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 48% 52% 45% 55%;
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      rgba(255, 239, 199, 0.95) 0%,
-      rgba(194, 139, 72, 0.9) 38%,
-      rgba(119, 76, 32, 0.85) 100%
-    );
-
-  opacity: 0;
-  filter: blur(0.15px);
-
-  transform:
-    translate3d(0, -20px, 0)
-    rotate(0deg);
-
-  will-change:
-    transform,
-    opacity;
-
-  animation:
-    rg-sugar-fall var(--duration) cubic-bezier(.22,.61,.36,1) forwards;
-
-  box-shadow:
-    0 1px 2px rgba(70, 42, 18, 0.16);
-}
-
-@keyframes rg-sugar-fall {
-
-  0% {
-    opacity: 0;
-    transform:
-      translate3d(
-        var(--start-x),
-        -20px,
-        0
-      )
-      rotate(0deg);
-  }
-
-  10% {
-    opacity: var(--opacity);
-  }
-
-  50% {
-    transform:
-      translate3d(
-        calc(var(--start-x) + var(--drift)),
-        48vh,
-        0
-      )
-      rotate(180deg);
-  }
-
-  100% {
-    opacity: 0;
-    transform:
-      translate3d(
-        calc(var(--start-x) + var(--drift-end)),
-        108vh,
-        0
-      )
-      rotate(360deg);
-  }
-}
-
-
-/* Very subtle atmospheric layer */
-
-.rg-sugar-particle::after {
-  content: "";
-  position: absolute;
-  inset: 20%;
-  border-radius: 50%;
-  background: rgba(255, 245, 218, 0.45);
-}
-
-
-/* Respect reduced-motion accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .rg-sugar-layer {
-    display: none;
-  }
-
-}
-
-
-/* Mobile — fewer visual distractions */
-
-@media (max-width: 768px) {
+@media (max-width:768px) {
 
   .rg-sugar-particle {
-    animation-duration: calc(var(--duration) * 0.9);
+    filter: blur(.1px);
   }
 
 }

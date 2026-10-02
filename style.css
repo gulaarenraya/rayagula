@@ -1,4 +1,3 @@
-```css
 :root {
   --brown: #4a3024;
   --brown-dark: #251a12;
@@ -663,17 +662,13 @@ h3 em {
 
 .process-grid {
   display: grid;
-
   grid-template-columns: repeat(5,1fr);
-
   gap: 16px;
-
   margin-top: 60px;
 }
 
 .process-card {
   position: relative;
-
   min-width: 0;
 
   padding: 20px 18px 28px;
@@ -689,15 +684,12 @@ h3 em {
 
 .process-card:hover {
   transform: translateY(-6px);
-
   background: rgba(255,255,255,.06);
 }
 
 .process-card > span {
   color: var(--gold-light);
-
   font-family: Georgia,serif;
-
   font-size: 25px;
 }
 
@@ -765,7 +757,6 @@ h3 em {
 
 .process-card h3 {
   color: #fff;
-
   font-size: 23px;
   line-height: 1.1;
 }
@@ -815,7 +806,6 @@ h3 em {
   position: absolute;
 
   width: 54%;
-
   max-width: 390px;
 
   padding: 22px;
@@ -833,9 +823,7 @@ h3 em {
 
 .pack-frame.front {
   z-index: 2;
-
   left: 9%;
-
   transform: rotate(-2deg);
 }
 
@@ -1302,11 +1290,18 @@ h3 em {
 }
 
 .footer-brand img {
-  width: 125px;
+  width: 120px;
+  height: auto;
+  max-height: 52px;
 
-  margin-bottom: 17px;
+  object-fit: contain;
+  object-position: left center;
 
-  filter: brightness(0) invert(1);
+  display: block;
+
+  margin-bottom: 18px;
+
+  filter: none;
 }
 
 .footer-brand p {
@@ -1352,8 +1347,8 @@ h3 em {
 .floating-social {
   position: fixed;
 
-  right: 26px;
-  bottom: 26px;
+  right: 24px;
+  bottom: 24px;
 
   width: 82px;
   height: 82px;
@@ -1374,8 +1369,8 @@ h3 em {
   right: 0;
   bottom: 0;
 
-  width: 70px;
-  height: 70px;
+  width: 64px;
+  height: 64px;
 
   padding: 0;
   margin: 0;
@@ -1384,7 +1379,7 @@ h3 em {
 
   border-radius: 50%;
 
-  background: rgba(246,233,210,.98);
+  background: #ffffff;
 
   display: flex;
 
@@ -1398,8 +1393,8 @@ h3 em {
   overflow: hidden;
 
   box-shadow:
-    0 12px 32px rgba(43,26,18,.28),
-    0 0 0 5px rgba(246,233,210,.42);
+    0 8px 25px rgba(43,26,18,.18),
+    0 0 0 4px rgba(246,233,210,.45);
 
   transition:
     transform .35s ease,
@@ -1410,8 +1405,8 @@ h3 em {
   transform: scale(1.06);
 
   box-shadow:
-    0 15px 36px rgba(43,26,18,.30),
-    0 0 0 6px rgba(246,233,210,.55);
+    0 12px 30px rgba(43,26,18,.24),
+    0 0 0 5px rgba(246,233,210,.55);
 }
 
 
@@ -1423,16 +1418,17 @@ h3 em {
 #floatingMainIcon {
   display: block !important;
 
-  width: 48px !important;
-  height: 48px !important;
+  width: 42px !important;
+  height: 42px !important;
 
-  max-width: 48px !important;
-  max-height: 48px !important;
+  max-width: 42px !important;
+  max-height: 42px !important;
 
-  min-width: 48px !important;
-  min-height: 48px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
 
   object-fit: contain !important;
+  object-position: center !important;
 
   opacity: 1 !important;
 
@@ -1503,6 +1499,9 @@ h3 em {
 .floating-item img {
   width: 29px;
   height: 29px;
+
+  max-width: 29px;
+  max-height: 29px;
 
   object-fit: contain;
 
@@ -1615,7 +1614,6 @@ h3 em {
 
   .nav-right {
     gap: 23px !important;
-
     margin-right: 22px !important;
   }
 
@@ -1642,7 +1640,6 @@ h3 em {
 
   .site-header {
     min-height: 72px;
-
     padding: 0 20px;
   }
 
@@ -2026,7 +2023,6 @@ h3 em {
 
   .floating-social {
     right: 16px;
-
     bottom: 16px;
 
     width: 70px;
@@ -2038,20 +2034,20 @@ h3 em {
   }
 
   .floating-main {
-    width: 60px;
-    height: 60px;
+    width: 58px;
+    height: 58px;
   }
 
   .floating-main img,
   #floatingMainIcon {
-    width: 42px !important;
-    height: 42px !important;
+    width: 38px !important;
+    height: 38px !important;
 
-    max-width: 42px !important;
-    max-height: 42px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
 
-    min-width: 42px !important;
-    min-height: 42px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
   }
 
   .floating-item span {
@@ -2084,4 +2080,3 @@ h3 em {
   }
 
 }
-```

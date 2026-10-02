@@ -1,1369 +1,249 @@
-<!doctype html>
-<html lang="id">
-<head>
+/* =====================================================
+   RAYA GULA - FLOATING CIRCULAR SOCIAL MENU
+   ===================================================== */
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZXSMKT441"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8ZXSMKT441');
-  </script>
+.floating-social {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 72px;
+  height: 72px;
+  z-index: 9999;
+}
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+/* ================= MAIN BUTTON ================= */
 
-  <!-- SEO -->
-  <title>Raya Gula | Gula Aren Indonesia — Manis Alami dari Nusantara</title>
+.floating-main {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 
-  <meta
-    name="description"
-    content="Raya Gula menghadirkan gula aren Indonesia premium — gula aren semut, gula aren cair, dan gula aren cetak dengan rasa alami dan autentik Nusantara."
-  >
+  width: 68px;
+  height: 68px;
 
-  <meta
-    name="keywords"
-    content="Raya Gula, gula aren, gula aren Indonesia, gula aren semut, gula aren cair, gula aren cetak, palm sugar Indonesia, gula aren premium"
-  >
+  padding: 0;
 
-  <meta name="author" content="Raya Gula">
+  border: 1px solid rgba(201,154,59,.65);
+  border-radius: 50%;
 
-  <meta
-    name="robots"
-    content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
-  >
+  background: rgba(246,233,210,.96);
 
-  <meta name="theme-color" content="#251a12">
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  <link rel="canonical" href="https://rayagula.com/">
+  cursor: pointer;
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Raya Gula | Gula Aren Indonesia">
-  <meta
-    property="og:description"
-    content="Manis alami dari Nusantara. Raya Gula menghadirkan gula aren Indonesia dengan rasa autentik dan kualitas yang terjaga."
-  >
-  <meta property="og:url" content="https://rayagula.com/">
-  <meta property="og:site_name" content="Raya Gula">
-  <meta property="og:locale" content="id_ID">
-  <meta property="og:image" content="https://rayagula.com/product-front.png">
-  <meta property="og:image:alt" content="Produk Gula Aren Raya Gula">
+  box-shadow:
+    0 10px 30px rgba(43,26,18,.25),
+    0 0 0 5px rgba(246,233,210,.45);
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Raya Gula | Gula Aren Indonesia">
-  <meta
-    name="twitter:description"
-    content="Gula aren Indonesia dengan rasa autentik, alami, dan berkelas."
-  >
-  <meta name="twitter:image" content="https://rayagula.com/product-front.png">
+  transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    box-shadow .3s ease,
+    background .3s ease;
+}
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
+.floating-main:hover {
+  transform: scale(1.08);
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  box-shadow:
+    0 14px 38px rgba(43,26,18,.30),
+    0 0 0 6px rgba(201,154,59,.15);
+}
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+.floating-main img {
+  width: 48px;
+  height: 48px;
 
-  <!-- =========================================================
-       STRUCTURED DATA / SCHEMA
-       ========================================================= -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
+  object-fit: contain;
 
-      {
-        "@type": "Organization",
-        "@id": "https://rayagula.com/#organization",
-        "name": "Raya Gula",
-        "url": "https://rayagula.com/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://rayagula.com/logo.png"
-        },
-        "email": "gulaarenraya@gmail.com",
-        "description": "Raya Gula adalah brand gula aren Indonesia dengan rasa autentik, alami, dan berkelas.",
-        "sameAs": [
-          "https://www.instagram.com/rayagulaaren/",
-          "https://shopee.co.id/rayagula"
-        ]
-      },
+  transition:
+    opacity .25s ease,
+    transform .4s ease;
+}
 
-      {
-        "@type": "Brand",
-        "@id": "https://rayagula.com/#brand",
-        "name": "Raya Gula",
-        "url": "https://rayagula.com/",
-        "logo": "https://rayagula.com/logo.png",
-        "description": "Raya Gula adalah brand gula aren Indonesia yang menghadirkan gula aren semut, gula aren cair, dan gula aren cetak.",
-        "sameAs": [
-          "https://www.instagram.com/rayagulaaren/",
-          "https://shopee.co.id/rayagula"
-        ]
-      },
 
-      {
-        "@type": "WebSite",
-        "@id": "https://rayagula.com/#website",
-        "url": "https://rayagula.com/",
-        "name": "Raya Gula",
-        "description": "Raya Gula — gula aren Indonesia dengan rasa autentik, alami, dan berkelas.",
-        "publisher": {
-          "@id": "https://rayagula.com/#organization"
-        },
-        "inLanguage": "id-ID"
-      },
+/* ================= OPEN STATE ================= */
 
-      {
-        "@type": "Product",
-        "@id": "https://rayagula.com/#product",
-        "name": "Raya Gula Gula Aren Semut Premium",
-        "image": [
-          "https://rayagula.com/product-front.png",
-          "https://rayagula.com/product-back.png"
-        ],
-        "description": "Gula aren semut premium dari nira aren pilihan Indonesia. Alami, tanpa campuran, dengan aroma khas gula aren Nusantara.",
-        "brand": {
-          "@id": "https://rayagula.com/#brand"
-        },
-        "category": "Palm Sugar",
-        "material": "100% Gula Aren Alami",
-        "countryOfOrigin": {
-          "@type": "Country",
-          "name": "Indonesia"
-        },
-        "offers": {
-          "@type": "Offer",
-          "url": "https://shopee.co.id/rayagula",
-          "priceCurrency": "IDR",
-          "price": "45000",
-          "availability": "https://schema.org/InStock",
-          "seller": {
-            "@id": "https://rayagula.com/#organization"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "ID"
-            }
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "ID",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 7,
-            "returnMethod": "https://schema.org/ReturnByMail"
-          }
-        }
-      }
+.floating-social.open .floating-main {
+  transform: rotate(90deg);
+}
 
-    ]
+
+/* ================= ITEMS ================= */
+
+.floating-items {
+  position: absolute;
+  inset: 0;
+}
+
+.floating-item {
+  position: absolute;
+
+  width: 52px;
+  height: 52px;
+
+  right: 8px;
+  bottom: 8px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 8px 24px rgba(43,26,18,.20);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translate(0, 0) scale(.35);
+
+  transition:
+    transform .55s cubic-bezier(.16,1,.3,1),
+    opacity .25s ease,
+    box-shadow .25s ease;
+}
+
+.floating-item img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.floating-item:hover {
+  box-shadow:
+    0 12px 30px rgba(43,26,18,.30);
+
+  transform: scale(1.08);
+}
+
+.floating-item span {
+  position: absolute;
+
+  right: 62px;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: var(--brown-dark);
+
+  color: var(--cream);
+
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: .04em;
+
+  white-space: nowrap;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity .2s ease;
+}
+
+.floating-item:hover span {
+  opacity: 1;
+}
+
+
+/* =====================================================
+   RADIAL POSITIONS
+   ===================================================== */
+
+/* WhatsApp - kiri atas */
+.floating-social.open .floating-whatsapp {
+  opacity: 1;
+  pointer-events: auto;
+
+  transform:
+    translate(-68px, -18px)
+    scale(1);
+}
+
+/* Instagram - kiri */
+.floating-social.open .floating-instagram {
+  opacity: 1;
+  pointer-events: auto;
+
+  transform:
+    translate(-70px, -82px)
+    scale(1);
+}
+
+/* Shopee - atas */
+.floating-social.open .floating-shopee {
+  opacity: 1;
+  pointer-events: auto;
+
+  transform:
+    translate(-20px, -125px)
+    scale(1);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .floating-social {
+    right: 18px;
+    bottom: 18px;
+
+    width: 64px;
+    height: 64px;
   }
-  </script>
 
-  <!-- =========================================================
-       NAVBAR ADJUSTMENT
-       ========================================================= -->
-  <style>
-    .site-header {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-right {
-      margin-left: auto;
-      margin-right: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 36px;
-    }
-
-    .header-cta {
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 900px) {
-      .nav-right {
-        margin: 0;
-      }
-    }
-
-    /* =========================================================
-       FLOATING CONTACT
-       ========================================================= */
-
-    .floating-contact {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 99999;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .floating-main {
-      width: 60px;
-      height: 60px;
-
-      padding: 8px;
-      border: none;
-      border-radius: 50%;
-
-      background: #251a12;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.25);
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    .floating-main:hover {
-      transform: scale(1.06);
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.30);
-    }
-
-    .floating-main img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: contain;
-
-      border-radius: 50%;
-    }
-
-    .floating-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 9px;
-
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-
-      transform: translateY(12px);
-
-      transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s ease;
-    }
-
-    .floating-contact.open .floating-links {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-
-      transform: translateY(0);
-    }
-
-    .floating-link {
-      width: 46px;
-      height: 46px;
-
-      border-radius: 50%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      text-decoration: none;
-
-      background: #c99a3b;
-      color: #251a12;
-
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-
-      box-shadow:
-        0 5px 16px rgba(0, 0, 0, 0.20);
-
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .floating-link:hover {
-      transform: scale(1.08);
-      background: #e1b75d;
-    }
-
-    @media (max-width: 600px) {
-
-      .floating-contact {
-        right: 16px;
-        bottom: 16px;
-      }
-
-      .floating-main {
-        width: 56px;
-        height: 56px;
-      }
-
-      .floating-link {
-        width: 43px;
-        height: 43px;
-      }
-
-    }
-  </style>
-
-</head>
-
-<body>
-
-  <!-- =========================================================
-       HEADER / NAVBAR
-       ========================================================= -->
-
-  <header class="site-header">
-
-    <a
-      class="brand"
-      href="#home"
-      aria-label="Raya Gula"
-    >
-      <img
-        src="logo.png"
-        alt="Raya Gula - Gula Aren Indonesia"
-      >
-    </a>
-
-    <button
-      class="menu-toggle"
-      aria-label="Buka menu"
-      aria-expanded="false"
-      type="button"
-    >
-      ☰
-    </button>
-
-    <nav
-      class="nav nav-right"
-      aria-label="Navigasi utama"
-    >
-      <a href="#home">Beranda</a>
-      <a href="#about">Tentang Kami</a>
-      <a href="#product">Produk</a>
-      <a href="#process">Proses</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact">Kontak</a>
-    </nav>
-
-    <a
-      class="header-cta"
-      href="https://wa.me/6281211213090"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Hubungi Kami <span>↗</span>
-    </a>
-
-  </header>
-
-
-  <!-- =========================================================
-       MAIN
-       ========================================================= -->
-
-  <main id="home">
-
-    <!-- HERO -->
-    <section class="hero">
-
-      <div class="hero-photo">
-        <img
-          src="BANNER-MARKETPLAC-SHOPEE.jpg"
-          alt="Raya Gula - Gula Aren Premium Indonesia"
-        >
-      </div>
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          RAYA GULA / INDONESIAN PALM SUGAR
-        </div>
-
-        <h1>
-          Manis Alami<br>
-          <em>dari Nusantara.</em>
-        </h1>
-
-        <p>
-          Gula aren dari nira pilihan, diolah dengan penuh perhatian
-          untuk menghadirkan rasa alami dan karakter Indonesia
-          di setiap butirnya.
-        </p>
-
-        <div class="hero-buttons">
-
-          <a
-            class="btn gold"
-            href="#product"
-          >
-            Lihat Produk <span>→</span>
-          </a>
-
-          <a
-            class="text-link light"
-            href="#about"
-          >
-            Tentang Raya Gula <span>→</span>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CERTIFICATION -->
-    <section
-      class="cert-bar cert-dark"
-      aria-label="Sertifikasi dan keunggulan"
-    >
-
-      <div class="cert-item">
-
-        <div class="cert-icon">
-          <img
-            src="icon-halal.png"
-            alt="Logo Halal"
-          >
-        </div>
-
-        <div>
-          <strong>HALAL</strong>
-          <span>Bersertifikat Halal</span>
-        </div>
-
-      </div>
-
-
-      <div class="cert-item">
-
-        <div class="cert-icon">
-          <img
-            src="icon-organic.png"
-            alt="Logo Organic"
-          >
-        </div>
-
-        <div>
-          <strong>ORGANIC</strong>
-          <span>Bersertifikat Organik</span>
-        </div>
-
-      </div>
-
-
-      <div class="cert-item">
-
-        <div class="cert-icon">
-          <img
-            src="icon-sni.png"
-            alt="Logo SNI"
-          >
-        </div>
-
-        <div>
-          <strong>STANDAR NASIONAL</strong>
-          <span>Bersertifikat SNI</span>
-        </div>
-
-      </div>
-
-
-      <div class="cert-item">
-
-        <div class="cert-icon">
-          <img
-            src="icon-natural.png"
-            alt="100 persen alami"
-          >
-        </div>
-
-        <div>
-          <strong>100% ALAMI</strong>
-          <span>Tanpa bahan tambahan</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section
-      id="about"
-      class="section about section-cream"
-    >
-
-      <div class="about-copy reveal">
-
-        <div class="eyebrow">
-          TENTANG RAYA GULA
-        </div>
-
-        <h2>
-          Dari alam,<br>
-          untuk kehidupan<br>
-          <em>yang lebih baik.</em>
-        </h2>
-
-        <p>
-          Raya Gula lahir dari komitmen untuk menjaga karakter
-          gula aren Indonesia sekaligus menghadirkannya dalam
-          bentuk yang modern, praktis, dan berkelas.
-        </p>
-
-        <p>
-          Kami percaya bahwa rasa yang baik berawal dari bahan
-          yang baik, proses yang bertanggung jawab, serta
-          penghargaan terhadap petani dan alam tempat nira berasal.
-        </p>
-
-        <a
-          class="text-link dark-link"
-          href="#process"
-        >
-          Baca selengkapnya <span>→</span>
-        </a>
-
-      </div>
-
-
-      <div class="about-visual reveal">
-
-        <div class="about-image"></div>
-
-        <div class="about-caption">
-          <span>01</span>
-          <b>THE ORIGIN</b>
-          <small>Nusantara · Indonesia</small>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- MANIFESTO -->
-    <section class="manifesto">
-
-      <div class="manifesto-inner reveal">
-
-        <span class="eyebrow">
-          OUR BELIEF
-        </span>
-
-        <h2>
-          “Ketika alam dijaga,<br>
-          rasa terbaik akan<br>
-          <em>menemukan jalannya.</em>”
-        </h2>
-
-        <div class="seal">
-          RAYA<br>
-          GULA<br>
-          <small>EST. INDONESIA</small>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROCESS -->
-    <section
-      id="process"
-      class="section process section-dark"
-    >
-
-      <div class="section-heading reveal">
-
-        <div>
-
-          <div class="eyebrow">
-            OUR PROCESS
-          </div>
-
-          <h2>
-            Dari nira hingga<br>
-            <em>menjadi rasa.</em>
-          </h2>
-
-        </div>
-
-        <p>
-          Setiap tahap dirancang untuk mempertahankan karakter
-          alami gula aren, dari kebun hingga kemasan.
-        </p>
-
-      </div>
-
-
-      <div class="process-grid">
-
-        <article class="process-card reveal">
-
-          <span>01</span>
-
-          <div class="process-art farmer"></div>
-
-          <h3>
-            Pemanenan Nira
-          </h3>
-
-          <p>
-            Nira aren dikumpulkan oleh petani dengan proses
-            yang terjaga.
-          </p>
-
-        </article>
-
-
-        <article class="process-card reveal">
-
-          <span>02</span>
-
-          <div class="process-art filter"></div>
-
-          <h3>
-            Penyaringan
-          </h3>
-
-          <p>
-            Nira disaring untuk membantu menjaga kualitas
-            bahan baku.
-          </p>
-
-        </article>
-
-
-        <article class="process-card reveal">
-
-          <span>03</span>
-
-          <div class="process-art boil"></div>
-
-          <h3>
-            Pemasakan
-          </h3>
-
-          <p>
-            Diolah perlahan hingga karakter aroma dan rasa terbentuk.
-          </p>
-
-        </article>
-
-
-        <article class="process-card reveal">
-
-          <span>04</span>
-
-          <div class="process-art crystal"></div>
-
-          <h3>
-            Kristalisasi
-          </h3>
-
-          <p>
-            Diaduk hingga membentuk kristal gula aren yang halus.
-          </p>
-
-        </article>
-
-
-        <article class="process-card reveal">
-
-          <span>05</span>
-
-          <div class="process-art pack"></div>
-
-          <h3>
-            Pengemasan
-          </h3>
-
-          <p>
-            Dikemas dengan standar kebersihan dan kualitas
-            yang terjaga.
-          </p>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- PRODUCT -->
-    <section
-      id="product"
-      class="section product-section section-gold"
-    >
-
-      <div class="section-heading reveal">
-
-        <div>
-
-          <div class="eyebrow">
-            SIGNATURE PRODUCT
-          </div>
-
-          <h2>
-            Pilihan gula aren<br>
-            <em>berkualitas.</em>
-          </h2>
-
-        </div>
-
-        <p>
-          Produk utama Raya Gula menghadirkan rasa manis alami
-          yang cocok untuk kopi, teh, baking, dessert,
-          maupun masakan.
-        </p>
-
-      </div>
-
-
-      <div class="product-showcase reveal">
-
-        <div class="product-images">
-
-          <div class="pack-frame front">
-
-            <img
-              src="product-front.png"
-              alt="Kemasan depan Raya Gula Gula Aren Semut 500 gram"
-            >
-
-          </div>
-
-          <div class="pack-frame back">
-
-            <img
-              src="product-back.png"
-              alt="Kemasan belakang Raya Gula Gula Aren Semut 500 gram"
-            >
-
-          </div>
-
-        </div>
-
-
-        <div class="product-copy">
-
-          <span class="product-number">
-            01 / SIGNATURE
-          </span>
-
-          <h3>
-            Gula Aren<br>
-            Semut
-          </h3>
-
-          <div class="gold-rule"></div>
-
-          <p class="lead">
-            Manis alami yang berkelas.
-          </p>
-
-          <p>
-            Gula aren kristal dengan aroma khas dan tekstur
-            praktis untuk penggunaan sehari-hari.
-          </p>
-
-
-          <div class="specs">
-
-            <div>
-              <b>500 g</b>
-              <small>Netto</small>
-            </div>
-
-            <div>
-              <b>100%</b>
-              <small>Palm Sugar</small>
-            </div>
-
-            <div>
-              <b>ID</b>
-              <small>Product of Indonesia</small>
-            </div>
-
-          </div>
-
-
-          <!-- SHOPEE CTA -->
-          <a
-            class="btn dark"
-            href="https://shopee.co.id/rayagula"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Beli Raya Gula di Shopee"
-          >
-            Beli Raya Gula di Shopee <span>↗</span>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- WHY RAYA GULA -->
-    <section class="why">
-
-      <div class="why-image"></div>
-
-
-      <div class="why-copy reveal">
-
-        <div class="eyebrow">
-          WHY RAYA GULA
-        </div>
-
-        <h2>
-          Rasa autentik.<br>
-          <em>Nilai yang nyata.</em>
-        </h2>
-
-
-        <div class="why-list">
-
-          <div>
-
-            <span>01</span>
-
-            <div>
-              <b>100% Alami</b>
-              <p>
-                Karakter gula aren menjadi pusat rasa.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <span>02</span>
-
-            <div>
-              <b>Diproses dengan perhatian</b>
-              <p>
-                Menjaga kualitas dari bahan baku hingga kemasan.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <span>03</span>
-
-            <div>
-              <b>Mendukung petani lokal</b>
-              <p>
-                Mengangkat nilai hasil alam dan kerja petani Indonesia.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <span>04</span>
-
-            <div>
-              <b>Standar terpercaya</b>
-              <p>
-                Halal, Organic, dan SNI sesuai sertifikasi produk.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- JOURNAL -->
-    <section
-      id="journal"
-      class="section journal"
-    >
-
-      <div class="section-heading reveal">
-
-        <div>
-
-          <div class="eyebrow">
-            RAYA JOURNAL
-          </div>
-
-          <h2>
-            Rasa, budaya,<br>
-            <em>dan Nusantara.</em>
-          </h2>
-
-        </div>
-
-        <a
-          class="text-link dark-link"
-          href="articles/proses-pembuatan-gula-aren.html"
-        >
-          Lihat semua cerita <span>→</span>
-        </a>
-
-      </div>
-
-
-      <div class="journal-grid">
-
-        <article class="journal-card reveal">
-
-          <div class="journal-img j1">
-            <span>ORIGIN</span>
-          </div>
-
-          <small>
-            STORY / 01
-          </small>
-
-          <h3>
-            Mengenal gula aren Indonesia lebih dekat
-          </h3>
-
-          <a href="articles/gula-aren-untuk-kopi.html">
-            Baca cerita →
-          </a>
-
-        </article>
-
-
-        <article class="journal-card reveal">
-
-          <div class="journal-img j2">
-            <span>CRAFT</span>
-          </div>
-
-          <small>
-            PROCESS / 02
-          </small>
-
-          <h3>
-            Perjalanan dari nira hingga menjadi gula
-          </h3>
-
-          <a href="articles/proses-pembuatan-gula-aren.html">
-            Baca cerita →
-          </a>
-
-        </article>
-
-
-        <article class="journal-card reveal">
-
-          <div class="journal-img j3">
-            <span>TABLE</span>
-          </div>
-
-          <small>
-            FOOD / 03
-          </small>
-
-          <h3>
-            Ide sajian dengan manis alami
-          </h3>
-
-          <a href="articles/gula-aren-untuk-kopi.html">
-            Baca cerita →
-          </a>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- CTA -->
-    <section class="cta-banner">
-
-      <div class="cta-photo"></div>
-
-      <div class="cta-content reveal">
-
-        <div class="eyebrow">
-          LET'S GROW TOGETHER
-        </div>
-
-        <h2>
-          Manis alami yang<br>
-          <em>berkelanjutan.</em>
-        </h2>
-
-        <p>
-          Tertarik bekerja sama, menjadi reseller,
-          atau melakukan pemesanan dalam jumlah besar?
-        </p>
-
-        <a
-          class="btn gold"
-          href="https://wa.me/6281211213090"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hubungi Kami via WhatsApp <span>↗</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section
-      id="contact"
-      class="contact"
-    >
-
-      <div class="contact-main reveal">
-
-        <div class="eyebrow">
-          CONTACT RAYA GULA
-        </div>
-
-        <h2>
-          Mari bawa rasa<br>
-          <em>Indonesia</em> lebih jauh.
-        </h2>
-
-      </div>
-
-
-      <div class="contact-info reveal">
-
-        <a
-          href="https://wa.me/6281211213090"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>WhatsApp</span>
-          <b>0812-1121-3090 ↗</b>
-        </a>
-
-
-        <a href="mailto:gulaarenraya@gmail.com">
-
-          <span>Email</span>
-
-          <b>
-            gulaarenraya@gmail.com
-          </b>
-
-        </a>
-
-
-        <a
-          href="https://www.instagram.com/rayagulaaren/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span>Instagram</span>
-
-          <b>
-            @rayagulaaren ↗
-          </b>
-
-        </a>
-
-
-        <!-- SHOPEE -->
-        <a
-          href="https://shopee.co.id/rayagula"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span>Shopee</span>
-
-          <b>
-            Raya Gula ↗
-          </b>
-
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================================================
-       FLOATING CONTACT
-       ========================================================= -->
-
-  <div
-    class="floating-contact"
-    aria-label="Kontak Raya Gula"
-  >
-
-    <div class="floating-links">
-
-      <!-- WhatsApp -->
-      <a
-        class="floating-link"
-        href="https://wa.me/6281211213090"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Hubungi Raya Gula melalui WhatsApp"
-        title="WhatsApp"
-      >
-        WA
-      </a>
-
-
-      <!-- Instagram -->
-      <a
-        class="floating-link"
-        href="https://www.instagram.com/rayagulaaren/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Raya Gula di Instagram"
-        title="Instagram"
-      >
-        IG
-      </a>
-
-
-      <!-- Shopee -->
-      <a
-        class="floating-link"
-        href="https://shopee.co.id/rayagula"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Raya Gula di Shopee"
-        title="Shopee"
-      >
-        SH
-      </a>
-
-    </div>
-
-
-    <button
-      class="floating-main"
-      type="button"
-      aria-label="Buka kontak Raya Gula"
-      aria-expanded="false"
-      title="Kontak Raya Gula"
-    >
-
-      <img
-        src="logo.png"
-        alt="Raya Gula"
-      >
-
-    </button>
-
-  </div>
-
-
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
-
-  <footer class="footer">
-
-    <div class="footer-brand">
-
-      <img
-        src="logo.png"
-        alt="Raya Gula"
-      >
-
-      <p>
-        Gula aren Indonesia dengan rasa autentik,
-        alami, dan berkelas.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <b>NAVIGASI</b>
-
-      <a href="#about">
-        Tentang Kami
-      </a>
-
-      <a href="#product">
-        Produk
-      </a>
-
-      <a href="#process">
-        Proses
-      </a>
-
-      <a href="#journal">
-        Journal
-      </a>
-
-    </div>
-
-
-    <div>
-
-      <b>KONTAK</b>
-
-      <a
-        href="https://wa.me/6281211213090"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        0812-1121-3090
-      </a>
-
-      <a href="mailto:gulaarenraya@gmail.com">
-        gulaarenraya@gmail.com
-      </a>
-
-      <a
-        href="https://www.instagram.com/rayagulaaren/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @rayagulaaren
-      </a>
-
-      <a
-        href="https://shopee.co.id/rayagula"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Shopee Raya Gula
-      </a>
-
-    </div>
-
-
-    <div>
-
-      <b>ORIGIN</b>
-
-      <span>
-        Indonesia · Nusantara
-      </span>
-
-      <span>
-        © 2026 Raya Gula
-      </span>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =========================================================
-       EXISTING JAVASCRIPT
-       ========================================================= -->
-
-  <script src="script.js"></script>
-
-
-  <!-- =========================================================
-       FLOATING CONTACT JAVASCRIPT
-       ========================================================= -->
-
-  <script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-
-      const floatingContact =
-        document.querySelector(".floating-contact");
-
-      const floatingMain =
-        document.querySelector(".floating-main");
-
-
-      if (!floatingContact || !floatingMain) {
-        return;
-      }
-
-
-      floatingMain.addEventListener("click", function () {
-
-        const isOpen =
-          floatingContact.classList.toggle("open");
-
-        floatingMain.setAttribute(
-          "aria-expanded",
-          isOpen ? "true" : "false"
-        );
-
-      });
-
-
-      /* Close floating menu when clicking outside */
-
-      document.addEventListener("click", function (event) {
-
-        if (!floatingContact.contains(event.target)) {
-
-          floatingContact.classList.remove("open");
-
-          floatingMain.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-        }
-
-      });
-
-    });
-
-  </script>
-
-</body>
-</html>
+  .floating-main {
+    width: 60px;
+    height: 60px;
+  }
+
+  .floating-main img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .floating-item {
+    width: 46px;
+    height: 46px;
+  }
+
+  .floating-item img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .floating-item span {
+    display: none;
+  }
+
+  .floating-social.open .floating-whatsapp {
+    transform:
+      translate(-54px, -14px)
+      scale(1);
+  }
+
+  .floating-social.open .floating-instagram {
+    transform:
+      translate(-58px, -70px)
+      scale(1);
+  }
+
+  .floating-social.open .floating-shopee {
+    transform:
+      translate(-18px, -108px)
+      scale(1);
+  }
+
+}

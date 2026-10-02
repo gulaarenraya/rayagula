@@ -519,17 +519,13 @@ function initSugarScroll() {
 
 
   /* -------------------------------------------------------
-     REDUCED MOTION
+     CHECK BROWSER SUPPORT
      ------------------------------------------------------- */
 
-  const prefersReducedMotion =
-    window.matchMedia &&
-    window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-  if (prefersReducedMotion) {
+  if (
+    !document.body ||
+    !window.addEventListener
+  ) {
     return;
   }
 
@@ -552,26 +548,52 @@ function initSugarScroll() {
   );
 
 
+  /*
+   * Inline safety styling.
+   * Jadi efek tetap bekerja walaupun
+   * CSS particle belum terbaca.
+   */
+
+  sugarLayer.style.position = "fixed";
+  sugarLayer.style.left = "0";
+  sugarLayer.style.top = "0";
+  sugarLayer.style.width = "100vw";
+  sugarLayer.style.height = "100vh";
+  sugarLayer.style.overflow = "hidden";
+  sugarLayer.style.pointerEvents = "none";
+  sugarLayer.style.zIndex = "9980";
+
+
   document.body.appendChild(
     sugarLayer
   );
 
 
   /* -------------------------------------------------------
-     SETTINGS
+     DEVICE SETTINGS
      ------------------------------------------------------- */
 
-  const isMobile =
+  let isMobile =
     window.innerWidth <= 768;
 
 
-  const maxParticles =
-    isMobile ? 12 : 24;
+  function getMaxParticles() {
+
+    return isMobile ? 14 : 28;
+
+  }
 
 
-  const particleInterval =
-    isMobile ? 150 : 115;
+  function getParticleInterval() {
 
+    return isMobile ? 130 : 95;
+
+  }
+
+
+  /* -------------------------------------------------------
+     SCROLL VARIABLES
+     ------------------------------------------------------- */
 
   let lastScrollY =
     window.scrollY;
@@ -581,16 +603,22 @@ function initSugarScroll() {
 
 
   /* -------------------------------------------------------
-     CREATE SUGAR PARTICLE
+     CREATE ONE SUGAR PARTICLE
      ------------------------------------------------------- */
 
   function createSugarParticle() {
+
+    const maxParticles =
+      getMaxParticles();
+
 
     if (
       sugarLayer.children.length >=
       maxParticles
     ) {
+
       return;
+
     }
 
 
@@ -607,11 +635,11 @@ function initSugarScroll() {
        --------------------------------------------------- */
 
     const size =
-      Math.random() * 3.5 + 2;
+      Math.random() * 4 + 2;
 
 
     /* ---------------------------------------------------
-       RANDOM START POSITION
+       RANDOM HORIZONTAL POSITION
        --------------------------------------------------- */
 
     const startX =
@@ -620,71 +648,88 @@ function initSugarScroll() {
 
 
     /* ---------------------------------------------------
-       NATURAL SIDEWAYS MOVEMENT
+       NATURAL SIDE MOVEMENT
        --------------------------------------------------- */
 
     const drift =
-      (Math.random() - 0.5) * 70;
+      (Math.random() - 0.5) * 100;
 
 
     const driftEnd =
-      (Math.random() - 0.5) * 130;
+      (Math.random() - 0.5) * 170;
 
 
     /* ---------------------------------------------------
-       FALL SPEED
+       FALL DURATION
        --------------------------------------------------- */
 
     const duration =
-      Math.random() * 1.8 + 2.7;
+      Math.random() * 1800 + 2800;
 
 
     /* ---------------------------------------------------
-       SOFT OPACITY
+       OPACITY
        --------------------------------------------------- */
 
     const opacity =
-      Math.random() * 0.28 + 0.28;
+      Math.random() * 0.32 + 0.42;
 
 
     /* ---------------------------------------------------
-       CSS VARIABLES
+       PARTICLE POSITION
        --------------------------------------------------- */
 
-    particle.style.setProperty(
-      "--size",
-      `${size}px`
-    );
+    particle.style.position =
+      "absolute";
 
 
-    particle.style.setProperty(
-      "--start-x",
-      `${startX}px`
-    );
+    particle.style.left =
+      startX + "px";
 
 
-    particle.style.setProperty(
-      "--drift",
-      `${drift}px`
-    );
+    particle.style.top =
+      "-12px";
 
 
-    particle.style.setProperty(
-      "--drift-end",
-      `${driftEnd}px`
-    );
+    particle.style.width =
+      size + "px";
 
 
-    particle.style.setProperty(
-      "--duration",
-      `${duration}s`
-    );
+    particle.style.height =
+      size + "px";
 
 
-    particle.style.setProperty(
-      "--opacity",
-      opacity
-    );
+    particle.style.borderRadius =
+      "50%";
+
+
+    /* ---------------------------------------------------
+       PALM SUGAR COLOR
+       --------------------------------------------------- */
+
+    particle.style.background =
+      "radial-gradient(" +
+      "circle at 30% 25%, " +
+      "#f8e7c5 0%, " +
+      "#d1a263 42%, " +
+      "#8c5b2d 100%" +
+      ")";
+
+
+    particle.style.boxShadow =
+      "0 1px 3px rgba(70,42,18,.22)";
+
+
+    particle.style.opacity =
+      "0";
+
+
+    particle.style.pointerEvents =
+      "none";
+
+
+    particle.style.willChange =
+      "transform, opacity";
 
 
     /* ---------------------------------------------------
@@ -695,13 +740,13 @@ function initSugarScroll() {
       40 + Math.random() * 20;
 
     const r2 =
-      40 + Math.random() * 20;
+      45 + Math.random() * 15;
 
     const r3 =
       40 + Math.random() * 20;
 
     const r4 =
-      40 + Math.random() * 20;
+      45 + Math.random() * 15;
 
 
     particle.style.borderRadius =
@@ -709,14 +754,8 @@ function initSugarScroll() {
 
 
     /* ---------------------------------------------------
-       RANDOM ROTATION
+       APPEND TO SCREEN
        --------------------------------------------------- */
-
-    particle.style.setProperty(
-      "--rotation",
-      `${Math.random() * 360}deg`
-    );
-
 
     sugarLayer.appendChild(
       particle
@@ -724,20 +763,126 @@ function initSugarScroll() {
 
 
     /* ---------------------------------------------------
-       REMOVE AFTER ANIMATION
+       WEB ANIMATION
        --------------------------------------------------- */
 
-    particle.addEventListener(
-      "animationend",
-      function () {
+    if (
+      typeof particle.animate ===
+      "function"
+    ) {
 
-        particle.remove();
+      const animation =
+        particle.animate(
 
-      },
-      {
-        once: true
-      }
-    );
+          [
+
+            /* START */
+
+            {
+              transform:
+                "translate3d(0,-15px,0) rotate(0deg)",
+              opacity: 0
+            },
+
+
+            /* APPEAR */
+
+            {
+              transform:
+                "translate3d(" +
+                (drift * 0.15) +
+                "px,15vh,0) rotate(90deg)",
+              opacity: opacity
+            },
+
+
+            /* MIDDLE */
+
+            {
+              transform:
+                "translate3d(" +
+                drift +
+                "px,52vh,0) rotate(220deg)",
+              opacity: opacity
+            },
+
+
+            /* END */
+
+            {
+              transform:
+                "translate3d(" +
+                driftEnd +
+                "px,110vh,0) rotate(420deg)",
+              opacity: 0
+            }
+
+          ],
+
+          {
+
+            duration:
+              duration,
+
+            easing:
+              "cubic-bezier(.22,.61,.36,1)",
+
+            fill:
+              "forwards"
+
+          }
+
+        );
+
+
+      animation.onfinish =
+        function () {
+
+          particle.remove();
+
+        };
+
+
+    } else {
+
+      /*
+       * Fallback untuk browser lama
+       */
+
+      particle.style.transition =
+        "opacity 0.3s ease";
+
+      requestAnimationFrame(
+        function () {
+
+          particle.style.opacity =
+            opacity;
+
+        }
+      );
+
+
+      setTimeout(
+        function () {
+
+          particle.style.opacity =
+            "0";
+
+
+          setTimeout(
+            function () {
+
+              particle.remove();
+
+            },
+            500
+          );
+
+        },
+        duration
+      );
+
+    }
 
   }
 
@@ -752,9 +897,10 @@ function initSugarScroll() {
       window.scrollY;
 
 
-    /* -----------------------------------------------
-       ONLY WHEN SCROLLING DOWN
-       ----------------------------------------------- */
+    /*
+     * Hanya aktif ketika halaman
+     * bergerak ke bawah.
+     */
 
     if (
       currentY <= lastScrollY
@@ -764,6 +910,7 @@ function initSugarScroll() {
         currentY;
 
       return;
+
     }
 
 
@@ -771,9 +918,9 @@ function initSugarScroll() {
       currentY;
 
 
-    /* -----------------------------------------------
+    /* ---------------------------------------------------
        THROTTLE
-       ----------------------------------------------- */
+       --------------------------------------------------- */
 
     const now =
       performance.now();
@@ -781,10 +928,11 @@ function initSugarScroll() {
 
     if (
       now - lastParticleTime <
-      particleInterval
+      getParticleInterval()
     ) {
 
       return;
+
     }
 
 
@@ -792,23 +940,30 @@ function initSugarScroll() {
       now;
 
 
-    /* -----------------------------------------------
-       CREATE 1 PARTICLE
-       ----------------------------------------------- */
+    /* ---------------------------------------------------
+       CREATE PARTICLES
+       --------------------------------------------------- */
 
     createSugarParticle();
 
 
-    /* -----------------------------------------------
-       OCCASIONALLY CREATE A SECOND
-       ----------------------------------------------- */
+    /*
+     * Sesekali buat butiran kedua
+     * agar jatuhnya lebih natural.
+     */
 
     if (
-      !isMobile &&
-      Math.random() > 0.78
+      Math.random() > 0.68
     ) {
 
-      createSugarParticle();
+      setTimeout(
+        function () {
+
+          createSugarParticle();
+
+        },
+        40
+      );
 
     }
 
@@ -829,12 +984,16 @@ function initSugarScroll() {
 
 
   /* -------------------------------------------------------
-     RESIZE SAFETY
+     RESIZE
      ------------------------------------------------------- */
 
   window.addEventListener(
     "resize",
     function () {
+
+      isMobile =
+        window.innerWidth <= 768;
+
 
       lastScrollY =
         window.scrollY;
@@ -845,6 +1004,10 @@ function initSugarScroll() {
     }
   );
 
+
+  /* -------------------------------------------------------
+     DEBUG
+     ------------------------------------------------------- */
 
   console.log(
     "Raya Gula sugar scroll effect initialized."

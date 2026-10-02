@@ -1,53 +1,27 @@
-/* =========================================================
+/* =====================================================
    RAYA GULA
    MAIN JAVASCRIPT
-   ========================================================= */
+   ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-
-  /* =======================================================
+  /* =====================================================
      MOBILE NAVIGATION
-     ======================================================= */
+     ===================================================== */
 
   const menu = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
 
   function closeMenu() {
 
-    if (!menu || !nav) {
-      return;
-    }
+    if (!menu || !nav) return;
 
-    nav.classList.remove("active");
     nav.classList.remove("open");
+    nav.classList.remove("active");
 
-    menu.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
+    menu.setAttribute("aria-expanded", "false");
     menu.innerHTML = "☰";
   }
-
-
-  function openMenu() {
-
-    if (!menu || !nav) {
-      return;
-    }
-
-    nav.classList.add("active");
-    nav.classList.add("open");
-
-    menu.setAttribute(
-      "aria-expanded",
-      "true"
-    );
-
-    menu.innerHTML = "✕";
-  }
-
 
   if (menu && nav) {
 
@@ -56,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
 
       const isOpen =
-        nav.classList.contains("active") ||
-        nav.classList.contains("open");
+        nav.classList.contains("open") ||
+        nav.classList.contains("active");
 
       if (isOpen) {
 
@@ -65,72 +39,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
       } else {
 
-        openMenu();
+        nav.classList.add("open");
+        nav.classList.add("active");
+
+        menu.setAttribute("aria-expanded", "true");
+        menu.innerHTML = "✕";
+      }
+
+    });
+
+
+    document.addEventListener("click", function (event) {
+
+      if (
+        !nav.contains(event.target) &&
+        !menu.contains(event.target)
+      ) {
+
+        closeMenu();
 
       }
 
     });
 
 
-    /* Close when clicking outside */
+    nav.querySelectorAll("a").forEach(function (link) {
 
-    document.addEventListener(
-      "click",
-      function (event) {
+      link.addEventListener("click", function () {
 
-        if (
-          !nav.contains(event.target) &&
-          !menu.contains(event.target)
-        ) {
-
-          closeMenu();
-
-        }
-
-      }
-    );
-
-
-    /* Close after clicking navigation link */
-
-    nav
-      .querySelectorAll("a")
-      .forEach(function (link) {
-
-        link.addEventListener(
-          "click",
-          function () {
-
-            closeMenu();
-
-          }
-        );
+        closeMenu();
 
       });
 
+    });
 
-    /* Close menu when window becomes desktop */
 
-    window.addEventListener(
-      "resize",
-      function () {
+    window.addEventListener("resize", function () {
 
-        if (window.innerWidth > 900) {
+      if (window.innerWidth > 900) {
 
-          closeMenu();
-
-        }
+        closeMenu();
 
       }
-    );
+
+    });
 
   }
 
 
-
-  /* =======================================================
+  /* =====================================================
      SCROLL REVEAL
-     ======================================================= */
+     ===================================================== */
 
   const revealElements =
     document.querySelectorAll(".reveal");
@@ -141,27 +100,21 @@ document.addEventListener("DOMContentLoaded", function () {
     "IntersectionObserver" in window
   ) {
 
-    const revealObserver =
+    const observer =
       new IntersectionObserver(
         function (entries) {
 
-          entries.forEach(
-            function (entry) {
+          entries.forEach(function (entry) {
 
-              if (entry.isIntersecting) {
+            if (entry.isIntersecting) {
 
-                entry.target.classList.add(
-                  "visible"
-                );
+              entry.target.classList.add("visible");
 
-                revealObserver.unobserve(
-                  entry.target
-                );
-
-              }
+              observer.unobserve(entry.target);
 
             }
-          );
+
+          });
 
         },
         {
@@ -171,159 +124,114 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
 
-    revealElements.forEach(
-      function (element) {
+    revealElements.forEach(function (element) {
 
-        revealObserver.observe(
-          element
-        );
+      observer.observe(element);
 
-      }
-    );
+    });
 
   } else {
 
-    /* Fallback for older browsers */
+    revealElements.forEach(function (element) {
 
-    revealElements.forEach(
-      function (element) {
+      element.classList.add("visible");
 
-        element.classList.add(
-          "visible"
-        );
-
-      }
-    );
+    });
 
   }
 
 
+  /* =====================================================
+     FLOATING RAYA GULA MENU
+     ===================================================== */
 
-  /* =======================================================
-     MARKETPLACE CONFIGURATION
-     ======================================================= */
-
-  const MARKETPLACE_URLS = {
-
-    /* Shopee resmi Raya Gula */
-
-    shopee:
-      "https://shopee.co.id/rayagula",
-
-
-    /*
-     * TikTok Shop belum diaktifkan.
-     *
-     * Jika nanti sudah memiliki akun resmi,
-     * cukup masukkan URL TikTok Shop di sini.
-     */
-
-    tiktok: ""
-
-  };
-
-
-
-  /* =======================================================
-     MARKETPLACE BUTTON HANDLER
-     ======================================================= */
-
-  const marketplaceElements =
-    document.querySelectorAll(
-      "[data-marketplace]"
-    );
-
-
-  marketplaceElements.forEach(
-    function (element) {
-
-      const key =
-        element.dataset.marketplace;
-
-
-      element.addEventListener(
-        "click",
-        function (event) {
-
-          const url =
-            MARKETPLACE_URLS[key];
-
-
-          /*
-           * Jika marketplace belum tersedia
-           */
-
-          if (!url) {
-
-            event.preventDefault();
-
-
-            let label =
-              "Marketplace";
-
-
-            if (key === "tiktok") {
-
-              label =
-                "TikTok Shop";
-
-            }
-
-
-            alert(
-              `${label} Raya Gula belum tersedia. Link resmi akan ditambahkan setelah akun toko dibuat.`
-            );
-
-
-            return;
-
-          }
-
-
-          /*
-           * Marketplace tersedia
-           */
-
-          element.href =
-            url;
-
-          element.target =
-            "_blank";
-
-          element.rel =
-            "noopener noreferrer";
-
-        }
-      );
-
-    }
-  );
-
-
-
-  /* =======================================================
-     FLOATING CONTACT
-     ======================================================= */
-
-  const floatingContact =
-    document.querySelector(
-      ".floating-contact"
-    );
-
+  const floatingSocial =
+    document.getElementById("floatingSocial");
 
   const floatingMain =
-    document.querySelector(
-      ".floating-main"
-    );
+    document.getElementById("floatingMain");
+
+  const floatingMainIcon =
+    document.getElementById("floatingMainIcon");
 
 
   if (
-    floatingContact &&
-    floatingMain
+    floatingSocial &&
+    floatingMain &&
+    floatingMainIcon
   ) {
 
+    /*
+     * Icon utama yang berganti otomatis
+     */
 
-    /* Open / Close */
+    const floatingIcons = [
+
+      {
+        src: "logo.png",
+        alt: "Raya Gula"
+      },
+
+      {
+        src: "icon-whatsapp.png",
+        alt: "WhatsApp Raya Gula"
+      },
+
+      {
+        src: "icon-instagram.png",
+        alt: "Instagram Raya Gula"
+      },
+
+      {
+        src: "icon-shopee.png",
+        alt: "Shopee Raya Gula"
+      }
+
+    ];
+
+
+    let currentIcon = 0;
+    let menuOpen = false;
+
+
+    /*
+     * Pergantian icon otomatis
+     */
+
+    const iconInterval =
+      setInterval(function () {
+
+        if (menuOpen) return;
+
+
+        floatingMainIcon.style.opacity = "0";
+
+
+        setTimeout(function () {
+
+          currentIcon =
+            (currentIcon + 1) %
+            floatingIcons.length;
+
+
+          floatingMainIcon.src =
+            floatingIcons[currentIcon].src;
+
+          floatingMainIcon.alt =
+            floatingIcons[currentIcon].alt;
+
+
+          floatingMainIcon.style.opacity = "1";
+
+        }, 180);
+
+
+      }, 2800);
+
+
+    /*
+     * Open / close menu
+     */
 
     floatingMain.addEventListener(
       "click",
@@ -331,40 +239,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.stopPropagation();
 
+        menuOpen =
+          !menuOpen;
 
-        const isOpen =
-          floatingContact.classList.toggle(
-            "open"
-          );
+
+        floatingSocial.classList.toggle(
+          "open",
+          menuOpen
+        );
 
 
         floatingMain.setAttribute(
           "aria-expanded",
-          isOpen
+          menuOpen
             ? "true"
             : "false"
         );
+
+
+        /*
+         * Ketika menu dibuka,
+         * tampilkan kembali logo Raya Gula
+         */
+
+        if (menuOpen) {
+
+          floatingMainIcon.style.opacity = "0";
+
+          setTimeout(function () {
+
+            floatingMainIcon.src =
+              "logo.png";
+
+            floatingMainIcon.alt =
+              "Raya Gula";
+
+            floatingMainIcon.style.opacity =
+              "1";
+
+          }, 180);
+
+        }
 
       }
     );
 
 
-    /* Close when clicking outside */
+    /*
+     * Klik area luar → tutup
+     */
 
     document.addEventListener(
       "click",
       function (event) {
 
         if (
-          !floatingContact.contains(
+          !floatingSocial.contains(
             event.target
           )
         ) {
 
-          floatingContact.classList.remove(
+          menuOpen = false;
+
+          floatingSocial.classList.remove(
             "open"
           );
-
 
           floatingMain.setAttribute(
             "aria-expanded",
@@ -377,197 +316,102 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    /* Close after selecting contact */
+    /*
+     * Klik salah satu social icon
+     */
 
-    floatingContact
-      .querySelectorAll("a")
-      .forEach(
-        function (link) {
-
-          link.addEventListener(
-            "click",
-            function () {
-
-              floatingContact.classList.remove(
-                "open"
-              );
-
-
-              floatingMain.setAttribute(
-                "aria-expanded",
-                "false"
-              );
-
-            }
-          );
-
-        }
-      );
-
-  }
-
-
-
-  /* =======================================================
-     SMOOTH SCROLL
-     ======================================================= */
-
-  document
-    .querySelectorAll(
-      'a[href^="#"]'
-    )
-    .forEach(
-      function (link) {
+    floatingSocial
+      .querySelectorAll(".floating-item")
+      .forEach(function (link) {
 
         link.addEventListener(
           "click",
-          function (event) {
+          function () {
 
-            const targetId =
-              link.getAttribute("href");
+            menuOpen = false;
 
+            floatingSocial.classList.remove(
+              "open"
+            );
 
-            if (
-              !targetId ||
-              targetId === "#"
-            ) {
-
-              return;
-
-            }
-
-
-            const target =
-              document.querySelector(
-                targetId
-              );
-
-
-            if (!target) {
-
-              return;
-
-            }
-
-
-            event.preventDefault();
-
-
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
+            floatingMain.setAttribute(
+              "aria-expanded",
+              "false"
+            );
 
           }
         );
 
-      }
-    );
+      });
+
+  }
 
 
-
-  /* =======================================================
-     EXTERNAL LINKS
-     ======================================================= */
+  /* =====================================================
+     SMOOTH SCROLL
+     ===================================================== */
 
   document
-    .querySelectorAll(
-      'a[target="_blank"]'
-    )
-    .forEach(
-      function (link) {
+    .querySelectorAll('a[href^="#"]')
+    .forEach(function (link) {
 
-        /*
-         * Pastikan external link
-         * menggunakan rel yang aman.
-         */
+      link.addEventListener(
+        "click",
+        function (event) {
 
-        const currentRel =
-          link.getAttribute("rel") ||
-          "";
+          const targetId =
+            link.getAttribute("href");
 
 
-        if (
-          !currentRel.includes(
-            "noopener"
-          )
-        ) {
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
 
-          link.setAttribute(
-            "rel",
-            "noopener noreferrer"
-          );
+
+          const target =
+            document.querySelector(targetId);
+
+
+          if (!target) {
+            return;
+          }
+
+
+          event.preventDefault();
+
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
 
         }
+      );
 
-      }
-    );
-
-
-
-  /* =======================================================
-     SHOPEE DIRECT LINK
-     ======================================================= */
-
-  const shopeeLinks =
-    document.querySelectorAll(
-      'a[href*="shopee.co.id"]'
-    );
+    });
 
 
-  shopeeLinks.forEach(
-    function (link) {
+  /* =====================================================
+     EXTERNAL LINK SECURITY
+     ===================================================== */
 
-      /*
-       * Pastikan semua link Shopee
-       * menggunakan URL toko terbaru.
-       */
+  document
+    .querySelectorAll('a[target="_blank"]')
+    .forEach(function (link) {
 
-      const href =
-        link.getAttribute("href") ||
-        "";
+      link.setAttribute(
+        "rel",
+        "noopener noreferrer"
+      );
 
+    });
 
-      if (
-        href.includes(
-          "shopee.co.id/rayagula"
-        )
-      ) {
-
-        link.setAttribute(
-          "href",
-          "https://shopee.co.id/rayagula"
-        );
-
-        link.setAttribute(
-          "target",
-          "_blank"
-        );
-
-        link.setAttribute(
-          "rel",
-          "noopener noreferrer"
-        );
-
-      }
-
-    }
-  );
-
-
-
-  /* =======================================================
-     CONSOLE CHECK
-     ======================================================= */
 
   console.log(
     "Raya Gula website initialized."
   );
-
-  console.log(
-    "Shopee:",
-    MARKETPLACE_URLS.shopee
-  );
-
 
 });

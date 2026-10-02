@@ -7,20 +7,18 @@ document.addEventListener(
   "DOMContentLoaded",
   function () {
 
+    "use strict";
+
 
     /* =====================================================
        MOBILE NAVIGATION
        ===================================================== */
 
     const menu =
-      document.querySelector(
-        ".menu-toggle"
-      );
+      document.querySelector(".menu-toggle");
 
     const nav =
-      document.querySelector(
-        ".nav"
-      );
+      document.querySelector(".nav");
 
 
     function closeMenu() {
@@ -29,25 +27,15 @@ document.addEventListener(
         return;
       }
 
-
-      nav.classList.remove(
-        "open"
-      );
-
-      nav.classList.remove(
-        "active"
-      );
-
+      nav.classList.remove("open");
+      nav.classList.remove("active");
 
       menu.setAttribute(
         "aria-expanded",
         "false"
       );
 
-
-      menu.innerHTML =
-        "☰";
-
+      menu.innerHTML = "☰";
     }
 
 
@@ -59,14 +47,9 @@ document.addEventListener(
 
           event.stopPropagation();
 
-
           const isOpen =
-            nav.classList.contains(
-              "open"
-            ) ||
-            nav.classList.contains(
-              "active"
-            );
+            nav.classList.contains("open") ||
+            nav.classList.contains("active");
 
 
           if (isOpen) {
@@ -75,24 +58,15 @@ document.addEventListener(
 
           } else {
 
-            nav.classList.add(
-              "open"
-            );
-
-            nav.classList.add(
-              "active"
-            );
-
+            nav.classList.add("open");
+            nav.classList.add("active");
 
             menu.setAttribute(
               "aria-expanded",
               "true"
             );
 
-
-            menu.innerHTML =
-              "✕";
-
+            menu.innerHTML = "✕";
           }
 
         }
@@ -104,12 +78,8 @@ document.addEventListener(
         function (event) {
 
           if (
-            !nav.contains(
-              event.target
-            ) &&
-            !menu.contains(
-              event.target
-            )
+            !nav.contains(event.target) &&
+            !menu.contains(event.target)
           ) {
 
             closeMenu();
@@ -142,13 +112,8 @@ document.addEventListener(
         "resize",
         function () {
 
-          if (
-            window.innerWidth >
-            900
-          ) {
-
+          if (window.innerWidth > 900) {
             closeMenu();
-
           }
 
         }
@@ -157,15 +122,12 @@ document.addEventListener(
     }
 
 
-
     /* =====================================================
        SCROLL REVEAL
        ===================================================== */
 
     const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
+      document.querySelectorAll(".reveal");
 
 
     if (
@@ -180,14 +142,11 @@ document.addEventListener(
             entries.forEach(
               function (entry) {
 
-                if (
-                  entry.isIntersecting
-                ) {
+                if (entry.isIntersecting) {
 
                   entry.target.classList.add(
                     "visible"
                   );
-
 
                   observer.unobserve(
                     entry.target
@@ -201,7 +160,6 @@ document.addEventListener(
           },
           {
             threshold: 0.12,
-
             rootMargin:
               "0px 0px -40px 0px"
           }
@@ -211,9 +169,7 @@ document.addEventListener(
       revealElements.forEach(
         function (element) {
 
-          observer.observe(
-            element
-          );
+          observer.observe(element);
 
         }
       );
@@ -223,15 +179,12 @@ document.addEventListener(
       revealElements.forEach(
         function (element) {
 
-          element.classList.add(
-            "visible"
-          );
+          element.classList.add("visible");
 
         }
       );
 
     }
-
 
 
     /* =====================================================
@@ -243,12 +196,10 @@ document.addEventListener(
         "floatingSocial"
       );
 
-
     const floatingMain =
       document.getElementById(
         "floatingMain"
       );
-
 
     const floatingMainIcon =
       document.getElementById(
@@ -262,45 +213,26 @@ document.addEventListener(
       floatingMainIcon
     ) {
 
-
-      /* -------------------------------------------------
-         ICON UTAMA
-         ------------------------------------------------- */
-
       const floatingIcons = [
 
         {
           src: "logo.png",
-
-          alt:
-            "Raya Gula"
+          alt: "Raya Gula"
         },
 
-
         {
-          src:
-            "icon-whatsapp.png",
-
-          alt:
-            "WhatsApp Raya Gula"
+          src: "icon-whatsapp.png",
+          alt: "WhatsApp Raya Gula"
         },
 
-
         {
-          src:
-            "icon-instagram.png",
-
-          alt:
-            "Instagram Raya Gula"
+          src: "icon-instagram.png",
+          alt: "Instagram Raya Gula"
         },
 
-
         {
-          src:
-            "icon-shopee.png",
-
-          alt:
-            "Shopee Raya Gula"
+          src: "icon-shopee.png",
+          alt: "Shopee Raya Gula"
         }
 
       ];
@@ -372,9 +304,7 @@ document.addEventListener(
 
           event.stopPropagation();
 
-
-          menuOpen =
-            !menuOpen;
+          menuOpen = !menuOpen;
 
 
           floatingSocial.classList.toggle(
@@ -403,14 +333,11 @@ document.addEventListener(
                 floatingMainIcon.src =
                   "logo.png";
 
-
                 floatingMainIcon.alt =
                   "Raya Gula";
 
-
                 floatingMainIcon.style.opacity =
                   "1";
-
 
                 currentIcon = 0;
 
@@ -440,11 +367,9 @@ document.addEventListener(
 
             menuOpen = false;
 
-
             floatingSocial.classList.remove(
               "open"
             );
-
 
             floatingMain.setAttribute(
               "aria-expanded",
@@ -474,11 +399,9 @@ document.addEventListener(
 
                 menuOpen = false;
 
-
                 floatingSocial.classList.remove(
                   "open"
                 );
-
 
                 floatingMain.setAttribute(
                   "aria-expanded",
@@ -492,7 +415,6 @@ document.addEventListener(
         );
 
     }
-
 
 
     /* =====================================================
@@ -515,7 +437,6 @@ document.addEventListener(
       );
 
 
-
     /* =====================================================
        SMOOTH SCROLL
        ===================================================== */
@@ -532,18 +453,14 @@ document.addEventListener(
             function (event) {
 
               const targetId =
-                link.getAttribute(
-                  "href"
-                );
+                link.getAttribute("href");
 
 
               if (
                 !targetId ||
                 targetId === "#"
               ) {
-
                 return;
-
               }
 
 
@@ -554,9 +471,7 @@ document.addEventListener(
 
 
               if (!target) {
-
                 return;
-
               }
 
 
@@ -564,11 +479,8 @@ document.addEventListener(
 
 
               target.scrollIntoView({
-                behavior:
-                  "smooth",
-
-                block:
-                  "start"
+                behavior: "smooth",
+                block: "start"
               });
 
             }
@@ -579,6 +491,13 @@ document.addEventListener(
 
 
     /* =====================================================
+       RAYA GULA — SOFT PALM SUGAR SCROLL
+       ===================================================== */
+
+    initSugarScroll();
+
+
+    /* =====================================================
        DEBUG
        ===================================================== */
 
@@ -586,57 +505,79 @@ document.addEventListener(
       "Raya Gula website initialized."
     );
 
-
   }
 );
+
+
 /* =========================================================
-   RAYA GULA — SOFT SUGAR SCROLL EFFECT
+   SOFT PALM SUGAR SCROLL EFFECT
    ========================================================= */
 
-(function () {
+function initSugarScroll() {
 
   "use strict";
 
+
+  /* -------------------------------------------------------
+     REDUCED MOTION
+     ------------------------------------------------------- */
+
   const prefersReducedMotion =
     window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-  if (prefersReducedMotion) return;
+
+  if (prefersReducedMotion) {
+    return;
+  }
 
 
   /* -------------------------------------------------------
-     CREATE PARTICLE LAYER
+     CREATE PARTICLE CONTAINER
      ------------------------------------------------------- */
 
-  const sugarLayer = document.createElement("div");
+  const sugarLayer =
+    document.createElement("div");
 
-  sugarLayer.className = "rg-sugar-layer";
+
+  sugarLayer.className =
+    "rg-sugar-layer";
+
 
   sugarLayer.setAttribute(
     "aria-hidden",
     "true"
   );
 
-  document.body.appendChild(sugarLayer);
+
+  document.body.appendChild(
+    sugarLayer
+  );
 
 
   /* -------------------------------------------------------
      SETTINGS
      ------------------------------------------------------- */
 
-  const isMobile = window.innerWidth <= 768;
+  const isMobile =
+    window.innerWidth <= 768;
 
-  const maxParticles = isMobile ? 18 : 32;
 
-  let lastScrollY = window.scrollY;
+  const maxParticles =
+    isMobile ? 12 : 24;
 
-  let scrollDirection = "down";
+
+  const particleInterval =
+    isMobile ? 150 : 115;
+
+
+  let lastScrollY =
+    window.scrollY;
+
 
   let lastParticleTime = 0;
-
-  let scrollActive = false;
-
-  let scrollTimeout;
 
 
   /* -------------------------------------------------------
@@ -645,74 +586,100 @@ document.addEventListener(
 
   function createSugarParticle() {
 
-    if (sugarLayer.children.length >= maxParticles) {
+    if (
+      sugarLayer.children.length >=
+      maxParticles
+    ) {
       return;
     }
 
+
     const particle =
       document.createElement("span");
+
 
     particle.className =
       "rg-sugar-particle";
 
 
-    /* Size */
+    /* ---------------------------------------------------
+       RANDOM SIZE
+       --------------------------------------------------- */
 
     const size =
-      Math.random() * 4 + 2;
+      Math.random() * 3.5 + 2;
 
 
-    /* Position */
+    /* ---------------------------------------------------
+       RANDOM START POSITION
+       --------------------------------------------------- */
 
     const startX =
-      Math.random() * window.innerWidth;
+      Math.random() *
+      window.innerWidth;
 
 
-    /* Slight horizontal movement */
+    /* ---------------------------------------------------
+       NATURAL SIDEWAYS MOVEMENT
+       --------------------------------------------------- */
 
     const drift =
-      (Math.random() - 0.5) * 100;
+      (Math.random() - 0.5) * 70;
+
 
     const driftEnd =
-      (Math.random() - 0.5) * 180;
+      (Math.random() - 0.5) * 130;
 
 
-    /* Animation duration */
+    /* ---------------------------------------------------
+       FALL SPEED
+       --------------------------------------------------- */
 
     const duration =
-      Math.random() * 2.2 + 2.8;
+      Math.random() * 1.8 + 2.7;
 
 
-    /* Opacity */
+    /* ---------------------------------------------------
+       SOFT OPACITY
+       --------------------------------------------------- */
 
     const opacity =
-      Math.random() * 0.35 + 0.35;
+      Math.random() * 0.28 + 0.28;
 
+
+    /* ---------------------------------------------------
+       CSS VARIABLES
+       --------------------------------------------------- */
 
     particle.style.setProperty(
       "--size",
       `${size}px`
     );
 
+
     particle.style.setProperty(
       "--start-x",
       `${startX}px`
     );
+
 
     particle.style.setProperty(
       "--drift",
       `${drift}px`
     );
 
+
     particle.style.setProperty(
       "--drift-end",
       `${driftEnd}px`
     );
 
+
     particle.style.setProperty(
       "--duration",
       `${duration}s`
     );
+
 
     particle.style.setProperty(
       "--opacity",
@@ -720,118 +687,167 @@ document.addEventListener(
     );
 
 
-    /* Slight variation */
+    /* ---------------------------------------------------
+       ORGANIC SHAPE
+       --------------------------------------------------- */
+
+    const r1 =
+      40 + Math.random() * 20;
+
+    const r2 =
+      40 + Math.random() * 20;
+
+    const r3 =
+      40 + Math.random() * 20;
+
+    const r4 =
+      40 + Math.random() * 20;
+
 
     particle.style.borderRadius =
-      `${40 + Math.random() * 20}% ` +
-      `${45 + Math.random() * 15}% ` +
-      `${40 + Math.random() * 20}% ` +
-      `${45 + Math.random() * 15}%`;
+      `${r1}% ${r2}% ${r3}% ${r4}%`;
 
 
-    sugarLayer.appendChild(particle);
+    /* ---------------------------------------------------
+       RANDOM ROTATION
+       --------------------------------------------------- */
+
+    particle.style.setProperty(
+      "--rotation",
+      `${Math.random() * 360}deg`
+    );
 
 
-    /* Remove after animation */
+    sugarLayer.appendChild(
+      particle
+    );
+
+
+    /* ---------------------------------------------------
+       REMOVE AFTER ANIMATION
+       --------------------------------------------------- */
 
     particle.addEventListener(
       "animationend",
       function () {
+
         particle.remove();
+
       },
-      { once: true }
+      {
+        once: true
+      }
     );
 
   }
 
 
   /* -------------------------------------------------------
-     SCROLL DETECTION
+     SCROLL HANDLER
      ------------------------------------------------------- */
 
-  function handleScroll() {
+  function handleSugarScroll() {
 
     const currentY =
       window.scrollY;
 
 
-    if (currentY > lastScrollY) {
+    /* -----------------------------------------------
+       ONLY WHEN SCROLLING DOWN
+       ----------------------------------------------- */
 
-      scrollDirection = "down";
+    if (
+      currentY <= lastScrollY
+    ) {
 
-    } else {
+      lastScrollY =
+        currentY;
 
-      scrollDirection = "up";
-
-    }
-
-
-    lastScrollY = currentY;
-
-
-    /* Only create falling sugar
-       when scrolling downward */
-
-    if (scrollDirection !== "down") {
       return;
     }
 
 
-    scrollActive = true;
+    lastScrollY =
+      currentY;
 
 
-    clearTimeout(scrollTimeout);
-
-
-    scrollTimeout =
-      setTimeout(function () {
-
-        scrollActive = false;
-
-      }, 140);
-
+    /* -----------------------------------------------
+       THROTTLE
+       ----------------------------------------------- */
 
     const now =
       performance.now();
 
 
-    /* Throttle particle creation */
+    if (
+      now - lastParticleTime <
+      particleInterval
+    ) {
 
-    if (now - lastParticleTime < 95) {
       return;
     }
 
 
-    lastParticleTime = now;
+    lastParticleTime =
+      now;
 
 
-    /*
-       Create 1–2 particles.
-       This keeps the effect elegant
-       instead of looking like snow.
-    */
+    /* -----------------------------------------------
+       CREATE 1 PARTICLE
+       ----------------------------------------------- */
 
     createSugarParticle();
 
 
-    if (Math.random() > 0.72) {
+    /* -----------------------------------------------
+       OCCASIONALLY CREATE A SECOND
+       ----------------------------------------------- */
+
+    if (
+      !isMobile &&
+      Math.random() > 0.78
+    ) {
+
       createSugarParticle();
+
     }
 
   }
 
 
   /* -------------------------------------------------------
-     PASSIVE SCROLL LISTENER
+     LISTEN TO SCROLL
      ------------------------------------------------------- */
 
   window.addEventListener(
     "scroll",
-    handleScroll,
+    handleSugarScroll,
     {
       passive: true
     }
   );
 
 
-})();
+  /* -------------------------------------------------------
+     RESIZE SAFETY
+     ------------------------------------------------------- */
+
+  window.addEventListener(
+    "resize",
+    function () {
+
+      lastScrollY =
+        window.scrollY;
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  console.log(
+    "Raya Gula sugar scroll effect initialized."
+  );
+
+}

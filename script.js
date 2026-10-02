@@ -589,3 +589,249 @@ document.addEventListener(
 
   }
 );
+/* =========================================================
+   RAYA GULA — SOFT SUGAR SCROLL EFFECT
+   ========================================================= */
+
+(function () {
+
+  "use strict";
+
+  const prefersReducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReducedMotion) return;
+
+
+  /* -------------------------------------------------------
+     CREATE PARTICLE LAYER
+     ------------------------------------------------------- */
+
+  const sugarLayer = document.createElement("div");
+
+  sugarLayer.className = "rg-sugar-layer";
+
+  sugarLayer.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.appendChild(sugarLayer);
+
+
+  /* -------------------------------------------------------
+     SETTINGS
+     ------------------------------------------------------- */
+
+  const isMobile = window.innerWidth <= 768;
+
+  const maxParticles = isMobile ? 18 : 32;
+
+  let lastScrollY = window.scrollY;
+
+  let scrollDirection = "down";
+
+  let lastParticleTime = 0;
+
+  let scrollActive = false;
+
+  let scrollTimeout;
+
+
+  /* -------------------------------------------------------
+     CREATE SUGAR PARTICLE
+     ------------------------------------------------------- */
+
+  function createSugarParticle() {
+
+    if (sugarLayer.children.length >= maxParticles) {
+      return;
+    }
+
+    const particle =
+      document.createElement("span");
+
+    particle.className =
+      "rg-sugar-particle";
+
+
+    /* Size */
+
+    const size =
+      Math.random() * 4 + 2;
+
+
+    /* Position */
+
+    const startX =
+      Math.random() * window.innerWidth;
+
+
+    /* Slight horizontal movement */
+
+    const drift =
+      (Math.random() - 0.5) * 100;
+
+    const driftEnd =
+      (Math.random() - 0.5) * 180;
+
+
+    /* Animation duration */
+
+    const duration =
+      Math.random() * 2.2 + 2.8;
+
+
+    /* Opacity */
+
+    const opacity =
+      Math.random() * 0.35 + 0.35;
+
+
+    particle.style.setProperty(
+      "--size",
+      `${size}px`
+    );
+
+    particle.style.setProperty(
+      "--start-x",
+      `${startX}px`
+    );
+
+    particle.style.setProperty(
+      "--drift",
+      `${drift}px`
+    );
+
+    particle.style.setProperty(
+      "--drift-end",
+      `${driftEnd}px`
+    );
+
+    particle.style.setProperty(
+      "--duration",
+      `${duration}s`
+    );
+
+    particle.style.setProperty(
+      "--opacity",
+      opacity
+    );
+
+
+    /* Slight variation */
+
+    particle.style.borderRadius =
+      `${40 + Math.random() * 20}% ` +
+      `${45 + Math.random() * 15}% ` +
+      `${40 + Math.random() * 20}% ` +
+      `${45 + Math.random() * 15}%`;
+
+
+    sugarLayer.appendChild(particle);
+
+
+    /* Remove after animation */
+
+    particle.addEventListener(
+      "animationend",
+      function () {
+        particle.remove();
+      },
+      { once: true }
+    );
+
+  }
+
+
+  /* -------------------------------------------------------
+     SCROLL DETECTION
+     ------------------------------------------------------- */
+
+  function handleScroll() {
+
+    const currentY =
+      window.scrollY;
+
+
+    if (currentY > lastScrollY) {
+
+      scrollDirection = "down";
+
+    } else {
+
+      scrollDirection = "up";
+
+    }
+
+
+    lastScrollY = currentY;
+
+
+    /* Only create falling sugar
+       when scrolling downward */
+
+    if (scrollDirection !== "down") {
+      return;
+    }
+
+
+    scrollActive = true;
+
+
+    clearTimeout(scrollTimeout);
+
+
+    scrollTimeout =
+      setTimeout(function () {
+
+        scrollActive = false;
+
+      }, 140);
+
+
+    const now =
+      performance.now();
+
+
+    /* Throttle particle creation */
+
+    if (now - lastParticleTime < 95) {
+      return;
+    }
+
+
+    lastParticleTime = now;
+
+
+    /*
+       Create 1–2 particles.
+       This keeps the effect elegant
+       instead of looking like snow.
+    */
+
+    createSugarParticle();
+
+
+    if (Math.random() > 0.72) {
+      createSugarParticle();
+    }
+
+  }
+
+
+  /* -------------------------------------------------------
+     PASSIVE SCROLL LISTENER
+     ------------------------------------------------------- */
+
+  window.addEventListener(
+    "scroll",
+    handleScroll,
+    {
+      passive: true
+    }
+  );
+
+
+})();

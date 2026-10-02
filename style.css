@@ -384,3 +384,85 @@ h1 em,h2 em,h3 em { font-style:italic; }
   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
   .reveal { opacity:1; transform:none; }
 }
+```css
+/* =====================================================
+   FLOATING RAYA GULA - MAIN BUTTON
+   ===================================================== */
+
+.floating-social {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+}
+
+.floating-main {
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.15);
+
+  overflow: hidden;
+}
+
+.floating-main img,
+#floatingMainIcon {
+  display: block !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  max-width: 42px !important;
+  max-height: 42px !important;
+
+  object-fit: contain !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  position: relative !important;
+  z-index: 2;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .floating-social {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .floating-main {
+    width: 58px;
+    height: 58px;
+  }
+
+  .floating-main img,
+  #floatingMainIcon {
+    width: 38px !important;
+    height: 38px !important;
+
+    max-width: 38px !important;
+    max-height: 38px !important;
+  }
+
+}
+```
+

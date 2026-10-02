@@ -257,13 +257,24 @@ button {
    CERTIFICATION / TRUST BADGES
    ========================================= */
 
-.certification {
-  background: #F7F1E7;
+/*
+   LIGHT PREMIUM CERTIFICATION BAR
+   Background dibuat terang agar logo
+   Halal / Organic / SNI / Natural terlihat jelas.
+*/
 
-  border-top: 1px solid #E4D5C0;
-  border-bottom: 1px solid #E4D5C0;
+.certification {
+  background: #FFFDF9 !important;
+
+  color: #4A3024;
+
+  border-top: 1px solid #E8DDCE;
+  border-bottom: 1px solid #E8DDCE;
 
   padding: 30px 20px;
+
+  position: relative;
+  z-index: 2;
 }
 
 .certification-inner {
@@ -283,9 +294,9 @@ button {
   width: 125px;
   height: 72px;
 
-  background: #FFFFFF;
+  background: #FFFFFF !important;
 
-  border: 1px solid #E8DDCE;
+  border: 1px solid #E6D9C9;
   border-radius: 10px;
 
   display: flex;
@@ -293,7 +304,7 @@ button {
   justify-content: center;
 
   box-shadow:
-    0 4px 15px rgba(70, 45, 25, 0.06);
+    0 4px 15px rgba(70, 45, 25, 0.05);
 
   transition:
     transform 0.3s ease,
@@ -304,7 +315,7 @@ button {
 .certification-item:hover {
   transform: translateY(-3px);
 
-  border-color: #D5BE9D;
+  border-color: #CDB792;
 
   box-shadow:
     0 8px 22px rgba(70, 45, 25, 0.10);
@@ -807,7 +818,6 @@ button {
 
 .contact {
   background: var(--cream);
-
 }
 
 .contact-grid {

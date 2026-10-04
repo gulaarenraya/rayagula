@@ -2742,39 +2742,43 @@ h4 em {
 
 }
 
+
 /* =========================================================
-   RAYA GULA — HERO BLACK GAP FIX
-   Visual fix only — no HTML / JS / SEO changes
+   RAYA GULA — ABOUT IMAGE
+   Visual update only: image on the right, not full width
    ========================================================= */
-
-.hero {
-  overflow: hidden;
+.about-visual .about-image {
+  background-image: url("dari-alam-raya-raya-gula.png");
+  background-size: contain;
+  background-position: center right;
+  background-repeat: no-repeat;
+  min-height: 450px;
 }
 
-.hero-photo {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: 0 !important;
+@media (min-width: 901px) {
+  .about {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: 70px;
+  }
+
+  .about-visual {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .about-visual .about-image {
+    width: min(100%, 580px);
+    height: 450px;
+    min-height: 450px;
+  }
 }
 
-.hero-photo img {
-  position: absolute !important;
-  inset: 0 !important;
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-width: 100% !important;
-  min-height: 100% !important;
-  object-fit: cover !important;
-}
-
-.hero-photo::after {
-  z-index: 1 !important;
-}
-
-.hero-content {
-  position: relative !important;
-  z-index: 2 !important;
+@media (max-width: 900px) {
+  .about-visual .about-image {
+    width: 100%;
+    min-height: 390px;
+    background-position: center;
+  }
 }

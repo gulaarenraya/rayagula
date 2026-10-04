@@ -1,6 +1,6 @@
-\/* =========================================================
+/* =========================================================
    RAYA GULA
-   MAIN JAVASCRIPT — STABLE / FAIL-SAFE VERSION
+   MAIN JAVASCRIPT — STABLE / FAIL-SAFE
    ========================================================= */
 
 (function () {
@@ -17,72 +17,43 @@
     try {
       initMobileNavigation();
     } catch (error) {
-      console.error(
-        "Raya Gula: mobile navigation error",
-        error
-      );
+      console.error("Raya Gula: mobile navigation error", error);
     }
 
 
     try {
       initScrollReveal();
     } catch (error) {
-
-      console.error(
-        "Raya Gula: scroll reveal error",
-        error
-      );
-
+      console.error("Raya Gula: scroll reveal error", error);
       showAllRevealElements();
-
     }
 
 
     try {
       initFloatingSocial();
     } catch (error) {
-
-      console.error(
-        "Raya Gula: floating menu error",
-        error
-      );
-
+      console.error("Raya Gula: floating menu error", error);
     }
 
 
     try {
       initExternalLinkSecurity();
     } catch (error) {
-
-      console.error(
-        "Raya Gula: external link security error",
-        error
-      );
-
+      console.error("Raya Gula: external link security error", error);
     }
 
 
     try {
       initSmoothScroll();
     } catch (error) {
-
-      console.error(
-        "Raya Gula: smooth scroll error",
-        error
-      );
-
+      console.error("Raya Gula: smooth scroll error", error);
     }
 
 
     try {
       initSugarScroll();
     } catch (error) {
-
-      console.error(
-        "Raya Gula: sugar scroll error",
-        error
-      );
-
+      console.error("Raya Gula: sugar scroll error", error);
     }
 
 
@@ -97,17 +68,12 @@
      START WHEN DOM IS READY
      ===================================================== */
 
-  if (
-    document.readyState ===
-    "loading"
-  ) {
+  if (document.readyState === "loading") {
 
     document.addEventListener(
       "DOMContentLoaded",
       initRayaGula,
-      {
-        once: true
-      }
+      { once: true }
     );
 
   } else {
@@ -123,46 +89,25 @@
 
   function initMobileNavigation() {
 
-    const menu =
-      document.querySelector(
-        ".menu-toggle"
-      );
+    const menu = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".nav");
 
-    const nav =
-      document.querySelector(
-        ".nav"
-      );
-
-
-    if (
-      !menu ||
-      !nav
-    ) {
-
+    if (!menu || !nav) {
       return;
-
     }
 
 
     function closeMenu() {
 
-      nav.classList.remove(
-        "open"
-      );
-
-      nav.classList.remove(
-        "active"
-      );
-
+      nav.classList.remove("open");
+      nav.classList.remove("active");
 
       menu.setAttribute(
         "aria-expanded",
         "false"
       );
 
-
-      menu.innerHTML =
-        "☰";
+      menu.innerHTML = "☰";
 
     }
 
@@ -171,16 +116,12 @@
       "click",
       function (event) {
 
+        event.preventDefault();
         event.stopPropagation();
 
-
         const isOpen =
-          nav.classList.contains(
-            "open"
-          ) ||
-          nav.classList.contains(
-            "active"
-          );
+          nav.classList.contains("open") ||
+          nav.classList.contains("active");
 
 
         if (isOpen) {
@@ -189,23 +130,15 @@
 
         } else {
 
-          nav.classList.add(
-            "open"
-          );
-
-          nav.classList.add(
-            "active"
-          );
-
+          nav.classList.add("open");
+          nav.classList.add("active");
 
           menu.setAttribute(
             "aria-expanded",
             "true"
           );
 
-
-          menu.innerHTML =
-            "✕";
+          menu.innerHTML = "✕";
 
         }
 
@@ -218,12 +151,8 @@
       function (event) {
 
         if (
-          !nav.contains(
-            event.target
-          ) &&
-          !menu.contains(
-            event.target
-          )
+          !nav.contains(event.target) &&
+          !menu.contains(event.target)
         ) {
 
           closeMenu();
@@ -236,39 +165,28 @@
 
     nav
       .querySelectorAll("a")
-      .forEach(
-        function (link) {
+      .forEach(function (link) {
 
-          link.addEventListener(
-            "click",
-            function () {
+        link.addEventListener(
+          "click",
+          function () {
+            closeMenu();
+          }
+        );
 
-              closeMenu();
-
-            }
-          );
-
-        }
-      );
+      });
 
 
     window.addEventListener(
       "resize",
       function () {
 
-        if (
-          window.innerWidth >
-          900
-        ) {
-
+        if (window.innerWidth > 900) {
           closeMenu();
-
         }
 
       },
-      {
-        passive: true
-      }
+      { passive: true }
     );
 
   }
@@ -276,25 +194,17 @@
 
   /* =====================================================
      SHOW ALL REVEAL ELEMENTS
-     
-     FAIL-SAFE
      ===================================================== */
 
   function showAllRevealElements() {
 
     document
-      .querySelectorAll(
-        ".reveal"
-      )
-      .forEach(
-        function (element) {
+      .querySelectorAll(".reveal")
+      .forEach(function (element) {
 
-          element.classList.add(
-            "visible"
-          );
+        element.classList.add("visible");
 
-        }
-      );
+      });
 
   }
 
@@ -306,53 +216,29 @@
   function initScrollReveal() {
 
     const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
+      document.querySelectorAll(".reveal");
 
 
-    if (
-      !revealElements.length
-    ) {
-
+    if (!revealElements.length) {
       return;
-
     }
 
-
-    /*
-     * SAFETY FALLBACK
-     *
-     * Jika observer tidak bekerja,
-     * semua elemen akan muncul maksimal
-     * setelah 3,5 detik.
-     */
 
     const fallbackTimer =
       setTimeout(
         function () {
-
           showAllRevealElements();
-
         },
         3500
       );
 
-
-    /*
-     * Browser tidak mendukung
-     * IntersectionObserver.
-     */
 
     if (
       typeof window.IntersectionObserver !==
       "function"
     ) {
 
-      clearTimeout(
-        fallbackTimer
-      );
-
+      clearTimeout(fallbackTimer);
       showAllRevealElements();
 
       return;
@@ -368,14 +254,11 @@
           entries.forEach(
             function (entry) {
 
-              if (
-                entry.isIntersecting
-              ) {
+              if (entry.isIntersecting) {
 
                 entry.target.classList.add(
                   "visible"
                 );
-
 
                 observer.unobserve(
                   entry.target
@@ -389,13 +272,8 @@
         },
 
         {
-
-          threshold:
-            0.08,
-
-          rootMargin:
-            "0px 0px -20px 0px"
-
+          threshold: 0.08,
+          rootMargin: "0px 0px -20px 0px"
         }
 
       );
@@ -404,19 +282,11 @@
     revealElements.forEach(
       function (element) {
 
-        observer.observe(
-          element
-        );
+        observer.observe(element);
 
       }
     );
 
-
-    /*
-     * Elemen yang sudah terlihat
-     * ketika halaman pertama dibuka
-     * langsung dibuat visible.
-     */
 
     requestAnimationFrame(
       function () {
@@ -429,10 +299,8 @@
 
 
             if (
-              rect.top <
-              window.innerHeight &&
-              rect.bottom >
-              0
+              rect.top < window.innerHeight &&
+              rect.bottom > 0
             ) {
 
               element.classList.add(
@@ -452,108 +320,89 @@
 
   /* =====================================================
      FLOATING RAYA GULA MENU
+     
+     FIXED VERSION
      ===================================================== */
 
   function initFloatingSocial() {
 
     const floatingSocial =
-      document.getElementById(
-        "floatingSocial"
-      );
+      document.getElementById("floatingSocial");
 
     const floatingMain =
-      document.getElementById(
-        "floatingMain"
-      );
+      document.getElementById("floatingMain");
 
     const floatingMainIcon =
-      document.getElementById(
-        "floatingMainIcon"
+      document.getElementById("floatingMainIcon");
+
+
+    /*
+     * Jangan hentikan fungsi hanya karena icon utama
+     * tidak ditemukan.
+     *
+     * Tombol menu tetap harus bisa dibuka.
+     */
+
+    if (!floatingSocial || !floatingMain) {
+
+      console.warn(
+        "Raya Gula: floating menu element tidak ditemukan."
       );
-
-
-    if (
-      !floatingSocial ||
-      !floatingMain ||
-      !floatingMainIcon
-    ) {
 
       return;
 
     }
 
 
+    /* -------------------------------------------------
+       ICON ROTATION
+       ------------------------------------------------- */
+
     const floatingIcons = [
 
       {
-        src:
-          "logo.png",
-
-        alt:
-          "Raya Gula"
-
+        src: "logo.png",
+        alt: "Raya Gula"
       },
 
       {
-        src:
-          "icon-whatsapp.png",
-
-        alt:
-          "WhatsApp Raya Gula"
-
+        src: "icon-whatsapp.png",
+        alt: "WhatsApp Raya Gula"
       },
 
       {
-        src:
-          "icon-instagram.png",
-
-        alt:
-          "Instagram Raya Gula"
-
+        src: "icon-instagram.png",
+        alt: "Instagram Raya Gula"
       },
 
       {
-        src:
-          "icon-shopee.png",
-
-        alt:
-          "Shopee Raya Gula"
-
+        src: "icon-shopee.png",
+        alt: "Shopee Raya Gula"
       }
 
     ];
 
 
-    let currentIcon =
-      0;
-
-    let menuOpen =
-      false;
+    let currentIcon = 0;
 
 
-    /* -------------------------------------------------
-       SET MAIN ICON
-       ------------------------------------------------- */
+    function setMainIcon(index) {
 
-    function setMainIcon(
-      index
-    ) {
-
-      const icon =
-        floatingIcons[
-          index
-        ];
-
-
-      if (!icon) {
-
+      if (!floatingMainIcon) {
         return;
-
       }
 
 
-      floatingMainIcon.style.opacity =
-        "0";
+      const icon =
+        floatingIcons[index];
+
+
+      if (!icon) {
+        return;
+      }
+
+
+      floatingMainIcon.style.opacity = "0";
 
 
       setTimeout(
@@ -562,10 +411,8 @@
           floatingMainIcon.src =
             icon.src;
 
-
           floatingMainIcon.alt =
             icon.alt;
-
 
           floatingMainIcon.style.opacity =
             "1";
@@ -584,8 +431,13 @@
     setInterval(
       function () {
 
+        /*
+         * Baca kondisi langsung dari class CSS.
+         * Tidak menggunakan variabel menuOpen.
+         */
+
         if (
-          menuOpen
+          floatingSocial.classList.contains("open")
         ) {
 
           return;
@@ -594,15 +446,11 @@
 
 
         currentIcon =
-          (
-            currentIcon + 1
-          ) %
+          (currentIcon + 1) %
           floatingIcons.length;
 
 
-        setMainIcon(
-          currentIcon
-        );
+        setMainIcon(currentIcon);
 
       },
       2800
@@ -610,47 +458,96 @@
 
 
     /* -------------------------------------------------
-       MAIN BUTTON
+       SET MENU STATE
+       ------------------------------------------------- */
+
+    function setMenuState(isOpen) {
+
+      floatingSocial.classList.toggle(
+        "open",
+        isOpen
+      );
+
+
+      floatingMain.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+
+      if (isOpen) {
+
+        /*
+         * Saat menu dibuka,
+         * kembalikan logo utama.
+         */
+
+        currentIcon = 0;
+
+        setMainIcon(0);
+
+      }
+
+    }
+
+
+    /* -------------------------------------------------
+       MAIN BUTTON CLICK
        ------------------------------------------------- */
 
     floatingMain.addEventListener(
       "click",
       function (event) {
 
+        event.preventDefault();
         event.stopPropagation();
 
 
-        menuOpen =
-          !menuOpen;
-
-
-        floatingSocial.classList.toggle(
-          "open",
-          menuOpen
-        );
-
-
-        floatingMain.setAttribute(
-          "aria-expanded",
-          menuOpen
-            ? "true"
-            : "false"
-        );
-
-
-        if (
-          menuOpen
-        ) {
-
-          currentIcon =
-            0;
-
-
-          setMainIcon(
-            0
+        const currentlyOpen =
+          floatingSocial.classList.contains(
+            "open"
           );
 
-        }
+
+        setMenuState(!currentlyOpen);
+
+      }
+    );
+
+
+    /* -------------------------------------------------
+       SOCIAL LINKS
+       ------------------------------------------------- */
+
+    const floatingItems =
+      floatingSocial.querySelectorAll(
+        ".floating-item"
+      );
+
+
+    floatingItems.forEach(
+      function (link) {
+
+        link.addEventListener(
+          "click",
+          function (event) {
+
+            /*
+             * Jangan biarkan document click
+             * mengganggu link.
+             */
+
+            event.stopPropagation();
+
+
+            /*
+             * Tutup menu setelah link diklik.
+             */
+
+            setMenuState(false);
+
+          }
+        );
 
       }
     );
@@ -670,19 +567,7 @@
           )
         ) {
 
-          menuOpen =
-            false;
-
-
-          floatingSocial.classList.remove(
-            "open"
-          );
-
-
-          floatingMain.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+          setMenuState(false);
 
         }
 
@@ -691,39 +576,15 @@
 
 
     /* -------------------------------------------------
-       SOCIAL LINKS
+       INITIAL STATE
        ------------------------------------------------- */
 
-    floatingSocial
-      .querySelectorAll(
-        ".floating-item"
-      )
-      .forEach(
-        function (link) {
-
-          link.addEventListener(
-            "click",
-            function () {
-
-              menuOpen =
-                false;
+    setMenuState(false);
 
 
-              floatingSocial.classList.remove(
-                "open"
-              );
-
-
-              floatingMain.setAttribute(
-                "aria-expanded",
-                "false"
-              );
-
-            }
-          );
-
-        }
-      );
+    console.log(
+      "Raya Gula: floating social menu initialized."
+    );
 
   }
 
@@ -770,9 +631,7 @@
             function (event) {
 
               const targetId =
-                link.getAttribute(
-                  "href"
-                );
+                link.getAttribute("href");
 
 
               if (
@@ -785,8 +644,7 @@
               }
 
 
-              let target =
-                null;
+              let target = null;
 
 
               try {
@@ -803,12 +661,8 @@
               }
 
 
-              if (
-                !target
-              ) {
-
+              if (!target) {
                 return;
-
               }
 
 
@@ -816,13 +670,8 @@
 
 
               target.scrollIntoView({
-
-                behavior:
-                  "smooth",
-
-                block:
-                  "start"
-
+                behavior: "smooth",
+                block: "start"
               });
 
             }
@@ -851,10 +700,6 @@
     }
 
 
-    /*
-     * Respect reduced motion.
-     */
-
     if (
       window.matchMedia &&
       window.matchMedia(
@@ -872,9 +717,7 @@
        ------------------------------------------------- */
 
     const sugarLayer =
-      document.createElement(
-        "div"
-      );
+      document.createElement("div");
 
 
     sugarLayer.className =
@@ -891,29 +734,14 @@
       sugarLayer.style,
       {
 
-        position:
-          "fixed",
-
-        left:
-          "0",
-
-        top:
-          "0",
-
-        width:
-          "100vw",
-
-        height:
-          "100vh",
-
-        overflow:
-          "hidden",
-
-        pointerEvents:
-          "none",
-
-        zIndex:
-          "9980"
+        position: "fixed",
+        left: "0",
+        top: "0",
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+        pointerEvents: "none",
+        zIndex: "9980"
 
       }
     );
@@ -929,24 +757,19 @@
        ------------------------------------------------- */
 
     let isMobile =
-      window.innerWidth <=
-      768;
+      window.innerWidth <= 768;
 
 
     function getMaxParticles() {
 
-      return isMobile
-        ? 14
-        : 28;
+      return isMobile ? 14 : 28;
 
     }
 
 
     function getParticleInterval() {
 
-      return isMobile
-        ? 130
-        : 95;
+      return isMobile ? 130 : 95;
 
     }
 
@@ -959,8 +782,7 @@
       window.scrollY;
 
 
-    let lastParticleTime =
-      0;
+    let lastParticleTime = 0;
 
 
     /* -------------------------------------------------
@@ -980,9 +802,7 @@
 
 
       const particle =
-        document.createElement(
-          "span"
-        );
+        document.createElement("span");
 
 
       particle.className =
@@ -999,58 +819,33 @@
 
 
       const drift =
-        (
-          Math.random() -
-          0.5
-        ) *
+        (Math.random() - 0.5) *
         100;
 
 
       const driftEnd =
-        (
-          Math.random() -
-          0.5
-        ) *
+        (Math.random() - 0.5) *
         170;
 
 
       const duration =
-        Math.random() *
-        1800 +
-        2800;
+        Math.random() * 1800 + 2800;
 
 
       const opacity =
-        Math.random() *
-        0.32 +
-        0.42;
+        Math.random() * 0.32 + 0.42;
 
-
-      /* ------------------------------------------------
-         PARTICLE STYLE
-         ------------------------------------------------ */
 
       Object.assign(
         particle.style,
         {
 
-          position:
-            "absolute",
-
-          left:
-            startX + "px",
-
-          top:
-            "-12px",
-
-          width:
-            size + "px",
-
-          height:
-            size + "px",
-
-          borderRadius:
-            "50%",
+          position: "absolute",
+          left: startX + "px",
+          top: "-12px",
+          width: size + "px",
+          height: size + "px",
+          borderRadius: "50%",
 
           background:
             "radial-gradient(" +
@@ -1063,14 +858,9 @@
           boxShadow:
             "0 1px 3px rgba(70,42,18,.22)",
 
-          opacity:
-            "0",
-
-          pointerEvents:
-            "none",
-
-          willChange:
-            "transform, opacity"
+          opacity: "0",
+          pointerEvents: "none",
+          willChange: "transform, opacity"
 
         }
       );
@@ -1081,27 +871,16 @@
          ------------------------------------------------ */
 
       const r1 =
-        40 +
-        Math.random() *
-        20;
-
+        40 + Math.random() * 20;
 
       const r2 =
-        45 +
-        Math.random() *
-        15;
-
+        45 + Math.random() * 15;
 
       const r3 =
-        40 +
-        Math.random() *
-        20;
-
+        40 + Math.random() * 20;
 
       const r4 =
-        45 +
-        Math.random() *
-        15;
+        45 + Math.random() * 15;
 
 
       particle.style.borderRadius =
@@ -1130,62 +909,43 @@
               {
                 transform:
                   "translate3d(0,-15px,0) rotate(0deg)",
-
-                opacity:
-                  0
-
+                opacity: 0
               },
 
               {
-
                 transform:
                   "translate3d(" +
-                  (
-                    drift * 0.15
-                  ) +
+                  (drift * 0.15) +
                   "px,15vh,0) rotate(90deg)",
-
-                opacity:
-                  opacity
-
+                opacity: opacity
               },
 
               {
-
                 transform:
                   "translate3d(" +
                   drift +
                   "px,52vh,0) rotate(220deg)",
-
-                opacity:
-                  opacity
-
+                opacity: opacity
               },
 
               {
-
                 transform:
                   "translate3d(" +
                   driftEnd +
                   "px,110vh,0) rotate(420deg)",
-
-                opacity:
-                  0
-
+                opacity: 0
               }
 
             ],
 
             {
 
-              duration:
-                duration,
+              duration: duration,
 
               easing:
                 "cubic-bezier(.22,.61,.36,1)",
 
-              fill:
-                "forwards"
+              fill: "forwards"
 
             }
 
@@ -1207,11 +967,8 @@
 
           };
 
-      } else {
 
-        /* ----------------------------------------------
-           BROWSER FALLBACK
-           ---------------------------------------------- */
+      } else {
 
         particle.style.transition =
           "opacity .3s ease";
@@ -1230,8 +987,7 @@
         setTimeout(
           function () {
 
-            particle.style.opacity =
-              "0";
+            particle.style.opacity = "0";
 
 
             setTimeout(
@@ -1267,8 +1023,7 @@
        */
 
       if (
-        currentY <=
-        lastScrollY
+        currentY <= lastScrollY
       ) {
 
         lastScrollY =
@@ -1310,8 +1065,7 @@
        */
 
       if (
-        Math.random() >
-        0.68
+        Math.random() > 0.68
       ) {
 
         setTimeout(
@@ -1336,8 +1090,7 @@
       "scroll",
       handleSugarScroll,
       {
-        passive:
-          true
+        passive: true
       }
     );
 
@@ -1351,17 +1104,14 @@
       function () {
 
         isMobile =
-          window.innerWidth <=
-          768;
-
+          window.innerWidth <= 768;
 
         lastScrollY =
           window.scrollY;
 
       },
       {
-        passive:
-          true
+        passive: true
       }
     );
 

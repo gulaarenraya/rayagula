@@ -2688,3 +2688,56 @@ h4 em {
 .floating-item {
   cursor: pointer !important;
 }
+
+
+/* =========================================================
+   RAYA GULA — HERO VISUAL ADJUSTMENT
+   DESIGN UPDATE ONLY
+   ========================================================= */
+
+.hero-photo img {
+  object-position: 72% center;
+}
+
+.hero h1 {
+  max-width: 620px;
+  font-size: clamp(48px, 6.3vw, 82px);
+  line-height: .98;
+}
+
+.hero-content > p {
+  max-width: 500px;
+}
+
+@media (min-width: 901px) {
+
+  .hero-content {
+    width: min(var(--max), calc(100% - 48px));
+    padding-right: 42%;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .hero-photo img {
+    object-position: 68% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 10vw, 68px);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .hero-photo img {
+    object-position: 64% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 12vw, 60px);
+  }
+
+}

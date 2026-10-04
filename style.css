@@ -2658,3 +2658,33 @@ h4 em {
 
   transform: none !important;
 }
+/* =========================================================
+   FLOATING SOCIAL — EMERGENCY CLICK FIX
+   ========================================================= */
+
+.floating-social {
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+
+.floating-main {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 3 !important;
+}
+
+.floating-items {
+  z-index: 2 !important;
+}
+
+.floating-social.open .floating-items,
+.floating-social.open .floating-item {
+  pointer-events: auto !important;
+}
+
+.floating-item {
+  cursor: pointer !important;
+}

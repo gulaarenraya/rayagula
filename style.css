@@ -2696,7 +2696,7 @@ h4 em {
    ========================================================= */
 
 .hero-photo img {
-  object-position: 72% center;
+  object-position: 88% center;
 }
 
 .hero h1 {
@@ -2721,7 +2721,7 @@ h4 em {
 @media (max-width: 900px) {
 
   .hero-photo img {
-    object-position: 68% center;
+    object-position: 84% center;
   }
 
   .hero h1 {
@@ -2733,7 +2733,7 @@ h4 em {
 @media (max-width: 600px) {
 
   .hero-photo img {
-    object-position: 64% center;
+    object-position: 80% center;
   }
 
   .hero h1 {

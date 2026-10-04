@@ -2742,43 +2742,95 @@ h4 em {
 
 }
 
-
 /* =========================================================
-   RAYA GULA — ABOUT IMAGE
-   Visual update only: image on the right, not full width
+   RAYA GULA — ABOUT IMAGE VISUAL UPDATE
+   Section: "Dari alam, untuk kehidupan yang lebih baik."
    ========================================================= */
-.about-visual .about-image {
+
+.about {
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  gap: 54px;
+  align-items: center;
+}
+
+.about-copy {
+  max-width: 520px;
+}
+
+.about-visual {
+  width: 100%;
+  max-width: 680px;
+  justify-self: end;
+}
+
+.about-image {
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 580 / 450;
+
   background-image: url("dari-alam-raya-raya-gula.png");
-  background-size: contain;
-  background-position: center right;
+  background-size: 100% 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  min-height: 450px;
+
+  box-shadow: none;
 }
 
 @media (min-width: 901px) {
   .about {
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    align-items: center;
-    gap: 70px;
+    min-height: 560px;
   }
 
   .about-visual {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    width: min(100%, 680px);
   }
 
-  .about-visual .about-image {
-    width: min(100%, 580px);
-    height: 450px;
-    min-height: 450px;
+  .about-image {
+    width: 100%;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .about {
+    grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+    gap: 42px;
+  }
+
+  .about-visual {
+    max-width: 620px;
   }
 }
 
 @media (max-width: 900px) {
-  .about-visual .about-image {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .about-visual {
     width: 100%;
-    min-height: 390px;
-    background-position: center;
+    max-width: 680px;
+    justify-self: center;
+  }
+
+  .about-image {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 580 / 450;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    gap: 34px;
+  }
+
+  .about-visual {
+    max-width: 100%;
+  }
+
+  .about-image {
+    aspect-ratio: 580 / 450;
   }
 }

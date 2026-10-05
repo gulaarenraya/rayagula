@@ -3639,3 +3639,32 @@ h4 em {
     transform: translateX(-10px);
   }
 }
+/* =========================================================
+   RAYA GULA — ABOUT MOBILE ORDER
+   IMAGE DI ATAS, COPY DI BAWAH
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .about {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .about-visual {
+    order: 1;
+    width: 100%;
+    max-width: 680px;
+    justify-self: center;
+    transform: none;
+  }
+
+  .about-copy {
+    order: 2;
+    width: 100%;
+    max-width: none;
+    transform: none;
+  }
+
+}

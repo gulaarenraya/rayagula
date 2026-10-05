@@ -1844,7 +1844,149 @@
        ===================================================== -->
 
   <script src="script.js"></script>
+<script src="script.js"></script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slider = document.querySelector("[data-product-slider]");
+
+  if (!slider) return;
+
+  const products = [
+    {
+      image: "images/products/product-semut.png",
+      alt: "Gula Aren Semut Raya Gula 500 gram",
+      title: "Gula Aren<br>Semut",
+      lead: "Manis alami dalam bentuk kristal.",
+      description: "Gula aren yang diolah menjadi butiran kristal dengan karakter rasa khas nira aren. Praktis digunakan untuk kopi, teh, baking, dessert, dan berbagai kebutuhan kuliner.",
+      specs: [
+        ["500 g", "Netto"],
+        ["100%", "Palm Sugar"],
+        ["ID", "Product of Indonesia"]
+      ]
+    },
+
+    {
+      image: "images/products/product-cair.png",
+      alt: "Gula Aren Cair Raya Gula 1 Liter",
+      title: "Gula Aren<br>Cair",
+      lead: "Praktis dengan rasa manis khas nira aren.",
+      description: "Gula aren dalam bentuk cair yang praktis digunakan untuk minuman, kopi, dessert, saus, dan berbagai kebutuhan kuliner. Mudah dituang dan menyatu dengan berbagai sajian.",
+      specs: [
+        ["1 L", "Netto"],
+        ["100%", "Palm Sugar"],
+        ["ID", "Product of Indonesia"]
+      ]
+    },
+
+    {
+      image: "images/products/product-cetak.png",
+      alt: "Gula Aren Cetak Raya Gula 1 Kg",
+      title: "Gula Aren<br>Cetak",
+      lead: "Tradisional dengan karakter rasa autentik.",
+      description: "Gula aren cetak dengan karakter rasa dan aroma khas nira aren Indonesia. Cocok untuk kebutuhan rumah tangga, kuliner tradisional, baking, hingga kebutuhan bisnis.",
+      specs: [
+        ["1 Kg", "Netto"],
+        ["100%", "Palm Sugar"],
+        ["ID", "Product of Indonesia"]
+      ]
+    }
+  ];
+
+  const image = slider.querySelector("[data-product-image]");
+  const number = slider.querySelector("[data-product-number]");
+  const title = slider.querySelector("[data-product-title]");
+  const lead = slider.querySelector("[data-product-lead]");
+  const description = slider.querySelector("[data-product-description]");
+  const specs = slider.querySelector("[data-product-specs]");
+  const progress = slider.querySelector("[data-product-progress]");
+  const prevButton = slider.querySelector("[data-product-prev]");
+  const nextButton = slider.querySelector("[data-product-next]");
+
+  if (
+    !image ||
+    !number ||
+    !title ||
+    !lead ||
+    !description ||
+    !specs ||
+    !progress ||
+    !prevButton ||
+    !nextButton
+  ) {
+    return;
+  }
+
+  let currentIndex = 0;
+
+  function updateProduct(index) {
+
+    const product = products[index];
+
+    image.classList.remove("is-active");
+
+    setTimeout(function () {
+
+      image.src = product.image;
+      image.alt = product.alt;
+
+      title.innerHTML = product.title;
+      lead.textContent = product.lead;
+      description.textContent = product.description;
+
+      const displayNumber =
+        String(index + 1).padStart(2, "0");
+
+      number.textContent = displayNumber + " / 03";
+      progress.textContent = displayNumber + " / 03";
+
+      specs.innerHTML = product.specs.map(function (spec) {
+        return `
+          <div>
+            <b>${spec[0]}</b>
+            <small>${spec[1]}</small>
+          </div>
+        `;
+      }).join("");
+
+      requestAnimationFrame(function () {
+        image.classList.add("is-active");
+      });
+
+    }, 180);
+  }
+
+  nextButton.addEventListener("click", function () {
+
+    currentIndex++;
+
+    if (currentIndex >= products.length) {
+      currentIndex = 0;
+    }
+
+    updateProduct(currentIndex);
+  });
+
+  prevButton.addEventListener("click", function () {
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+      currentIndex = products.length - 1;
+    }
+
+    updateProduct(currentIndex);
+  });
+
+  updateProduct(currentIndex);
+
+});
+</script>
+
+</body>
+</html>
+  
 </body>
 
 </html>

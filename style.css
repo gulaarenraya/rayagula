@@ -2878,12 +2878,27 @@ h4 em {
   }
 }
 /* =====================================
-   RAYA GULA — PROCESS 5 COLUMNS
+   RAYA GULA — PROCESS GRID FINAL FIX
 ===================================== */
 
+.process-grid {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  margin-top: 60px;
+  align-items: stretch;
+}
+
+.process-card {
+  min-width: 0;
+  width: 100%;
+}
+
+/* DESKTOP */
 @media (min-width: 1101px) {
   .process-grid {
-    grid-template-columns: repeat(5, 1fr) !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     gap: 16px !important;
   }
 
@@ -2891,5 +2906,41 @@ h4 em {
     height: 150px !important;
     min-height: 150px !important;
     max-height: 150px !important;
+  }
+}
+
+/* TABLET */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+}
+
+/* TABLET KECIL */
+@media (max-width: 900px) and (min-width: 601px) {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+
+  .process-art {
+    height: 130px !important;
+    min-height: 130px !important;
+    max-height: 130px !important;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .process-art {
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
   }
 }

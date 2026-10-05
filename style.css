@@ -763,8 +763,8 @@ h4 em {
   background:
     linear-gradient(
       180deg,
-      rgba(37, 26, 18, .08),
-      rgba(37, 26, 18, .32)
+      rgba(37, 26, 18, .02),
+      rgba(37, 26, 18, .08)
     ),
     url("BANNER-MARKETPLAC-SHOPEE.jpg")
     center / cover

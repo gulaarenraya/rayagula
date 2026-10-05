@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>
+Pengkristalan Gula Aren | Membentuk Butiran Alami Raya Gula
+</title>
+
+
+<meta 
+name="description"
+content="Mengenal proses pengkristalan gula aren Raya Gula, tahap perubahan gula cair menjadi butiran gula aren semut dengan tekstur halus dan rasa alami."
+>
+
+
+<link
+rel="canonical"
+href="https://rayagula.com/articles/pengkristalan-gula-aren.html"
+>
+
+
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+>
+
+
+<style>
+
+
+:root{
+
+--brown:#251a12;
+--gold:#c79b45;
+--cream:#f7f0e5;
+--text:#33251b;
+
+}
+
+
+*{
+
+box-sizing:border-box;
+
+}
+
+
+body{
+
+margin:0;
+
+font-family:'Montserrat',sans-serif;
+
+background:var(--cream);
+
+color:var(--text);
+
+line-height:1.8;
+
+}
+
+
+
+/* HEADER */
+
+
+.article-header{
+
+padding:30px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:white;
+
+}
+
+
+.article-header img{
+
+width:150px;
+
+}
+
+
+.article-header a{
+
+text-decoration:none;
+
+color:var(--brown);
+
+font-size:14px;
+
+font-weight:600;
+
+}
+
+
+
+/* HERO */
+
+
+.article-hero{
+
+height:650px;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+.article-hero img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+
+
+.article-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+90deg,
+rgba(20,12,6,.78),
+rgba(20,12,6,.25)
+);
+
+display:flex;
+
+align-items:center;
+
+padding:8%;
+
+color:white;
+
+}
+
+
+
+.article-content{
+
+max-width:700px;
+
+}
+
+
+
+.article-number{
+
+font-size:14px;
+
+letter-spacing:3px;
+
+color:#e5c27a;
+
+}
+
+
+
+.article-content h1{
+
+font-size:55px;
+
+line-height:1.15;
+
+margin:20px 0;
+
+}
+
+
+
+.article-content p{
+
+font-size:18px;
+
+}
+
+
+
+
+/* ARTICLE */
+
+
+.article-body{
+
+max-width:900px;
+
+margin:auto;
+
+padding:90px 25px;
+
+}
+
+
+
+.article-body h2{
+
+font-size:32px;
+
+line-height:1.3;
+
+color:var(--brown);
+
+margin-top:60px;
+
+}
+
+
+
+.article-body p{
+
+font-size:17px;
+
+color:#514033;
+
+}
+
+
+
+.quote{
+
+background:white;
+
+border-left:4px solid var(--gold);
+
+padding:35px;
+
+margin:50px 0;
+
+font-size:20px;
+
+font-style:italic;
+
+}
+
+
+
+
+/* NAVIGATION */
+
+
+.article-navigation{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:40px 8%;
+
+background:white;
+
+}
+
+
+.article-navigation a{
+
+text-decoration:none;
+
+color:var(--brown);
+
+font-weight:600;
+
+}
+
+
+
+
+footer{
+
+background:var(--brown);
+
+color:white;
+
+padding:40px;
+
+text-align:center;
+
+font-size:14px;
+
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+.article-hero{
+
+height:520px;
+
+}
+
+
+.article-content h1{
+
+font-size:35px;
+
+}
+
+
+.article-navigation{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+
+}
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<header class="article-header">
+
+
+<a href="../index.html">
+
+<img
+src="../logo.png"
+alt="Raya Gula"
+>
+
+</a>
+
+
+
+<a href="../index.html#process">
+
+← Kembali ke Proses
+
+</a>
+
+
+</header>
+
+
+
+
+
+
+
+<section class="article-hero">
+
+
+<img
+
+src="../images/process/04-pengkristalan-gula-aren.jpg"
+
+alt="Proses pengkristalan gula aren Raya Gula"
+
+>
+
+
+
+<div class="article-overlay">
+
+
+<div class="article-content">
+
+
+<div class="article-number">
+
+OUR PROCESS / 04
+
+</div>
+
+
+
+
+<h1>
+
+Pengkristalan Gula Aren:
+<br>
+
+Membentuk Butiran Manis Alami
+
+</h1>
+
+
+
+
+<p>
+
+Tahap perubahan gula aren cair menjadi butiran kristal dengan karakter khas Raya Gula.
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<article class="article-body">
+
+
+
+<h2>
+Dari cairan gula menjadi butiran berkualitas
+</h2>
+
+
+<p>
+
+Setelah melalui proses pemasakan, gula aren cair memasuki tahap pengkristalan. Pada tahap ini, cairan gula yang telah memiliki karakter rasa dan aroma khas mulai diolah menjadi bentuk kristal yang lebih praktis digunakan.
+
+</p>
+
+
+<p>
+
+Proses pengkristalan menjadi salah satu tahap penting dalam menghasilkan gula aren semut Raya Gula dengan tekstur halus, mudah larut, dan tetap mempertahankan cita rasa alami dari nira aren.
+
+</p>
+
+
+
+
+
+<h2>
+Proses pembentukan kristal gula aren
+</h2>
+
+
+<p>
+
+Gula aren yang telah dimasak kemudian melalui proses pendinginan dan pengadukan secara bertahap. Gerakan pengadukan membantu membentuk struktur kristal gula hingga menghasilkan butiran-butiran kecil.
+
+</p>
+
+
+<p>
+
+Tahapan ini membutuhkan ketelitian karena tekstur akhir gula aren sangat dipengaruhi oleh proses pengolahan yang dilakukan.
+
+</p>
+
+
+
+
+
+<div class="quote">
+
+"Setiap butiran gula aren menyimpan perjalanan panjang dari alam, tangan petani, hingga proses pengolahan yang penuh perhatian."
+
+</div>
+
+
+
+
+
+
+<h2>
+Menjaga tekstur dan rasa alami
+</h2>
+
+
+<p>
+
+Raya Gula menjaga proses pengkristalan agar karakter alami gula aren tetap terjaga. Warna coklat keemasan, aroma khas, dan rasa manis alami menjadi ciri utama yang ingin dipertahankan.
+
+</p>
+
+
+<p>
+
+Hasil akhir dari proses ini adalah gula aren berbentuk kristal yang lebih praktis untuk berbagai kebutuhan, mulai dari minuman, makanan, hingga berbagai kreasi kuliner modern.
+
+</p>
+
+
+
+
+
+<h2>
+Dari proses tradisional menuju produk modern
+</h2>
+
+
+<p>
+
+Walaupun menggunakan nilai dan kearifan tradisional dalam pengolahannya, Raya Gula menghadirkan gula aren dalam bentuk yang sesuai dengan kebutuhan masyarakat saat ini.
+
+</p>
+
+
+<p>
+
+Gula aren semut memberikan kemudahan penggunaan tanpa menghilangkan karakter asli gula aren Indonesia.
+
+</p>
+
+
+
+
+
+<h2>
+Menuju tahap akhir: pengemasan
+</h2>
+
+
+<p>
+
+Setelah proses pengkristalan selesai, gula aren akan melalui tahap akhir yaitu pengemasan. Pada tahap ini, kualitas produk dijaga agar rasa, aroma, dan kebersihan tetap sampai kepada konsumen.
+
+</p>
+
+
+
+</article>
+
+
+
+
+
+
+
+
+<div class="article-navigation">
+
+
+<a href="pemasakan-nira.html">
+
+← Pemasakan Nira
+
+</a>
+
+
+
+
+<a href="pengemasan-raya-gula.html">
+
+Pengemasan Raya Gula →
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+
+<footer>
+
+© 2026 Raya Gula
+
+<br>
+
+Gula Aren Indonesia — Manis Alami dari Nusantara
+
+</footer>
+
+
+
+
+</body>
+
+</html>

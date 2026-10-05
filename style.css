@@ -3685,39 +3685,36 @@ h4 em {
   }
 
 }
-   /* =========================================================
-   ABOUT — THE ORIGIN LABEL
-   SMALL COMPACT BOX
+  /* =========================================================
+   ABOUT — THE ORIGIN LABEL ONLY
+   DOES NOT AFFECT IMAGE SIZE
    ========================================================= */
 
+.about-image {
+  width: 100% !important;
+  aspect-ratio: 580 / 450 !important;
+  background-size: 100% 100% !important;
+}
+
 .about-caption {
-  display: inline-grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 8px;
-  row-gap: 1px;
+  display: grid !important;
+  width: fit-content !important;
+  max-width: fit-content !important;
 
-  width: fit-content;
-  max-width: max-content;
+  padding: 5px 8px !important;
+  margin-top: 8px !important;
 
-  margin-top: 10px;
-  padding: 7px 10px;
-
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.85) !important;
 }
 
 .about-caption span {
-  grid-row: span 2;
-  font-size: 11px;
-  line-height: 1;
+  font-size: 10px !important;
 }
 
 .about-caption b {
-  font-size: 7px;
-  line-height: 1.1;
-  letter-spacing: 0.08em;
+  font-size: 7px !important;
 }
 
 .about-caption small {
-  font-size: 6.5px;
-  line-height: 1.1;
+  font-size: 6px !important;
 }

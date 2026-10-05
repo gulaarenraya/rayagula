@@ -3686,25 +3686,38 @@ h4 em {
 
 }
    /* =========================================================
-   ABOUT — THE ORIGIN CAPTION SMALLER
+   ABOUT — THE ORIGIN LABEL
+   SMALL COMPACT BOX
    ========================================================= */
 
 .about-caption {
-  margin-top: 12px;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 1px;
+
   width: fit-content;
-  padding: 10px 14px;
+  max-width: max-content;
+
+  margin-top: 10px;
+  padding: 7px 10px;
+
   background: rgba(255, 255, 255, 0.88);
 }
 
 .about-caption span {
-  font-size: 14px;
+  grid-row: span 2;
+  font-size: 11px;
+  line-height: 1;
 }
 
 .about-caption b {
-  font-size: 9px;
-  letter-spacing: 0.10em;
+  font-size: 7px;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
 }
 
 .about-caption small {
-  font-size: 8px;
+  font-size: 6.5px;
+  line-height: 1.1;
 }

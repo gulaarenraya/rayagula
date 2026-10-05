@@ -2877,3 +2877,19 @@ h4 em {
     max-height: 120px !important;
   }
 }
+/* =====================================
+   RAYA GULA — PROCESS 5 COLUMNS
+===================================== */
+
+@media (min-width: 1101px) {
+  .process-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .process-art {
+    height: 150px !important;
+    min-height: 150px !important;
+    max-height: 150px !important;
+  }
+}

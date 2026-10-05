@@ -3685,3 +3685,26 @@ h4 em {
   }
 
 }
+   /* =========================================================
+   ABOUT — THE ORIGIN CAPTION SMALLER
+   ========================================================= */
+
+.about-caption {
+  margin-top: 12px;
+  width: fit-content;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.about-caption span {
+  font-size: 14px;
+}
+
+.about-caption b {
+  font-size: 9px;
+  letter-spacing: 0.10em;
+}
+
+.about-caption small {
+  font-size: 8px;
+}

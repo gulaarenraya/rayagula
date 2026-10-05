@@ -900,43 +900,23 @@ h4 em {
    PROCESS
    ========================================================= */
 
+/* =====================================
+   RAYA GULA — PROCESS BACKGROUND
+===================================== */
+
 .process {
-  background:
-    var(--brown-dark);
-
-  color: #fff;
-}
-
-.process-grid {
-  width: 100%;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(5, 1fr);
-
-  gap: 16px;
-
-  margin-top: 60px;
-}
-
-.process-card {
   position: relative;
 
-  min-width: 0;
-
-  padding:
-    20px 18px 28px;
-
-  border:
-    1px solid rgba(255, 255, 255, .13);
-
   background:
-    rgba(255, 255, 255, .035);
+    linear-gradient(
+      rgba(34, 24, 17, 0.38),
+      rgba(34, 24, 17, 0.38)
+    ),
+    url("images/process/background-process.jpg");
 
-  transition:
-    transform .3s ease,
-    background .3s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .process-card:hover {

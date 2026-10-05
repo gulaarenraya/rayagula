@@ -3639,3 +3639,16 @@ h4 em {
     transform: translateX(-10px);
   }
 }
+/* =========================================================
+   RAYA GULA — ABOUT TITLE WIDTH
+   ========================================================= */
+
+@media (min-width: 901px) {
+  .about-copy {
+    max-width: 620px;
+  }
+
+  .about-copy h2 {
+    white-space: nowrap;
+  }
+}

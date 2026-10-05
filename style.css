@@ -2851,3 +2851,22 @@ h4 em {
     background-position: center;
     background-repeat: no-repeat;
 }
+/* PROCESS HEADER LAYOUT */
+
+.process-heading {
+    display: block;
+}
+
+
+.process-heading .process-title {
+    max-width: 700px;
+}
+
+
+.process-description {
+    margin-top: 35px;
+    max-width: 650px;
+    line-height: 1.8;
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+}

@@ -3667,4 +3667,21 @@ h4 em {
     transform: none;
   }
 
+/* =========================================================
+   RAYA GULA — ABOUT DESKTOP TITLE BALANCE
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+  .about-copy {
+    max-width: 560px;
+    transform: translateX(25px);
+  }
+
+  .about-copy h2 {
+    font-size: clamp(42px, 4.4vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
 }

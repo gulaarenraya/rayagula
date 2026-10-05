@@ -2722,10 +2722,9 @@ h4 em {
 }
 
 .about-visual {
-  width: 100%;
-  max-width: 720px;
-  justify-self: start;
-}
+  width: auto;
+  margin: 0;
+  position: relative;
 }
 
 .about-image {

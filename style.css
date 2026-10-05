@@ -2723,8 +2723,9 @@ h4 em {
 
 .about-visual {
   width: 100%;
-  max-width: 680px;
-  justify-self: end;
+  max-width: 720px;
+  justify-self: start;
+}
 }
 
 .about-image {

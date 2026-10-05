@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>
+Pemasakan Nira Aren | Membentuk Karakter Rasa Raya Gula
+</title>
+
+
+<meta 
+name="description"
+content="Mengenal proses pemasakan nira aren Raya Gula, tahap penting untuk membentuk warna, aroma, dan karakter rasa gula aren alami Indonesia."
+>
+
+
+<link
+rel="canonical"
+href="https://rayagula.com/articles/pemasakan-nira.html"
+>
+
+
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+>
+
+
+<style>
+
+
+:root{
+
+--brown:#251a12;
+--gold:#c79b45;
+--cream:#f7f0e5;
+--text:#33251b;
+
+}
+
+
+*{
+
+box-sizing:border-box;
+
+}
+
+
+body{
+
+margin:0;
+
+font-family:'Montserrat',sans-serif;
+
+background:var(--cream);
+
+color:var(--text);
+
+line-height:1.8;
+
+}
+
+
+
+/* HEADER */
+
+
+.article-header{
+
+padding:30px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:white;
+
+}
+
+
+.article-header img{
+
+width:150px;
+
+}
+
+
+.article-header a{
+
+text-decoration:none;
+
+color:var(--brown);
+
+font-size:14px;
+
+font-weight:600;
+
+}
+
+
+
+
+
+/* HERO */
+
+
+.article-hero{
+
+height:650px;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+.article-hero img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+
+
+.article-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+90deg,
+rgba(20,12,6,.78),
+rgba(20,12,6,.25)
+);
+
+display:flex;
+
+align-items:center;
+
+padding:8%;
+
+color:white;
+
+}
+
+
+
+.article-content{
+
+max-width:700px;
+
+}
+
+
+
+.article-number{
+
+font-size:14px;
+
+letter-spacing:3px;
+
+color:#e5c27a;
+
+}
+
+
+
+.article-content h1{
+
+font-size:55px;
+
+line-height:1.15;
+
+margin:20px 0;
+
+}
+
+
+
+.article-content p{
+
+font-size:18px;
+
+}
+
+
+
+
+/* ARTICLE */
+
+
+.article-body{
+
+max-width:900px;
+
+margin:auto;
+
+padding:90px 25px;
+
+}
+
+
+
+.article-body h2{
+
+font-size:32px;
+
+line-height:1.3;
+
+color:var(--brown);
+
+margin-top:60px;
+
+}
+
+
+
+.article-body p{
+
+font-size:17px;
+
+color:#514033;
+
+}
+
+
+
+.quote{
+
+background:white;
+
+border-left:4px solid var(--gold);
+
+padding:35px;
+
+margin:50px 0;
+
+font-size:20px;
+
+font-style:italic;
+
+}
+
+
+
+
+/* NAVIGATION */
+
+
+.article-navigation{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:40px 8%;
+
+background:white;
+
+}
+
+
+.article-navigation a{
+
+color:var(--brown);
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+
+
+
+footer{
+
+background:var(--brown);
+
+color:white;
+
+padding:40px;
+
+text-align:center;
+
+font-size:14px;
+
+}
+
+
+
+
+@media(max-width:768px){
+
+.article-hero{
+
+height:520px;
+
+}
+
+
+.article-content h1{
+
+font-size:35px;
+
+}
+
+
+.article-navigation{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header class="article-header">
+
+
+<a href="../index.html">
+
+<img
+src="../logo.png"
+alt="Raya Gula"
+>
+
+</a>
+
+
+
+<a href="../index.html#process">
+
+← Kembali ke Proses
+
+</a>
+
+
+</header>
+
+
+
+
+
+
+<section class="article-hero">
+
+
+<img
+
+src="../images/process/03-pemasakan-nira-aren.jpg"
+
+alt="Proses pemasakan nira aren Raya Gula"
+
+>
+
+
+
+<div class="article-overlay">
+
+
+<div class="article-content">
+
+
+<div class="article-number">
+
+OUR PROCESS / 03
+
+</div>
+
+
+
+<h1>
+
+Pemasakan Nira Aren:
+<br>
+
+Membentuk Karakter Rasa
+
+</h1>
+
+
+
+<p>
+
+Dari cairan nira alami menjadi dasar gula aren dengan aroma dan cita rasa khas Nusantara.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<article class="article-body">
+
+
+
+<h2>
+Tahap penting dalam perjalanan gula aren
+</h2>
+
+
+<p>
+
+Setelah melalui proses penyaringan, nira aren memasuki tahap pemasakan. Tahap ini merupakan salah satu proses penting yang menentukan karakter akhir gula aren Raya Gula.
+
+</p>
+
+
+<p>
+
+Melalui proses pemanasan secara perlahan, kandungan air dalam nira mulai berkurang sehingga menghasilkan cairan yang semakin pekat dengan warna dan aroma khas gula aren.
+
+</p>
+
+
+
+
+
+<h2>
+Mengubah nira menjadi rasa yang khas
+</h2>
+
+
+<p>
+
+Pemasakan dilakukan dengan memperhatikan suhu dan waktu pengolahan agar karakter alami nira tetap terjaga. Proses ini membutuhkan ketelitian karena perubahan kecil dapat memengaruhi warna, aroma, dan rasa gula yang dihasilkan.
+
+</p>
+
+
+<p>
+
+Selama proses berlangsung, petani atau pengolah gula aren melakukan pengadukan secara berkala untuk membantu menghasilkan tekstur dan konsistensi yang baik.
+
+</p>
+
+
+
+
+<div class="quote">
+
+"Setiap tahap pemasakan membawa perubahan alami yang membentuk karakter khas gula aren Indonesia."
+
+</div>
+
+
+
+
+
+<h2>
+Perubahan alami selama pemasakan
+</h2>
+
+
+<p>
+
+Saat dipanaskan, nira mengalami perubahan warna dari cairan bening menjadi warna coklat keemasan yang menjadi ciri khas gula aren.
+
+</p>
+
+
+<p>
+
+Aroma manis alami mulai terbentuk dan menjadi identitas utama yang membedakan gula aren dari pemanis lainnya.
+
+</p>
+
+
+
+
+<h2>
+Menjaga kualitas melalui proses yang terkontrol
+</h2>
+
+
+<p>
+
+Raya Gula menjaga proses pemasakan agar tetap mempertahankan nilai alami dari bahan baku. Pengolahan dilakukan dengan perhatian terhadap kebersihan, kualitas, dan karakter rasa.
+
+</p>
+
+
+<p>
+
+Hasil dari tahap ini adalah gula aren cair pekat yang siap memasuki proses berikutnya yaitu pembentukan kristal gula aren.
+
+</p>
+
+
+
+
+<h2>
+Menuju tahap pengkristalan
+</h2>
+
+
+<p>
+
+Setelah proses pemasakan selesai, gula aren akan masuk ke tahap pengkristalan. Pada tahap berikutnya, cairan gula akan diolah hingga berubah menjadi butiran gula aren dengan tekstur yang halus dan praktis digunakan.
+
+</p>
+
+
+
+</article>
+
+
+
+
+
+
+
+<div class="article-navigation">
+
+
+<a href="penyaringan-nira.html">
+
+← Penyaringan Nira
+
+</a>
+
+
+
+<a href="pengkristalan-gula-aren.html">
+
+Pengkristalan Gula →
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+
+<footer>
+
+© 2026 Raya Gula
+
+<br>
+
+Gula Aren Indonesia — Manis Alami dari Nusantara
+
+</footer>
+
+
+
+
+</body>
+
+</html>

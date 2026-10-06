@@ -4116,15 +4116,12 @@ h4 em {
 
 .language-switcher {
   position: absolute;
-  top: 18px;
+  top: 8px;
   right: 42px;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
-  letter-spacing: .12em;
-  font-weight: 700;
-  z-index: 10000;
+  z-index: 10001;
 }
 
 .lang-btn {
@@ -4220,4 +4217,29 @@ body.language-en .lang-en{
  .lang-btn{
    font-size:10px;
  }
+}
+
+
+/* Move bilingual selector above navbar */
+.site-header {
+  padding-top: 22px;
+}
+
+.nav-right {
+  margin-top: 12px;
+}
+
+@media(max-width:900px){
+  .site-header {
+    padding-top: 0;
+  }
+
+  .language-switcher {
+    top: 10px;
+    right: 70px;
+  }
+
+  .nav-right {
+    margin-top: 0;
+  }
 }

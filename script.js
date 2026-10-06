@@ -1,25 +1,21 @@
 /* =========================================================
    RAYA GULA
-   MAIN JAVASCRIPT — STABLE / FAIL-SAFE
+   MAIN JAVASCRIPT — STABLE / FAIL-SAFE VERSION
    ========================================================= */
 
 (function () {
-
   "use strict";
 
-
-  /* =====================================================
-     MAIN INITIALIZATION
-     ===================================================== */
+  /* =========================================================
+     START WHEN DOM IS READY
+     ========================================================= */
 
   function initRayaGula() {
-
     try {
       initMobileNavigation();
     } catch (error) {
       console.error("Raya Gula: mobile navigation error", error);
     }
-
 
     try {
       initScrollReveal();
@@ -28,13 +24,11 @@
       showAllRevealElements();
     }
 
-
     try {
       initFloatingSocial();
     } catch (error) {
       console.error("Raya Gula: floating menu error", error);
     }
-
 
     try {
       initExternalLinkSecurity();
@@ -42,13 +36,11 @@
       console.error("Raya Gula: external link security error", error);
     }
 
-
     try {
       initSmoothScroll();
     } catch (error) {
       console.error("Raya Gula: smooth scroll error", error);
     }
-
 
     try {
       initSugarScroll();
@@ -56,39 +48,23 @@
       console.error("Raya Gula: sugar scroll error", error);
     }
 
-
-    console.log(
-      "Raya Gula website initialized — stable version."
-    );
-
+    console.log("Raya Gula website initialized — stable version.");
   }
-
-
-  /* =====================================================
-     START WHEN DOM IS READY
-     ===================================================== */
 
   if (document.readyState === "loading") {
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      initRayaGula,
-      { once: true }
-    );
-
+    document.addEventListener("DOMContentLoaded", initRayaGula, {
+      once: true
+    });
   } else {
-
     initRayaGula();
-
   }
 
 
-  /* =====================================================
+  /* =========================================================
      MOBILE NAVIGATION
-     ===================================================== */
+     ========================================================= */
 
   function initMobileNavigation() {
-
     const menu = document.querySelector(".menu-toggle");
     const nav = document.querySelector(".nav");
 
@@ -96,236 +72,142 @@
       return;
     }
 
-
     function closeMenu() {
-
       nav.classList.remove("open");
       nav.classList.remove("active");
 
-      menu.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
+      menu.setAttribute("aria-expanded", "false");
       menu.innerHTML = "☰";
-
     }
 
+    menu.addEventListener("click", function (event) {
+      event.stopPropagation();
 
-    menu.addEventListener(
-      "click",
-      function (event) {
+      const isOpen =
+        nav.classList.contains("open") ||
+        nav.classList.contains("active");
 
-        event.preventDefault();
-        event.stopPropagation();
+      if (isOpen) {
+        closeMenu();
+      } else {
+        nav.classList.add("open");
+        nav.classList.add("active");
 
-        const isOpen =
-          nav.classList.contains("open") ||
-          nav.classList.contains("active");
-
-
-        if (isOpen) {
-
-          closeMenu();
-
-        } else {
-
-          nav.classList.add("open");
-          nav.classList.add("active");
-
-          menu.setAttribute(
-            "aria-expanded",
-            "true"
-          );
-
-          menu.innerHTML = "✕";
-
-        }
-
+        menu.setAttribute("aria-expanded", "true");
+        menu.innerHTML = "✕";
       }
-    );
+    });
 
-
-    document.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          !nav.contains(event.target) &&
-          !menu.contains(event.target)
-        ) {
-
-          closeMenu();
-
-        }
-
+    document.addEventListener("click", function (event) {
+      if (
+        !nav.contains(event.target) &&
+        !menu.contains(event.target)
+      ) {
+        closeMenu();
       }
-    );
+    });
 
-
-    nav
-      .querySelectorAll("a")
-      .forEach(function (link) {
-
-        link.addEventListener(
-          "click",
-          function () {
-            closeMenu();
-          }
-        );
-
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeMenu();
       });
-
+    });
 
     window.addEventListener(
       "resize",
       function () {
-
         if (window.innerWidth > 900) {
           closeMenu();
         }
-
       },
       { passive: true }
     );
-
   }
 
 
-  /* =====================================================
-     SHOW ALL REVEAL ELEMENTS
-     ===================================================== */
+  /* =========================================================
+     SCROLL REVEAL — FAIL SAFE
+
+     Penting:
+     - Elemen tidak boleh hilang permanen.
+     - Jika IntersectionObserver gagal, semua .reveal
+       langsung dibuat visible.
+     - Elemen yang terlalu lama tidak ter-trigger juga
+       akan dibuat visible oleh fallback timer.
+     ========================================================= */
 
   function showAllRevealElements() {
-
-    document
-      .querySelectorAll(".reveal")
-      .forEach(function (element) {
-
-        element.classList.add("visible");
-
-      });
-
+    document.querySelectorAll(".reveal").forEach(function (element) {
+      element.classList.add("visible");
+    });
   }
 
-
-  /* =====================================================
-     SCROLL REVEAL — FAIL SAFE
-     ===================================================== */
-
   function initScrollReveal() {
-
     const revealElements =
       document.querySelectorAll(".reveal");
-
 
     if (!revealElements.length) {
       return;
     }
 
-
-    const fallbackTimer =
-      setTimeout(
-        function () {
-          showAllRevealElements();
-        },
-        3500
-      );
-
+    /* Fallback safety:
+       Jika observer tidak bekerja karena browser/cache/error,
+       jangan biarkan konten tetap opacity:0. */
+    const fallbackTimer = setTimeout(function () {
+      revealElements.forEach(function (element) {
+        element.classList.add("visible");
+      });
+    }, 3500);
 
     if (
-      typeof window.IntersectionObserver !==
-      "function"
+      typeof window.IntersectionObserver !== "function"
     ) {
-
       clearTimeout(fallbackTimer);
       showAllRevealElements();
-
       return;
-
     }
 
-
-    const observer =
-      new IntersectionObserver(
-
-        function (entries) {
-
-          entries.forEach(
-            function (entry) {
-
-              if (entry.isIntersecting) {
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-                observer.unobserve(
-                  entry.target
-                );
-
-              }
-
-            }
-          );
-
-        },
-
-        {
-          threshold: 0.08,
-          rootMargin: "0px 0px -20px 0px"
-        }
-
-      );
-
-
-    revealElements.forEach(
-      function (element) {
-
-        observer.observe(element);
-
-      }
-    );
-
-
-    requestAnimationFrame(
-      function () {
-
-        revealElements.forEach(
-          function (element) {
-
-            const rect =
-              element.getBoundingClientRect();
-
-
-            if (
-              rect.top < window.innerHeight &&
-              rect.bottom > 0
-            ) {
-
-              element.classList.add(
-                "visible"
-              );
-
-            }
-
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
-        );
-
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -20px 0px"
       }
     );
 
+    revealElements.forEach(function (element) {
+      observer.observe(element);
+    });
+
+    /* Elemen yang sudah terlihat saat halaman dibuka
+       langsung ditampilkan agar hero/about tidak terlambat. */
+    requestAnimationFrame(function () {
+      revealElements.forEach(function (element) {
+        const rect = element.getBoundingClientRect();
+
+        if (
+          rect.top < window.innerHeight &&
+          rect.bottom > 0
+        ) {
+          element.classList.add("visible");
+        }
+      });
+    });
   }
 
 
-  /* =====================================================
+  /* =========================================================
      FLOATING RAYA GULA MENU
-     
-     FIXED VERSION
-     ===================================================== */
+     ========================================================= */
 
   function initFloatingSocial() {
-
     const floatingSocial =
       document.getElementById("floatingSocial");
 
@@ -335,540 +217,316 @@
     const floatingMainIcon =
       document.getElementById("floatingMainIcon");
 
-
-    /*
-     * Jangan hentikan fungsi hanya karena icon utama
-     * tidak ditemukan.
-     *
-     * Tombol menu tetap harus bisa dibuka.
-     */
-
-    if (!floatingSocial || !floatingMain) {
-
+    if (
+      !floatingSocial ||
+      !floatingMain ||
+      !floatingMainIcon
+    ) {
       console.warn(
-        "Raya Gula: floating menu element tidak ditemukan."
+        "Raya Gula: floating menu markup tidak ditemukan."
       );
-
       return;
-
     }
 
-
-    /* -------------------------------------------------
-       ICON ROTATION
-       ------------------------------------------------- */
-
     const floatingIcons = [
-
       {
         src: "logo.png",
         alt: "Raya Gula"
       },
-
       {
         src: "icon-whatsapp.png",
         alt: "WhatsApp Raya Gula"
       },
-
       {
         src: "icon-instagram.png",
         alt: "Instagram Raya Gula"
       },
-
       {
         src: "icon-shopee.png",
         alt: "Shopee Raya Gula"
       }
-
     ];
 
-
     let currentIcon = 0;
-
+    let menuOpen = false;
+    let iconTimer = null;
+    let iconSwapTimer = null;
 
     function setMainIcon(index) {
-
-      if (!floatingMainIcon) {
-        return;
-      }
-
-
-      const icon =
-        floatingIcons[index];
-
+      const icon = floatingIcons[index];
 
       if (!icon) {
         return;
       }
 
+      if (iconSwapTimer) {
+        clearTimeout(iconSwapTimer);
+      }
 
       floatingMainIcon.style.opacity = "0";
 
-
-      setTimeout(
-        function () {
-
-          floatingMainIcon.src =
-            icon.src;
-
-          floatingMainIcon.alt =
-            icon.alt;
-
-          floatingMainIcon.style.opacity =
-            "1";
-
-        },
-        180
-      );
-
+      iconSwapTimer = setTimeout(function () {
+        floatingMainIcon.src = icon.src;
+        floatingMainIcon.alt = icon.alt;
+        floatingMainIcon.style.opacity = "1";
+      }, 140);
     }
 
+    function openMenu() {
+      menuOpen = true;
+      floatingSocial.classList.add("open");
+      floatingMain.setAttribute("aria-expanded", "true");
 
-    /* -------------------------------------------------
-       AUTO ICON ROTATION
-       ------------------------------------------------- */
-
-    setInterval(
-      function () {
-
-        /*
-         * Baca kondisi langsung dari class CSS.
-         * Tidak menggunakan variabel menuOpen.
-         */
-
-        if (
-          floatingSocial.classList.contains("open")
-        ) {
-
-          return;
-
-        }
-
-
-        currentIcon =
-          (currentIcon + 1) %
-          floatingIcons.length;
-
-
-        setMainIcon(currentIcon);
-
-      },
-      2800
-    );
-
-
-    /* -------------------------------------------------
-       SET MENU STATE
-       ------------------------------------------------- */
-
-    function setMenuState(isOpen) {
-
-      floatingSocial.classList.toggle(
-        "open",
-        isOpen
-      );
-
-
-      floatingMain.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-      );
-
-
-      if (isOpen) {
-
-        /*
-         * Saat menu dibuka,
-         * kembalikan logo utama.
-         */
-
-        currentIcon = 0;
-
-        setMainIcon(0);
-
-      }
-
+      currentIcon = 0;
+      setMainIcon(0);
     }
 
+    function closeMenu() {
+      menuOpen = false;
+      floatingSocial.classList.remove("open");
+      floatingMain.setAttribute("aria-expanded", "false");
+    }
 
-    /* -------------------------------------------------
-       MAIN BUTTON CLICK
-       ------------------------------------------------- */
-
-    floatingMain.addEventListener(
-      "click",
-      function (event) {
-
+    function toggleMenu(event) {
+      if (event) {
         event.preventDefault();
         event.stopPropagation();
-
-
-        const currentlyOpen =
-          floatingSocial.classList.contains(
-            "open"
-          );
-
-
-        setMenuState(!currentlyOpen);
-
       }
-    );
 
-
-    /* -------------------------------------------------
-       SOCIAL LINKS
-       ------------------------------------------------- */
-
-    const floatingItems =
-      floatingSocial.querySelectorAll(
-        ".floating-item"
-      );
-
-
-    floatingItems.forEach(
-      function (link) {
-
-        link.addEventListener(
-          "click",
-          function (event) {
-
-            /*
-             * Jangan biarkan document click
-             * mengganggu link.
-             */
-
-            event.stopPropagation();
-
-
-            /*
-             * Tutup menu setelah link diklik.
-             */
-
-            setMenuState(false);
-
-          }
-        );
-
+      if (menuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
       }
-    );
-
-
-    /* -------------------------------------------------
-       CLICK OUTSIDE
-       ------------------------------------------------- */
-
-    document.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          !floatingSocial.contains(
-            event.target
-          )
-        ) {
-
-          setMenuState(false);
-
-        }
-
-      }
-    );
-
-
-    /* -------------------------------------------------
-       INITIAL STATE
-       ------------------------------------------------- */
-
-    setMenuState(false);
-
-
-    console.log(
-      "Raya Gula: floating social menu initialized."
-    );
-
-  }
-
-
-  /* =====================================================
-     EXTERNAL LINK SECURITY
-     ===================================================== */
-
-  function initExternalLinkSecurity() {
-
-    document
-      .querySelectorAll(
-        'a[target="_blank"]'
-      )
-      .forEach(
-        function (link) {
-
-          link.setAttribute(
-            "rel",
-            "noopener noreferrer"
-          );
-
-        }
-      );
-
-  }
-
-
-  /* =====================================================
-     SMOOTH SCROLL
-     ===================================================== */
-
-  function initSmoothScroll() {
-
-    document
-      .querySelectorAll(
-        'a[href^="#"]'
-      )
-      .forEach(
-        function (link) {
-
-          link.addEventListener(
-            "click",
-            function (event) {
-
-              const targetId =
-                link.getAttribute("href");
-
-
-              if (
-                !targetId ||
-                targetId === "#"
-              ) {
-
-                return;
-
-              }
-
-
-              let target = null;
-
-
-              try {
-
-                target =
-                  document.querySelector(
-                    targetId
-                  );
-
-              } catch (error) {
-
-                return;
-
-              }
-
-
-              if (!target) {
-                return;
-              }
-
-
-              event.preventDefault();
-
-
-              target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-              });
-
-            }
-          );
-
-        }
-      );
-
-  }
-
-
-  /* =====================================================
-     SOFT PALM SUGAR SCROLL
-     ===================================================== */
-
-  function initSugarScroll() {
-
-    if (
-      !document.body ||
-      typeof window.addEventListener !==
-      "function"
-    ) {
-
-      return;
-
     }
 
+    /*
+       Pastikan kondisi awal selalu terlihat dan tertutup.
+       CSS mengatur posisi visual; JavaScript hanya mengatur state.
+    */
+    floatingSocial.classList.remove("open");
+    floatingMain.setAttribute("aria-expanded", "false");
+    setMainIcon(0);
 
+    /* Main button */
+    floatingMain.addEventListener("click", toggleMenu);
+
+    /* Keyboard accessibility */
+    floatingMain.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+        toggleMenu(event);
+      }
+    });
+
+    /* Close when clicking outside */
+    document.addEventListener("click", function (event) {
+      if (!floatingSocial.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    /* Close after selecting a social destination */
+    floatingSocial
+      .querySelectorAll(".floating-item")
+      .forEach(function (link) {
+        link.addEventListener("click", function () {
+          closeMenu();
+        });
+      });
+
+    /* Automatic logo / social icon rotation while closed */
+    iconTimer = setInterval(function () {
+      if (menuOpen) {
+        return;
+      }
+
+      currentIcon =
+        (currentIcon + 1) % floatingIcons.length;
+
+      setMainIcon(currentIcon);
+    }, 2800);
+
+    /* Keep timer reference alive for debugging / cleanup safety. */
+    floatingSocial.dataset.initialized = "true";
+    floatingSocial.dataset.iconTimer = "active";
+  }
+
+
+  /* =========================================================
+     EXTERNAL LINK SECURITY
+     ========================================================= */
+
+  function initExternalLinkSecurity() {
+    document
+      .querySelectorAll('a[target="_blank"]')
+      .forEach(function (link) {
+        link.setAttribute(
+          "rel",
+          "noopener noreferrer"
+        );
+      });
+  }
+
+
+  /* =========================================================
+     SMOOTH SCROLL
+     ========================================================= */
+
+  function initSmoothScroll() {
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          const targetId =
+            link.getAttribute("href");
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
+
+          let target = null;
+
+          try {
+            target =
+              document.querySelector(targetId);
+          } catch (error) {
+            return;
+          }
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        });
+      });
+  }
+
+
+  /* =========================================================
+     RAYA GULA — SOFT PALM SUGAR SCROLL
+
+     Butiran gula hanya dibuat saat user scroll ke bawah.
+     ========================================================= */
+
+  function initSugarScroll() {
+    if (
+      !document.body ||
+      typeof window.addEventListener !== "function"
+    ) {
+      return;
+    }
+
+    /* Respect reduced-motion preference */
     if (
       window.matchMedia &&
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches
     ) {
-
       return;
-
     }
-
-
-    /* -------------------------------------------------
-       CREATE PARTICLE LAYER
-       ------------------------------------------------- */
 
     const sugarLayer =
       document.createElement("div");
 
-
     sugarLayer.className =
       "rg-sugar-layer";
-
 
     sugarLayer.setAttribute(
       "aria-hidden",
       "true"
     );
 
+    /* Inline safety styling */
+    Object.assign(sugarLayer.style, {
+      position: "fixed",
+      left: "0",
+      top: "0",
+      width: "100vw",
+      height: "100vh",
+      overflow: "hidden",
+      pointerEvents: "none",
+      zIndex: "9980"
+    });
 
-    Object.assign(
-      sugarLayer.style,
-      {
-
-        position: "fixed",
-        left: "0",
-        top: "0",
-        width: "100vw",
-        height: "100vh",
-        overflow: "hidden",
-        pointerEvents: "none",
-        zIndex: "9980"
-
-      }
-    );
-
-
-    document.body.appendChild(
-      sugarLayer
-    );
-
-
-    /* -------------------------------------------------
-       DEVICE
-       ------------------------------------------------- */
+    document.body.appendChild(sugarLayer);
 
     let isMobile =
       window.innerWidth <= 768;
 
-
-    function getMaxParticles() {
-
-      return isMobile ? 14 : 28;
-
-    }
-
-
-    function getParticleInterval() {
-
-      return isMobile ? 130 : 95;
-
-    }
-
-
-    /* -------------------------------------------------
-       SCROLL VARIABLES
-       ------------------------------------------------- */
-
     let lastScrollY =
       window.scrollY;
 
-
     let lastParticleTime = 0;
 
+    function getMaxParticles() {
+      return isMobile ? 14 : 28;
+    }
 
-    /* -------------------------------------------------
-       CREATE PARTICLE
-       ------------------------------------------------- */
+    function getParticleInterval() {
+      return isMobile ? 130 : 95;
+    }
 
     function createSugarParticle() {
-
       if (
         sugarLayer.children.length >=
         getMaxParticles()
       ) {
-
         return;
-
       }
-
 
       const particle =
         document.createElement("span");
 
-
       particle.className =
         "rg-sugar-particle";
 
-
       const size =
         Math.random() * 4 + 2;
-
 
       const startX =
         Math.random() *
         window.innerWidth;
 
-
       const drift =
-        (Math.random() - 0.5) *
-        100;
-
+        (Math.random() - 0.5) * 100;
 
       const driftEnd =
-        (Math.random() - 0.5) *
-        170;
-
+        (Math.random() - 0.5) * 170;
 
       const duration =
         Math.random() * 1800 + 2800;
 
-
       const opacity =
         Math.random() * 0.32 + 0.42;
 
-
-      Object.assign(
-        particle.style,
-        {
-
-          position: "absolute",
-          left: startX + "px",
-          top: "-12px",
-          width: size + "px",
-          height: size + "px",
-          borderRadius: "50%",
-
-          background:
-            "radial-gradient(" +
-            "circle at 30% 25%, " +
-            "#f8e7c5 0%, " +
-            "#d1a263 42%, " +
-            "#8c5b2d 100%" +
-            ")",
-
-          boxShadow:
-            "0 1px 3px rgba(70,42,18,.22)",
-
-          opacity: "0",
-          pointerEvents: "none",
-          willChange: "transform, opacity"
-
-        }
-      );
-
-
-      /* ------------------------------------------------
-         ORGANIC SHAPE
-         ------------------------------------------------ */
+      Object.assign(particle.style, {
+        position: "absolute",
+        left: startX + "px",
+        top: "-12px",
+        width: size + "px",
+        height: size + "px",
+        borderRadius: "50%",
+        background:
+          "radial-gradient(circle at 30% 25%, #f8e7c5 0%, #d1a263 42%, #8c5b2d 100%)",
+        boxShadow:
+          "0 1px 3px rgba(70,42,18,.22)",
+        opacity: "0",
+        pointerEvents: "none",
+        willChange: "transform, opacity"
+      });
 
       const r1 =
         40 + Math.random() * 20;
@@ -882,36 +540,22 @@
       const r4 =
         45 + Math.random() * 15;
 
-
       particle.style.borderRadius =
         `${r1}% ${r2}% ${r3}% ${r4}%`;
 
-
-      sugarLayer.appendChild(
-        particle
-      );
-
-
-      /* ------------------------------------------------
-         WEB ANIMATION API
-         ------------------------------------------------ */
+      sugarLayer.appendChild(particle);
 
       if (
-        typeof particle.animate ===
-        "function"
+        typeof particle.animate === "function"
       ) {
-
         const animation =
           particle.animate(
-
             [
-
               {
                 transform:
                   "translate3d(0,-15px,0) rotate(0deg)",
                 opacity: 0
               },
-
               {
                 transform:
                   "translate3d(" +
@@ -919,7 +563,6 @@
                   "px,15vh,0) rotate(90deg)",
                 opacity: opacity
               },
-
               {
                 transform:
                   "translate3d(" +
@@ -927,7 +570,6 @@
                   "px,52vh,0) rotate(220deg)",
                 opacity: opacity
               },
-
               {
                 transform:
                   "translate3d(" +
@@ -935,192 +577,97 @@
                   "px,110vh,0) rotate(420deg)",
                 opacity: 0
               }
-
             ],
-
             {
-
               duration: duration,
-
               easing:
                 "cubic-bezier(.22,.61,.36,1)",
-
               fill: "forwards"
-
             }
-
           );
 
+        animation.onfinish = function () {
+          particle.remove();
+        };
 
-        animation.onfinish =
-          function () {
-
-            particle.remove();
-
-          };
-
-
-        animation.oncancel =
-          function () {
-
-            particle.remove();
-
-          };
-
-
+        animation.oncancel = function () {
+          particle.remove();
+        };
       } else {
-
+        /* Browser fallback */
         particle.style.transition =
           "opacity .3s ease";
 
+        requestAnimationFrame(function () {
+          particle.style.opacity =
+            opacity;
+        });
 
-        requestAnimationFrame(
-          function () {
+        setTimeout(function () {
+          particle.style.opacity = "0";
 
-            particle.style.opacity =
-              opacity;
-
-          }
-        );
-
-
-        setTimeout(
-          function () {
-
-            particle.style.opacity = "0";
-
-
-            setTimeout(
-              function () {
-
-                particle.remove();
-
-              },
-              500
-            );
-
-          },
-          duration
-        );
-
+          setTimeout(function () {
+            particle.remove();
+          }, 500);
+        }, duration);
       }
-
     }
 
-
-    /* -------------------------------------------------
-       SCROLL HANDLER
-       ------------------------------------------------- */
-
     function handleSugarScroll() {
-
       const currentY =
         window.scrollY;
 
-
-      /*
-       * Hanya ketika scrolling ke bawah.
-       */
-
-      if (
-        currentY <= lastScrollY
-      ) {
-
-        lastScrollY =
-          currentY;
-
+      /* Only generate while scrolling down */
+      if (currentY <= lastScrollY) {
+        lastScrollY = currentY;
         return;
-
       }
 
-
-      lastScrollY =
-        currentY;
-
+      lastScrollY = currentY;
 
       const now =
         performance.now();
 
-
       if (
-        now -
-        lastParticleTime <
+        now - lastParticleTime <
         getParticleInterval()
       ) {
-
         return;
-
       }
 
-
-      lastParticleTime =
-        now;
-
+      lastParticleTime = now;
 
       createSugarParticle();
 
-
-      /*
-       * Sesekali buat particle kedua.
-       */
-
-      if (
-        Math.random() > 0.68
-      ) {
-
-        setTimeout(
-          function () {
-
-            createSugarParticle();
-
-          },
-          40
-        );
-
+      /* Occasionally create a second particle */
+      if (Math.random() > 0.68) {
+        setTimeout(function () {
+          createSugarParticle();
+        }, 40);
       }
-
     }
-
-
-    /* -------------------------------------------------
-       SCROLL EVENT
-       ------------------------------------------------- */
 
     window.addEventListener(
       "scroll",
       handleSugarScroll,
-      {
-        passive: true
-      }
+      { passive: true }
     );
-
-
-    /* -------------------------------------------------
-       RESIZE
-       ------------------------------------------------- */
 
     window.addEventListener(
       "resize",
       function () {
-
         isMobile =
           window.innerWidth <= 768;
 
         lastScrollY =
           window.scrollY;
-
       },
-      {
-        passive: true
-      }
+      { passive: true }
     );
-
 
     console.log(
       "Raya Gula sugar scroll effect initialized."
     );
-
   }
-
 
 })();

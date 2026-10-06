@@ -4309,3 +4309,31 @@ body.language-en .lang-en{
    right:65px !important;
  }
 }
+
+
+/* FINAL REMOVE PRODUCT PREVIOUS/NEXT LABEL */
+.product-navigation,
+.product-nav,
+.product-slider-nav {
+  position: relative;
+}
+
+.product-navigation *,
+.product-nav *,
+.product-slider-nav * {
+  font-size: 0;
+}
+
+.product-navigation a::before,
+.product-nav a::before,
+.product-slider-nav a::before {
+  font-size: 32px;
+}
+
+/* keep arrow only */
+.product-navigation a span,
+.product-nav a span,
+.product-slider-nav a span {
+  display:none !important;
+}
+

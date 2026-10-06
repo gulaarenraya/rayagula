@@ -869,3 +869,29 @@ const extra = {
 
 window.rayaExtraTranslation = extra;
 })();
+
+
+/* PRODUCT + CONTACT BILINGUAL CONTENT */
+(function(){
+const productTranslations = {
+"Produk Raya Gula":
+"Raya Gula Products",
+
+"Gula Aren Premium":
+"Premium Palm Sugar",
+
+"Gula aren murni dari nira pilihan Indonesia dengan rasa autentik dan aroma khas Nusantara.":
+"Pure palm sugar made from selected Indonesian palm nectar with authentic flavor and distinctive aroma.",
+
+"Hubungi Kami":
+"Contact Us",
+
+"Temukan informasi lebih lanjut mengenai produk Raya Gula.":
+"Discover more information about Raya Gula products.",
+
+"Manis alami yang berkelanjutan":
+"Naturally Sweet, Sustainably Crafted"
+};
+
+window.rayaProductTranslations = productTranslations;
+})();

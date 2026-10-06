@@ -4899,3 +4899,97 @@ body.language-en .lang-en { display: inline !important; }
     font-size: 5px;
   }
 }
+
+
+/* =========================================================
+   RAYA GULA — REVISION 03
+   Hero right-edge preservation + About image + two-line title
+   ========================================================= */
+.hero-photo img {
+  object-position: 100% center !important;
+}
+
+@media (min-width: 901px) {
+  .hero-photo img {
+    object-position: 100% center !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-photo img {
+    object-position: 100% center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-photo img {
+    object-position: 100% center !important;
+  }
+}
+
+/* About: use the supplied Dari Alam / Raya Gula artwork at its native ratio. */
+#about .about-image {
+  aspect-ratio: 1792 / 877 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Desktop: the About headline is intentionally two lines. */
+@media (min-width: 901px) {
+  #about .about-copy h2 {
+    max-width: 650px !important;
+    font-size: clamp(48px, 4.45vw, 70px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -.045em !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #about .about-copy h2 {
+    max-width: 100% !important;
+  }
+}
+
+
+/* =========================================================
+   ABOUT — DESKTOP FINAL ALIGNMENT
+   Match the reference: 3-line headline and image flush
+   top/bottom with the text column.
+   ========================================================= */
+@media (min-width: 901px) {
+  .about {
+    align-items: stretch;
+  }
+
+  .about-copy {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-visual {
+    align-self: stretch;
+    height: 100%;
+  }
+
+  .about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-image {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+}

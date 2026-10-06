@@ -895,3 +895,58 @@ const productTranslations = {
 
 window.rayaProductTranslations = productTranslations;
 })();
+
+
+/* COMPLETE LANGUAGE PATCH */
+(function(){
+ const rgTranslations={
+  "Beranda":"Home",
+  "Tentang Kami":"About Us",
+  "Produk":"Products",
+  "Proses":"Process",
+  "Journal":"Journal",
+  "Kontak":"Contact",
+  "Hubungi Kami":"Contact Us",
+  "Lihat Produk":"View Products",
+  "Baca selengkapnya":"Read More",
+  "Manis Alami":"Naturally Sweet",
+  "dari Nusantara.":"from Indonesia.",
+  "Gula Aren":"Palm Sugar",
+  "Produk sebelumnya":"",
+  "Produk berikutnya":"",
+  "Sebelumnya":"",
+  "Berikutnya":""
+ };
+
+ function changeLanguage(lang){
+   document.documentElement.lang=lang;
+   document.body.dataset.lang=lang;
+
+   document.querySelectorAll("body *").forEach(el=>{
+     if(el.children.length===0){
+       if(!el.dataset.idOriginal){
+          el.dataset.idOriginal=el.textContent.trim();
+       }
+       let original=el.dataset.idOriginal;
+       if(lang==="en" && rgTranslations[original]!==undefined){
+          el.textContent=rgTranslations[original];
+       }else if(lang==="id"){
+          el.textContent=original;
+       }
+     }
+   });
+
+   document.querySelectorAll(".lang-btn").forEach(btn=>{
+      btn.classList.toggle("active", btn.dataset.lang===lang);
+   });
+
+   localStorage.setItem("rayaLanguage",lang);
+ }
+
+ document.addEventListener("DOMContentLoaded",()=>{
+   document.querySelectorAll(".lang-btn").forEach(btn=>{
+     btn.addEventListener("click",()=>changeLanguage(btn.dataset.lang));
+   });
+   changeLanguage(localStorage.getItem("rayaLanguage")||"id");
+ });
+})();

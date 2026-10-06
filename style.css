@@ -1,3 +1,5 @@
+Continued from Lanjut SEO Raya Gula (20)
+
 /* =========================================================
    RAYA GULA
    STYLE.CSS â€” RESET TOTAL / FAIL-SAFE
@@ -2704,126 +2706,6 @@ h4 em {
 
 
 /* =========================================================
-   RAYA GULA â€” ABOUT IMAGE VISUAL UPDATE
-   ========================================================= */
-
-.about {
-  grid-template-columns:
-    minmax(0, .72fr)
-    minmax(0, 1.28fr);
-
-  gap: 54px;
-
-  align-items: center;
-}
-
-.about-copy {
-  max-width: 520px;
-}
-
-.about-visual {
-  width: auto;
-  margin: 0;
-  position: relative;
-}
-
-.about-image {
-  width: 100%;
-
-  min-height: 0;
-
-  aspect-ratio: 580 / 450;
-
-  background-image:
-    url("dari-alam-raya-raya-gula.png");
-
-  background-size: 100% 100%;
-
-  background-position: center;
-
-  background-repeat: no-repeat;
-
-  box-shadow: none;
-}
-
-@media (min-width: 901px) {
-
-  .about {
-    min-height: 560px;
-  }
-
-  .about-visual {
-    width:
-      min(100%, 680px);
-  }
-
-  .about-image {
-    width: 100%;
-    min-height: 0;
-  }
-
-}
-
-@media (max-width: 1100px) and (min-width: 901px) {
-
-  .about {
-    grid-template-columns:
-      minmax(0, .72fr)
-      minmax(0, 1.28fr);
-
-    gap: 42px;
-  }
-
-  .about-visual {
-    max-width: 620px;
-  }
-
-}
-
-@media (max-width: 900px) {
-
-  .about {
-    grid-template-columns: 1fr;
-
-    gap: 42px;
-  }
-
-  .about-visual {
-    width: 100%;
-
-    max-width: 680px;
-
-    justify-self: center;
-  }
-
-  .about-image {
-    width: 100%;
-
-    min-height: 0;
-
-    aspect-ratio: 580 / 450;
-  }
-
-}
-
-@media (max-width: 600px) {
-
-  .about {
-    gap: 34px;
-  }
-
-  .about-visual {
-    max-width: 100%;
-  }
-
-  .about-image {
-    aspect-ratio: 580 / 450;
-  }
-
-}
-
-
-/* =========================================================
    RAYA GULA â€” PROCESS BACKGROUND
    ========================================================= */
 
@@ -3622,18 +3504,12 @@ h4 em {
 }
 
 /* =========================================================
-   RAYA GULA — ABOUT FINAL PREMIUM EDITORIAL
-   ========================================================= */
-
-/* =========================================================
-   ABOUT — DESKTOP / LARGE SCREEN
-   Editorial composition:
-   COPY  →  IMAGE
+   RAYA GULA — ABOUT / TENTANG RAYA GULA
+   PREMIUM EDITORIAL LAYOUT
    ========================================================= */
 
 #about {
-  padding-top: 110px;
-  padding-bottom: 58px;
+  padding-bottom: 55px;
 }
 
 .about {
@@ -3645,7 +3521,7 @@ h4 em {
     minmax(0, .78fr)
     minmax(0, 1.22fr);
 
-  gap: 68px;
+  gap: 64px;
 
   align-items: center;
 
@@ -3655,7 +3531,7 @@ h4 em {
 
 .about-copy {
   width: 100%;
-  max-width: 540px;
+  max-width: 500px;
 
   margin: 0;
 
@@ -3663,30 +3539,29 @@ h4 em {
 }
 
 .about-copy .eyebrow {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .about-copy h2 {
   width: 100%;
-  max-width: 575px;
+  max-width: 480px;
 
-  margin: 0 0 28px 0;
+  margin: 0 0 30px 0;
 
   color: var(--brown-dark);
 
   font-size:
-    clamp(54px, 5.2vw, 78px);
+    clamp(52px, 4vw, 60px);
 
-  line-height: 1.01;
+  line-height: 1.03;
 
-  letter-spacing: -.04em;
+  letter-spacing: -.035em;
 }
 
 .about-copy p {
-  width: 100%;
-  max-width: 500px;
+  max-width: 470px;
 
-  margin: 0 0 17px 0;
+  margin: 0 0 16px 0;
 
   color: var(--muted);
 
@@ -3700,7 +3575,7 @@ h4 em {
 }
 
 .about-copy .text-link {
-  margin-top: 26px;
+  margin-top: 24px;
 }
 
 .about-visual {
@@ -3719,7 +3594,7 @@ h4 em {
 
   min-height: 0;
 
-  aspect-ratio: 1.55 / 1;
+  aspect-ratio: 580 / 450;
 
   background-image:
     url("dari-alam-raya-raya-gula.png");
@@ -3733,9 +3608,9 @@ h4 em {
   box-shadow: none;
 }
 
+
 /* =========================================================
-   ABOUT — THE ORIGIN LABEL
-   Small editorial label; does not reduce image size.
+   THE ORIGIN — SMALL EDITORIAL LABEL
    ========================================================= */
 
 .about-caption {
@@ -3744,28 +3619,28 @@ h4 em {
   right: 0;
   bottom: 0;
 
-  width: 118px;
+  width: 92px;
 
-  min-width: 118px;
-  max-width: 118px;
+  min-width: 92px;
+  max-width: 92px;
 
   min-height: 0;
 
-  padding: 8px 9px;
+  padding: 6px 7px;
 
   display: grid;
 
   grid-template-columns:
-    auto 1fr;
+    12px 1fr;
 
-  column-gap: 7px;
+  column-gap: 5px;
 
   row-gap: 1px;
 
   box-sizing: border-box;
 
   background:
-    rgba(251, 248, 242, .95);
+    rgba(251, 248, 242, .94);
 
   color: var(--brown-dark);
 }
@@ -3777,7 +3652,7 @@ h4 em {
 
   color: var(--gold);
 
-  font-size: 12px;
+  font-size: 10px;
 
   line-height: 1;
 }
@@ -3785,11 +3660,11 @@ h4 em {
 .about-caption b {
   display: block;
 
-  font-size: 6.5px;
+  font-size: 5px;
 
   line-height: 1.1;
 
-  letter-spacing: .09em;
+  letter-spacing: .08em;
 }
 
 .about-caption small {
@@ -3797,88 +3672,108 @@ h4 em {
 
   color: var(--muted);
 
-  font-size: 5px;
+  font-size: 4.5px;
 
-  line-height: 1.15;
+  line-height: 1.1;
 
   white-space: nowrap;
 }
 
 
 /* =========================================================
-   ABOUT — MEDIUM DESKTOP
+   DESKTOP — LARGE PREMIUM IMAGE
    ========================================================= */
 
-@media (max-width: 1100px) and (min-width: 901px) {
-
-  #about {
-    padding-top: 95px;
-    padding-bottom: 55px;
-  }
+@media (min-width: 1201px) {
 
   .about {
-    width: min(100%, 1000px);
-
     grid-template-columns:
-      minmax(0, .8fr)
-      minmax(0, 1.2fr);
+      minmax(0, .76fr)
+      minmax(0, 1.24fr);
 
-    gap: 46px;
-  }
-
-  .about-copy {
-    max-width: 450px;
+    gap: 70px;
   }
 
   .about-copy h2 {
-    max-width: 500px;
+    max-width: 480px;
 
-    font-size:
-      clamp(48px, 5.4vw, 62px);
-  }
-
-  .about-copy p {
-    max-width: 430px;
+    font-size: clamp(54px, 3.6vw, 62px);
   }
 
   .about-visual {
-    max-width: 620px;
-  }
-
-  .about-caption {
-    width: 102px;
-
-    min-width: 102px;
-    max-width: 102px;
-
-    padding: 7px 8px;
-  }
-
-  .about-caption span {
-    font-size: 11px;
-  }
-
-  .about-caption b {
-    font-size: 5.5px;
-  }
-
-  .about-caption small {
-    font-size: 4.5px;
+    max-width: 780px;
   }
 
 }
 
 
 /* =========================================================
-   ABOUT — TABLET
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) and (min-width: 901px) {
+
+  .about {
+    width: 100%;
+
+    grid-template-columns:
+      minmax(0, .8fr)
+      minmax(0, 1.2fr);
+
+    gap: 48px;
+  }
+
+  .about-copy {
+    max-width: 460px;
+  }
+
+  .about-copy h2 {
+    max-width: 450px;
+
+    font-size:
+      clamp(48px, 5vw, 58px);
+  }
+
+  .about-copy p {
+    max-width: 440px;
+  }
+
+  .about-visual {
+    max-width: 680px;
+  }
+
+  .about-caption {
+    width: 86px;
+    min-width: 86px;
+    max-width: 86px;
+
+    padding: 5px 6px;
+  }
+
+  .about-caption span {
+    font-size: 9px;
+  }
+
+  .about-caption b {
+    font-size: 4.7px;
+  }
+
+  .about-caption small {
+    font-size: 4.2px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET KECIL
    IMAGE → COPY
    ========================================================= */
 
 @media (max-width: 900px) and (min-width: 601px) {
 
   #about {
-    padding-top: 82px;
-    padding-bottom: 58px;
+    padding-bottom: 55px;
   }
 
   .about {
@@ -3893,7 +3788,7 @@ h4 em {
     order: 1;
 
     width: 100%;
-    max-width: 760px;
+    max-width: 700px;
 
     margin-left: auto;
     margin-right: auto;
@@ -3905,58 +3800,43 @@ h4 em {
     order: 2;
 
     width: 100%;
-    max-width: 700px;
+    max-width: 680px;
 
     margin-left: auto;
     margin-right: auto;
   }
 
   .about-copy h2 {
-    max-width: 650px;
+    max-width: 560px;
 
     font-size:
-      clamp(48px, 7vw, 64px);
+      clamp(48px, 7vw, 60px);
 
-    line-height: 1.03;
+    line-height: 1.04;
   }
 
   .about-copy p {
-    max-width: 650px;
+    max-width: 620px;
   }
 
   .about-caption {
-    width: 100px;
+    width: 88px;
+    min-width: 88px;
+    max-width: 88px;
 
-    min-width: 100px;
-    max-width: 100px;
-
-    padding: 6px 7px;
-  }
-
-  .about-caption span {
-    font-size: 11px;
-  }
-
-  .about-caption b {
-    font-size: 5.5px;
-  }
-
-  .about-caption small {
-    font-size: 4.5px;
+    padding: 5px 6px;
   }
 
 }
 
 
 /* =========================================================
-   ABOUT — MOBILE
-   IMAGE → COPY
+   MOBILE — IMAGE → COPY
    ========================================================= */
 
 @media (max-width: 600px) {
 
   #about {
-    padding-top: 78px;
     padding-bottom: 48px;
   }
 
@@ -3993,7 +3873,7 @@ h4 em {
 
     min-height: 0;
 
-    aspect-ratio: 1.35 / 1;
+    aspect-ratio: 580 / 450;
 
     background-size: 100% 100%;
   }
@@ -4005,12 +3885,12 @@ h4 em {
   .about-copy h2 {
     max-width: 100%;
 
-    margin: 0 0 23px 0;
+    margin: 0 0 24px 0;
 
     font-size:
-      clamp(39px, 10.5vw, 50px);
+      clamp(38px, 10.5vw, 48px);
 
-    line-height: 1.05;
+    line-height: 1.06;
 
     letter-spacing: -.035em;
   }
@@ -4026,16 +3906,16 @@ h4 em {
   }
 
   .about-copy .text-link {
-    margin-top: 21px;
+    margin-top: 22px;
   }
 
   .about-caption {
-    width: 88px;
+    width: 76px;
 
-    min-width: 88px;
-    max-width: 88px;
+    min-width: 76px;
+    max-width: 76px;
 
-    padding: 5px 6px;
+    padding: 4px 5px;
 
     grid-template-columns:
       10px 1fr;
@@ -4046,17 +3926,17 @@ h4 em {
   }
 
   .about-caption span {
-    font-size: 9px;
+    font-size: 8px;
   }
 
   .about-caption b {
-    font-size: 4.5px;
+    font-size: 4px;
 
     line-height: 1;
   }
 
   .about-caption small {
-    font-size: 4px;
+    font-size: 3.5px;
 
     line-height: 1;
 
@@ -4067,15 +3947,10 @@ h4 em {
 
 
 /* =========================================================
-   ABOUT — VERY SMALL MOBILE
+   VERY SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 400px) {
-
-  #about {
-    padding-top: 68px;
-    padding-bottom: 42px;
-  }
 
   .about {
     gap: 28px;
@@ -4088,25 +3963,146 @@ h4 em {
   }
 
   .about-caption {
-    width: 82px;
+    width: 70px;
 
-    min-width: 82px;
-    max-width: 82px;
+    min-width: 70px;
+    max-width: 70px;
 
     padding: 4px 5px;
   }
 
   .about-caption span {
-    font-size: 8px;
+    font-size: 7px;
   }
 
   .about-caption b {
-    font-size: 4px;
+    font-size: 3.8px;
   }
 
   .about-caption small {
-    font-size: 3.5px;
+    font-size: 3.3px;
   }
 
 }
 
+
+/* =========================================================
+   FLOATING SOCIAL — FINAL VISIBILITY / CLICK FIX
+   ========================================================= */
+
+.floating-social {
+  position: fixed !important;
+
+  right: 24px !important;
+  bottom: 24px !important;
+
+  width: 92px !important;
+  height: 92px !important;
+
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  z-index: 2147483000 !important;
+
+  pointer-events: auto !important;
+}
+
+.floating-main {
+  position: absolute !important;
+
+  right: 0 !important;
+  bottom: 0 !important;
+
+  width: 64px !important;
+  height: 64px !important;
+
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  pointer-events: auto !important;
+  cursor: pointer !important;
+
+  z-index: 3 !important;
+}
+
+.floating-main img,
+#floatingMainIcon {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.floating-items {
+  position: absolute !important;
+  inset: 0 !important;
+
+  display: block !important;
+  visibility: visible !important;
+
+  pointer-events: none !important;
+
+  z-index: 2 !important;
+}
+
+.floating-item {
+  display: flex !important;
+  visibility: visible !important;
+
+  pointer-events: none !important;
+  cursor: pointer !important;
+
+  z-index: 2 !important;
+}
+
+.floating-social.open .floating-items {
+  pointer-events: auto !important;
+}
+
+.floating-social.open .floating-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.floating-social.open .floating-whatsapp {
+  transform: translate(-72px, -18px) scale(1) !important;
+}
+
+.floating-social.open .floating-instagram {
+  transform: translate(-72px, -82px) scale(1) !important;
+}
+
+.floating-social.open .floating-shopee {
+  transform: translate(-20px, -128px) scale(1) !important;
+}
+
+@media (max-width: 600px) {
+
+  .floating-social {
+    right: 16px !important;
+    bottom: 16px !important;
+
+    width: 78px !important;
+    height: 78px !important;
+  }
+
+  .floating-main {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .floating-main img,
+  #floatingMainIcon {
+    width: 38px !important;
+    height: 38px !important;
+
+    max-width: 38px !important;
+    max-height: 38px !important;
+
+    min-width: 38px !important;
+    min-height: 38px !important;
+  }
+
+}

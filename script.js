@@ -720,7 +720,7 @@
  };
 
  function applyEnglish(){
-   document.querySelectorAll("body *").forEach(el=>{
+   document.querySelectorAll("body *:not(.product-navigation *):not(.product-nav *)").forEach(el=>{
      if(el.children.length===0){
        let text=el.textContent.trim();
        if(translations[text]){
@@ -790,7 +790,7 @@ const dictionary = {
 };
 
 function translatePage(lang){
- document.querySelectorAll("body *").forEach(el=>{
+ document.querySelectorAll("body *:not(.product-navigation *):not(.product-nav *)").forEach(el=>{
    if(el.children.length===0){
     let original=el.dataset.originalText || el.textContent.trim();
 
@@ -922,7 +922,7 @@ window.rayaProductTranslations = productTranslations;
    document.documentElement.lang=lang;
    document.body.dataset.lang=lang;
 
-   document.querySelectorAll("body *").forEach(el=>{
+   document.querySelectorAll("body *:not(.product-navigation *):not(.product-nav *)").forEach(el=>{
      if(el.children.length===0){
        if(!el.dataset.idOriginal){
           el.dataset.idOriginal=el.textContent.trim();

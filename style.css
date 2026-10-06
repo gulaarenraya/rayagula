@@ -4483,3 +4483,16 @@ body.language-en .lang-en{
 .product-nav {
     padding-top:18px;
 }
+
+/* Product slider final adjustment */
+.-slider-navigation{
+  margin-top:40px;
+  gap:24px;
+}
+.-slider-arrow{
+  width:48px;
+  height:48px;
+}
+.-slider-navigation .-slider-progress{
+  margin:0 18px;
+}

@@ -4205,3 +4205,19 @@ body.language-en .lang-en{
    right:76px;
  }
 }
+
+
+/* Language switcher final refinement */
+.language-switcher {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+@media(max-width:600px){
+ .language-switcher{
+   top:20px;
+   right:65px;
+ }
+ .lang-btn{
+   font-size:10px;
+ }
+}

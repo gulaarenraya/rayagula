@@ -4158,3 +4158,50 @@ body.language-en .lang-en {
     right:80px;
   }
 }
+
+
+/* FINAL LANGUAGE SWITCHER */
+.language-switcher{
+  position:absolute;
+  top:50%;
+  right:42px;
+  transform:translateY(-50%);
+  display:flex;
+  align-items:center;
+  gap:9px;
+  z-index:10001;
+}
+
+.lang-btn{
+  cursor:pointer;
+  border:0;
+  background:none;
+  font-family:Montserrat,Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:#7d6b5e;
+  padding:4px;
+}
+
+.lang-btn.active{
+  color:#c9a04a;
+}
+
+.lang-en{
+ display:none;
+}
+
+body.language-en .lang-id{
+ display:none;
+}
+
+body.language-en .lang-en{
+ display:inline;
+}
+
+@media(max-width:900px){
+ .language-switcher{
+   right:76px;
+ }
+}

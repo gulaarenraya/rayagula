@@ -4108,3 +4108,53 @@ h4 em {
   }
 
 }
+
+
+/* =====================================================
+   BILINGUAL SWITCHER - RAYA GULA
+   ===================================================== */
+
+.language-switcher {
+  position: absolute;
+  top: 18px;
+  right: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-weight: 700;
+  z-index: 10000;
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.lang-btn.active {
+  color: var(--gold);
+}
+
+.lang-en {
+  display:none;
+}
+
+body.language-en .lang-id {
+  display:none;
+}
+
+body.language-en .lang-en {
+  display:inline;
+}
+
+@media(max-width:900px){
+  .language-switcher{
+    top:20px;
+    right:80px;
+  }
+}

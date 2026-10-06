@@ -4376,3 +4376,62 @@ body.language-en .lang-en{
 .product-slider-nav span {
   display:none !important;
 }
+
+
+/* ================================
+   RESTORE PRODUCT SECTION LAYOUT
+   ================================ */
+
+.product-item img,
+.product-card img,
+.product-image img,
+.product-slider img,
+.product-showcase img {
+    display:block !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    max-width:100%;
+    height:auto;
+}
+
+/* Jangan sembunyikan seluruh isi navigasi produk */
+.product-nav,
+.product-navigation,
+.product-slider-nav,
+.product-controls,
+.slider-controls {
+    font-size:initial !important;
+}
+
+.product-nav *,
+.product-navigation *,
+.product-slider-nav *,
+.product-controls *,
+.slider-controls * {
+    font-size:initial !important;
+}
+
+/* Sembunyikan hanya label teks prev next */
+.product-nav .label,
+.product-navigation .label,
+.product-slider-nav .label,
+.product-prev-text,
+.product-next-text {
+    display:none !important;
+}
+
+/* Arrow tetap terlihat */
+.product-nav a,
+.product-navigation a,
+.product-slider-nav a {
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Produk section normal */
+.product-section,
+.product-showcase,
+.product-slider {
+    overflow:visible !important;
+}

@@ -828,3 +828,44 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 })();
+
+
+/* EXTENDED RAYA GULA CONTENT TRANSLATION */
+(function(){
+const extra = {
+"Raya Gula lahir dari komitmen untuk menjaga karakter gula aren Indonesia sekaligus menghadirkannya dalam bentuk yang modern, praktis, dan berkelas.":
+"Raya Gula was created to preserve the authentic character of Indonesian palm sugar while presenting it in a modern, practical, and premium form.",
+
+"Kami percaya bahwa rasa yang baik berawal dari bahan yang baik, proses yang bertanggung jawab, serta penghargaan terhadap petani dan alam tempat nira berasal.":
+"We believe great taste begins with quality ingredients, responsible processes, and appreciation for farmers and the nature where the nectar originates.",
+
+"Pemanenan Nira":
+"Palm Nectar Harvesting",
+
+"Penyaringan":
+"Filtering",
+
+"Pemasakan":
+"Cooking",
+
+"Pengkristalan":
+"Crystallization",
+
+"Pengemasan":
+"Packaging",
+
+"Nira aren dikumpulkan dari bunga aren pilihan melalui proses penyadapan yang terjaga.":
+"Palm nectar is collected from selected palm flowers through a carefully maintained harvesting process.",
+
+"Nira segar disaring untuk menjaga kebersihan dan kualitas bahan baku.":
+"Fresh nectar is filtered to maintain cleanliness and ingredient quality.",
+
+"Nira diolah perlahan hingga membentuk warna, aroma, dan karakter khas gula aren.":
+"The nectar is slowly processed to develop the unique color, aroma, and character of palm sugar.",
+
+"Produk dikemas dengan standar kualitas untuk menjaga rasa dan kebersihan.":
+"Products are packaged with quality standards to preserve taste and hygiene."
+};
+
+window.rayaExtraTranslation = extra;
+})();

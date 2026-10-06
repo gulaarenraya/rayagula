@@ -4435,3 +4435,51 @@ body.language-en .lang-en{
 .product-slider {
     overflow:visible !important;
 }
+
+
+/* ===== PRODUCT SECTION SAFE FIX ===== */
+
+/* Restore product images */
+.product-section img,
+.product-showcase img,
+.product-slider img,
+.product-card img,
+.product-image img {
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+}
+
+/* Product navigation only */
+.product-navigation,
+.product-nav,
+.product-slider-nav {
+    margin-top:32px !important;
+    position:relative;
+    z-index:2;
+}
+
+/* Hide only text labels */
+.product-navigation .text,
+.product-navigation .label,
+.product-nav .text,
+.product-nav .label,
+.product-prev-label,
+.product-next-label {
+    display:none !important;
+}
+
+/* Keep arrows clean */
+.product-navigation a,
+.product-nav a {
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+    font-size:28px !important;
+}
+
+/* Prevent collision with buttons above */
+.product-navigation,
+.product-nav {
+    padding-top:18px;
+}

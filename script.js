@@ -707,3 +707,44 @@
     initLanguageSwitcher();
   }
 })();
+
+
+/* AUTO BILINGUAL TEXT SWITCH */
+(function(){
+ const translations = {
+  "Manis Alami": "Naturally Sweet",
+  "dari Nusantara.": "from Indonesia.",
+  "Gula aren dari nira pilihan, diolah dengan penuh perhatian untuk menghadirkan rasa alami dan karakter Indonesia di setiap butirnya.":
+  "Palm sugar crafted from selected palm nectar, bringing authentic Indonesian taste in every grain.",
+  "Baca selengkapnya": "Read More"
+ };
+
+ function applyEnglish(){
+   document.querySelectorAll("body *").forEach(el=>{
+     if(el.children.length===0){
+       let text=el.textContent.trim();
+       if(translations[text]){
+          el.dataset.idText=text;
+          el.textContent=translations[text];
+       }
+     }
+   });
+ }
+
+ function applyIndonesia(){
+   document.querySelectorAll("[data-id-text]").forEach(el=>{
+     el.textContent=el.dataset.idText;
+   });
+ }
+
+ window.addEventListener("languageChanged", function(e){
+   if(e.detail==="en") applyEnglish();
+   else applyIndonesia();
+ });
+})();
+
+document.addEventListener("click",function(e){
+ if(e.target.classList.contains("lang-btn")){
+   window.dispatchEvent(new CustomEvent("languageChanged",{detail:e.target.dataset.lang}));
+ }
+});

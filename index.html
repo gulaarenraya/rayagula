@@ -282,78 +282,88 @@
 
 
       {
-        "@type": "",
-
-        "@id": "https://rayagula.com/#",
-
-        "name":
-          "Raya Gula Gula Aren Semut Premium",
-
+        "@type": "Product",
+        "@id": "https://rayagula.com/#product-gula-aren-semut",
+        "name": "Raya Gula Gula Aren Semut Premium",
+        "url": "https://rayagula.com/#products",
         "image": [
-          "https://rayagula.com/-front.png",
-          "https://rayagula.com/-back.png"
+          "https://rayagula.com/product-semut.png"
         ],
-
-        "description":
-          "Gula aren semut premium dari nira aren pilihan Indonesia. Alami, tanpa campuran, dengan aroma khas gula aren Nusantara.",
-
+        "description": "Gula aren semut premium dari nira aren pilihan Indonesia. Alami, tanpa campuran, dengan aroma khas gula aren Nusantara.",
         "brand": {
           "@type": "Brand",
           "name": "Raya Gula"
         },
-
         "category": "Palm Sugar",
-
         "material": "100% Gula Aren Alami",
-
         "countryOfOrigin": {
           "@type": "Country",
           "name": "Indonesia"
         },
-
         "offers": {
-
           "@type": "Offer",
-
-          "url":
-            "https://shopee.co.id/rayagula",
-
+          "url": "https://shopee.co.id/rayagula",
           "priceCurrency": "IDR",
-
           "price": "45000",
-
-          "availability":
-            "https://schema.org/InStock",
-
+          "availability": "https://schema.org/InStock",
           "shippingDetails": {
-
-            "@type":
-              "OfferShippingDetails",
-
+            "@type": "OfferShippingDetails",
             "shippingDestination": {
-
-              "@type":
-                "DefinedRegion",
-
+              "@type": "DefinedRegion",
               "addressCountry": "ID"
             }
           },
-
           "hasMerchantReturnPolicy": {
-
-            "@type":
-              "MerchantReturnPolicy",
-
+            "@type": "MerchantReturnPolicy",
             "applicableCountry": "ID",
-
-            "returnPolicyCategory":
-              "https://schema.org/MerchantReturnFiniteReturnWindow",
-
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
             "merchantReturnDays": 7,
-
-            "returnMethod":
-              "https://schema.org/ReturnByMail"
+            "returnMethod": "https://schema.org/ReturnByMail"
           }
+        }
+      },
+
+
+      {
+        "@type": "Product",
+        "@id": "https://rayagula.com/#product-gula-aren-cair",
+        "name": "Raya Gula Gula Aren Cair",
+        "url": "https://rayagula.com/#products",
+        "image": [
+          "https://rayagula.com/product-cair.png"
+        ],
+        "description": "Gula aren cair dari nira aren Indonesia dengan rasa manis alami dan karakter khas Nusantara.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Raya Gula"
+        },
+        "category": "Palm Sugar",
+        "material": "100% Gula Aren Alami",
+        "countryOfOrigin": {
+          "@type": "Country",
+          "name": "Indonesia"
+        }
+      },
+
+
+      {
+        "@type": "Product",
+        "@id": "https://rayagula.com/#product-gula-aren-cetak",
+        "name": "Raya Gula Gula Aren Cetak",
+        "url": "https://rayagula.com/#products",
+        "image": [
+          "https://rayagula.com/product-cetak.png"
+        ],
+        "description": "Gula aren cetak dengan rasa dan aroma khas nira aren Indonesia untuk kebutuhan rumah tangga dan kuliner.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Raya Gula"
+        },
+        "category": "Palm Sugar",
+        "material": "100% Gula Aren Alami",
+        "countryOfOrigin": {
+          "@type": "Country",
+          "name": "Indonesia"
         }
       }
 
@@ -443,14 +453,11 @@
       href="#home"
       aria-label="Raya Gula"
     >
-
       <img
         src="logo.png"
         alt="Logo Raya Gula - Gula Aren Indonesia"
       >
-
     </a>
-
 
     <button
       class="menu-toggle"
@@ -461,46 +468,19 @@
       ☰
     </button>
 
-
-    <nav
-      class="nav nav-right"
-      aria-label="Navigasi utama"
-    >
-
-      <a href="#home">
-        <span class="lang-id">Beranda</span><span class="lang-en">Home</span>
-      </a>
-
-      <a href="#about">
-        <span class="lang-id">Tentang Kami</span><span class="lang-en">About Us</span>
-      </a>
-
-      <a href="#">
-        <span class="lang-id"></span><span class="lang-en"></span>
-      </a>
-
-      <a href="the-origin.html">
-        <span class="lang-id">Proses</span><span class="lang-en">Process</span>
-      </a>
-
-      <a href="#journal">
-        <span class="lang-id">Journal</span><span class="lang-en">Journal</span>
-      </a>
-
-      <a href="#contact">
-        <span class="lang-id">Kontak</span><span class="lang-en">Contact</span>
-      </a>
-
+    <nav class="nav nav-right" aria-label="Navigasi utama">
+      <a href="#home"><span class="lang-id">Beranda</span><span class="lang-en">Home</span></a>
+      <a href="#about"><span class="lang-id">Tentang Kami</span><span class="lang-en">About Us</span></a>
+      <a href="#products"><span class="lang-id">Produk</span><span class="lang-en">Products</span></a>
+      <a href="the-origin.html"><span class="lang-id">Proses</span><span class="lang-en">Process</span></a>
+      <a href="#journal"><span class="lang-id">Journal</span><span class="lang-en">Journal</span></a>
+      <a href="#contact"><span class="lang-id">Kontak</span><span class="lang-en">Contact</span></a>
     </nav>
 
-
-
-
-  
     <div class="language-switcher" aria-label="Language switcher">
-      <button class="lang-btn active" data-lang="id">ID</button>
-      <span>|</span>
-      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn active" data-lang="id" type="button">ID</button>
+      <span aria-hidden="true">|</span>
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
     </div>
 
   </header>
@@ -553,7 +533,7 @@
             class="btn gold"
             href="#"
           >
-            Lihat <span class="lang-id"></span><span class="lang-en"></span>
+            <span class="lang-id">Lihat Produk</span><span class="lang-en">View Products</span>
             <span>→</span>
           </a>
 
@@ -852,7 +832,7 @@
 
           <img 
           src="images/process/01-pemanenan-nira-aren.jpg"
-          alt="<span class="lang-id">Proses</span><span class="lang-en">Process</span> pemanenan nira aren Raya Gula"
+          alt="Proses pemanenan nira aren Raya Gula"lang-id">Proses</span><span class="lang-en">Process</span> pemanenan nira aren Raya Gula"
           loading="lazy">
 
         </div>
@@ -891,7 +871,7 @@
 
           <img 
           src="images/process/02-penyaringan-nira-aren.jpg"
-          alt="<span class="lang-id">Proses</span><span class="lang-en">Process</span> penyaringan nira aren Raya Gula"
+          alt="Proses penyaringan nira aren Raya Gula"lang-id">Proses</span><span class="lang-en">Process</span> penyaringan nira aren Raya Gula"
           loading="lazy">
 
         </div>
@@ -930,7 +910,7 @@
 
           <img 
           src="images/process/03-pemasakan-nira-aren.jpg"
-          alt="<span class="lang-id">Proses</span><span class="lang-en">Process</span> pemasakan nira aren Raya Gula"
+          alt="Proses pemasakan nira aren Raya Gula"lang-id">Proses</span><span class="lang-en">Process</span> pemasakan nira aren Raya Gula"
           loading="lazy">
 
         </div>
@@ -969,7 +949,7 @@
 
           <img 
           src="images/process/04-pengkristalan-gula-aren.jpg"
-          alt="<span class="lang-id">Proses</span><span class="lang-en">Process</span> pengkristalan gula aren Raya Gula"
+          alt="Proses pengkristalan gula aren Raya Gula"lang-id">Proses</span><span class="lang-en">Process</span> pengkristalan gula aren Raya Gula"
           loading="lazy">
 
         </div>
@@ -1008,7 +988,7 @@
 
           <img 
           src="images/process/05-pengemasan-raya-gula.jpg"
-          alt="<span class="lang-id">Proses</span><span class="lang-en">Process</span> pengemasan Raya Gula"
+          alt="Proses pengemasan Raya Gula"lang-id">Proses</span><span class="lang-en">Process</span> pengemasan Raya Gula"
           loading="lazy">
 
         </div>
@@ -1043,238 +1023,86 @@
      =================================================== -->
 
 <section
-  id=""
+  id="products"
   class="section product-section section-gold"
 >
 
   <div class="section-heading product-heading reveal">
-
     <div>
-
       <div class="eyebrow">
-        SIGNATURE 
+        <span class="lang-id">PRODUK UNGGULAN</span><span class="lang-en">SIGNATURE</span>
       </div>
 
       <h2>
         <span data-id="Pilihan gula aren" data-en="Premium palm sugar choices">Pilihan gula aren</span><br>
         <em data-id="berkualitas." data-en="of quality.">berkualitas.</em>
       </h2>
-
     </div>
-
 
     <p>
-      Dari nira aren pilihan Indonesia, Raya Gula menghadirkan
-      gula aren dalam berbagai bentuk untuk kebutuhan rumah tangga,
-      kuliner, bisnis, hingga pasar global.
+      <span class="lang-id">Dari nira aren pilihan Indonesia, Raya Gula menghadirkan gula aren dalam berbagai bentuk untuk kebutuhan rumah tangga, kuliner, bisnis, hingga pasar global.</span>
+      <span class="lang-en">From selected Indonesian palm nectar, Raya Gula offers palm sugar in different forms for households, culinary applications, businesses, and global markets.</span>
     </p>
-
   </div>
 
+  <div class="product-slider reveal" data-product-slider>
 
-  <!--  SLIDER -->
-
-  <div
-    class="-slider reveal"
-    data--slider
-  >
-
-
-    <!--  IMAGE -->
-
-    <div class="-slider-visual">
-
-      <div class="-image-stage">
-
+    <div class="product-slider-visual">
+      <div class="product-image-stage">
         <img
-          class="-slide-image is-active"
-          data--image
-          src="product-front.png"
+          class="product-slide-image is-active"
+          data-product-image
+          src="product-semut.png"
           alt="Gula Aren Semut Raya Gula 500 gram"
+          width="800"
+          height="1000"
         >
-
       </div>
-
     </div>
 
+    <div class="product-slider-content">
+      <span class="product-number" data-product-number>01 / 03</span>
 
-
-    <!--  INFORMATION -->
-
-    <div class="-slider-content">
-
-
-      <span
-        class="-number"
-        data--number
-      >
-        01 / 03
-      </span>
-
-
-      <h3
-        class="-slide-title"
-        data--title
-      >
-        Gula Aren<br>
-        Semut
+      <h3 class="product-slide-title" data-product-title>
+        Gula Aren<br>Semut
       </h3>
-
 
       <div class="gold-rule"></div>
 
+      <p class="product-slide-lead" data-product-lead>Manis alami dalam bentuk kristal.</p>
 
-      <p
-        class="-slide-lead"
-        data--lead
-      >
-        Manis alami dalam bentuk kristal.
+      <p class="product-slide-description" data-product-description>
+        Gula aren yang diolah menjadi butiran kristal dengan karakter rasa khas nira aren. Praktis digunakan untuk kopi, teh, baking, dessert, dan berbagai kebutuhan kuliner.
       </p>
 
-
-      <p
-        class="-slide-description"
-        data--description
-      >
-        Gula aren yang diolah menjadi butiran kristal
-        dengan karakter rasa khas nira aren. Praktis
-        digunakan untuk kopi, teh, baking, dessert,
-        dan berbagai kebutuhan kuliner.
-      </p>
-
-
-
-      <!--  SPECS -->
-
-      <div
-        class="specs"
-        data--specs
-      >
-
-        <div>
-
-          <b data-spec-value>
-            500 g
-          </b>
-
-          <small data-spec-label>
-            Netto
-          </small>
-
-        </div>
-
-
-        <div>
-
-          <b data-spec-value>
-            100%
-          </b>
-
-          <small data-spec-label>
-            Palm Sugar
-          </small>
-
-        </div>
-
-
-        <div>
-
-          <b data-spec-value>
-            ID
-          </b>
-
-          <small data-spec-label>
-             of Indonesia
-          </small>
-
-        </div>
-
+      <div class="specs" data-product-specs>
+        <div><b>500 g</b><small><span class="lang-id">Netto</span><span class="lang-en">Net weight</span></small></div>
+        <div><b>100%</b><small><span class="lang-id">Gula Aren</span><span class="lang-en">Palm Sugar</span></small></div>
+        <div><b>ID</b><small><span class="lang-id">Indonesia</span><span class="lang-en">Indonesia</span></small></div>
       </div>
 
-
-
-      <!-- WHOLESALE / EXPORT -->
-
-      <div class="-business-info">
-
-        <strong>
-          Wholesale &amp; Export Available
-        </strong>
-
-        <span>
-          Tersedia untuk kebutuhan grosir, reseller,
-          dan pengiriman ekspor.
-        </span>
-
+      <div class="product-business-info">
+        <strong><span class="lang-id">Wholesale &amp; Export Available</span><span class="lang-en">Wholesale &amp; Export Available</span></strong>
+        <span class="lang-id">Tersedia untuk kebutuhan grosir, reseller, dan pengiriman ekspor.</span>
+        <span class="lang-en">Available for wholesale, reseller, and export requirements.</span>
       </div>
 
-
-
-      <!--  ACTIONS -->
-
-      <div class="-actions">
-
-        <a
-          class="btn dark"
-          href="https://shopee.co.id/rayagula"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Beli Raya Gula di Shopee
-          <span>↗</span>
+      <div class="product-actions">
+        <a class="btn dark" href="https://shopee.co.id/rayagula" target="_blank" rel="noopener noreferrer">
+          <span class="lang-id">Beli Raya Gula di Shopee</span><span class="lang-en">Buy Raya Gula on Shopee</span> <span>↗</span>
         </a>
 
-
-        <a
-          class="text-link dark-link"
-          href="https://wa.me/6281211213090?text=Halo%20Raya%20Gula%2C%20saya%20tertarik%20dengan%20%20untuk%20kebutuhan%20wholesale%20%2F%20export."
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Wholesale &amp; Export
-          <span>→</span>
+        <a class="text-link dark-link" href="https://wa.me/6281211213090?text=Halo%20Raya%20Gula%2C%20saya%20tertarik%20dengan%20produk%20Raya%20Gula%20untuk%20kebutuhan%20wholesale%20%2F%20export." target="_blank" rel="noopener noreferrer">
+          <span class="lang-id">Wholesale &amp; Export</span><span class="lang-en">Wholesale &amp; Export</span> <span>→</span>
         </a>
-
       </div>
 
-
-
-      <!-- SLIDER NAVIGATION -->
-
-      <div class="-slider-navigation">
-
-        <button
-          type="button"
-          class="-slider-arrow"
-          data--prev
-          aria-label="<span class="lang-id"></span><span class="lang-en"></span> "
-        >
-          ←
-        </button>
-
-
-        <span
-          class="-slider-progress"
-          data--progress
-        >
-          01 / 03
-        </span>
-
-
-        <button
-          type="button"
-          class="-slider-arrow"
-          data--
-          aria-label="<span class="lang-id"></span><span class="lang-en"></span> "
-        >
-          →
-        </button>
-
+      <div class="product-slider-navigation" aria-label="Product slider controls">
+        <button type="button" class="product-slider-arrow" data-product-prev aria-label="Previous product">←</button>
+        <span class="product-slider-progress" data-product-progress>01 / 03</span>
+        <button type="button" class="product-slider-arrow" data-product-next aria-label="Next product">→</button>
       </div>
-
-
     </div>
-
   </div>
 
 </section>
@@ -1531,13 +1359,13 @@
 
 
         <h2>
-          Manis alami yang<br>
-          <em>berkelanjutan.</em>
+          <span data-id="Manis alami yang" data-en="Naturally sweet and">Manis alami yang</span><br>
+          <em data-id="berkelanjutan." data-en="sustainably crafted.">berkelanjutan.</em>
         </h2>
 
 
         <p>
-          Tertarik bekerja sama, menjadi reseller, atau melakukan pemesanan dalam jumlah besar?
+          <span data-id="Tertarik bekerja sama, menjadi reseller, atau melakukan pemesanan dalam jumlah besar?" data-en="Interested in partnering, becoming a reseller, or placing a bulk order?">Tertarik bekerja sama, menjadi reseller, atau melakukan pemesanan dalam jumlah besar?</span>
         </p>
 
 
@@ -1667,8 +1495,8 @@
         <span class="lang-id">Tentang Kami</span><span class="lang-en">About Us</span>
       </a>
 
-      <a href="#">
-        <span class="lang-id"></span><span class="lang-en"></span>
+      <a href="#products">
+        <span class="lang-id">Produk</span><span class="lang-en">Products</span>
       </a>
 
       <a href="the-origin.html">
@@ -1836,154 +1664,11 @@
 
 
 
+
   <!-- =====================================================
        JAVASCRIPT
        ===================================================== -->
-
   <script src="script.js"></script>
-<script src="script.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const slider = document.querySelector("[data--slider]");
-
-  if (!slider) return;
-
-  const  = [
-    {
-      image: "product-front.png",
-      alt: "Gula Aren Semut Raya Gula 500 gram",
-      title: "Gula Aren<br>Semut",
-      lead: "Manis alami dalam bentuk kristal.",
-      description: "Gula aren yang diolah menjadi butiran kristal dengan karakter rasa khas nira aren. Praktis digunakan untuk kopi, teh, baking, dessert, dan berbagai kebutuhan kuliner.",
-      specs: [
-        ["500 g", "Netto"],
-        ["100%", "Palm Sugar"],
-        ["ID", " of Indonesia"]
-      ]
-    },
-
-    {
-      image: "images//-cair.png",
-      alt: "Gula Aren Cair Raya Gula 1 Liter",
-      title: "Gula Aren<br>Cair",
-      lead: "Praktis dengan rasa manis khas nira aren.",
-      description: "Gula aren dalam bentuk cair yang praktis digunakan untuk minuman, kopi, dessert, saus, dan berbagai kebutuhan kuliner. Mudah dituang dan menyatu dengan berbagai sajian.",
-      specs: [
-        ["1 L", "Netto"],
-        ["100%", "Palm Sugar"],
-        ["ID", " of Indonesia"]
-      ]
-    },
-
-    {
-      image: "images//-cetak.png",
-      alt: "Gula Aren Cetak Raya Gula 1 Kg",
-      title: "Gula Aren<br>Cetak",
-      lead: "Tradisional dengan karakter rasa autentik.",
-      description: "Gula aren cetak dengan karakter rasa dan aroma khas nira aren Indonesia. Cocok untuk kebutuhan rumah tangga, kuliner tradisional, baking, hingga kebutuhan bisnis.",
-      specs: [
-        ["1 Kg", "Netto"],
-        ["100%", "Palm Sugar"],
-        ["ID", " of Indonesia"]
-      ]
-    }
-  ];
-
-  const image = slider.querySelector("[data--image]");
-  const number = slider.querySelector("[data--number]");
-  const title = slider.querySelector("[data--title]");
-  const lead = slider.querySelector("[data--lead]");
-  const description = slider.querySelector("[data--description]");
-  const specs = slider.querySelector("[data--specs]");
-  const progress = slider.querySelector("[data--progress]");
-  const prevButton = slider.querySelector("[data--prev]");
-  const Button = slider.querySelector("[data--]");
-
-  if (
-    !image ||
-    !number ||
-    !title ||
-    !lead ||
-    !description ||
-    !specs ||
-    !progress ||
-    !prevButton ||
-    !Button
-  ) {
-    return;
-  }
-
-  let currentIndex = 0;
-
-  function update(index) {
-
-    const  = [index];
-
-    image.classList.remove("is-active");
-
-    setTimeout(function () {
-
-      image.src = .image;
-      image.alt = .alt;
-
-      title.innerHTML = .title;
-      lead.textContent = .lead;
-      description.textContent = .description;
-
-      const displayNumber =
-        String(index + 1).padStart(2, "0");
-
-      number.textContent = displayNumber + " / 03";
-      progress.textContent = displayNumber + " / 03";
-
-      specs.innerHTML = .specs.map(function (spec) {
-        return `
-          <div>
-            <b>${spec[0]}</b>
-            <small>${spec[1]}</small>
-          </div>
-        `;
-      }).join("");
-
-      requestAnimationFrame(function () {
-        image.classList.add("is-active");
-      });
-
-    }, 180);
-  }
-
-  Button.addEventListener("click", function () {
-
-    currentIndex++;
-
-    if (currentIndex >= .length) {
-      currentIndex = 0;
-    }
-
-    update(currentIndex);
-  });
-
-  prevButton.addEventListener("click", function () {
-
-    currentIndex--;
-
-    if (currentIndex < 0) {
-      currentIndex = .length - 1;
-    }
-
-    update(currentIndex);
-  });
-
-  update(currentIndex);
-
-});
-</script>
 
 </body>
-</html>
-  
-</body>
-
 </html>

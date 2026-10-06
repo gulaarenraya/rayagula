@@ -672,298 +672,154 @@
 
 })();
 
-
 /* =====================================================
-   BILINGUAL LANGUAGE SWITCHER
+   PRODUCT SLIDER — RAYA GULA
    ===================================================== */
+(function () {
+  "use strict";
 
-(function(){
-  function initLanguageSwitcher(){
-    const buttons=document.querySelectorAll(".lang-btn");
-    if(!buttons.length) return;
+  const products = [
+    {
+      image: "product-semut.png",
+      alt: "Gula Aren Semut Raya Gula 500 gram",
+      titleId: "Gula Aren<br>Semut",
+      titleEn: "Granulated Palm<br>Sugar",
+      leadId: "Manis alami dalam bentuk kristal.",
+      leadEn: "Naturally sweet in fine crystals.",
+      descriptionId: "Gula aren yang diolah menjadi butiran kristal dengan karakter rasa khas nira aren. Praktis digunakan untuk kopi, teh, baking, dessert, dan berbagai kebutuhan kuliner.",
+      descriptionEn: "Palm sugar carefully processed into fine crystals with the distinctive character of Indonesian palm nectar. Ideal for coffee, tea, baking, desserts, and everyday culinary use.",
+      specs: [["500 g", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
+    },
+    {
+      image: "product-cair.png",
+      alt: "Gula Aren Cair Raya Gula 1 Liter",
+      titleId: "Gula Aren<br>Cair",
+      titleEn: "Liquid Palm<br>Sugar",
+      leadId: "Praktis dengan rasa manis khas nira aren.",
+      leadEn: "Convenient with the natural sweetness of palm nectar.",
+      descriptionId: "Gula aren dalam bentuk cair yang praktis digunakan untuk minuman, kopi, dessert, saus, dan berbagai kebutuhan kuliner. Mudah dituang dan menyatu dengan berbagai sajian.",
+      descriptionEn: "Liquid palm sugar made for easy use in drinks, coffee, desserts, sauces, and everyday culinary applications. Smooth to pour and easy to blend into recipes.",
+      specs: [["1 L", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
+    },
+    {
+      image: "product-cetak.png",
+      alt: "Gula Aren Cetak Raya Gula 1 Kg",
+      titleId: "Gula Aren<br>Cetak",
+      titleEn: "Traditional Palm<br>Sugar",
+      leadId: "Tradisional dengan karakter rasa autentik.",
+      leadEn: "Traditional with an authentic palm sugar character.",
+      descriptionId: "Gula aren cetak dengan karakter rasa dan aroma khas nira aren Indonesia. Cocok untuk kebutuhan rumah tangga, kuliner tradisional, baking, hingga kebutuhan bisnis.",
+      descriptionEn: "Traditional palm sugar with the distinctive flavor and aroma of Indonesian palm nectar. Suitable for home use, traditional cuisine, baking, and business applications.",
+      specs: [["1 Kg", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
+    }
+  ];
 
-    function setLanguage(lang){
-      document.body.classList.toggle("language-en", lang==="en");
+  function initProductSlider() {
+    const slider = document.querySelector("[data-product-slider]");
+    if (!slider) return;
 
-      buttons.forEach(btn=>{
-        btn.classList.toggle("active", btn.dataset.lang===lang);
-      });
+    const image = slider.querySelector("[data-product-image]");
+    const number = slider.querySelector("[data-product-number]");
+    const title = slider.querySelector("[data-product-title]");
+    const lead = slider.querySelector("[data-product-lead]");
+    const description = slider.querySelector("[data-product-description]");
+    const specs = slider.querySelector("[data-product-specs]");
+    const progress = slider.querySelector("[data-product-progress]");
+    const prev = slider.querySelector("[data-product-prev]");
+    const next = slider.querySelector("[data-product-next]");
 
-      localStorage.setItem("raya-language", lang);
+    if (!image || !number || !title || !lead || !description || !specs || !progress || !prev || !next) {
+      console.warn("Raya Gula: product slider elements are incomplete.");
+      return;
     }
 
-    buttons.forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        setLanguage(btn.dataset.lang);
-      });
+    let currentIndex = 0;
+    let language = document.documentElement.lang === "en" ? "en" : "id";
+
+    function render(index, animate = true) {
+      const product = products[index];
+      const isEnglish = language === "en";
+
+      if (animate) image.classList.remove("is-active");
+
+      const apply = () => {
+        image.src = product.image;
+        image.alt = product.alt;
+        title.innerHTML = isEnglish ? product.titleEn : product.titleId;
+        lead.textContent = isEnglish ? product.leadEn : product.leadId;
+        description.textContent = isEnglish ? product.descriptionEn : product.descriptionId;
+        number.textContent = `${String(index + 1).padStart(2, "0")} / ${String(products.length).padStart(2, "0")}`;
+        progress.textContent = number.textContent;
+
+        specs.innerHTML = product.specs.map(spec => `
+          <div>
+            <b>${spec[0]}</b>
+            <small>${isEnglish ? spec[2] : spec[1]}</small>
+          </div>
+        `).join("");
+
+        if (animate) requestAnimationFrame(() => image.classList.add("is-active"));
+        else image.classList.add("is-active");
+      };
+
+      if (animate) window.setTimeout(apply, 160);
+      else apply();
+    }
+
+    function goTo(index) {
+      currentIndex = (index + products.length) % products.length;
+      render(currentIndex);
+    }
+
+    prev.addEventListener("click", () => goTo(currentIndex - 1));
+    next.addEventListener("click", () => goTo(currentIndex + 1));
+
+    slider.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") goTo(currentIndex - 1);
+      if (event.key === "ArrowRight") goTo(currentIndex + 1);
     });
 
+    window.addEventListener("raya:language", event => {
+      language = event.detail === "en" ? "en" : "id";
+      render(currentIndex, false);
+    });
+
+    render(currentIndex, false);
+  }
+
+  /* =====================================================
+     BILINGUAL ENGINE — DATA ATTRIBUTES + LANG SPANS ONLY
+     Prevents "BerandaHome" and conflicting translation passes.
+     ===================================================== */
+  function initLanguage() {
+    const buttons = document.querySelectorAll(".lang-btn");
+    const langSpansId = document.querySelectorAll(".lang-id");
+    const langSpansEn = document.querySelectorAll(".lang-en");
+
+    function setLanguage(lang) {
+      const activeLang = lang === "en" ? "en" : "id";
+      document.documentElement.lang = activeLang;
+      document.body.dataset.lang = activeLang;
+      document.body.classList.toggle("language-en", activeLang === "en");
+
+      langSpansId.forEach(el => { el.hidden = activeLang === "en"; });
+      langSpansEn.forEach(el => { el.hidden = activeLang !== "en"; });
+
+      document.querySelectorAll("[data-id][data-en]").forEach(el => {
+        el.textContent = activeLang === "en" ? el.dataset.en : el.dataset.id;
+      });
+
+      buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === activeLang));
+      localStorage.setItem("raya-language", activeLang);
+      window.dispatchEvent(new CustomEvent("raya:language", { detail: activeLang }));
+    }
+
+    buttons.forEach(btn => btn.addEventListener("click", () => setLanguage(btn.dataset.lang)));
     setLanguage(localStorage.getItem("raya-language") || "id");
   }
 
-  if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded", initLanguageSwitcher);
-  }else{
-    initLanguageSwitcher();
-  }
-})();
-
-
-/* AUTO BILINGUAL TEXT SWITCH */
-(function(){
- const translations = {
-  "Manis Alami": "Naturally Sweet",
-  "dari Nusantara.": "from Indonesia.",
-  "Gula aren dari nira pilihan, diolah dengan penuh perhatian untuk menghadirkan rasa alami dan karakter Indonesia di setiap butirnya.":
-  "Palm sugar crafted from selected palm nectar, bringing authentic Indonesian taste in every grain.",
-  "Baca selengkapnya": "Read More"
- };
-
- function applyEnglish(){
-   document.querySelectorAll("body *:not(.product-navigation *):not(.product-nav *)").forEach(el=>{
-     if(el.children.length===0){
-       let text=el.textContent.trim();
-       if(translations[text]){
-          el.dataset.idText=text;
-          el.textContent=translations[text];
-       }
-     }
-   });
- }
-
- function applyIndonesia(){
-   document.querySelectorAll("[data-id-text]").forEach(el=>{
-     el.textContent=el.dataset.idText;
-   });
- }
-
- window.addEventListener("languageChanged", function(e){
-   if(e.detail==="en") applyEnglish();
-   else applyIndonesia();
- });
-})();
-
-document.addEventListener("click",function(e){
- if(e.target.classList.contains("lang-btn")){
-   window.dispatchEvent(new CustomEvent("languageChanged",{detail:e.target.dataset.lang}));
- }
-});
-
-
-/* =====================================================
-   RAYA GULA COMPLETE BILINGUAL ENGINE
-   ===================================================== */
-
-(function(){
-
-const dictionary = {
-"Beranda":"Home",
-"Tentang Kami":"About Us",
-"Produk":"Products",
-"Proses":"Process",
-"Journal":"Journal",
-"Kontak":"Contact",
-"Hubungi Kami":"Contact Us",
-"Lihat Produk":"Explore Products",
-"Tentang Raya Gula":"About Raya Gula",
-"Baca selengkapnya":"Read More",
-"Dari alam,":"From Nature,",
-"untuk kehidupan":"For A Better",
-"yang lebih baik.":"",
-"Manis Alami":"Naturally Sweet",
-"dari Nusantara.":"from Indonesia.",
-"Gula aren dari nira pilihan, diolah dengan penuh perhatian untuk menghadirkan rasa alami dan karakter Indonesia di setiap butirnya.":"Premium palm sugar crafted from selected palm nectar, bringing authentic Indonesian taste in every grain.",
-"OUR PROCESS":"OUR PROCESS",
-"Dari nira hingga":"From Palm Nectar",
-"menjadi rasa.":"to Flavor.",
-"Ketika alam dijaga,":"When nature is preserved,",
-"rasa terbaik akan":"the finest taste will",
-"menemukan jalannya.":"find its way.",
-"HALAL":"HALAL",
-"Bersertifikat Halal":"Halal Certified",
-"ORGANIC":"ORGANIC",
-"Bersertifikat Organik":"Organic Certified",
-"STANDAR NASIONAL":"NATIONAL STANDARD",
-"Bersertifikat SNI":"SNI Certified",
-"100% ALAMI":"100% NATURAL",
-"Tanpa bahan tambahan":"No Additives"
-};
-
-function translatePage(lang){
- document.querySelectorAll("body *:not(.product-navigation *):not(.product-nav *)").forEach(el=>{
-   if(el.children.length===0){
-    let original=el.dataset.originalText || el.textContent.trim();
-
-    if(!el.dataset.originalText){
-      el.dataset.originalText=original;
-    }
-
-    if(lang==="en" && dictionary[original]){
-      el.textContent=dictionary[original];
-    }
-
-    if(lang==="id" && el.dataset.originalText){
-      el.textContent=el.dataset.originalText;
-    }
-   }
- });
-
- document.body.classList.toggle("language-en", lang==="en");
-
- document.querySelectorAll(".lang-btn").forEach(btn=>{
-   btn.classList.toggle("active",btn.dataset.lang===lang);
- });
-
- localStorage.setItem("rayaLanguage",lang);
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
- document.querySelectorAll(".lang-btn").forEach(btn=>{
-   btn.addEventListener("click",()=>{
-     translatePage(btn.dataset.lang);
-   });
- });
-
- translatePage(localStorage.getItem("rayaLanguage") || "id");
-});
-
-})();
-
-
-/* EXTENDED RAYA GULA CONTENT TRANSLATION */
-(function(){
-const extra = {
-"Raya Gula lahir dari komitmen untuk menjaga karakter gula aren Indonesia sekaligus menghadirkannya dalam bentuk yang modern, praktis, dan berkelas.":
-"Raya Gula was created to preserve the authentic character of Indonesian palm sugar while presenting it in a modern, practical, and premium form.",
-
-"Kami percaya bahwa rasa yang baik berawal dari bahan yang baik, proses yang bertanggung jawab, serta penghargaan terhadap petani dan alam tempat nira berasal.":
-"We believe great taste begins with quality ingredients, responsible processes, and appreciation for farmers and the nature where the nectar originates.",
-
-"Pemanenan Nira":
-"Palm Nectar Harvesting",
-
-"Penyaringan":
-"Filtering",
-
-"Pemasakan":
-"Cooking",
-
-"Pengkristalan":
-"Crystallization",
-
-"Pengemasan":
-"Packaging",
-
-"Nira aren dikumpulkan dari bunga aren pilihan melalui proses penyadapan yang terjaga.":
-"Palm nectar is collected from selected palm flowers through a carefully maintained harvesting process.",
-
-"Nira segar disaring untuk menjaga kebersihan dan kualitas bahan baku.":
-"Fresh nectar is filtered to maintain cleanliness and ingredient quality.",
-
-"Nira diolah perlahan hingga membentuk warna, aroma, dan karakter khas gula aren.":
-"The nectar is slowly processed to develop the unique color, aroma, and character of palm sugar.",
-
-"Produk dikemas dengan standar kualitas untuk menjaga rasa dan kebersihan.":
-"Products are packaged with quality standards to preserve taste and hygiene."
-};
-
-window.rayaExtraTranslation = extra;
-})();
-
-
-/* PRODUCT + CONTACT BILINGUAL CONTENT */
-(function(){
-const productTranslations = {
-"Produk Raya Gula":
-"Raya Gula Products",
-
-"Gula Aren Premium":
-"Premium Palm Sugar",
-
-"Gula aren murni dari nira pilihan Indonesia dengan rasa autentik dan aroma khas Nusantara.":
-"Pure palm sugar made from selected Indonesian palm nectar with authentic flavor and distinctive aroma.",
-
-"Hubungi Kami":
-"Contact Us",
-
-"Temukan informasi lebih lanjut mengenai produk Raya Gula.":
-"Discover more information about Raya Gula products.",
-
-"Manis alami yang berkelanjutan":
-"Naturally Sweet, Sustainably Crafted"
-};
-
-window.rayaProductTranslations = productTranslations;
-})();
-
-
-/* COMPLETE LANGUAGE PATCH */
-(function(){
- const rgTranslations={
-  "Beranda":"Home",
-  "Tentang Kami":"About Us",
-  "Produk":"Products",
-  "Proses":"Process",
-  "Journal":"Journal",
-  "Kontak":"Contact",
-  "Hubungi Kami":"Contact Us",
-  "Lihat Produk":"View Products",
-  "Baca selengkapnya":"Read More",
-  "Manis Alami":"Naturally Sweet",
-  "dari Nusantara.":"from Indonesia.",
-  "Gula Aren":"Palm Sugar",
-  "Produk sebelumnya":"",
-  "Produk berikutnya":"",
-  "Sebelumnya":"",
-  "Berikutnya":""
- };
-
- function changeLanguage(lang){
-   document.documentElement.lang=lang;
-   document.body.dataset.lang=lang;
-
-   document.querySelectorAll("body *:not(.product-navigation *):not(.product-nav *)").forEach(el=>{
-     if(el.children.length===0){
-       if(!el.dataset.idOriginal){
-          el.dataset.idOriginal=el.textContent.trim();
-       }
-       let original=el.dataset.idOriginal;
-       if(lang==="en" && rgTranslations[original]!==undefined){
-          el.textContent=rgTranslations[original];
-       }else if(lang==="id"){
-          el.textContent=original;
-       }
-     }
-   });
-
-   document.querySelectorAll(".lang-btn").forEach(btn=>{
-      btn.classList.toggle("active", btn.dataset.lang===lang);
-   });
-
-   localStorage.setItem("rayaLanguage",lang);
- }
-
- document.addEventListener("DOMContentLoaded",()=>{
-   document.querySelectorAll(".lang-btn").forEach(btn=>{
-     btn.addEventListener("click",()=>changeLanguage(btn.dataset.lang));
-   });
-   changeLanguage(localStorage.getItem("rayaLanguage")||"id");
- });
-})();
-
-
-// FINAL BILINGUAL COPY SWITCH
-(function(){
- function setLang(lang){
-  document.querySelectorAll('[data-id][data-en]').forEach(function(el){
-   el.textContent = lang==='en' ? el.dataset.en : el.dataset.id;
+  document.addEventListener("DOMContentLoaded", () => {
+    initProductSlider();
+    initLanguage();
   });
-  document.querySelectorAll('.lang-id').forEach(e=>e.style.display=lang==='en'?'none':'');
-  document.querySelectorAll('.lang-en').forEach(e=>e.style.display=lang==='en'?'':'none');
-  localStorage.setItem('raya-language',lang);
- }
- document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.lang-btn').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
-  setLang(localStorage.getItem('raya-language')||'id');
- });
 })();

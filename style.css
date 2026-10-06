@@ -4796,8 +4796,8 @@ body.language-en .lang-en { display: inline !important; }
   width: 100%;
   height: auto;
   min-height: 0 !important;
-  aspect-ratio: 1000 / 720;
-  object-fit: cover;
+  aspect-ratio: 1792 / 877;
+  object-fit: contain;
   object-position: center;
   background: none;
   box-shadow: none;
@@ -4991,5 +4991,59 @@ body.language-en .lang-en { display: inline !important; }
     min-height: 0;
     aspect-ratio: auto;
     object-fit: cover;
+  }
+}
+
+
+/* =========================================================
+   RAYA GULA — FINAL V5 REFINEMENTS
+   ========================================================= */
+
+/* SIGNATURE: title first, copy directly underneath in one column.
+   Do not split the intro copy into a second column. */
+@media (min-width: 761px) {
+  #products .product-heading {
+    display: block !important;
+    width: min(100%, 1120px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #products .product-heading > div {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  #products .product-heading > p {
+    width: 100% !important;
+    max-width: 760px !important;
+    margin: 22px 0 0 !important;
+  }
+}
+
+/* ABOUT: preserve the complete supplied image. The source is 1792×877,
+   so use its native ratio instead of the old portrait-ish crop ratio. */
+@media (min-width: 901px) {
+  #about .about-visual {
+    align-self: start !important;
+    height: auto !important;
+  }
+
+  #about .about-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 1792 / 877 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #about .about-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1792 / 877 !important;
+    object-fit: contain !important;
   }
 }

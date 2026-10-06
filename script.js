@@ -671,3 +671,39 @@
   }
 
 })();
+
+
+/* =====================================================
+   BILINGUAL LANGUAGE SWITCHER
+   ===================================================== */
+
+(function(){
+  function initLanguageSwitcher(){
+    const buttons=document.querySelectorAll(".lang-btn");
+    if(!buttons.length) return;
+
+    function setLanguage(lang){
+      document.body.classList.toggle("language-en", lang==="en");
+
+      buttons.forEach(btn=>{
+        btn.classList.toggle("active", btn.dataset.lang===lang);
+      });
+
+      localStorage.setItem("raya-language", lang);
+    }
+
+    buttons.forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    setLanguage(localStorage.getItem("raya-language") || "id");
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded", initLanguageSwitcher);
+  }else{
+    initLanguageSwitcher();
+  }
+})();

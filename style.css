@@ -1231,14 +1231,14 @@ h4 em {
   min-height: 680px;
 
   background:
-    linear-gradient(
-      180deg,
-      rgba(37, 26, 18, .08),
-      rgba(37, 26, 18, .30)
-    ),
-    url("why-raya-gula.jpg")
-    center / cover
-    no-repeat;
+  linear-gradient(
+    180deg,
+    rgba(37, 26, 18, .08),
+    rgba(37, 26, 18, .30)
+  ),
+  url("why-raya-gula.jpg")
+  70% center / cover
+  no-repeat;
 }
 
 .why-copy {

@@ -748,3 +748,83 @@ document.addEventListener("click",function(e){
    window.dispatchEvent(new CustomEvent("languageChanged",{detail:e.target.dataset.lang}));
  }
 });
+
+
+/* =====================================================
+   RAYA GULA COMPLETE BILINGUAL ENGINE
+   ===================================================== */
+
+(function(){
+
+const dictionary = {
+"Beranda":"Home",
+"Tentang Kami":"About Us",
+"Produk":"Products",
+"Proses":"Process",
+"Journal":"Journal",
+"Kontak":"Contact",
+"Hubungi Kami":"Contact Us",
+"Lihat Produk":"Explore Products",
+"Tentang Raya Gula":"About Raya Gula",
+"Baca selengkapnya":"Read More",
+"Dari alam,":"From Nature,",
+"untuk kehidupan":"For A Better",
+"yang lebih baik.":"",
+"Manis Alami":"Naturally Sweet",
+"dari Nusantara.":"from Indonesia.",
+"Gula aren dari nira pilihan, diolah dengan penuh perhatian untuk menghadirkan rasa alami dan karakter Indonesia di setiap butirnya.":"Premium palm sugar crafted from selected palm nectar, bringing authentic Indonesian taste in every grain.",
+"OUR PROCESS":"OUR PROCESS",
+"Dari nira hingga":"From Palm Nectar",
+"menjadi rasa.":"to Flavor.",
+"Ketika alam dijaga,":"When nature is preserved,",
+"rasa terbaik akan":"the finest taste will",
+"menemukan jalannya.":"find its way.",
+"HALAL":"HALAL",
+"Bersertifikat Halal":"Halal Certified",
+"ORGANIC":"ORGANIC",
+"Bersertifikat Organik":"Organic Certified",
+"STANDAR NASIONAL":"NATIONAL STANDARD",
+"Bersertifikat SNI":"SNI Certified",
+"100% ALAMI":"100% NATURAL",
+"Tanpa bahan tambahan":"No Additives"
+};
+
+function translatePage(lang){
+ document.querySelectorAll("body *").forEach(el=>{
+   if(el.children.length===0){
+    let original=el.dataset.originalText || el.textContent.trim();
+
+    if(!el.dataset.originalText){
+      el.dataset.originalText=original;
+    }
+
+    if(lang==="en" && dictionary[original]){
+      el.textContent=dictionary[original];
+    }
+
+    if(lang==="id" && el.dataset.originalText){
+      el.textContent=el.dataset.originalText;
+    }
+   }
+ });
+
+ document.body.classList.toggle("language-en", lang==="en");
+
+ document.querySelectorAll(".lang-btn").forEach(btn=>{
+   btn.classList.toggle("active",btn.dataset.lang===lang);
+ });
+
+ localStorage.setItem("rayaLanguage",lang);
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+ document.querySelectorAll(".lang-btn").forEach(btn=>{
+   btn.addEventListener("click",()=>{
+     translatePage(btn.dataset.lang);
+   });
+ });
+
+ translatePage(localStorage.getItem("rayaLanguage") || "id");
+});
+
+})();

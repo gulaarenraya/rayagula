@@ -950,3 +950,20 @@ window.rayaProductTranslations = productTranslations;
    changeLanguage(localStorage.getItem("rayaLanguage")||"id");
  });
 })();
+
+
+// FINAL BILINGUAL COPY SWITCH
+(function(){
+ function setLang(lang){
+  document.querySelectorAll('[data-id][data-en]').forEach(function(el){
+   el.textContent = lang==='en' ? el.dataset.en : el.dataset.id;
+  });
+  document.querySelectorAll('.lang-id').forEach(e=>e.style.display=lang==='en'?'none':'');
+  document.querySelectorAll('.lang-en').forEach(e=>e.style.display=lang==='en'?'':'none');
+  localStorage.setItem('raya-language',lang);
+ }
+ document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.lang-btn').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+  setLang(localStorage.getItem('raya-language')||'id');
+ });
+})();

@@ -4484,15 +4484,13 @@ body.language-en .lang-en{
     padding-top:18px;
 }
 
-/* Product slider final adjustment */
-.-slider-navigation{
-  margin-top:40px;
-  gap:24px;
-}
-.-slider-arrow{
-  width:48px;
-  height:48px;
-}
-.-slider-navigation .-slider-progress{
-  margin:0 18px;
-}
+/* FINAL RAYA GULA ADJUSTMENTS */
+.product-slider{grid-template-columns:45% 55%;}
+.product-slider-visual{order:1;}
+.product-slider-content{order:2;}
+.product-slide-image{display:block!important;visibility:visible!important;opacity:1!important;}
+.product-slider-navigation{margin-top:40px!important;display:flex;gap:28px;align-items:center;}
+.product-slider-arrow{margin-top:20px;}
+.hero-photo img{object-position:55% center!important;}
+.about-image{min-height:620px!important;background-size:cover!important;}
+.about-copy h2{max-width:420px;}

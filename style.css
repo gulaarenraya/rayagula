@@ -1461,7 +1461,6 @@ h4 em {
 
 .cta-photo {
   position: absolute;
-
   inset: 0;
 
   background:
@@ -1470,7 +1469,7 @@ h4 em {
       rgba(37, 26, 18, .82),
       rgba(37, 26, 18, .48)
     ),
-    url("BANNER-MARKETPLAC-SHOPEE.jpg")
+    url("manis-alami-berkelanjutan.jpg")
     center / cover
     no-repeat;
 }

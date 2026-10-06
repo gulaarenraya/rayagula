@@ -4243,3 +4243,37 @@ body.language-en .lang-en{
     margin-top: 0;
   }
 }
+
+/* FINAL CLEAN FIX */
+.language-switcher{
+  position:absolute;
+  top:2px;
+  right:35px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  z-index:10010;
+}
+
+.product-navigation a span,
+.product-nav span{
+  display:none;
+}
+
+.product-navigation a,
+.product-nav a{
+  font-size:0;
+}
+
+.product-navigation a::after,
+.product-nav a::after{
+  font-size:32px;
+  line-height:1;
+}
+
+@media(max-width:900px){
+ .language-switcher{
+   top:4px;
+   right:60px;
+ }
+}

@@ -4337,3 +4337,42 @@ body.language-en .lang-en{
   display:none !important;
 }
 
+
+
+/* =====================================================
+   FINAL PRODUCT ARROW ONLY FIX
+   ===================================================== */
+
+/* hide all text labels around product navigation */
+.product-nav,
+.product-navigation,
+.product-slider-nav,
+.product-controls,
+.slider-controls {
+  font-size: 0 !important;
+}
+
+.product-nav *,
+.product-navigation *,
+.product-slider-nav *,
+.product-controls *,
+.slider-controls * {
+  font-size: 0 !important;
+}
+
+/* show only arrow icons */
+.product-nav a::before,
+.product-navigation a::before,
+.product-slider-nav a::before,
+.product-controls a::before,
+.slider-controls a::before {
+  font-size: 34px !important;
+  display: inline-block;
+}
+
+/* remove accidental translated spans */
+.product-nav span,
+.product-navigation span,
+.product-slider-nav span {
+  display:none !important;
+}

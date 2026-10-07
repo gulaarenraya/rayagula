@@ -5317,3 +5317,144 @@ body.language-en .lang-en { display: inline !important; }
     max-width: 100%;
   }
 }
+
+/* =========================================================
+   ABOUT — FINAL IMAGE COMPOSITION
+   Image should start close to the copy, fill the full row height,
+   and let THE ORIGIN label overlap the image itself.
+   ========================================================= */
+@media (min-width: 1025px) {
+  #about {
+    padding-top: 110px;
+    padding-bottom: 58px;
+  }
+
+  .about {
+    width: min(100%, 1360px);
+    grid-template-columns: minmax(0, .50fr) minmax(0, 1.50fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .about-copy {
+    max-width: 540px;
+    align-self: center;
+  }
+
+  .about-visual {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    justify-self: stretch;
+    align-self: stretch;
+    position: relative;
+    overflow: visible;
+  }
+
+  .about-image {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    margin: 0;
+  }
+
+  .about-caption {
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-visual {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+/* =========================================================
+   RAYA GULA — ABOUT ROOT LAYOUT FIX
+   ========================================================= */
+@media (min-width: 1025px) {
+  #about.about {
+    width: min(100%, 1440px);
+    grid-template-columns: minmax(0, .43fr) minmax(0, 1.57fr);
+    column-gap: 18px;
+    align-items: stretch;
+  }
+
+  #about .about-copy {
+    max-width: 560px;
+    align-self: center;
+  }
+
+  #about .about-visual {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    align-self: stretch;
+    justify-self: stretch;
+    height: 100%;
+    min-height: 0;
+    position: relative;
+    overflow: visible;
+  }
+
+  #about .about-image {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    min-height: 100% !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+    margin: 0 !important;
+  }
+
+  #about .about-caption {
+    top: 24px;
+    right: 24px;
+    bottom: auto;
+    z-index: 10;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  #about .about-visual {
+    width: 100%;
+    max-width: none;
+  }
+
+  #about .about-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1792 / 877 !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+  }
+
+  #about .about-caption {
+    top: 18px;
+    right: 18px;
+    bottom: auto;
+    z-index: 10;
+  }
+}

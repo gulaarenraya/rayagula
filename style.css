@@ -1430,6 +1430,14 @@ h4 em {
   font-weight: 800;
 }
 
+.journal-excerpt {
+  margin: 0 0 17px;
+
+  color: var(--brown);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
 .journal-card > a:hover {
   color:
     var(--gold);
@@ -2279,7 +2287,7 @@ h4 em {
 
   .journal-card .journal-img {
     grid-row:
-      1 / 4;
+      1 / 5;
   }
 
   .journal-card > small {

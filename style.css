@@ -5389,72 +5389,68 @@ body.language-en .lang-en { display: inline !important; }
 }
 
 /* =========================================================
-   RAYA GULA — ABOUT ROOT LAYOUT FIX
+   MASTER — ABOUT 50/50 BALANCE
+   Copy and image share equal desktop width. THE ORIGIN stays
+   as an overlay on top of the image.
    ========================================================= */
-@media (min-width: 1025px) {
-  #about.about {
-    width: min(100%, 1440px);
-    grid-template-columns: minmax(0, .43fr) minmax(0, 1.57fr);
-    column-gap: 18px;
-    align-items: stretch;
+@media (min-width: 901px) {
+  #about .about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: stretch !important;
   }
 
   #about .about-copy {
-    max-width: 560px;
-    align-self: center;
+    width: 100% !important;
+    max-width: none !important;
+    align-self: stretch !important;
   }
 
   #about .about-visual {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-    align-self: stretch;
-    justify-self: stretch;
-    height: 100%;
-    min-height: 0;
-    position: relative;
-    overflow: visible;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    align-self: stretch !important;
+    justify-self: stretch !important;
+    position: relative !important;
+    overflow: hidden !important;
   }
 
   #about .about-image {
-    display: block;
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
     min-height: 100% !important;
     aspect-ratio: auto !important;
     object-fit: cover !important;
-    object-position: left center !important;
-    margin: 0 !important;
+    object-position: center center !important;
   }
 
   #about .about-caption {
-    top: 24px;
-    right: 24px;
-    bottom: auto;
-    z-index: 10;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    z-index: 2 !important;
   }
 }
 
-@media (min-width: 761px) and (max-width: 1024px) {
+@media (max-width: 900px) {
+  #about .about {
+    grid-template-columns: 1fr !important;
+  }
+
   #about .about-visual {
-    width: 100%;
-    max-width: none;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   #about .about-image {
     width: 100% !important;
     height: auto !important;
+    min-height: 0 !important;
     aspect-ratio: 1792 / 877 !important;
-    object-fit: cover !important;
-    object-position: left center !important;
-  }
-
-  #about .about-caption {
-    top: 18px;
-    right: 18px;
-    bottom: auto;
-    z-index: 10;
+    object-fit: contain !important;
   }
 }

@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://rayagula.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://rayagula.com/the-origin.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rayagula.com/articles/gula-aren-untuk-kopi.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rayagula.com/articles/proses-pembuatan-gula-aren.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rayagula.com/articles/ide-sajian.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
+  <url><loc>https://rayagula.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://rayagula.com/articles/pemanenan-nira.html</loc><priority>0.7</priority></url>
+  <url><loc>https://rayagula.com/articles/penyaringan-nira.html</loc><priority>0.7</priority></url>
+  <url><loc>https://rayagula.com/articles/pemasakan-nira.html</loc><priority>0.7</priority></url>
+  <url><loc>https://rayagula.com/articles/pengkristalan-gula-aren.html</loc><priority>0.7</priority></url>
+  <url><loc>https://rayagula.com/articles/pengemasan-raya-gula.html</loc><priority>0.7</priority></url>
 </urlset>

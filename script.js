@@ -1,825 +1,5456 @@
 /* =========================================================
    RAYA GULA
-   MAIN JAVASCRIPT — STABLE / FAIL-SAFE VERSION
+   STYLE.CSS Ã¢â‚¬â€ RESET TOTAL / FAIL-SAFE
    ========================================================= */
 
-(function () {
-  "use strict";
 
-  /* =========================================================
-     START WHEN DOM IS READY
-     ========================================================= */
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 
-  function initRayaGula() {
-    try {
-      initMobileNavigation();
-    } catch (error) {
-      console.error("Raya Gula: mobile navigation error", error);
-    }
+:root {
+  --brown: #4a3024;
+  --brown-dark: #251a12;
+  --brown-light: #6a4a39;
 
-    try {
-      initScrollReveal();
-    } catch (error) {
-      console.error("Raya Gula: scroll reveal error", error);
-      showAllRevealElements();
-    }
+  --gold: #c9a04a;
+  --gold-light: #d8b86a;
 
-    try {
-      initFloatingSocial();
-    } catch (error) {
-      console.error("Raya Gula: floating menu error", error);
-    }
+  --cream: #f7f1e7;
+  --cream-light: #fbf8f2;
+  --cream-dark: #ede2d1;
 
-    try {
-      initExternalLinkSecurity();
-    } catch (error) {
-      console.error("Raya Gula: external link security error", error);
-    }
+  --white: #ffffff;
 
-    try {
-      initSmoothScroll();
-    } catch (error) {
-      console.error("Raya Gula: smooth scroll error", error);
-    }
+  --text: #4a382d;
+  --muted: #7d6b5e;
 
-    try {
-      initSugarScroll();
-    } catch (error) {
-      console.error("Raya Gula: sugar scroll error", error);
-    }
+  --border: #e4d5c0;
 
-    console.log("Raya Gula website initialized — stable version.");
-  }
+  --shadow:
+    0 18px 50px rgba(43, 26, 18, .12);
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initRayaGula, {
-      once: true
-    });
-  } else {
-    initRayaGula();
-  }
+  --max: 1240px;
+}
 
 
-  /* =========================================================
-     MOBILE NAVIGATION
-     ========================================================= */
+/* =========================================================
+   RESET
+   ========================================================= */
 
-  function initMobileNavigation() {
-    const menu = document.querySelector(".menu-toggle");
-    const nav = document.querySelector(".nav");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    if (!menu || !nav) {
-      return;
-    }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 82px;
+}
 
-    function closeMenu() {
-      nav.classList.remove("open");
-      nav.classList.remove("active");
+body {
+  margin: 0;
+  padding: 0;
 
-      menu.setAttribute("aria-expanded", "false");
-      menu.innerHTML = "☰";
-    }
+  font-family: "Montserrat", Arial, sans-serif;
 
-    menu.addEventListener("click", function (event) {
-      event.stopPropagation();
+  background: var(--cream-light);
+  color: var(--text);
 
-      const isOpen =
-        nav.classList.contains("open") ||
-        nav.classList.contains("active");
+  line-height: 1.65;
 
-      if (isOpen) {
-        closeMenu();
-      } else {
-        nav.classList.add("open");
-        nav.classList.add("active");
+  overflow-x: hidden;
+}
 
-        menu.setAttribute("aria-expanded", "true");
-        menu.innerHTML = "✕";
-      }
-    });
+body,
+button,
+input,
+textarea,
+select {
+  font-family: "Montserrat", Arial, sans-serif;
+}
 
-    document.addEventListener("click", function (event) {
-      if (
-        !nav.contains(event.target) &&
-        !menu.contains(event.target)
-      ) {
-        closeMenu();
-      }
-    });
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    nav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        closeMenu();
-      });
-    });
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-    window.addEventListener(
-      "resize",
-      function () {
-        if (window.innerWidth > 900) {
-          closeMenu();
-        }
-      },
-      { passive: true }
+button {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+h1 em,
+h2 em,
+h3 em,
+h4 em {
+  font-style: italic;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+
+  min-height: 82px;
+
+  padding: 0 42px;
+
+  z-index: 9990;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(251, 248, 242, .96);
+
+  border-bottom:
+    1px solid rgba(228, 213, 192, .72);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  flex: 0 0 auto;
+}
+
+.brand img {
+  width: 116px;
+  height: auto;
+
+  display: block;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+
+  margin-left: auto;
+  margin-right: 28px;
+}
+
+.nav a {
+  position: relative;
+
+  color: var(--brown);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: .02em;
+
+  transition:
+    color .25s ease;
+}
+
+.nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--gold);
+
+  transition:
+    width .25s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--gold);
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   HEADER CTA
+   ========================================================= */
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  min-height: 42px;
+
+  padding: 11px 18px;
+
+  background: var(--brown-dark);
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .04em;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+.header-cta:hover {
+  background: var(--brown);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--brown-dark);
+
+  font-size: 27px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   COMMON SECTION
+   ========================================================= */
+
+.section {
+  width: 100%;
+
+  padding:
+    110px
+    max(24px, 4vw);
+}
+
+.section > *,
+.about-copy,
+.about-visual,
+.section-heading,
+.product-showcase,
+.journal-grid,
+.contact-main,
+.contact-info {
+  max-width: var(--max);
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-cream {
+  background: var(--cream-light);
+}
+
+.section-dark {
+  background: var(--brown-dark);
+
+  color: #fff;
+}
+
+.section-gold {
+  background: #e9d2a4;
+
+  color: var(--brown-dark);
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .22em;
+
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+.section-dark .eyebrow,
+.manifesto .eyebrow,
+.cta-banner .eyebrow {
+  color: var(--gold-light);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 50px;
+}
+
+.section-heading h2 {
+  color: inherit;
+
+  font-size:
+    clamp(42px, 5vw, 72px);
+
+  line-height: 1.03;
+}
+
+.section-heading > p {
+  max-width: 410px;
+
+  margin-bottom: 5px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+.section-dark .section-heading > p {
+  color: rgba(255, 255, 255, .68);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.text-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.text-link span {
+  transition:
+    transform .25s ease;
+}
+
+.text-link:hover span {
+  transform:
+    translateX(5px);
+}
+
+.text-link.light {
+  color: #fff;
+}
+
+.text-link.dark-link {
+  color: var(--brown-dark);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  min-height: 48px;
+
+  padding:
+    13px 20px;
+
+  border:
+    1px solid transparent;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: .05em;
+
+  cursor: pointer;
+
+  transition:
+    all .25s ease;
+}
+
+.btn span {
+  transition:
+    transform .25s ease;
+}
+
+.btn:hover span {
+  transform:
+    translateX(5px);
+}
+
+.btn.gold {
+  background: var(--gold);
+
+  color: var(--brown-dark);
+}
+
+.btn.gold:hover {
+  background: var(--gold-light);
+
+  transform:
+    translateY(-2px);
+}
+
+.btn.dark {
+  background: var(--brown-dark);
+
+  color: #fff;
+}
+
+.btn.dark:hover {
+  background: var(--brown);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: var(--brown-dark);
+}
+
+.hero-photo {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.hero-photo::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(37, 26, 18, .82) 0%,
+      rgba(37, 26, 18, .54) 43%,
+      rgba(37, 26, 18, .08) 100%
     );
-  }
+}
 
+.hero-photo img {
+  width: 100%;
+  height: 100%;
 
-  /* =========================================================
-     SCROLL REVEAL — FAIL SAFE
+  object-fit: cover;
 
-     Penting:
-     - Elemen tidak boleh hilang permanen.
-     - Jika IntersectionObserver gagal, semua .reveal
-       langsung dibuat visible.
-     - Elemen yang terlalu lama tidak ter-trigger juga
-       akan dibuat visible oleh fallback timer.
-     ========================================================= */
+  display: block;
+}
 
-  function showAllRevealElements() {
-    document.querySelectorAll(".reveal").forEach(function (element) {
-      element.classList.add("visible");
-    });
-  }
+.hero-content {
+  position: relative;
 
-  function initScrollReveal() {
-    const revealElements =
-      document.querySelectorAll(".reveal");
+  z-index: 2;
 
-    if (!revealElements.length) {
-      return;
-    }
-
-    /* Fallback safety:
-       Jika observer tidak bekerja karena browser/cache/error,
-       jangan biarkan konten tetap opacity:0. */
-    const fallbackTimer = setTimeout(function () {
-      revealElements.forEach(function (element) {
-        element.classList.add("visible");
-      });
-    }, 3500);
-
-    if (
-      typeof window.IntersectionObserver !== "function"
-    ) {
-      clearTimeout(fallbackTimer);
-      showAllRevealElements();
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -20px 0px"
-      }
+  width:
+    min(
+      var(--max),
+      calc(100% - 48px)
     );
 
-    revealElements.forEach(function (element) {
-      observer.observe(element);
-    });
+  min-height: 100vh;
 
-    /* Elemen yang sudah terlihat saat halaman dibuka
-       langsung ditampilkan agar hero/about tidak terlambat. */
-    requestAnimationFrame(function () {
-      revealElements.forEach(function (element) {
-        const rect = element.getBoundingClientRect();
+  margin: auto;
 
-        if (
-          rect.top < window.innerHeight &&
-          rect.bottom > 0
-        ) {
-          element.classList.add("visible");
-        }
-      });
-    });
+  padding:
+    170px 0 100px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  color: #fff;
+}
+
+.hero h1 {
+  max-width: 760px;
+
+  color: #fff;
+
+  font-size:
+    clamp(56px, 8vw, 105px);
+
+  line-height: .95;
+
+  letter-spacing: -.035em;
+}
+
+.hero-content > p {
+  max-width: 570px;
+
+  margin:
+    30px 0 34px;
+
+  color:
+    rgba(255, 255, 255, .82);
+
+  font-size: 15px;
+
+  line-height: 1.9;
+}
+
+.hero-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+}
+
+
+/* =========================================================
+   CERTIFICATION
+   ========================================================= */
+
+.cert-bar {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 0;
+
+  padding:
+    20px
+    max(24px, 4vw);
+
+  background: var(--cream-light);
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.cert-dark {
+  background: var(--cream-light);
+
+  color: var(--brown-dark);
+}
+
+.cert-item {
+  min-height: 84px;
+
+  padding:
+    12px 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  border-right:
+    1px solid var(--border);
+}
+
+.cert-item:last-child {
+  border-right: 0;
+}
+
+.cert-icon {
+  width: 48px;
+  height: 48px;
+
+  flex:
+    0 0 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-icon img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.cert-item strong {
+  display: block;
+
+  color: var(--brown-dark);
+
+  font-size: 11px;
+
+  letter-spacing: .1em;
+}
+
+.cert-item span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, .9fr)
+    minmax(0, 1.1fr);
+
+  gap: 90px;
+
+  align-items: center;
+}
+
+.about-copy {
+  width: auto;
+
+  max-width: 560px;
+
+  margin: 0;
+}
+
+.about-copy h2 {
+  color: var(--brown-dark);
+
+  font-size:
+    clamp(45px, 5.2vw, 76px);
+
+  line-height: 1.02;
+}
+
+.about-copy p {
+  max-width: 550px;
+
+  margin-top: 25px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.95;
+}
+
+.about-copy .text-link {
+  margin-top: 30px;
+}
+
+.about-visual {
+  width: auto;
+
+  margin: 0;
+
+  position: relative;
+}
+
+.about-image {
+  min-height: 590px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(37, 26, 18, .02),
+      rgba(37, 26, 18, .08)
+    ),
+    url("BANNER-MARKETPLAC-SHOPEE.jpg")
+    center / cover
+    no-repeat;
+
+  box-shadow:
+    var(--shadow);
+}
+
+.about-caption {
+  position: absolute;
+
+  right: -1px;
+  bottom: -1px;
+
+  width:
+    min(280px, 70%);
+
+  padding:
+    22px 24px;
+
+  display: grid;
+
+  grid-template-columns:
+    auto 1fr;
+
+  column-gap: 14px;
+
+  row-gap: 3px;
+
+  background:
+    rgba(251, 248, 242, .96);
+
+  color: var(--brown-dark);
+}
+
+.about-caption span {
+  grid-row:
+    1 / 3;
+
+  font-family: Georgia, serif;
+
+  color: var(--gold);
+
+  font-size: 28px;
+}
+
+.about-caption b {
+  font-size: 11px;
+
+  letter-spacing: .12em;
+}
+
+.about-caption small {
+  color: var(--muted);
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   MANIFESTO
+   ========================================================= */
+
+.manifesto {
+  width: 100%;
+
+  padding:
+    145px 24px;
+
+  background:
+    var(--brown-dark);
+
+  color: #fff;
+
+  text-align: center;
+}
+
+.manifesto-inner {
+  max-width: 900px;
+
+  margin: auto;
+}
+
+.manifesto h2 {
+  color: #fff;
+
+  font-size:
+    clamp(44px, 6vw, 78px);
+
+  line-height: 1.03;
+}
+
+.seal {
+  width: 104px;
+  height: 104px;
+
+  margin:
+    45px auto 0;
+
+  border:
+    1px solid rgba(201, 160, 74, .65);
+
+  border-radius: 50%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--gold-light);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: .13em;
+
+  line-height: 1.1;
+}
+
+.seal small {
+  margin-top: 7px;
+
+  font-size: 6px;
+
+  letter-spacing: .15em;
+}
+
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+.process {
+  position: relative;
+
+  background:
+    linear-gradient(
+      rgba(34, 24, 17, 0.28),
+      rgba(34, 24, 17, 0.28)
+    ),
+    url("images/process/background-process.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.process-card:hover {
+  transform:
+    translateY(-6px);
+
+  background:
+    rgba(255, 255, 255, .06);
+}
+
+.process-card > span {
+  color:
+    var(--gold-light);
+
+  font-family:
+    Georgia, serif;
+
+  font-size: 25px;
+}
+
+.process-art {
+  height: 190px;
+
+  margin:
+    12px 0 22px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  filter:
+    saturate(.9);
+}
+
+.process-art.farmer {
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(201, 160, 74, .20),
+      rgba(37, 26, 18, .35)
+    ),
+    url("BANNER-MARKETPLAC-SHOPEE.jpg");
+}
+
+.process-art.filter {
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, .10),
+      rgba(201, 160, 74, .20)
+    ),
+    url("product-front.png");
+}
+
+.process-art.boil {
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(37, 26, 18, .10),
+      rgba(201, 160, 74, .25)
+    ),
+    url("BANNER-MARKETPLAC-SHOPEE.jpg");
+}
+
+.process-art.crystal {
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, .08),
+      rgba(37, 26, 18, .25)
+    ),
+    url("product-back.png");
+}
+
+.process-art.pack {
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(201, 160, 74, .25),
+      rgba(37, 26, 18, .28)
+    ),
+    url("product-front.png");
+}
+
+.process-card h3 {
+  color: #fff;
+
+  font-size: 23px;
+
+  line-height: 1.1;
+}
+
+.process-card p {
+  margin-top: 10px;
+
+  color:
+    rgba(255, 255, 255, .62);
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   PRODUCT Ã¢â‚¬â€ ORIGINAL / LEGACY
+   ========================================================= */
+
+.product-section {
+  color:
+    var(--brown-dark);
+}
+
+.product-showcase {
+  width: 100%;
+
+  margin-top: 60px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.05fr .95fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+.product-images {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 610px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.pack-frame {
+  position: absolute;
+
+  width: 54%;
+
+  max-width: 390px;
+
+  padding: 22px;
+
+  background:
+    rgba(251, 248, 242, .7);
+
+  box-shadow:
+    0 22px 55px rgba(74, 48, 36, .14);
+}
+
+.pack-frame img {
+  width: 100%;
+
+  display: block;
+}
+
+.pack-frame.front {
+  z-index: 2;
+
+  left: 9%;
+
+  transform:
+    rotate(-2deg);
+}
+
+.pack-frame.back {
+  right: 7%;
+  top: 9%;
+
+  transform:
+    rotate(5deg)
+    scale(.86);
+
+  opacity: .88;
+}
+
+.product-copy {
+  max-width: 540px;
+}
+
+.product-number {
+  color:
+    var(--brown-light);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: .16em;
+}
+
+.product-copy h3 {
+  margin-top: 18px;
+
+  color:
+    var(--brown-dark);
+
+  font-size:
+    clamp(52px, 6vw, 84px);
+
+  line-height: .94;
+}
+
+.gold-rule {
+  width: 70px;
+  height: 2px;
+
+  margin:
+    28px 0;
+
+  background:
+    var(--gold);
+}
+
+.product-copy p {
+  color:
+    #6f5c4f;
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+.product-copy .lead {
+  margin-bottom: 8px;
+
+  color:
+    var(--brown-dark);
+
+  font-family:
+    Georgia, serif;
+
+  font-size: 24px;
+}
+
+.specs {
+  display: flex;
+
+  gap: 0;
+
+  margin:
+    30px 0;
+
+  border-top:
+    1px solid rgba(74, 48, 36, .2);
+
+  border-bottom:
+    1px solid rgba(74, 48, 36, .2);
+}
+
+.specs > div {
+  flex: 1;
+
+  padding:
+    15px 16px;
+
+  border-right:
+    1px solid rgba(74, 48, 36, .2);
+}
+
+.specs > div:last-child {
+  border-right: 0;
+}
+
+.specs b {
+  display: block;
+
+  color:
+    var(--brown-dark);
+
+  font-family:
+    Georgia, serif;
+
+  font-size: 20px;
+}
+
+.specs small {
+  display: block;
+
+  margin-top: 2px;
+
+  color:
+    #7d6b5e;
+
+  font-size: 8px;
+
+  letter-spacing: .06em;
+}
+
+
+/* =========================================================
+   WHY RAYA GULA
+   ========================================================= */
+
+.why {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  min-height: 680px;
+
+  background:
+    var(--cream-light);
+}
+
+.why-image {
+  min-height: 680px;
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(37, 26, 18, .08),
+    rgba(37, 26, 18, .30)
+  ),
+  url("why-raya-gula.jpg")
+  20% center / cover
+  no-repeat;
+}
+
+.why-copy {
+  align-self: center;
+
+  max-width: 620px;
+
+  padding:
+    90px 8vw 90px 7vw;
+}
+
+.why-copy h2 {
+  color:
+    var(--brown-dark);
+
+  font-size:
+    clamp(48px, 5.2vw, 76px);
+
+  line-height: 1;
+}
+
+.why-list {
+  margin-top: 42px;
+}
+
+.why-list > div {
+  display: grid;
+
+  grid-template-columns:
+    42px 1fr;
+
+  gap: 18px;
+
+  padding:
+    20px 0;
+
+  border-top:
+    1px solid var(--border);
+}
+
+.why-list > div:last-child {
+  border-bottom:
+    1px solid var(--border);
+}
+
+.why-list > div > span {
+  color:
+    var(--gold);
+
+  font-family:
+    Georgia, serif;
+
+  font-size: 22px;
+}
+
+.why-list b {
+  color:
+    var(--brown-dark);
+
+  font-size: 12px;
+}
+
+.why-list p {
+  margin-top: 4px;
+
+  color:
+    var(--muted);
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   JOURNAL
+   ========================================================= */
+
+.journal {
+  background:
+    var(--cream-light);
+}
+
+.journal-grid {
+  width: 100%;
+
+  margin-top: 58px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 26px;
+}
+
+.journal-card {
+  min-width: 0;
+}
+
+.journal-img {
+  position: relative;
+
+  aspect-ratio: 1.35 / 1;
+
+  overflow: hidden;
+
+  background-position: center;
+  background-size: cover;
+}
+
+.journal-img::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 50%,
+      rgba(37, 26, 18, .45)
+    );
+}
+
+.journal-img.j1 {
+  background-image:
+    url("BANNER-MARKETPLAC-SHOPEE.jpg");
+}
+
+.journal-img.j2 {
+  background-image:
+    url("product-front.png");
+}
+
+.journal-img.j3 {
+  background-image:
+    url("product-back.png");
+}
+
+.journal-img span {
+  position: absolute;
+
+  left: 16px;
+  bottom: 14px;
+
+  z-index: 1;
+
+  color: #fff;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .15em;
+}
+
+.journal-card > small {
+  display: block;
+
+  margin-top: 20px;
+
+  color:
+    var(--gold);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .16em;
+}
+
+.journal-card h3 {
+  margin:
+    9px 0 13px;
+
+  color:
+    var(--brown-dark);
+
+  font-size: 27px;
+
+  line-height: 1.12;
+}
+
+.journal-card > a {
+  color:
+    var(--brown-dark);
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.journal-card > a:hover {
+  color:
+    var(--gold);
+}
+
+
+/* =========================================================
+   CTA BANNER
+   ========================================================= */
+
+.cta-banner {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 560px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    var(--brown-dark);
+
+  color: #fff;
+}
+
+.cta-photo {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(37, 26, 18, .82),
+      rgba(37, 26, 18, .48)
+    ),
+    url("manis-alami-berkelanjutan.jpg")
+    center / cover
+    no-repeat;
+}
+
+.cta-content {
+  position: relative;
+
+  z-index: 1;
+
+  width:
+    min(
+      var(--max),
+      calc(100% - 48px)
+    );
+
+  margin: auto;
+}
+
+.cta-content h2 {
+  max-width: 760px;
+
+  color: #fff;
+
+  font-size:
+    clamp(50px, 6vw, 82px);
+
+  line-height: .98;
+}
+
+.cta-content p {
+  max-width: 510px;
+
+  margin:
+    25px 0 30px;
+
+  color:
+    rgba(255, 255, 255, .75);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact {
+  width: 100%;
+
+  padding:
+    115px max(24px, 4vw);
+
+  background:
+    var(--cream);
+
+  display: grid;
+
+  grid-template-columns:
+    1.1fr .9fr;
+
+  gap: 80px;
+}
+
+.contact-main {
+  width: auto;
+
+  margin: 0;
+}
+
+.contact-main h2 {
+  color:
+    var(--brown-dark);
+
+  font-size:
+    clamp(48px, 6vw, 82px);
+
+  line-height: .98;
+}
+
+.contact-info {
+  width: auto;
+
+  margin: 0;
+
+  align-self: end;
+}
+
+.contact-info a {
+  display: block;
+
+  padding:
+    19px 0;
+
+  border-top:
+    1px solid var(--border);
+}
+
+.contact-info a:last-child {
+  border-bottom:
+    1px solid var(--border);
+}
+
+.contact-info span {
+  display: block;
+
+  color:
+    var(--gold);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+}
+
+.contact-info b {
+  display: block;
+
+  margin-top: 5px;
+
+  color:
+    var(--brown-dark);
+
+  font-size: 14px;
+}
+
+.contact-info a:hover b {
+  color:
+    var(--gold);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    1.5fr 1fr 1.25fr 1fr;
+
+  gap: 50px;
+
+  padding:
+    65px max(24px, 4vw) 40px;
+
+  background:
+    var(--brown-dark);
+
+  color:
+    rgba(255, 255, 255, .7);
+}
+
+.footer-brand img {
+  width: 120px;
+  height: auto;
+
+  max-height: 52px;
+
+  object-fit: contain;
+  object-position: left center;
+
+  display: block;
+
+  margin-bottom: 18px;
+
+  filter: none;
+}
+
+.footer-brand p {
+  max-width: 310px;
+
+  font-size: 11px;
+
+  line-height: 1.8;
+}
+
+.footer > div:not(.footer-brand) {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.footer > div > b {
+  margin-bottom: 9px;
+
+  color: #fff;
+
+  font-size: 9px;
+
+  letter-spacing: .16em;
+}
+
+.footer a,
+.footer span {
+  font-size: 11px;
+}
+
+.footer a:hover {
+  color:
+    var(--gold-light);
+}
+
+
+/* =========================================================
+   FLOATING SOCIAL MENU
+   ========================================================= */
+
+.floating-social {
+  position: fixed;
+
+  right: 24px;
+  bottom: 24px;
+
+  width: 82px;
+  height: 82px;
+
+  z-index: 99999;
+
+  pointer-events: none;
+}
+
+.floating-main {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 64px;
+  height: 64px;
+
+  padding: 0;
+  margin: 0;
+
+  border:
+    1px solid rgba(201, 160, 74, .75);
+
+  border-radius: 50%;
+
+  background:
+    #ffffff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 25px rgba(43, 26, 18, .18),
+    0 0 0 4px rgba(246, 233, 210, .45);
+
+  transition:
+    transform .35s ease,
+    box-shadow .3s ease;
+}
+
+.floating-main:hover {
+  transform:
+    scale(1.06);
+
+  box-shadow:
+    0 12px 30px rgba(43, 26, 18, .24),
+    0 0 0 5px rgba(246, 233, 210, .55);
+}
+
+.floating-main img,
+#floatingMainIcon {
+  display: block !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  max-width: 42px !important;
+  max-height: 42px !important;
+
+  min-width: 42px !important;
+  min-height: 42px !important;
+
+  object-fit: contain !important;
+
+  object-position: center !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  position: relative !important;
+
+  z-index: 10 !important;
+
+  filter: none !important;
+
+  transform: none !important;
+}
+
+
+/* =========================================================
+   FLOATING ITEMS
+   ========================================================= */
+
+.floating-items {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.floating-item {
+  position: absolute;
+
+  right: 9px;
+  bottom: 9px;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  background:
+    #fff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform:
+    translate(0, 0)
+    scale(.35);
+
+  box-shadow:
+    0 8px 25px rgba(43, 26, 18, .20);
+
+  transition:
+    transform .55s cubic-bezier(.16, 1, .3, 1),
+    opacity .25s ease,
+    box-shadow .25s ease;
+}
+
+.floating-item:hover {
+  box-shadow:
+    0 12px 28px rgba(43, 26, 18, .27);
+}
+
+.floating-item img {
+  width: 29px;
+  height: 29px;
+
+  max-width: 29px;
+  max-height: 29px;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+.floating-item span {
+  position: absolute;
+
+  right: 61px;
+
+  padding:
+    6px 10px;
+
+  border-radius: 5px;
+
+  background:
+    var(--brown-dark);
+
+  color: #fff;
+
+  font-size: 10px;
+
+  white-space: nowrap;
+
+  opacity: 0;
+
+  transform:
+    translateX(5px);
+
+  pointer-events: none;
+
+  transition:
+    all .2s ease;
+}
+
+.floating-item:hover span {
+  opacity: 1;
+
+  transform:
+    translateX(0);
+}
+
+
+/* =========================================================
+   FLOATING OPEN STATES
+   ========================================================= */
+
+.floating-social.open
+.floating-whatsapp {
+  opacity: 1;
+
+  pointer-events: auto;
+
+  transform:
+    translate(-72px, -18px)
+    scale(1);
+}
+
+.floating-social.open
+.floating-instagram {
+  opacity: 1;
+
+  pointer-events: auto;
+
+  transform:
+    translate(-72px, -82px)
+    scale(1);
+}
+
+.floating-social.open
+.floating-shopee {
+  opacity: 1;
+
+  pointer-events: auto;
+
+  transform:
+    translate(-20px, -128px)
+    scale(1);
+}
+
+
+/* =========================================================
+   CRITICAL FAIL-SAFE REVEAL
+   ========================================================= */
+
+.reveal {
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  transform: none !important;
+}
+
+.reveal.visible {
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  transform: none !important;
+}
+
+
+/* =========================================================
+   SUGAR PARTICLE
+   ========================================================= */
+
+.rg-sugar-layer {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 9980;
+}
+
+.rg-sugar-particle {
+  position: absolute;
+
+  display: block;
+
+  top: -12px;
+  left: 0;
+
+  width: var(--size);
+  height: var(--size);
+
+  padding: 0;
+  margin: 0;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #f8e7c5 0%,
+      #d1a263 42%,
+      #8c5b2d 100%
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 1px 3px rgba(70, 42, 18, .22);
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.rg-sugar-particle::after {
+  content: "";
+
+  position: absolute;
+
+  left: 20%;
+  top: 20%;
+
+  width: 45%;
+  height: 45%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 245, 218, .5);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   Z-INDEX SAFETY
+   ========================================================= */
+
+.site-header {
+  z-index: 9990;
+}
+
+.floating-social {
+  z-index: 99999;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .site-header {
+    padding:
+      0 28px;
   }
 
+  .nav-right {
+    gap: 23px;
 
-  /* =========================================================
-     FLOATING RAYA GULA MENU
-     ========================================================= */
+    margin-right: 22px;
+  }
 
-  function initFloatingSocial() {
-    const floatingSocial =
-      document.getElementById("floatingSocial");
+  .process-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
 
-    const floatingMain =
-      document.getElementById("floatingMain");
+  .product-showcase {
+    gap: 45px;
+  }
 
-    const floatingMainIcon =
-      document.getElementById("floatingMainIcon");
+  .footer {
+    grid-template-columns:
+      1.5fr 1fr 1.25fr;
+  }
 
-    if (
-      !floatingSocial ||
-      !floatingMain ||
-      !floatingMainIcon
-    ) {
-      console.warn(
-        "Raya Gula: floating menu markup tidak ditemukan."
+  .footer > div:last-child {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / MOBILE NAV
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  .site-header {
+    min-height: 72px;
+
+    padding:
+      0 20px;
+  }
+
+  .brand img {
+    width: 102px;
+  }
+
+  .menu-toggle {
+    display: block;
+
+    margin-left: auto;
+
+    margin-right: 15px;
+  }
+
+  .nav-right {
+    position: absolute;
+
+    top: 72px;
+
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    margin: 0 !important;
+
+    padding:
+      18px 20px 22px;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0 !important;
+
+    background:
+      rgba(251, 248, 242, .98);
+
+    border-bottom:
+      1px solid var(--border);
+
+    box-shadow:
+      0 18px 30px rgba(43, 26, 18, .08);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+      translateY(-10px);
+
+    transition:
+      all .25s ease;
+  }
+
+  .nav-right.open,
+  .nav-right.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+      translateY(0);
+  }
+
+  .nav-right a {
+    width: 100%;
+
+    padding:
+      12px 0;
+
+    border-bottom:
+      1px solid rgba(228, 213, 192, .55);
+  }
+
+  .nav-right a::after {
+    display: none;
+  }
+
+  .header-cta {
+    padding:
+      10px 13px;
+
+    font-size: 10px;
+  }
+
+  .hero-content {
+    padding-top:
+      135px;
+  }
+
+  .hero h1 {
+    font-size:
+      clamp(52px, 12vw, 82px);
+  }
+
+  .cert-bar {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    padding:
+      10px 15px;
+  }
+
+  .cert-item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .cert-item:nth-child(-n + 2) {
+    border-bottom:
+      1px solid var(--border);
+  }
+
+  .cert-item {
+    min-height: 78px;
+
+    padding:
+      10px 14px;
+  }
+
+  .about {
+    grid-template-columns:
+      1fr;
+
+    gap: 50px;
+  }
+
+  .about-copy {
+    max-width: none;
+  }
+
+  .about-image {
+    min-height: 500px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 25px;
+  }
+
+  .process-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .product-showcase {
+    grid-template-columns:
+      1fr;
+  }
+
+  .product-images {
+    min-height: 560px;
+  }
+
+  .product-copy {
+    max-width: none;
+  }
+
+  .why {
+    grid-template-columns:
+      1fr;
+  }
+
+  .why-image {
+    min-height: 480px;
+  }
+
+  .why-copy {
+    max-width: none;
+
+    padding:
+      75px 7vw;
+  }
+
+  .journal-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .journal-card {
+    display: grid;
+
+    grid-template-columns:
+      42% 1fr;
+
+    column-gap: 25px;
+
+    align-items: center;
+  }
+
+  .journal-card .journal-img {
+    grid-row:
+      1 / 4;
+  }
+
+  .journal-card > small {
+    margin-top: 0;
+  }
+
+  .contact {
+    grid-template-columns:
+      1fr;
+
+    gap: 55px;
+  }
+
+  .footer {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .site-header {
+    padding:
+      0 16px;
+  }
+
+  .header-cta {
+    display: none;
+  }
+
+  .hero {
+    min-height: 760px;
+  }
+
+  .hero-content {
+    width:
+      calc(100% - 38px);
+
+    min-height: 760px;
+
+    padding:
+      125px 0 65px;
+  }
+
+  .hero-photo::after {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(37, 26, 18, .82),
+        rgba(37, 26, 18, .36)
       );
-      return;
-    }
+  }
 
-    const floatingIcons = [
-      {
-        src: "logo.png",
-        alt: "Raya Gula"
-      },
-      {
-        src: "icon-whatsapp.png",
-        alt: "WhatsApp Raya Gula"
-      },
-      {
-        src: "icon-instagram.png",
-        alt: "Instagram Raya Gula"
-      },
-      {
-        src: "icon-shopee.png",
-        alt: "Shopee Raya Gula"
-      }
-    ];
+  .hero h1 {
+    font-size:
+      clamp(48px, 14vw, 70px);
+  }
 
-    let currentIcon = 0;
-    let menuOpen = false;
-    let iconTimer = null;
-    let iconSwapTimer = null;
+  .hero-content > p {
+    font-size: 13px;
+  }
 
-    function setMainIcon(index) {
-      const icon = floatingIcons[index];
+  .hero-buttons {
+    align-items: flex-start;
 
-      if (!icon) {
-        return;
-      }
+    flex-direction: column;
 
-      if (iconSwapTimer) {
-        clearTimeout(iconSwapTimer);
-      }
+    gap: 20px;
+  }
 
-      floatingMainIcon.style.opacity = "0";
+  .cert-bar {
+    grid-template-columns:
+      1fr 1fr;
+  }
 
-      iconSwapTimer = setTimeout(function () {
-        floatingMainIcon.src = icon.src;
-        floatingMainIcon.alt = icon.alt;
-        floatingMainIcon.style.opacity = "1";
-      }, 140);
-    }
+  .cert-item {
+    justify-content: flex-start;
 
-    function openMenu() {
-      menuOpen = true;
-      floatingSocial.classList.add("open");
-      floatingMain.setAttribute("aria-expanded", "true");
+    gap: 9px;
 
-      currentIcon = 0;
-      setMainIcon(0);
-    }
+    padding:
+      10px 8px;
+  }
 
-    function closeMenu() {
-      menuOpen = false;
-      floatingSocial.classList.remove("open");
-      floatingMain.setAttribute("aria-expanded", "false");
-    }
+  .cert-icon {
+    width: 38px;
+    height: 38px;
 
-    function toggleMenu(event) {
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
+    flex-basis: 38px;
+  }
 
-      if (menuOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    }
+  .cert-item strong {
+    font-size: 9px;
+  }
 
-    /*
-       Pastikan kondisi awal selalu terlihat dan tertutup.
-       CSS mengatur posisi visual; JavaScript hanya mengatur state.
-    */
-    floatingSocial.classList.remove("open");
-    floatingMain.setAttribute("aria-expanded", "false");
-    setMainIcon(0);
+  .cert-item span {
+    font-size: 8px;
+  }
 
-    /* Main button */
-    floatingMain.addEventListener("click", toggleMenu);
+  .section {
+    padding:
+      78px 19px;
+  }
 
-    /* Keyboard accessibility */
-    floatingMain.addEventListener("keydown", function (event) {
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-        toggleMenu(event);
-      }
-    });
+  .section-heading h2 {
+    font-size:
+      clamp(40px, 12vw, 58px);
+  }
 
-    /* Close when clicking outside */
-    document.addEventListener("click", function (event) {
-      if (!floatingSocial.contains(event.target)) {
-        closeMenu();
-      }
-    });
+  .about-image {
+    min-height: 390px;
+  }
 
-    /* Close after selecting a social destination */
-    floatingSocial
-      .querySelectorAll(".floating-item")
-      .forEach(function (link) {
-        link.addEventListener("click", function () {
-          closeMenu();
-        });
-      });
+  .about-caption {
+    width: 75%;
 
-    /* Automatic logo / social icon rotation while closed */
-    iconTimer = setInterval(function () {
-      if (menuOpen) {
-        return;
-      }
+    padding:
+      16px;
+  }
 
-      currentIcon =
-        (currentIcon + 1) % floatingIcons.length;
+  .manifesto {
+    padding:
+      100px 19px;
+  }
 
-      setMainIcon(currentIcon);
-    }, 2800);
+  .manifesto h2 {
+    font-size:
+      clamp(39px, 11vw, 58px);
+  }
 
-    /* Keep timer reference alive for debugging / cleanup safety. */
-    floatingSocial.dataset.initialized = "true";
-    floatingSocial.dataset.iconTimer = "active";
+  .process-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .process-art {
+    height: 230px;
+  }
+
+  .product-images {
+    min-height: 430px;
+  }
+
+  .pack-frame {
+    width: 62%;
+
+    padding:
+      14px;
+  }
+
+  .pack-frame.front {
+    left: 3%;
+  }
+
+  .pack-frame.back {
+    right: 1%;
+  }
+
+  .product-copy h3 {
+    font-size: 57px;
+  }
+
+  .specs {
+    flex-direction: column;
+  }
+
+  .specs > div {
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(74, 48, 36, .2);
+  }
+
+  .specs > div:last-child {
+    border-bottom: 0;
+  }
+
+  .why-image {
+    min-height: 370px;
+  }
+
+  .why-copy {
+    padding:
+      65px 19px;
+  }
+
+  .journal-card {
+    display: block;
+  }
+
+  .journal-card .journal-img {
+    margin-bottom:
+      18px;
+  }
+
+  .cta-banner {
+    min-height: 560px;
+  }
+
+  .cta-content {
+    width:
+      calc(100% - 38px);
+  }
+
+  .cta-content h2 {
+    font-size: 55px;
+  }
+
+  .contact {
+    padding:
+      80px 19px;
+  }
+
+  .footer {
+    grid-template-columns:
+      1fr;
+
+    gap: 32px;
+
+    padding:
+      50px 20px 35px;
+  }
+
+  .footer > div:last-child {
+    display: flex;
   }
 
 
-  /* =========================================================
-     EXTERNAL LINK SECURITY
-     ========================================================= */
+  /* -------------------------------------------------------
+     FLOATING BUTTON MOBILE
+     ------------------------------------------------------- */
 
-  function initExternalLinkSecurity() {
-    document
-      .querySelectorAll('a[target="_blank"]')
-      .forEach(function (link) {
-        link.setAttribute(
-          "rel",
-          "noopener noreferrer"
-        );
-      });
+  .floating-social {
+    right: 16px;
+    bottom: 16px;
+
+    width: 70px;
+    height: 70px;
+
+    transform: none;
+
+    z-index: 99999;
   }
 
-
-  /* =========================================================
-     SMOOTH SCROLL
-     ========================================================= */
-
-  function initSmoothScroll() {
-    document
-      .querySelectorAll('a[href^="#"]')
-      .forEach(function (link) {
-        link.addEventListener("click", function (event) {
-          const targetId =
-            link.getAttribute("href");
-
-          if (
-            !targetId ||
-            targetId === "#"
-          ) {
-            return;
-          }
-
-          let target = null;
-
-          try {
-            target =
-              document.querySelector(targetId);
-          } catch (error) {
-            return;
-          }
-
-          if (!target) {
-            return;
-          }
-
-          event.preventDefault();
-
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        });
-      });
+  .floating-main {
+    width: 58px;
+    height: 58px;
   }
 
+  .floating-main img,
+  #floatingMainIcon {
+    width: 38px !important;
+    height: 38px !important;
 
-  /* =========================================================
-     RAYA GULA — SOFT PALM SUGAR SCROLL
+    max-width: 38px !important;
+    max-height: 38px !important;
 
-     Butiran gula hanya dibuat saat user scroll ke bawah.
-     ========================================================= */
-
-  function initSugarScroll() {
-    if (
-      !document.body ||
-      typeof window.addEventListener !== "function"
-    ) {
-      return;
-    }
-
-    /* Respect reduced-motion preference */
-    if (
-      window.matchMedia &&
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches
-    ) {
-      return;
-    }
-
-    const sugarLayer =
-      document.createElement("div");
-
-    sugarLayer.className =
-      "rg-sugar-layer";
-
-    sugarLayer.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-    /* Inline safety styling */
-    Object.assign(sugarLayer.style, {
-      position: "fixed",
-      left: "0",
-      top: "0",
-      width: "100vw",
-      height: "100vh",
-      overflow: "hidden",
-      pointerEvents: "none",
-      zIndex: "9980"
-    });
-
-    document.body.appendChild(sugarLayer);
-
-    let isMobile =
-      window.innerWidth <= 768;
-
-    let lastScrollY =
-      window.scrollY;
-
-    let lastParticleTime = 0;
-
-    function getMaxParticles() {
-      return isMobile ? 14 : 28;
-    }
-
-    function getParticleInterval() {
-      return isMobile ? 130 : 95;
-    }
-
-    function createSugarParticle() {
-      if (
-        sugarLayer.children.length >=
-        getMaxParticles()
-      ) {
-        return;
-      }
-
-      const particle =
-        document.createElement("span");
-
-      particle.className =
-        "rg-sugar-particle";
-
-      const size =
-        Math.random() * 4 + 2;
-
-      const startX =
-        Math.random() *
-        window.innerWidth;
-
-      const drift =
-        (Math.random() - 0.5) * 100;
-
-      const driftEnd =
-        (Math.random() - 0.5) * 170;
-
-      const duration =
-        Math.random() * 1800 + 2800;
-
-      const opacity =
-        Math.random() * 0.32 + 0.42;
-
-      Object.assign(particle.style, {
-        position: "absolute",
-        left: startX + "px",
-        top: "-12px",
-        width: size + "px",
-        height: size + "px",
-        borderRadius: "50%",
-        background:
-          "radial-gradient(circle at 30% 25%, #f8e7c5 0%, #d1a263 42%, #8c5b2d 100%)",
-        boxShadow:
-          "0 1px 3px rgba(70,42,18,.22)",
-        opacity: "0",
-        pointerEvents: "none",
-        willChange: "transform, opacity"
-      });
-
-      const r1 =
-        40 + Math.random() * 20;
-
-      const r2 =
-        45 + Math.random() * 15;
-
-      const r3 =
-        40 + Math.random() * 20;
-
-      const r4 =
-        45 + Math.random() * 15;
-
-      particle.style.borderRadius =
-        `${r1}% ${r2}% ${r3}% ${r4}%`;
-
-      sugarLayer.appendChild(particle);
-
-      if (
-        typeof particle.animate === "function"
-      ) {
-        const animation =
-          particle.animate(
-            [
-              {
-                transform:
-                  "translate3d(0,-15px,0) rotate(0deg)",
-                opacity: 0
-              },
-              {
-                transform:
-                  "translate3d(" +
-                  (drift * 0.15) +
-                  "px,15vh,0) rotate(90deg)",
-                opacity: opacity
-              },
-              {
-                transform:
-                  "translate3d(" +
-                  drift +
-                  "px,52vh,0) rotate(220deg)",
-                opacity: opacity
-              },
-              {
-                transform:
-                  "translate3d(" +
-                  driftEnd +
-                  "px,110vh,0) rotate(420deg)",
-                opacity: 0
-              }
-            ],
-            {
-              duration: duration,
-              easing:
-                "cubic-bezier(.22,.61,.36,1)",
-              fill: "forwards"
-            }
-          );
-
-        animation.onfinish = function () {
-          particle.remove();
-        };
-
-        animation.oncancel = function () {
-          particle.remove();
-        };
-      } else {
-        /* Browser fallback */
-        particle.style.transition =
-          "opacity .3s ease";
-
-        requestAnimationFrame(function () {
-          particle.style.opacity =
-            opacity;
-        });
-
-        setTimeout(function () {
-          particle.style.opacity = "0";
-
-          setTimeout(function () {
-            particle.remove();
-          }, 500);
-        }, duration);
-      }
-    }
-
-    function handleSugarScroll() {
-      const currentY =
-        window.scrollY;
-
-      /* Only generate while scrolling down */
-      if (currentY <= lastScrollY) {
-        lastScrollY = currentY;
-        return;
-      }
-
-      lastScrollY = currentY;
-
-      const now =
-        performance.now();
-
-      if (
-        now - lastParticleTime <
-        getParticleInterval()
-      ) {
-        return;
-      }
-
-      lastParticleTime = now;
-
-      createSugarParticle();
-
-      /* Occasionally create a second particle */
-      if (Math.random() > 0.68) {
-        setTimeout(function () {
-          createSugarParticle();
-        }, 40);
-      }
-    }
-
-    window.addEventListener(
-      "scroll",
-      handleSugarScroll,
-      { passive: true }
-    );
-
-    window.addEventListener(
-      "resize",
-      function () {
-        isMobile =
-          window.innerWidth <= 768;
-
-        lastScrollY =
-          window.scrollY;
-      },
-      { passive: true }
-    );
-
-    console.log(
-      "Raya Gula sugar scroll effect initialized."
-    );
+    min-width: 38px !important;
+    min-height: 38px !important;
   }
 
-})();
+  .floating-item span {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:
+      .01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      .01ms !important;
+  }
+
+  .reveal,
+  .reveal.visible {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    transform: none !important;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE SUGAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .rg-sugar-particle {
+    filter:
+      blur(.1px);
+  }
+
+}
+
+
+/* =========================================================
+   FINAL FAIL-SAFE
+   ========================================================= */
+
+.reveal,
+.reveal.visible {
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  transform: none !important;
+}
+
+
+/* =========================================================
+   FLOATING SOCIAL Ã¢â‚¬â€ EMERGENCY CLICK FIX
+   ========================================================= */
+
+.floating-social {
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+
+.floating-main {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 3 !important;
+}
+
+.floating-items {
+  z-index: 2 !important;
+}
+
+.floating-social.open .floating-items,
+.floating-social.open .floating-item {
+  pointer-events: auto !important;
+}
+
+.floating-item {
+  cursor: pointer !important;
+}
+
+
+/* =========================================================
+   RAYA GULA Ã¢â‚¬â€ HERO VISUAL ADJUSTMENT
+   DESIGN UPDATE ONLY
+   ========================================================= */
+
+.hero-photo img {
+  object-position: 88% center;
+}
+
+.hero h1 {
+  max-width: 620px;
+  font-size: clamp(48px, 6.3vw, 82px);
+  line-height: .98;
+}
+
+.hero-content > p {
+  max-width: 500px;
+}
+
+@media (min-width: 901px) {
+
+  .hero-content {
+    width: min(var(--max), calc(100% - 48px));
+    padding-right: 42%;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .hero-photo img {
+    object-position: 84% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 10vw, 68px);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .hero-photo img {
+    object-position: 80% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 12vw, 60px);
+  }
+
+}
+
+
+/* =========================================================
+   RAYA GULA Ã¢â‚¬â€ ABOUT IMAGE VISUAL UPDATE
+   ========================================================= */
+
+.about {
+  grid-template-columns:
+    minmax(0, .72fr)
+    minmax(0, 1.28fr);
+
+  gap: 54px;
+
+  align-items: center;
+}
+
+.about-copy {
+  max-width: 520px;
+}
+
+.about-visual {
+  width: auto;
+  margin: 0;
+  position: relative;
+}
+
+.about-image {
+  width: 100%;
+
+  min-height: 0;
+
+  aspect-ratio: 580 / 450;
+
+  background-image:
+    url("dari-alam-raya-raya-gula.png");
+
+  background-size: 100% 100%;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  box-shadow: none;
+}
+
+@media (min-width: 901px) {
+
+  .about {
+    min-height: 560px;
+  }
+
+  .about-visual {
+    width:
+      min(100%, 680px);
+  }
+
+  .about-image {
+    width: 100%;
+    min-height: 0;
+  }
+
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+
+  .about {
+    grid-template-columns:
+      minmax(0, .72fr)
+      minmax(0, 1.28fr);
+
+    gap: 42px;
+  }
+
+  .about-visual {
+    max-width: 760px;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .about {
+    grid-template-columns: 1fr;
+
+    gap: 42px;
+  }
+
+  .about-visual {
+    width: 100%;
+
+    max-width: 680px;
+
+    justify-self: center;
+  }
+
+  .about-image {
+    width: 100%;
+
+    min-height: 0;
+
+    aspect-ratio: 580 / 450;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .about {
+    gap: 34px;
+  }
+
+  .about-visual {
+    max-width: 100%;
+  }
+
+  .about-image {
+    aspect-ratio: 580 / 450;
+  }
+
+}
+
+
+/* =========================================================
+   RAYA GULA Ã¢â‚¬â€ PROCESS BACKGROUND
+   ========================================================= */
+
+.process {
+  position: relative;
+
+  background:
+    linear-gradient(
+      rgba(34,24,17,0.92),
+      rgba(34,24,17,0.92)
+    ),
+    url("images/process/background-process.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+}
+
+
+/* PROCESS HEADER */
+
+.process-heading {
+  display: block;
+}
+
+.process-heading .process-title {
+  max-width: 700px;
+}
+
+.process-description {
+  margin-top: 35px;
+
+  max-width: 650px;
+
+  line-height: 1.8;
+
+  font-size: 18px;
+
+  color:
+    rgba(255,255,255,0.65);
+}
+
+
+/* =========================================================
+   RAYA GULA Ã¢â‚¬â€ PROCESS IMAGE SIZE
+   ========================================================= */
+
+.process-art {
+  height: 150px !important;
+
+  min-height: 150px !important;
+
+  max-height: 150px !important;
+
+  background-size: cover !important;
+
+  background-position: center !important;
+}
+
+@media (max-width: 900px) {
+
+  .process-art {
+    height: 130px !important;
+
+    min-height: 130px !important;
+
+    max-height: 130px !important;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .process-art {
+    height: 120px !important;
+
+    min-height: 120px !important;
+
+    max-height: 120px !important;
+  }
+
+}
+
+
+/* =========================================================
+   RAYA GULA Ã¢â‚¬â€ PROCESS GRID FINAL FIX
+   ========================================================= */
+
+.process-grid {
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr)) !important;
+
+  gap: 16px !important;
+
+  margin-top: 60px;
+
+  align-items: stretch;
+}
+
+.process-card {
+  min-width: 0;
+
+  width: 100%;
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 1101px) {
+
+  .process-grid {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr)) !important;
+
+    gap: 16px !important;
+  }
+
+  .process-art {
+    height: 150px !important;
+
+    min-height: 150px !important;
+
+    max-height: 150px !important;
+  }
+
+}
+
+
+/* TABLET */
+
+@media (max-width: 1100px) and (min-width: 901px) {
+
+  .process-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 16px !important;
+  }
+
+}
+
+
+/* TABLET KECIL */
+
+@media (max-width: 900px) and (min-width: 601px) {
+
+  .process-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 18px !important;
+  }
+
+  .process-art {
+    height: 130px !important;
+
+    min-height: 130px !important;
+
+    max-height: 130px !important;
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .process-grid {
+    grid-template-columns:
+      1fr !important;
+
+    gap: 22px !important;
+  }
+
+  .process-art {
+    height: 120px !important;
+
+    min-height: 120px !important;
+
+    max-height: 120px !important;
+  }
+
+}
+
+
+/* =========================================================
+   RAYA GULA Ã¢â‚¬â€ PRODUCT SLIDER
+   STEP 2 Ã¢â‚¬â€ FINAL LARGER PRODUCT VISUAL
+   ========================================================= */
+
+
+/* =========================================================
+   PRODUCT HEADING
+   ========================================================= */
+
+.product-heading {
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin-left: auto;
+
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   MAIN PRODUCT SLIDER
+   ========================================================= */
+
+.product-slider {
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin:
+    55px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    45% 55%;
+
+  align-items: center;
+
+  column-gap: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT Ã¢â‚¬â€ PRODUCT VISUAL
+   ========================================================= */
+
+.product-slider-visual {
+  width: 100%;
+
+  min-height: 560px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+
+/* PRODUCT IMAGE STAGE */
+
+.product-image-stage {
+  width: 100%;
+
+  max-width: 460px;
+
+  aspect-ratio: 4 / 5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  position: relative;
+
+  box-sizing: border-box;
+}
+
+
+/* PRODUCT IMAGE */
+
+.product-slide-image {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  transform:
+    translateX(20px)
+    scale(.96);
+
+  transition:
+    opacity .45s ease,
+    transform .55s ease;
+}
+
+
+/* ACTIVE PRODUCT */
+
+.product-slide-image.is-active {
+  opacity: 1;
+
+  transform:
+    translateX(0)
+    scale(1);
+}
+
+
+/* =========================================================
+   RIGHT Ã¢â‚¬â€ PRODUCT INFORMATION
+   ========================================================= */
+
+.product-slider-content {
+  width: 100%;
+
+  max-width: 500px;
+
+  padding-left: 38px;
+
+  padding-right: 8px;
+
+  box-sizing: border-box;
+}
+
+
+/* PRODUCT NUMBER */
+
+.product-slider-content .product-number {
+  display: block;
+
+  margin-bottom: 16px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .18em;
+
+  text-transform: uppercase;
+}
+
+
+/* PRODUCT TITLE */
+
+.product-slide-title {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(44px, 4vw, 62px);
+
+  line-height: .98;
+
+  font-weight: 400;
+
+  letter-spacing: -.03em;
+}
+
+
+/* GOLD SEPARATOR */
+
+.product-slider-content .gold-rule {
+  width: 48px;
+
+  height: 2px;
+
+  margin:
+    26px 0 20px;
+}
+
+
+/* LEAD */
+
+.product-slide-lead {
+  margin:
+    0 0 12px;
+
+  font-size: 18px;
+
+  line-height: 1.5;
+
+  font-weight: 600;
+}
+
+
+/* DESCRIPTION */
+
+.product-slide-description {
+  max-width: 455px;
+
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   PRODUCT SPECS
+   ========================================================= */
+
+.product-slider-content .specs {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 28px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid
+    rgba(74, 48, 36, .16);
+}
+
+.product-slider-content .specs > div {
+  min-width: 0;
+}
+
+.product-slider-content .specs b {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+.product-slider-content .specs small {
+  display: block;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  opacity: .65;
+}
+
+
+/* =========================================================
+   WHOLESALE / EXPORT
+   ========================================================= */
+
+.product-business-info {
+  margin-top: 22px;
+
+  padding-left: 16px;
+
+  border-left:
+    2px solid
+    var(--gold);
+}
+
+.product-business-info strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+}
+
+.product-business-info span {
+  display: block;
+
+  max-width: 420px;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  opacity: .7;
+}
+
+
+/* =========================================================
+   PRODUCT ACTIONS
+   ========================================================= */
+
+.product-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 26px;
+
+  flex-wrap: wrap;
+}
+
+.product-actions .btn {
+  white-space: nowrap;
+}
+
+.product-actions .text-link {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SLIDER NAVIGATION
+   ========================================================= */
+
+.product-slider-navigation {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-top: 34px;
+}
+
+.product-slider-arrow {
+  width: 42px;
+
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(74, 48, 36, .28);
+
+  background: transparent;
+
+  color: inherit;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.product-slider-arrow:hover {
+  background:
+    var(--brown);
+
+  color:
+    #fff;
+
+  border-color:
+    var(--brown);
+
+  transform:
+    translateY(-2px);
+}
+
+.product-slider-progress {
+  min-width: 58px;
+
+  text-align: center;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .16em;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+  .product-slider {
+    max-width: 1050px;
+  }
+
+  .product-slider-visual {
+    min-height: 590px;
+  }
+
+  .product-image-stage {
+    max-width: 460px;
+  }
+
+  .product-slider-content {
+    padding-left: 36px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / MEDIUM DESKTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .product-slider {
+    max-width: 920px;
+
+    grid-template-columns:
+      45% 55%;
+
+    margin-top: 50px;
+  }
+
+  .product-slider-visual {
+    min-height: 520px;
+  }
+
+  .product-image-stage {
+    max-width: 410px;
+  }
+
+  .product-slider-content {
+    padding-left: 30px;
+  }
+
+  .product-slide-title {
+    font-size: 50px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .product-slider {
+    max-width: 820px;
+
+    grid-template-columns:
+      45% 55%;
+  }
+
+  .product-slider-visual {
+    min-height: 480px;
+  }
+
+  .product-image-stage {
+    max-width: 370px;
+  }
+
+  .product-slider-content {
+    padding-left: 25px;
+  }
+
+  .product-slide-title {
+    font-size: 45px;
+  }
+
+  .product-slide-lead {
+    font-size: 16px;
+  }
+
+  .product-slide-description {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE / SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .product-heading {
+    max-width: 100%;
+  }
+
+  .product-slider {
+    max-width: 560px;
+
+    margin-top: 40px;
+
+    grid-template-columns: 1fr;
+
+    row-gap: 30px;
+  }
+
+  .product-slider-visual {
+    order: 1;
+
+    min-height: auto;
+  }
+
+  .product-slider-content {
+    order: 2;
+
+    max-width: 100%;
+
+    padding-left: 0;
+
+    padding-right: 0;
+  }
+
+  .product-image-stage {
+    width: 85%;
+
+    max-width: 390px;
+  }
+
+  .product-slide-title {
+    font-size: 46px;
+  }
+
+  .product-slide-description {
+    max-width: 100%;
+  }
+
+  .product-actions {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .product-slider-navigation {
+    margin-top: 28px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .product-slider {
+    row-gap: 24px;
+  }
+
+  .product-image-stage {
+    width: 88%;
+
+    max-width: 330px;
+  }
+
+  .product-slide-title {
+    font-size: 40px;
+  }
+
+  .product-slide-lead {
+    font-size: 16px;
+  }
+
+  .product-slider-content .specs {
+    gap: 8px;
+  }
+
+  .product-slider-content .specs b {
+    font-size: 15px;
+  }
+
+  .product-slider-content .specs small {
+    font-size: 9px;
+  }
+
+}
+
+/* =========================================================
+   RAYA GULA â€” ABOUT FINAL PREMIUM EDITORIAL
+   ========================================================= */
+
+/* =========================================================
+   ABOUT â€” DESKTOP / LARGE SCREEN
+   Editorial composition:
+   COPY  â†’  IMAGE
+   ========================================================= */
+
+#about {
+  padding-top: 110px;
+  padding-bottom: 58px;
+}
+
+.about {
+  width: min(100%, 1360px);
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, .64fr)
+    minmax(0, 1.36fr);
+
+  gap: 48px;
+
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-copy {
+  width: 100%;
+  max-width: 540px;
+
+  margin: 0;
+
+  transform: none;
+}
+
+.about-copy .eyebrow {
+  margin-bottom: 24px;
+}
+
+.about-copy h2 {
+  width: 100%;
+  max-width: 575px;
+
+  margin: 0 0 28px 0;
+
+  color: var(--brown-dark);
+
+  font-size:
+    clamp(54px, 5.2vw, 78px);
+
+  line-height: 1.01;
+
+  letter-spacing: -.04em;
+}
+
+.about-copy p {
+  width: 100%;
+  max-width: 500px;
+
+  margin: 0 0 17px 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.85;
+}
+
+.about-copy p:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-copy .text-link {
+  margin-top: 26px;
+}
+
+.about-visual {
+  width: 100%;
+  max-width: 920px;
+
+  margin: 0;
+
+  position: relative;
+
+  justify-self: end;
+}
+
+.about-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  background: none;
+  box-shadow: none;
+}
+
+/* =========================================================
+   ABOUT â€” THE ORIGIN LABEL
+   Small editorial label; does not reduce image size.
+   ========================================================= */
+
+.about-caption {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 118px;
+
+  min-width: 118px;
+  max-width: 118px;
+
+  min-height: 0;
+
+  padding: 8px 9px;
+
+  display: grid;
+
+  grid-template-columns:
+    auto 1fr;
+
+  column-gap: 7px;
+
+  row-gap: 1px;
+
+  box-sizing: border-box;
+
+  background:
+    rgba(251, 248, 242, .95);
+
+  color: var(--brown-dark);
+}
+
+.about-caption span {
+  grid-row: 1 / 3;
+
+  font-family: Georgia, serif;
+
+  color: var(--gold);
+
+  font-size: 12px;
+
+  line-height: 1;
+}
+
+.about-caption b {
+  display: block;
+
+  font-size: 6.5px;
+
+  line-height: 1.1;
+
+  letter-spacing: .09em;
+}
+
+.about-caption small {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 5px;
+
+  line-height: 1.15;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ABOUT â€” MEDIUM DESKTOP
+   ========================================================= */
+
+@media (max-width: 1100px) and (min-width: 901px) {
+
+  #about {
+    padding-top: 95px;
+    padding-bottom: 55px;
+  }
+
+  .about {
+    width: min(100%, 1100px);
+
+    grid-template-columns:
+      minmax(0, .66fr)
+      minmax(0, 1.34fr);
+
+    gap: 40px;
+  }
+
+  .about-copy {
+    max-width: 450px;
+  }
+
+  .about-copy h2 {
+    max-width: 500px;
+
+    font-size:
+      clamp(48px, 5.4vw, 62px);
+  }
+
+  .about-copy p {
+    max-width: 430px;
+  }
+
+  .about-visual {
+    max-width: 620px;
+  }
+
+  .about-caption {
+    width: 102px;
+
+    min-width: 102px;
+    max-width: 102px;
+
+    padding: 7px 8px;
+  }
+
+  .about-caption span {
+    font-size: 11px;
+  }
+
+  .about-caption b {
+    font-size: 5.5px;
+  }
+
+  .about-caption small {
+    font-size: 4.5px;
+  }
+
+}
+
+
+/* =========================================================
+   ABOUT â€” TABLET
+   IMAGE â†’ COPY
+   ========================================================= */
+
+@media (max-width: 900px) and (min-width: 601px) {
+
+  #about {
+    padding-top: 82px;
+    padding-bottom: 58px;
+  }
+
+  .about {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 42px;
+  }
+
+  .about-visual {
+    order: 1;
+
+    width: 100%;
+    max-width: 760px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    justify-self: center;
+  }
+
+  .about-copy {
+    order: 2;
+
+    width: 100%;
+    max-width: 700px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-copy h2 {
+    max-width: 650px;
+
+    font-size:
+      clamp(48px, 7vw, 64px);
+
+    line-height: 1.03;
+  }
+
+  .about-copy p {
+    max-width: 650px;
+  }
+
+  .about-caption {
+    width: 100px;
+
+    min-width: 100px;
+    max-width: 100px;
+
+    padding: 6px 7px;
+  }
+
+  .about-caption span {
+    font-size: 11px;
+  }
+
+  .about-caption b {
+    font-size: 5.5px;
+  }
+
+  .about-caption small {
+    font-size: 4.5px;
+  }
+
+}
+
+
+/* =========================================================
+   ABOUT â€” MOBILE
+   IMAGE â†’ COPY
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #about {
+    padding-top: 78px;
+    padding-bottom: 48px;
+  }
+
+  .about {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 32px;
+  }
+
+  .about-visual {
+    order: 1;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    justify-self: stretch;
+  }
+
+  .about-copy {
+    order: 2;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+  }
+
+  .about-image {
+    width: 100%;
+
+    min-height: 0;
+
+    aspect-ratio: 1.35 / 1;
+
+    background-size: 100% 100%;
+  }
+
+  .about-copy .eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .about-copy h2 {
+    max-width: 100%;
+
+    margin: 0 0 23px 0;
+
+    font-size:
+      clamp(39px, 10.5vw, 50px);
+
+    line-height: 1.05;
+
+    letter-spacing: -.035em;
+  }
+
+  .about-copy p {
+    max-width: 100%;
+
+    margin: 0 0 15px 0;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+  }
+
+  .about-copy .text-link {
+    margin-top: 21px;
+  }
+
+  .about-caption {
+    width: 88px;
+
+    min-width: 88px;
+    max-width: 88px;
+
+    padding: 5px 6px;
+
+    grid-template-columns:
+      10px 1fr;
+
+    column-gap: 4px;
+
+    row-gap: 0;
+  }
+
+  .about-caption span {
+    font-size: 9px;
+  }
+
+  .about-caption b {
+    font-size: 4.5px;
+
+    line-height: 1;
+  }
+
+  .about-caption small {
+    font-size: 4px;
+
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+}
+
+
+/* =========================================================
+   ABOUT â€” VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  #about {
+    padding-top: 68px;
+    padding-bottom: 42px;
+  }
+
+  .about {
+    gap: 28px;
+  }
+
+  .about-copy h2 {
+    font-size: 36px;
+
+    line-height: 1.06;
+  }
+
+  .about-caption {
+    width: 82px;
+
+    min-width: 82px;
+    max-width: 82px;
+
+    padding: 4px 5px;
+  }
+
+  .about-caption span {
+    font-size: 8px;
+  }
+
+  .about-caption b {
+    font-size: 4px;
+  }
+
+  .about-caption small {
+    font-size: 3.5px;
+  }
+
+}
+
 
 /* =====================================================
-   PRODUCT SLIDER — RAYA GULA
+   BILINGUAL SWITCHER - RAYA GULA
    ===================================================== */
-(function () {
-  "use strict";
 
-  const products = [
-    {
-      image: "product-semut.png",
-      alt: "Gula Aren Semut Raya Gula 500 gram",
-      titleId: "Gula Aren<br>Semut",
-      titleEn: "Granulated Palm<br>Sugar",
-      leadId: "Manis alami dalam bentuk kristal.",
-      leadEn: "Naturally sweet in fine crystals.",
-      descriptionId: "Gula aren yang diolah menjadi butiran kristal dengan karakter rasa khas nira aren. Praktis digunakan untuk kopi, teh, baking, dessert, dan berbagai kebutuhan kuliner.",
-      descriptionEn: "Palm sugar carefully processed into fine crystals with the distinctive character of Indonesian palm nectar. Ideal for coffee, tea, baking, desserts, and everyday culinary use.",
-      specs: [["500 g", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
-    },
-    {
-      image: "product-cair.png",
-      alt: "Gula Aren Cair Raya Gula 1 Liter",
-      titleId: "Gula Aren<br>Cair",
-      titleEn: "Liquid Palm<br>Sugar",
-      leadId: "Praktis dengan rasa manis khas nira aren.",
-      leadEn: "Convenient with the natural sweetness of palm nectar.",
-      descriptionId: "Gula aren dalam bentuk cair yang praktis digunakan untuk minuman, kopi, dessert, saus, dan berbagai kebutuhan kuliner. Mudah dituang dan menyatu dengan berbagai sajian.",
-      descriptionEn: "Liquid palm sugar made for easy use in drinks, coffee, desserts, sauces, and everyday culinary applications. Smooth to pour and easy to blend into recipes.",
-      specs: [["1 L", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
-    },
-    {
-      image: "product-cetak.png",
-      alt: "Gula Aren Cetak Raya Gula 1 Kg",
-      titleId: "Gula Aren<br>Cetak",
-      titleEn: "Traditional Palm<br>Sugar",
-      leadId: "Tradisional dengan karakter rasa autentik.",
-      leadEn: "Traditional with an authentic palm sugar character.",
-      descriptionId: "Gula aren cetak dengan karakter rasa dan aroma khas nira aren Indonesia. Cocok untuk kebutuhan rumah tangga, kuliner tradisional, baking, hingga kebutuhan bisnis.",
-      descriptionEn: "Traditional palm sugar with the distinctive flavor and aroma of Indonesian palm nectar. Suitable for home use, traditional cuisine, baking, and business applications.",
-      specs: [["1 Kg", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
-    }
-  ];
+.language-switcher {
+  position: absolute;
+  top: 8px;
+  right: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10001;
+}
 
-  function initProductSlider() {
-    const slider = document.querySelector("[data-product-slider]");
-    if (!slider) return;
+.lang-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
 
-    const image = slider.querySelector("[data-product-image]");
-    const number = slider.querySelector("[data-product-number]");
-    const title = slider.querySelector("[data-product-title]");
-    const lead = slider.querySelector("[data-product-lead]");
-    const description = slider.querySelector("[data-product-description]");
-    const specs = slider.querySelector("[data-product-specs]");
-    const progress = slider.querySelector("[data-product-progress]");
-    const prev = slider.querySelector("[data-product-prev]");
-    const next = slider.querySelector("[data-product-next]");
+.lang-btn.active {
+  color: var(--gold);
+}
 
-    if (!image || !number || !title || !lead || !description || !specs || !progress || !prev || !next) {
-      console.warn("Raya Gula: product slider elements are incomplete.");
-      return;
-    }
+.lang-en {
+  display:none;
+}
 
-    let currentIndex = 0;
-    let language = document.documentElement.lang === "en" ? "en" : "id";
+body.language-en .lang-id {
+  display:none;
+}
 
-    function render(index, animate = true) {
-      const product = products[index];
-      const isEnglish = language === "en";
+body.language-en .lang-en {
+  display:inline;
+}
 
-      if (animate) image.classList.remove("is-active");
+@media(max-width:900px){
+  .language-switcher{
+    top:20px;
+    right:80px;
+  }
+}
 
-      const apply = () => {
-        image.src = product.image;
-        image.alt = product.alt;
-        title.innerHTML = isEnglish ? product.titleEn : product.titleId;
-        lead.textContent = isEnglish ? product.leadEn : product.leadId;
-        description.textContent = isEnglish ? product.descriptionEn : product.descriptionId;
-        number.textContent = `${String(index + 1).padStart(2, "0")} / ${String(products.length).padStart(2, "0")}`;
-        progress.textContent = number.textContent;
 
-        specs.innerHTML = product.specs.map(spec => `
-          <div>
-            <b>${spec[0]}</b>
-            <small>${isEnglish ? spec[2] : spec[1]}</small>
-          </div>
-        `).join("");
+/* FINAL LANGUAGE SWITCHER */
+.language-switcher{
+  position:absolute;
+  top:50%;
+  right:42px;
+  transform:translateY(-50%);
+  display:flex;
+  align-items:center;
+  gap:9px;
+  z-index:10001;
+}
 
-        if (animate) requestAnimationFrame(() => image.classList.add("is-active"));
-        else image.classList.add("is-active");
-      };
+.lang-btn{
+  cursor:pointer;
+  border:0;
+  background:none;
+  font-family:Montserrat,Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:#7d6b5e;
+  padding:4px;
+}
 
-      if (animate) window.setTimeout(apply, 160);
-      else apply();
-    }
+.lang-btn.active{
+  color:#c9a04a;
+}
 
-    function goTo(index) {
-      currentIndex = (index + products.length) % products.length;
-      render(currentIndex);
-    }
+.lang-en{
+ display:none;
+}
 
-    prev.addEventListener("click", () => goTo(currentIndex - 1));
-    next.addEventListener("click", () => goTo(currentIndex + 1));
+body.language-en .lang-id{
+ display:none;
+}
 
-    slider.addEventListener("keydown", event => {
-      if (event.key === "ArrowLeft") goTo(currentIndex - 1);
-      if (event.key === "ArrowRight") goTo(currentIndex + 1);
-    });
+body.language-en .lang-en{
+ display:inline;
+}
 
-    window.addEventListener("raya:language", event => {
-      language = event.detail === "en" ? "en" : "id";
-      render(currentIndex, false);
-    });
+@media(max-width:900px){
+ .language-switcher{
+   right:76px;
+ }
+}
 
-    render(currentIndex, false);
+
+/* Language switcher final refinement */
+.language-switcher {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+@media(max-width:600px){
+ .language-switcher{
+   top:20px;
+   right:65px;
+ }
+ .lang-btn{
+   font-size:10px;
+ }
+}
+
+
+/* Move bilingual selector above navbar */
+.site-header {
+  padding-top: 22px;
+}
+
+.nav-right {
+  margin-top: 12px;
+}
+
+@media(max-width:900px){
+  .site-header {
+    padding-top: 0;
   }
 
-  /* =====================================================
-     BILINGUAL ENGINE — DATA ATTRIBUTES + LANG SPANS ONLY
-     Prevents "BerandaHome" and conflicting translation passes.
-     ===================================================== */
-  function initLanguage() {
-    const buttons = document.querySelectorAll(".lang-btn");
-    const langSpansId = document.querySelectorAll(".lang-id");
-    const langSpansEn = document.querySelectorAll(".lang-en");
-
-    function setLanguage(lang) {
-      const activeLang = lang === "en" ? "en" : "id";
-      document.documentElement.lang = activeLang;
-      document.body.dataset.lang = activeLang;
-      document.body.classList.toggle("language-en", activeLang === "en");
-
-      langSpansId.forEach(el => { el.hidden = activeLang === "en"; });
-      langSpansEn.forEach(el => { el.hidden = activeLang !== "en"; });
-
-      document.querySelectorAll("[data-id][data-en]").forEach(el => {
-        el.textContent = activeLang === "en" ? el.dataset.en : el.dataset.id;
-      });
-
-      buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === activeLang));
-      localStorage.setItem("raya-language", activeLang);
-      window.dispatchEvent(new CustomEvent("raya:language", { detail: activeLang }));
-    }
-
-    buttons.forEach(btn => btn.addEventListener("click", () => setLanguage(btn.dataset.lang)));
-    setLanguage(localStorage.getItem("raya-language") || "id");
+  .language-switcher {
+    top: 10px;
+    right: 70px;
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initProductSlider();
-    initLanguage();
-  });
-})();
+  .nav-right {
+    margin-top: 0;
+  }
+}
+
+/* FINAL CLEAN FIX */
+.language-switcher{
+  position:absolute;
+  top:2px;
+  right:35px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  z-index:10010;
+}
+
+.product-navigation a span,
+.product-nav span{
+  display:none;
+}
+
+.product-navigation a,
+.product-nav a{
+  font-size:0;
+}
+
+.product-navigation a::after,
+.product-nav a::after{
+  font-size:32px;
+  line-height:1;
+}
+
+@media(max-width:900px){
+ .language-switcher{
+   top:4px;
+   right:60px;
+ }
+}
+
+
+/* PRODUCT NAV CLEANUP */
+.product-nav-text,
+.product-navigation .label,
+.product-navigation span:not(.arrow),
+.product-slider-nav span:not(.arrow){
+  display:none !important;
+}
+
+.product-navigation a,
+.product-nav a{
+  font-size:0 !important;
+}
+
+.product-navigation a::before,
+.product-nav a::before{
+  font-size:32px;
+}
+
+/* LANGUAGE BUTTON POSITION ADJUST */
+.language-switcher{
+  top:18px !important;
+  right:38px !important;
+}
+
+@media(max-width:900px){
+ .language-switcher{
+   top:16px !important;
+   right:65px !important;
+ }
+}
+
+
+/* FINAL REMOVE PRODUCT PREVIOUS/NEXT LABEL */
+.product-navigation,
+.product-nav,
+.product-slider-nav {
+  position: relative;
+}
+
+.product-navigation *,
+.product-nav *,
+.product-slider-nav * {
+  font-size: 0;
+}
+
+.product-navigation a::before,
+.product-nav a::before,
+.product-slider-nav a::before {
+  font-size: 32px;
+}
+
+/* keep arrow only */
+.product-navigation a span,
+.product-nav a span,
+.product-slider-nav a span {
+  display:none !important;
+}
+
+
+
+/* =====================================================
+   FINAL PRODUCT ARROW ONLY FIX
+   ===================================================== */
+
+/* hide all text labels around product navigation */
+.product-nav,
+.product-navigation,
+.product-slider-nav,
+.product-controls,
+.slider-controls {
+  font-size: 0 !important;
+}
+
+.product-nav *,
+.product-navigation *,
+.product-slider-nav *,
+.product-controls *,
+.slider-controls * {
+  font-size: 0 !important;
+}
+
+/* show only arrow icons */
+.product-nav a::before,
+.product-navigation a::before,
+.product-slider-nav a::before,
+.product-controls a::before,
+.slider-controls a::before {
+  font-size: 34px !important;
+  display: inline-block;
+}
+
+/* remove accidental translated spans */
+.product-nav span,
+.product-navigation span,
+.product-slider-nav span {
+  display:none !important;
+}
+
+
+/* ================================
+   RESTORE PRODUCT SECTION LAYOUT
+   ================================ */
+
+.product-item img,
+.product-card img,
+.product-image img,
+.product-slider img,
+.product-showcase img {
+    display:block !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    max-width:100%;
+    height:auto;
+}
+
+/* Jangan sembunyikan seluruh isi navigasi produk */
+.product-nav,
+.product-navigation,
+.product-slider-nav,
+.product-controls,
+.slider-controls {
+    font-size:initial !important;
+}
+
+.product-nav *,
+.product-navigation *,
+.product-slider-nav *,
+.product-controls *,
+.slider-controls * {
+    font-size:initial !important;
+}
+
+/* Sembunyikan hanya label teks prev next */
+.product-nav .label,
+.product-navigation .label,
+.product-slider-nav .label,
+.product-prev-text,
+.product-next-text {
+    display:none !important;
+}
+
+/* Arrow tetap terlihat */
+.product-nav a,
+.product-navigation a,
+.product-slider-nav a {
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Produk section normal */
+.product-section,
+.product-showcase,
+.product-slider {
+    overflow:visible !important;
+}
+
+
+/* ===== PRODUCT SECTION SAFE FIX ===== */
+
+/* Restore product images */
+.product-section img,
+.product-showcase img,
+.product-slider img,
+.product-card img,
+.product-image img {
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+}
+
+/* Product navigation only */
+.product-navigation,
+.product-nav,
+.product-slider-nav {
+    margin-top:32px !important;
+    position:relative;
+    z-index:2;
+}
+
+/* Hide only text labels */
+.product-navigation .text,
+.product-navigation .label,
+.product-nav .text,
+.product-nav .label,
+.product-prev-label,
+.product-next-label {
+    display:none !important;
+}
+
+/* Keep arrows clean */
+.product-navigation a,
+.product-nav a {
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+    font-size:28px !important;
+}
+
+/* Prevent collision with buttons above */
+.product-navigation,
+.product-nav {
+    padding-top:18px;
+}
+
+/* FINAL RAYA GULA ADJUSTMENTS */
+.product-slider{grid-template-columns:45% 55%;}
+.product-slider-visual{order:1;}
+.product-slider-content{order:2;}
+.product-slide-image{display:block!important;visibility:visible!important;opacity:1!important;}
+.product-slider-navigation{margin-top:40px!important;display:flex;gap:28px;align-items:center;}
+.product-slider-arrow{margin-top:20px;}
+.hero-photo img{object-position:55% center!important;}
+.about-image{min-height:620px!important;background-size:cover!important;}
+.about-copy h2{max-width:420px;}
+
+
+/* =========================================================
+   RAYA GULA — FINAL PRODUCT / BILINGUAL OVERRIDES
+   ========================================================= */
+
+/* Prevent ID + EN labels from ever appearing side-by-side. */
+.lang-en { display: none !important; }
+body.language-en .lang-id { display: none !important; }
+body.language-en .lang-en { display: inline !important; }
+.lang-id[hidden], .lang-en[hidden] { display: none !important; }
+
+/* Signature product section: desktop = image left / information right. */
+#products.product-section {
+  scroll-margin-top: 90px;
+}
+
+.product-slider {
+  width: 100%;
+  max-width: 1120px;
+  margin: 58px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: center;
+}
+
+.product-slider-visual {
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-stage {
+  width: min(100%, 500px);
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+}
+
+.product-slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateX(18px) scale(.97);
+  transition: opacity .35s ease, transform .45s ease;
+}
+
+.product-slide-image.is-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.product-slider-content {
+  width: 100%;
+  max-width: 520px;
+  padding: 0;
+}
+
+.product-number {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+}
+
+.product-slide-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 4.2vw, 64px);
+  line-height: .98;
+  font-weight: 400;
+  letter-spacing: -.03em;
+}
+
+.product-slide-lead {
+  margin: 0 0 12px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.product-slide-description {
+  max-width: 480px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.product-business-info {
+  margin-top: 24px;
+  padding-left: 16px;
+  border-left: 2px solid var(--gold);
+}
+
+.product-business-info strong,
+.product-business-info span { display: block; }
+.product-business-info strong { margin-bottom: 5px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.product-business-info span { max-width: 440px; font-size: 12px; line-height: 1.6; opacity: .72; }
+
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 26px;
+  flex-wrap: wrap;
+}
+
+.product-slider-navigation {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.product-slider-arrow {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(74,48,36,.25);
+  background: transparent;
+  color: var(--brown-dark);
+  cursor: pointer;
+  font-size: 22px;
+  transition: .25s ease;
+}
+
+.product-slider-arrow:hover,
+.product-slider-arrow:focus-visible {
+  background: var(--brown);
+  color: #fff;
+  border-color: var(--brown);
+}
+
+.product-slider-progress {
+  min-width: 58px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+@media (max-width: 900px) {
+  .product-slider {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    max-width: 760px;
+  }
+  .product-slider-visual { min-height: auto; }
+  .product-image-stage { width: min(82vw, 460px); }
+  .product-slider-content { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .product-slider { margin-top: 38px; gap: 28px; }
+  .product-image-stage { width: min(88vw, 390px); }
+  .product-slide-title { font-size: 42px; }
+  .product-slide-lead { font-size: 16px; }
+  .product-slide-description { font-size: 13px; }
+  .product-actions { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .product-slider-navigation { margin-top: 26px; }
+}
+
+
+/* =========================================================
+   RAYA GULA — FINAL VISUAL REVISION
+   1. Hero: shift the photography left so the product area
+      on the right remains fully visible.
+   2. Signature: desktop = product image LEFT / copy RIGHT;
+      mobile = stacked vertically.
+   3. About: match the supplied editorial reference —
+      copy LEFT / visual RIGHT, with the Origin label at
+      the top-right of the image.
+   ========================================================= */
+
+/* HERO — reveal more of the right side of the source photo */
+.hero-photo img {
+  object-position: 66% center !important;
+}
+
+@media (max-width: 900px) {
+  .hero-photo img {
+    object-position: 62% center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-photo img {
+    object-position: 58% center !important;
+  }
+}
+
+/* SIGNATURE — locked desktop two-column composition */
+@media (min-width: 761px) {
+  #products .product-slider {
+    width: min(100%, 1120px);
+    grid-template-columns: minmax(0, 48%) minmax(0, 52%) !important;
+    gap: 54px !important;
+    align-items: center !important;
+  }
+
+  #products .product-slider-visual {
+    order: 1 !important;
+    min-height: 600px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #products .product-slider-content {
+    order: 2 !important;
+    width: 100%;
+    max-width: 540px;
+    padding: 0 !important;
+  }
+
+  #products .product-image-stage {
+    width: min(100%, 500px);
+    max-width: 500px;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* SIGNATURE — mobile stacks image above information */
+@media (max-width: 760px) {
+  #products .product-slider {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  #products .product-slider-visual {
+    order: 1 !important;
+    min-height: auto !important;
+  }
+
+  #products .product-slider-content {
+    order: 2 !important;
+    max-width: 100%;
+    padding: 0 !important;
+  }
+}
+
+/* ABOUT — editorial composition from supplied reference */
+#about {
+  padding-top: 68px !important;
+  padding-bottom: 72px !important;
+}
+
+#about .about {
+  width: min(100%, 1240px);
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.32fr) !important;
+  gap: 58px !important;
+  align-items: center !important;
+}
+
+#about .about-copy {
+  max-width: 540px;
+}
+
+#about .about-copy .eyebrow {
+  margin-bottom: 22px;
+}
+
+#about .about-copy h2 {
+  max-width: 590px !important;
+  margin: 0 0 27px !important;
+  font-size: clamp(50px, 5.05vw, 76px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+}
+
+#about .about-copy p {
+  max-width: 505px;
+  font-size: 14px;
+  line-height: 1.82;
+  margin-bottom: 18px;
+}
+
+#about .about-copy .text-link {
+  margin-top: 27px;
+}
+
+#about .about-visual {
+  width: 100%;
+  max-width: none;
+  position: relative;
+  justify-self: stretch;
+}
+
+#about .about-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0 !important;
+  aspect-ratio: 1792 / 877;
+  object-fit: contain;
+  object-position: center;
+  background: none;
+  box-shadow: none;
+}
+
+#about .about-caption {
+  top: 0;
+  right: 0;
+  bottom: auto;
+  width: 132px;
+  min-width: 132px;
+  max-width: 132px;
+  min-height: 60px;
+  padding: 10px 12px;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 3px;
+  background: rgba(251, 248, 242, .92);
+}
+
+#about .about-caption span {
+  font-size: 13px;
+}
+
+#about .about-caption b {
+  font-size: 8px;
+  line-height: 1.2;
+  letter-spacing: .12em;
+}
+
+#about .about-caption small {
+  font-size: 6px;
+  line-height: 1.2;
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  #about .about {
+    width: min(100%, 1000px);
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) !important;
+    gap: 42px !important;
+  }
+
+  #about .about-copy h2 {
+    font-size: clamp(46px, 5.5vw, 62px) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #about .about {
+    grid-template-columns: 1fr !important;
+    gap: 38px !important;
+  }
+
+  #about .about-visual {
+    order: 1;
+  }
+
+  #about .about-copy {
+    order: 2;
+  }
+
+  #about .about-image {
+    aspect-ratio: 1000 / 720;
+  }
+}
+
+@media (max-width: 600px) {
+  #about {
+    padding-top: 60px !important;
+    padding-bottom: 52px !important;
+  }
+
+  #about .about {
+    gap: 30px !important;
+  }
+
+  #about .about-copy h2 {
+    font-size: clamp(38px, 10.5vw, 50px) !important;
+    line-height: 1.05 !important;
+  }
+
+  #about .about-caption {
+    width: 106px;
+    min-width: 106px;
+    max-width: 106px;
+    min-height: 50px;
+    padding: 8px 9px;
+  }
+
+  #about .about-caption span {
+    font-size: 10px;
+  }
+
+  #about .about-caption b {
+    font-size: 6px;
+  }
+
+  #about .about-caption small {
+    font-size: 5px;
+  }
+}
+
+
+/* =========================================================
+   RAYA GULA — REVISION 03
+   Hero right-edge preservation + About image + two-line title
+   ========================================================= */
+.hero-photo img {
+  object-position: 100% center !important;
+}
+
+@media (min-width: 901px) {
+  .hero-photo img {
+    object-position: 100% center !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-photo img {
+    object-position: 100% center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-photo img {
+    object-position: 100% center !important;
+  }
+}
+
+/* About: use the supplied Dari Alam / Raya Gula artwork at its native ratio. */
+#about .about-image {
+  aspect-ratio: 1792 / 877 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Desktop: the About headline is intentionally two lines. */
+@media (min-width: 901px) {
+  #about .about-copy h2 {
+    max-width: 650px !important;
+    font-size: clamp(48px, 4.45vw, 70px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -.045em !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #about .about-copy h2 {
+    max-width: 100% !important;
+  }
+}
+
+
+/* =========================================================
+   ABOUT — DESKTOP FINAL ALIGNMENT
+   Match the reference: 3-line headline and image flush
+   top/bottom with the text column.
+   ========================================================= */
+@media (min-width: 901px) {
+  .about {
+    align-items: stretch;
+  }
+
+  .about-copy {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-visual {
+    align-self: stretch;
+    height: 100%;
+  }
+
+  .about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-image {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+}
+
+
+/* =========================================================
+   RAYA GULA — FINAL V5 REFINEMENTS
+   ========================================================= */
+
+/* SIGNATURE: title first, copy directly underneath in one column.
+   Do not split the intro copy into a second column. */
+@media (min-width: 761px) {
+  #products .product-heading {
+    display: block !important;
+    width: min(100%, 1120px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #products .product-heading > div {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  #products .product-heading > p {
+    width: 100% !important;
+    max-width: 760px !important;
+    margin: 22px 0 0 !important;
+  }
+}
+
+/* ABOUT: preserve the complete supplied image. The source is 1792×877,
+   so use its native ratio instead of the old portrait-ish crop ratio. */
+@media (min-width: 901px) {
+  #about .about-visual {
+    align-self: start !important;
+    height: auto !important;
+  }
+
+  #about .about-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 1792 / 877 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #about .about-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1792 / 877 !important;
+    object-fit: contain !important;
+  }
+}
+
+/* =========================================================
+   RAYA GULA — WHY RAYA GULA TYPOGRAPHY ADJUSTMENT
+   Increase readability of the 01–04 value points.
+   ========================================================= */
+
+.why-list {
+  margin-top: 42px;
+}
+
+.why-list > div {
+  grid-template-columns: 46px 1fr;
+  gap: 20px;
+  padding: 22px 0;
+}
+
+.why-list > div > span {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: .04em;
+}
+
+.why-list b {
+  display: block;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+.why-list p {
+  margin-top: 7px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .why-list > div {
+    grid-template-columns: 42px 1fr;
+    gap: 17px;
+    padding: 20px 0;
+  }
+
+  .why-list > div > span {
+    font-size: 15px;
+  }
+
+  .why-list b {
+    font-size: 19px;
+  }
+
+  .why-list p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-list > div {
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    padding: 18px 0;
+  }
+
+  .why-list > div > span {
+    font-size: 14px;
+  }
+
+  .why-list b {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .why-list p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+}
+
+/* =========================================================
+   RAYA GULA — FINAL HERO + ABOUT ALIGNMENT ADJUSTMENT
+   ========================================================= */
+
+/* HERO: keep the visual anchored to the far right */
+.hero-photo img {
+  object-position: 100% center;
+}
+
+/* ABOUT: image follows the full height of the copy block */
+@media (min-width: 901px) {
+  .about {
+    width: min(100%, 1480px);
+    grid-template-columns: minmax(0, .68fr) minmax(0, 1.32fr);
+    gap: 56px;
+    align-items: stretch;
+  }
+
+  .about-copy {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-visual {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 0;
+    align-self: stretch;
+  }
+
+  .about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center;
+    background: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-photo img {
+    object-position: 92% center;
+  }
+
+  .about-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-photo img {
+    object-position: 88% center;
+  }
+}
+
+/* =========================================================
+   RAYA GULA — FINAL HERO + ABOUT LAYOUT ADJUSTMENT
+   ========================================================= */
+
+/* Hero: keep the visual anchored hard to the right */
+.hero-photo img {
+  object-position: 100% center;
+}
+
+@media (min-width: 901px) {
+  .hero-photo img {
+    object-position: 100% center;
+  }
+}
+
+/* About: image follows the full height of the copy block */
+@media (min-width: 901px) {
+  .about {
+    grid-template-columns: minmax(0, .62fr) minmax(0, 1.38fr);
+    gap: 64px;
+    align-items: stretch;
+  }
+
+  .about-copy {
+    max-width: 560px;
+    align-self: center;
+  }
+
+  .about-visual {
+    width: 100%;
+    max-width: none;
+    align-self: stretch;
+    display: flex;
+    position: relative;
+  }
+
+  .about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center center;
+    background: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-photo img {
+    object-position: 100% center;
+  }
+
+  .about-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: none;
+  }
+}
+
+
+/* =========================================================
+   FINAL ABOUT + JOURNAL CONTENT ADJUSTMENT
+   ========================================================= */
+
+@media (min-width: 901px) {
+  #about {
+    padding-top: 110px;
+    padding-bottom: 58px;
+  }
+
+  .about {
+    width: min(100%, 1360px);
+    grid-template-columns: minmax(0, .68fr) minmax(0, 1.32fr);
+    gap: 44px;
+    align-items: stretch;
+    min-height: 0;
+  }
+
+  .about-copy {
+    max-width: 540px;
+    align-self: center;
+  }
+
+  .about-visual {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 0;
+    align-self: stretch;
+    display: flex;
+    position: relative;
+  }
+
+  .about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center center;
+    background-image: none;
+  }
+}
+
+.journal-excerpt {
+  margin: 0 0 16px;
+  max-width: 430px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.journal-card > a {
+  display: inline-block;
+}
+
+@media (max-width: 900px) {
+  .about-visual {
+    height: auto;
+  }
+
+  .about-image {
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  .journal-excerpt {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   ABOUT — FINAL IMAGE COMPOSITION
+   Image should start close to the copy, fill the full row height,
+   and let THE ORIGIN label overlap the image itself.
+   ========================================================= */
+@media (min-width: 1025px) {
+  #about {
+    padding-top: 110px;
+    padding-bottom: 58px;
+  }
+
+  .about {
+    width: min(100%, 1360px);
+    grid-template-columns: minmax(0, .50fr) minmax(0, 1.50fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .about-copy {
+    max-width: 540px;
+    align-self: center;
+  }
+
+  .about-visual {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    justify-self: stretch;
+    align-self: stretch;
+    position: relative;
+    overflow: visible;
+  }
+
+  .about-image {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    margin: 0;
+  }
+
+  .about-caption {
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-visual {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+/* =========================================================
+   MASTER — ABOUT 50/50 BALANCE
+   Copy and image share equal desktop width. THE ORIGIN stays
+   as an overlay on top of the image.
+   ========================================================= */
+@media (min-width: 901px) {
+  #about .about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: stretch !important;
+  }
+
+  #about .about-copy {
+    width: 100% !important;
+    max-width: none !important;
+    align-self: stretch !important;
+  }
+
+  #about .about-visual {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    align-self: stretch !important;
+    justify-self: stretch !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  #about .about-image {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  #about .about-caption {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    z-index: 2 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #about .about {
+    grid-template-columns: 1fr !important;
+  }
+
+  #about .about-visual {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #about .about-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 1792 / 877 !important;
+    object-fit: contain !important;
+  }
+}

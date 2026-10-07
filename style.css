@@ -1430,14 +1430,6 @@ h4 em {
   font-weight: 800;
 }
 
-.journal-excerpt {
-  margin: 0 0 17px;
-
-  color: var(--brown);
-  font-size: 14px;
-  line-height: 1.65;
-}
-
 .journal-card > a:hover {
   color:
     var(--gold);
@@ -2287,7 +2279,7 @@ h4 em {
 
   .journal-card .journal-img {
     grid-row:
-      1 / 5;
+      1 / 4;
   }
 
   .journal-card > small {
@@ -2782,7 +2774,7 @@ h4 em {
   }
 
   .about-visual {
-    max-width: 620px;
+    max-width: 680px;
   }
 
 }
@@ -3649,8 +3641,8 @@ h4 em {
   display: grid;
 
   grid-template-columns:
-    minmax(0, .78fr)
-    minmax(0, 1.22fr);
+    minmax(0, .68fr)
+    minmax(0, 1.32fr);
 
   gap: 68px;
 
@@ -3712,7 +3704,7 @@ h4 em {
 
 .about-visual {
   width: 100%;
-  max-width: 760px;
+  max-width: 820px;
 
   margin: 0;
 
@@ -3722,21 +3714,13 @@ h4 em {
 }
 
 .about-image {
+  display: block;
   width: 100%;
-
+  height: auto;
   min-height: 0;
-
-  aspect-ratio: 1.55 / 1;
-
-  background-image:
-    url("dari-alam-raya-raya-gula.png");
-
-  background-size: 100% 100%;
-
-  background-position: center;
-
-  background-repeat: no-repeat;
-
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
   box-shadow: none;
 }
 
@@ -3827,8 +3811,8 @@ h4 em {
     width: min(100%, 1000px);
 
     grid-template-columns:
-      minmax(0, .8fr)
-      minmax(0, 1.2fr);
+      minmax(0, .72fr)
+      minmax(0, 1.28fr);
 
     gap: 46px;
   }
@@ -3996,13 +3980,13 @@ h4 em {
   }
 
   .about-image {
+    display: block;
     width: 100%;
-
+    height: auto;
     min-height: 0;
-
-    aspect-ratio: 1.35 / 1;
-
-    background-size: 100% 100%;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
   }
 
   .about-copy .eyebrow {

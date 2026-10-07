@@ -2774,7 +2774,7 @@ h4 em {
   }
 
   .about-visual {
-    max-width: 680px;
+    max-width: 760px;
   }
 
 }
@@ -3636,15 +3636,15 @@ h4 em {
 }
 
 .about {
-  width: min(100%, 1240px);
+  width: min(100%, 1360px);
 
   display: grid;
 
   grid-template-columns:
-    minmax(0, .68fr)
-    minmax(0, 1.32fr);
+    minmax(0, .64fr)
+    minmax(0, 1.36fr);
 
-  gap: 68px;
+  gap: 48px;
 
   align-items: center;
 
@@ -3704,7 +3704,7 @@ h4 em {
 
 .about-visual {
   width: 100%;
-  max-width: 820px;
+  max-width: 920px;
 
   margin: 0;
 
@@ -3721,6 +3721,7 @@ h4 em {
   aspect-ratio: auto;
   object-fit: contain;
   object-position: center;
+  background: none;
   box-shadow: none;
 }
 
@@ -3808,13 +3809,13 @@ h4 em {
   }
 
   .about {
-    width: min(100%, 1000px);
+    width: min(100%, 1100px);
 
     grid-template-columns:
-      minmax(0, .72fr)
-      minmax(0, 1.28fr);
+      minmax(0, .66fr)
+      minmax(0, 1.34fr);
 
-    gap: 46px;
+    gap: 40px;
   }
 
   .about-copy {
@@ -3980,13 +3981,13 @@ h4 em {
   }
 
   .about-image {
-    display: block;
     width: 100%;
-    height: auto;
+
     min-height: 0;
-    aspect-ratio: auto;
-    object-fit: contain;
-    object-position: center;
+
+    aspect-ratio: 1.35 / 1;
+
+    background-size: 100% 100%;
   }
 
   .about-copy .eyebrow {

@@ -2774,7 +2774,7 @@ h4 em {
   }
 
   .about-visual {
-    max-width: 760px;
+    max-width: 620px;
   }
 
 }
@@ -3636,15 +3636,15 @@ h4 em {
 }
 
 .about {
-  width: min(100%, 1360px);
+  width: min(100%, 1240px);
 
   display: grid;
 
   grid-template-columns:
-    minmax(0, .64fr)
-    minmax(0, 1.36fr);
+    minmax(0, .78fr)
+    minmax(0, 1.22fr);
 
-  gap: 48px;
+  gap: 68px;
 
   align-items: center;
 
@@ -3704,7 +3704,7 @@ h4 em {
 
 .about-visual {
   width: 100%;
-  max-width: 920px;
+  max-width: 760px;
 
   margin: 0;
 
@@ -3714,14 +3714,21 @@ h4 em {
 }
 
 .about-image {
-  display: block;
   width: 100%;
-  height: auto;
+
   min-height: 0;
-  aspect-ratio: auto;
-  object-fit: contain;
-  object-position: center;
-  background: none;
+
+  aspect-ratio: 1.55 / 1;
+
+  background-image:
+    url("dari-alam-raya-raya-gula.png");
+
+  background-size: 100% 100%;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
   box-shadow: none;
 }
 
@@ -3809,13 +3816,13 @@ h4 em {
   }
 
   .about {
-    width: min(100%, 1100px);
+    width: min(100%, 1000px);
 
     grid-template-columns:
-      minmax(0, .66fr)
-      minmax(0, 1.34fr);
+      minmax(0, .8fr)
+      minmax(0, 1.2fr);
 
-    gap: 40px;
+    gap: 46px;
   }
 
   .about-copy {
@@ -4660,222 +4667,223 @@ body.language-en .lang-en { display: inline !important; }
 
 
 /* =========================================================
-   RAYA GULA — FINAL VISUAL REVISION
-   1. Hero: shift the photography left so the product area
-      on the right remains fully visible.
-   2. Signature: desktop = product image LEFT / copy RIGHT;
-      mobile = stacked vertically.
-   3. About: match the supplied editorial reference —
-      copy LEFT / visual RIGHT, with the Origin label at
-      the top-right of the image.
+   RAYA GULA — ABOUT LAYOUT FINAL
+   Reference-matched editorial split:
+   balanced copy + image, clean 50/50 desktop composition.
    ========================================================= */
 
-/* HERO — reveal more of the right side of the source photo */
-.hero-photo img {
-  object-position: 66% center !important;
-}
+/* Desktop */
+@media (min-width: 901px) {
 
-@media (max-width: 900px) {
-  .hero-photo img {
-    object-position: 62% center !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-photo img {
-    object-position: 58% center !important;
-  }
-}
-
-/* SIGNATURE — locked desktop two-column composition */
-@media (min-width: 761px) {
-  #products .product-slider {
-    width: min(100%, 1120px);
-    grid-template-columns: minmax(0, 48%) minmax(0, 52%) !important;
-    gap: 54px !important;
-    align-items: center !important;
+  #about {
+    padding-top: 110px;
+    padding-bottom: 78px;
   }
 
-  #products .product-slider-visual {
-    order: 1 !important;
-    min-height: 600px;
-    display: flex !important;
+  #about .about {
+    width: min(100%, 1440px);
+    max-width: 1440px;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 64px;
+
     align-items: center;
+  }
+
+  #about .about-copy {
+    width: 100%;
+    max-width: 620px;
+    margin: 0;
+
+    align-self: center;
+    justify-self: stretch;
+
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
 
-  #products .product-slider-content {
-    order: 2 !important;
-    width: 100%;
-    max-width: 540px;
-    padding: 0 !important;
-  }
-
-  #products .product-image-stage {
-    width: min(100%, 500px);
-    max-width: 500px;
-    aspect-ratio: 4 / 5;
-  }
-}
-
-/* SIGNATURE — mobile stacks image above information */
-@media (max-width: 760px) {
-  #products .product-slider {
-    grid-template-columns: 1fr !important;
-    gap: 30px !important;
-  }
-
-  #products .product-slider-visual {
-    order: 1 !important;
-    min-height: auto !important;
-  }
-
-  #products .product-slider-content {
-    order: 2 !important;
-    max-width: 100%;
-    padding: 0 !important;
-  }
-}
-
-/* ABOUT — editorial composition from supplied reference */
-#about {
-  padding-top: 68px !important;
-  padding-bottom: 72px !important;
-}
-
-#about .about {
-  width: min(100%, 1240px);
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.32fr) !important;
-  gap: 58px !important;
-  align-items: center !important;
-}
-
-#about .about-copy {
-  max-width: 540px;
-}
-
-#about .about-copy .eyebrow {
-  margin-bottom: 22px;
-}
-
-#about .about-copy h2 {
-  max-width: 590px !important;
-  margin: 0 0 27px !important;
-  font-size: clamp(50px, 5.05vw, 76px) !important;
-  line-height: 1.02 !important;
-  letter-spacing: -.045em !important;
-}
-
-#about .about-copy p {
-  max-width: 505px;
-  font-size: 14px;
-  line-height: 1.82;
-  margin-bottom: 18px;
-}
-
-#about .about-copy .text-link {
-  margin-top: 27px;
-}
-
-#about .about-visual {
-  width: 100%;
-  max-width: none;
-  position: relative;
-  justify-self: stretch;
-}
-
-#about .about-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  min-height: 0 !important;
-  aspect-ratio: 1792 / 877;
-  object-fit: contain;
-  object-position: center;
-  background: none;
-  box-shadow: none;
-}
-
-#about .about-caption {
-  top: 0;
-  right: 0;
-  bottom: auto;
-  width: 132px;
-  min-width: 132px;
-  max-width: 132px;
-  min-height: 60px;
-  padding: 10px 12px;
-  grid-template-columns: auto 1fr;
-  column-gap: 8px;
-  row-gap: 3px;
-  background: rgba(251, 248, 242, .92);
-}
-
-#about .about-caption span {
-  font-size: 13px;
-}
-
-#about .about-caption b {
-  font-size: 8px;
-  line-height: 1.2;
-  letter-spacing: .12em;
-}
-
-#about .about-caption small {
-  font-size: 6px;
-  line-height: 1.2;
-}
-
-@media (max-width: 1100px) and (min-width: 901px) {
-  #about .about {
-    width: min(100%, 1000px);
-    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) !important;
-    gap: 42px !important;
+  #about .about-copy .eyebrow {
+    margin-bottom: 22px;
   }
 
   #about .about-copy h2 {
-    font-size: clamp(46px, 5.5vw, 62px) !important;
+    max-width: 620px;
+
+    font-size: clamp(48px, 4.5vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+  }
+
+  #about .about-copy p {
+    max-width: 570px;
+
+    margin-top: 25px;
+
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  #about .about-copy .text-link {
+    margin-top: 34px;
+  }
+
+  #about .about-visual {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    align-self: center;
+
+    position: relative;
+  }
+
+  /*
+     The supplied artwork is wide. The reference composition
+     uses a taller editorial image frame, so the image is
+     intentionally cropped with object-fit: cover.
+  */
+  #about .about-image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1.42 / 1;
+
+    min-height: 0;
+
+    object-fit: cover;
+    object-position: center center;
+
+    background: none;
+    box-shadow: none;
+  }
+
+  #about .about-caption {
+    top: 0;
+    right: 0;
+    bottom: auto;
+
+    width: 132px;
+    min-width: 132px;
+    max-width: 132px;
+
+    min-height: 60px;
+    padding: 10px 12px;
+
+    background: rgba(251, 248, 242, .94);
   }
 }
 
-@media (max-width: 900px) {
+
+/* Large tablet — retain balance without making the copy cramped */
+@media (max-width: 1100px) and (min-width: 901px) {
+
   #about .about {
-    grid-template-columns: 1fr !important;
-    gap: 38px !important;
+    width: 100%;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 42px;
+  }
+
+  #about .about-copy h2 {
+    font-size: clamp(44px, 5vw, 60px);
+  }
+
+  #about .about-copy p {
+    font-size: 14px;
+  }
+
+  #about .about-image {
+    aspect-ratio: 1.35 / 1;
+  }
+}
+
+
+/* Mobile / tablet */
+@media (max-width: 900px) {
+
+  #about .about {
+    grid-template-columns: 1fr;
+    gap: 38px;
   }
 
   #about .about-visual {
     order: 1;
+    width: 100%;
+    height: auto;
   }
 
   #about .about-copy {
     order: 2;
+    width: 100%;
+    max-width: 100%;
   }
 
   #about .about-image {
-    aspect-ratio: 1000 / 720;
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1792 / 877;
+
+    min-height: 0;
+
+    object-fit: contain;
+    object-position: center center;
+
+    background: none;
+    box-shadow: none;
+  }
+
+  #about .about-caption {
+    top: 0;
+    right: 0;
+    bottom: auto;
   }
 }
 
+
+/* Small mobile */
 @media (max-width: 600px) {
+
   #about {
-    padding-top: 60px !important;
-    padding-bottom: 52px !important;
+    padding-top: 60px;
+    padding-bottom: 52px;
   }
 
   #about .about {
-    gap: 30px !important;
+    gap: 30px;
   }
 
   #about .about-copy h2 {
-    font-size: clamp(38px, 10.5vw, 50px) !important;
-    line-height: 1.05 !important;
+    font-size: clamp(38px, 10.5vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -.035em;
+  }
+
+  #about .about-copy p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  #about .about-copy .text-link {
+    margin-top: 28px;
   }
 
   #about .about-caption {
     width: 106px;
     min-width: 106px;
     max-width: 106px;
+
     min-height: 50px;
     padding: 8px 9px;
   }
@@ -4890,567 +4898,5 @@ body.language-en .lang-en { display: inline !important; }
 
   #about .about-caption small {
     font-size: 5px;
-  }
-}
-
-
-/* =========================================================
-   RAYA GULA — REVISION 03
-   Hero right-edge preservation + About image + two-line title
-   ========================================================= */
-.hero-photo img {
-  object-position: 100% center !important;
-}
-
-@media (min-width: 901px) {
-  .hero-photo img {
-    object-position: 100% center !important;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-photo img {
-    object-position: 100% center !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-photo img {
-    object-position: 100% center !important;
-  }
-}
-
-/* About: use the supplied Dari Alam / Raya Gula artwork at its native ratio. */
-#about .about-image {
-  aspect-ratio: 1792 / 877 !important;
-  object-fit: cover !important;
-  object-position: center !important;
-}
-
-/* Desktop: the About headline is intentionally two lines. */
-@media (min-width: 901px) {
-  #about .about-copy h2 {
-    max-width: 650px !important;
-    font-size: clamp(48px, 4.45vw, 70px) !important;
-    line-height: 1.02 !important;
-    letter-spacing: -.045em !important;
-  }
-}
-
-@media (max-width: 900px) {
-  #about .about-copy h2 {
-    max-width: 100% !important;
-  }
-}
-
-
-/* =========================================================
-   ABOUT — DESKTOP FINAL ALIGNMENT
-   Match the reference: 3-line headline and image flush
-   top/bottom with the text column.
-   ========================================================= */
-@media (min-width: 901px) {
-  .about {
-    align-items: stretch;
-  }
-
-  .about-copy {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .about-visual {
-    align-self: stretch;
-    height: 100%;
-  }
-
-  .about-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    aspect-ratio: auto;
-    object-fit: cover;
-    object-position: center center;
-  }
-}
-
-@media (max-width: 900px) {
-  .about-image {
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    aspect-ratio: auto;
-    object-fit: cover;
-  }
-}
-
-
-/* =========================================================
-   RAYA GULA — FINAL V5 REFINEMENTS
-   ========================================================= */
-
-/* SIGNATURE: title first, copy directly underneath in one column.
-   Do not split the intro copy into a second column. */
-@media (min-width: 761px) {
-  #products .product-heading {
-    display: block !important;
-    width: min(100%, 1120px);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #products .product-heading > div {
-    width: 100% !important;
-    max-width: none !important;
-  }
-
-  #products .product-heading > p {
-    width: 100% !important;
-    max-width: 760px !important;
-    margin: 22px 0 0 !important;
-  }
-}
-
-/* ABOUT: preserve the complete supplied image. The source is 1792×877,
-   so use its native ratio instead of the old portrait-ish crop ratio. */
-@media (min-width: 901px) {
-  #about .about-visual {
-    align-self: start !important;
-    height: auto !important;
-  }
-
-  #about .about-image {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 1792 / 877 !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-  }
-}
-
-@media (max-width: 900px) {
-  #about .about-image {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 1792 / 877 !important;
-    object-fit: contain !important;
-  }
-}
-
-/* =========================================================
-   RAYA GULA — WHY RAYA GULA TYPOGRAPHY ADJUSTMENT
-   Increase readability of the 01–04 value points.
-   ========================================================= */
-
-.why-list {
-  margin-top: 42px;
-}
-
-.why-list > div {
-  grid-template-columns: 46px 1fr;
-  gap: 20px;
-  padding: 22px 0;
-}
-
-.why-list > div > span {
-  font-size: 16px;
-  line-height: 1.4;
-  letter-spacing: .04em;
-}
-
-.why-list b {
-  display: block;
-  font-size: 20px;
-  line-height: 1.25;
-  letter-spacing: -.01em;
-}
-
-.why-list p {
-  margin-top: 7px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-@media (max-width: 900px) {
-  .why-list > div {
-    grid-template-columns: 42px 1fr;
-    gap: 17px;
-    padding: 20px 0;
-  }
-
-  .why-list > div > span {
-    font-size: 15px;
-  }
-
-  .why-list b {
-    font-size: 19px;
-  }
-
-  .why-list p {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-}
-
-@media (max-width: 600px) {
-  .why-list > div {
-    grid-template-columns: 36px 1fr;
-    gap: 14px;
-    padding: 18px 0;
-  }
-
-  .why-list > div > span {
-    font-size: 14px;
-  }
-
-  .why-list b {
-    font-size: 18px;
-    line-height: 1.3;
-  }
-
-  .why-list p {
-    font-size: 15px;
-    line-height: 1.55;
-  }
-}
-
-/* =========================================================
-   RAYA GULA — FINAL HERO + ABOUT ALIGNMENT ADJUSTMENT
-   ========================================================= */
-
-/* HERO: keep the visual anchored to the far right */
-.hero-photo img {
-  object-position: 100% center;
-}
-
-/* ABOUT: image follows the full height of the copy block */
-@media (min-width: 901px) {
-  .about {
-    width: min(100%, 1480px);
-    grid-template-columns: minmax(0, .68fr) minmax(0, 1.32fr);
-    gap: 56px;
-    align-items: stretch;
-  }
-
-  .about-copy {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .about-visual {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    min-height: 0;
-    align-self: stretch;
-  }
-
-  .about-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    aspect-ratio: auto;
-    object-fit: cover;
-    object-position: center;
-    background: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-photo img {
-    object-position: 92% center;
-  }
-
-  .about-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: auto;
-    object-fit: contain;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-photo img {
-    object-position: 88% center;
-  }
-}
-
-/* =========================================================
-   RAYA GULA — FINAL HERO + ABOUT LAYOUT ADJUSTMENT
-   ========================================================= */
-
-/* Hero: keep the visual anchored hard to the right */
-.hero-photo img {
-  object-position: 100% center;
-}
-
-@media (min-width: 901px) {
-  .hero-photo img {
-    object-position: 100% center;
-  }
-}
-
-/* About: image follows the full height of the copy block */
-@media (min-width: 901px) {
-  .about {
-    grid-template-columns: minmax(0, .62fr) minmax(0, 1.38fr);
-    gap: 64px;
-    align-items: stretch;
-  }
-
-  .about-copy {
-    max-width: 560px;
-    align-self: center;
-  }
-
-  .about-visual {
-    width: 100%;
-    max-width: none;
-    align-self: stretch;
-    display: flex;
-    position: relative;
-  }
-
-  .about-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    aspect-ratio: auto;
-    object-fit: cover;
-    object-position: center center;
-    background: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-photo img {
-    object-position: 100% center;
-  }
-
-  .about-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: auto;
-    object-fit: contain;
-    background: none;
-  }
-}
-
-
-/* =========================================================
-   FINAL ABOUT + JOURNAL CONTENT ADJUSTMENT
-   ========================================================= */
-
-@media (min-width: 901px) {
-  #about {
-    padding-top: 110px;
-    padding-bottom: 58px;
-  }
-
-  .about {
-    width: min(100%, 1360px);
-    grid-template-columns: minmax(0, .68fr) minmax(0, 1.32fr);
-    gap: 44px;
-    align-items: stretch;
-    min-height: 0;
-  }
-
-  .about-copy {
-    max-width: 540px;
-    align-self: center;
-  }
-
-  .about-visual {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    min-height: 0;
-    align-self: stretch;
-    display: flex;
-    position: relative;
-  }
-
-  .about-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    aspect-ratio: auto;
-    object-fit: cover;
-    object-position: center center;
-    background-image: none;
-  }
-}
-
-.journal-excerpt {
-  margin: 0 0 16px;
-  max-width: 430px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.journal-card > a {
-  display: inline-block;
-}
-
-@media (max-width: 900px) {
-  .about-visual {
-    height: auto;
-  }
-
-  .about-image {
-    height: auto;
-    aspect-ratio: auto;
-    object-fit: contain;
-  }
-
-  .journal-excerpt {
-    max-width: 100%;
-  }
-}
-
-/* =========================================================
-   ABOUT — FINAL IMAGE COMPOSITION
-   Image should start close to the copy, fill the full row height,
-   and let THE ORIGIN label overlap the image itself.
-   ========================================================= */
-@media (min-width: 1025px) {
-  #about {
-    padding-top: 110px;
-    padding-bottom: 58px;
-  }
-
-  .about {
-    width: min(100%, 1360px);
-    grid-template-columns: minmax(0, .50fr) minmax(0, 1.50fr);
-    gap: 28px;
-    align-items: stretch;
-  }
-
-  .about-copy {
-    max-width: 540px;
-    align-self: center;
-  }
-
-  .about-visual {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-    height: 100%;
-    min-height: 0;
-    margin: 0;
-    justify-self: stretch;
-    align-self: stretch;
-    position: relative;
-    overflow: visible;
-  }
-
-  .about-image {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    max-width: none !important;
-    aspect-ratio: auto !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-    margin: 0;
-  }
-
-  .about-caption {
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-  }
-}
-
-@media (max-width: 1024px) {
-  .about-visual {
-    width: 100%;
-    max-width: none;
-  }
-
-  .about-image {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: auto !important;
-    object-fit: contain !important;
-  }
-}
-
-/* =========================================================
-   MASTER — ABOUT 50/50 BALANCE
-   Copy and image share equal desktop width. THE ORIGIN stays
-   as an overlay on top of the image.
-   ========================================================= */
-@media (min-width: 901px) {
-  #about .about {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    gap: 42px !important;
-    align-items: stretch !important;
-  }
-
-  #about .about-copy {
-    width: 100% !important;
-    max-width: none !important;
-    align-self: stretch !important;
-  }
-
-  #about .about-visual {
-    width: 100% !important;
-    max-width: none !important;
-    height: 100% !important;
-    min-width: 0 !important;
-    align-self: stretch !important;
-    justify-self: stretch !important;
-    position: relative !important;
-    overflow: hidden !important;
-  }
-
-  #about .about-image {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    aspect-ratio: auto !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-  }
-
-  #about .about-caption {
-    position: absolute !important;
-    top: 0 !important;
-    right: 0 !important;
-    bottom: auto !important;
-    z-index: 2 !important;
-  }
-}
-
-@media (max-width: 900px) {
-  #about .about {
-    grid-template-columns: 1fr !important;
-  }
-
-  #about .about-visual {
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-  #about .about-image {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    aspect-ratio: 1792 / 877 !important;
-    object-fit: contain !important;
   }
 }

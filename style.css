@@ -4665,333 +4665,248 @@ body.language-en .lang-en { display: inline !important; }
   .product-slider-navigation { margin-top: 26px; }
 }
 
-
 /* =========================================================
-   RAYA GULA — ABOUT LAYOUT FINAL
-   Reference-matched editorial split:
-   balanced copy + image, clean 50/50 desktop composition.
+   LIVE REFINEMENTS PRESERVED FROM CURRENT RAYA GULA CSS
    ========================================================= */
 
-/* Desktop */
-@media (min-width: 901px) {
-
-  #about {
-    padding-top: 110px;
-    padding-bottom: 78px;
+/* Product intro remains one column on desktop. */
+@media (min-width: 761px) {
+  #products .product-heading {
+    display: block !important;
+    width: min(100%, 1120px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  #about .about {
-    width: min(100%, 1440px);
-    max-width: 1440px;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(0, 1fr);
-
-    gap: 64px;
-
-    align-items: center;
+  #products .product-heading > div {
+    width: 100% !important;
+    max-width: none !important;
   }
 
-  #about .about-copy {
-    width: 100%;
-    max-width: 620px;
-    margin: 0;
+  #products .product-heading > p {
+    width: 100% !important;
+    max-width: 760px !important;
+    margin: 22px 0 0 !important;
+  }
+}
 
-    align-self: center;
-    justify-self: stretch;
+/* Why Raya Gula typography. */
+.why-list {
+  margin-top: 42px;
+}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.why-list > div {
+  grid-template-columns: 46px 1fr;
+  gap: 20px;
+  padding: 22px 0;
+}
+
+.why-list > div > span {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: .04em;
+}
+
+.why-list b {
+  display: block;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+.why-list p {
+  margin-top: 7px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .why-list > div {
+    grid-template-columns: 42px 1fr;
+    gap: 17px;
+    padding: 20px 0;
   }
 
-  #about .about-copy .eyebrow {
-    margin-bottom: 22px;
-  }
-
-  #about .about-copy h2 {
-    max-width: 620px;
-
-    font-size: clamp(48px, 4.5vw, 72px);
-    line-height: 1.02;
-    letter-spacing: -.045em;
-  }
-
-  #about .about-copy p {
-    max-width: 570px;
-
-    margin-top: 25px;
-
+  .why-list > div > span {
     font-size: 15px;
-    line-height: 1.8;
   }
 
-  #about .about-copy .text-link {
-    margin-top: 34px;
+  .why-list b {
+    font-size: 19px;
   }
 
-  #about .about-visual {
+  .why-list p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-list > div {
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    padding: 18px 0;
+  }
+
+  .why-list > div > span {
+    font-size: 14px;
+  }
+
+  .why-list b {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .why-list p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+}
+
+/* Hero alignment from current live version. */
+.hero-photo img {
+  object-position: 100% center;
+}
+
+@media (max-width: 900px) {
+  .hero-photo img {
+    object-position: 100% center;
+  }
+
+  .about-image {
     width: 100%;
-    max-width: none;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: none;
+  }
+}
 
-    margin: 0;
-    align-self: center;
+@media (max-width: 600px) {
+  .hero-photo img {
+    object-position: 88% center;
+  }
+}
 
-    position: relative;
+/* Journal excerpt used by the current HTML. */
+.journal-excerpt {
+  margin: 0 0 16px;
+  max-width: 430px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.journal-card > a {
+  display: inline-block;
+}
+
+@media (max-width: 900px) {
+  .journal-excerpt {
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   RAYA GULA — ABOUT MASTER FINAL / TRUE 50 : 50
+   REFERENCE: supplied "Dari Alam, Untuk Kehidupan" layout.
+   IMPORTANT: this is the final block in the file.
+   ========================================================= */
+
+@media (min-width: 901px) {
+  #about {
+    width: 100% !important;
+    padding: 104px max(32px, 5.5vw) 88px !important;
   }
 
   /*
-     The supplied artwork is wide. The reference composition
-     uses a taller editorial image frame, so the image is
-     intentionally cropped with object-fit: cover.
+     TRUE 50 / 50:
+     the About text column and visual column have equal width.
   */
-  #about .about-image {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    aspect-ratio: 1.42 / 1;
-
-    min-height: 0;
-
-    object-fit: cover;
-    object-position: center center;
-
-    background: none;
-    box-shadow: none;
-  }
-
-  #about .about-caption {
-    top: 0;
-    right: 0;
-    bottom: auto;
-
-    width: 132px;
-    min-width: 132px;
-    max-width: 132px;
-
-    min-height: 60px;
-    padding: 10px 12px;
-
-    background: rgba(251, 248, 242, .94);
-  }
-}
-
-
-/* Large tablet — retain balance without making the copy cramped */
-@media (max-width: 1100px) and (min-width: 901px) {
-
   #about .about {
-    width: 100%;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(0, 1fr);
-
-    gap: 42px;
-  }
-
-  #about .about-copy h2 {
-    font-size: clamp(44px, 5vw, 60px);
-  }
-
-  #about .about-copy p {
-    font-size: 14px;
-  }
-
-  #about .about-image {
-    aspect-ratio: 1.35 / 1;
-  }
-}
-
-
-/* Mobile / tablet */
-@media (max-width: 900px) {
-
-  #about .about {
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-
-  #about .about-visual {
-    order: 1;
-    width: 100%;
-    height: auto;
-  }
-
-  #about .about-copy {
-    order: 2;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  #about .about-image {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    aspect-ratio: 1792 / 877;
-
-    min-height: 0;
-
-    object-fit: contain;
-    object-position: center center;
-
-    background: none;
-    box-shadow: none;
-  }
-
-  #about .about-caption {
-    top: 0;
-    right: 0;
-    bottom: auto;
-  }
-}
-
-
-/* Small mobile */
-@media (max-width: 600px) {
-
-  #about {
-    padding-top: 60px;
-    padding-bottom: 52px;
-  }
-
-  #about .about {
-    gap: 30px;
-  }
-
-  #about .about-copy h2 {
-    font-size: clamp(38px, 10.5vw, 50px);
-    line-height: 1.05;
-    letter-spacing: -.035em;
-  }
-
-  #about .about-copy p {
-    font-size: 14px;
-    line-height: 1.8;
-  }
-
-  #about .about-copy .text-link {
-    margin-top: 28px;
-  }
-
-  #about .about-caption {
-    width: 106px;
-    min-width: 106px;
-    max-width: 106px;
-
-    min-height: 50px;
-    padding: 8px 9px;
-  }
-
-  #about .about-caption span {
-    font-size: 10px;
-  }
-
-  #about .about-caption b {
-    font-size: 6px;
-  }
-
-  #about .about-caption small {
-    font-size: 5px;
-  }
-}
-
-
-/* =========================================================
-   RAYA GULA — ABOUT V2
-   Target: editorial 40/60 split, square image crop,
-   top-aligned copy, THE ORIGIN top-right overlay.
-   This block intentionally overrides all previous ABOUT rules.
-   ========================================================= */
-
-@media (min-width: 1101px) {
-  #about {
-    padding-top: 40px !important;
-    padding-bottom: 90px !important;
-  }
-
-  #about .about {
-    width: min(100%, 1320px) !important;
+    width: min(100%, 1440px) !important;
     margin-left: auto !important;
     margin-right: auto !important;
 
-    grid-template-columns: minmax(0, 0.40fr) minmax(0, 0.60fr) !important;
-    column-gap: 64px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: clamp(42px, 5vw, 72px) !important;
     row-gap: 0 !important;
 
-    align-items: start !important;
+    align-items: center !important;
+    min-height: 0 !important;
   }
 
+  /* TEXT — left 50% */
   #about .about-copy {
     width: 100% !important;
-    max-width: 520px !important;
+    max-width: 620px !important;
     margin: 0 !important;
-    padding-top: 0 !important;
+    justify-self: stretch !important;
+    align-self: center !important;
 
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-self: start !important;
+    justify-content: center !important;
   }
 
   #about .about-copy .eyebrow {
-    margin-bottom: 24px !important;
+    margin-bottom: 22px !important;
   }
 
   #about .about-copy h2 {
-    max-width: 520px !important;
+    width: 100% !important;
+    max-width: 610px !important;
     margin: 0 !important;
 
-    font-size: clamp(54px, 4.05vw, 78px) !important;
-    line-height: 0.98 !important;
-    letter-spacing: -0.045em !important;
+    font-size: clamp(48px, 4.4vw, 72px) !important;
+    line-height: .98 !important;
+    letter-spacing: -.045em !important;
   }
 
   #about .about-copy p {
-    max-width: 470px !important;
-    margin: 48px 0 0 !important;
+    width: 100% !important;
+    max-width: 560px !important;
+    margin-top: 28px !important;
 
     font-size: 15px !important;
-    line-height: 1.8 !important;
-  }
-
-  #about .about-copy p + p {
-    margin-top: 38px !important;
+    line-height: 1.78 !important;
   }
 
   #about .about-copy .text-link {
-    margin-top: 38px !important;
+    margin-top: 34px !important;
   }
 
+  /* VISUAL — right 50% */
   #about .about-visual {
     width: 100% !important;
     max-width: none !important;
+    min-width: 0 !important;
     height: auto !important;
     min-height: 0 !important;
 
-    margin-top: 70px !important;
+    margin: 0 !important;
+    justify-self: stretch !important;
+    align-self: center !important;
 
     display: block !important;
     position: relative !important;
-    align-self: start !important;
-    justify-self: stretch !important;
     overflow: visible !important;
   }
 
+  /*
+     Editorial crop matches the supplied reference more closely
+     than the original 1792×877 native ratio.
+  */
   #about .about-image {
     display: block !important;
     width: 100% !important;
     height: auto !important;
-
     min-height: 0 !important;
     max-width: none !important;
 
-    aspect-ratio: 1 / 1 !important;
+    aspect-ratio: 1.42 / 1 !important;
     object-fit: cover !important;
     object-position: center center !important;
 
@@ -5000,96 +4915,61 @@ body.language-en .lang-en { display: inline !important; }
     box-shadow: none !important;
   }
 
+  /* THE ORIGIN — top-right overlay, exactly like reference. */
   #about .about-caption {
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
     bottom: auto !important;
-    z-index: 5 !important;
+    z-index: 20 !important;
 
-    width: 132px !important;
-    min-height: 60px !important;
-    padding: 10px 13px !important;
+    width: auto !important;
+    min-width: 150px !important;
+    padding: 22px 24px !important;
 
     display: grid !important;
     grid-template-columns: auto 1fr !important;
-    column-gap: 10px !important;
-    row-gap: 1px !important;
+    column-gap: 14px !important;
+    row-gap: 3px !important;
 
-    background: rgba(251, 248, 242, .96) !important;
-  }
-
-  #about .about-caption span {
-    font-size: 18px !important;
-    line-height: 1.1 !important;
-  }
-
-  #about .about-caption b {
-    font-size: 8px !important;
-    line-height: 1.2 !important;
-    letter-spacing: .12em !important;
-  }
-
-  #about .about-caption small {
-    font-size: 6px !important;
-    line-height: 1.3 !important;
+    background: rgba(251, 248, 242, .94) !important;
   }
 }
 
+/* Tablet desktop */
 @media (min-width: 901px) and (max-width: 1100px) {
   #about {
-    padding-top: 70px !important;
-    padding-bottom: 70px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
   }
 
   #about .about {
-    width: min(100%, 940px) !important;
-    grid-template-columns: minmax(0, .42fr) minmax(0, .58fr) !important;
-    gap: 36px !important;
-    align-items: start !important;
-  }
-
-  #about .about-copy {
-    max-width: 100% !important;
-    align-self: start !important;
+    column-gap: 38px !important;
   }
 
   #about .about-copy h2 {
-    font-size: clamp(42px, 5.3vw, 60px) !important;
-    line-height: 1 !important;
+    font-size: clamp(42px, 5.2vw, 58px) !important;
   }
 
   #about .about-copy p {
-    margin-top: 34px !important;
     font-size: 14px !important;
   }
 
-  #about .about-copy p + p {
-    margin-top: 28px !important;
-  }
-
-  #about .about-visual {
-    height: auto !important;
-    margin-top: 45px !important;
-    align-self: start !important;
-  }
-
-  #about .about-image {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 1 / 1 !important;
-    object-fit: cover !important;
+  #about .about-caption {
+    min-width: 132px !important;
+    padding: 17px 18px !important;
   }
 }
 
+/* Mobile — retain stacked layout and native image ratio. */
 @media (max-width: 900px) {
   #about {
-    padding-top: 70px !important;
-    padding-bottom: 60px !important;
+    padding: 72px 24px 64px !important;
   }
 
   #about .about {
     width: 100% !important;
+    display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 34px !important;
     align-items: start !important;
@@ -5099,75 +4979,74 @@ body.language-en .lang-en { display: inline !important; }
     order: 1 !important;
     width: 100% !important;
     height: auto !important;
-    margin-top: 0 !important;
+    min-height: 0 !important;
     overflow: visible !important;
   }
 
   #about .about-copy {
     order: 2 !important;
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: none !important;
+    align-self: auto !important;
   }
 
   #about .about-image {
     width: 100% !important;
     height: auto !important;
-    aspect-ratio: 1 / 1 !important;
-    object-fit: cover !important;
+    min-height: 0 !important;
+    aspect-ratio: 1792 / 877 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 
   #about .about-caption {
     top: 0 !important;
     right: 0 !important;
     bottom: auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 14px 16px !important;
+  }
+
+  #about .about-copy h2 {
+    max-width: 620px !important;
+    font-size: clamp(40px, 10vw, 54px) !important;
+    line-height: 1 !important;
+  }
+
+  #about .about-copy p {
+    max-width: 620px !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
   }
 }
 
 @media (max-width: 600px) {
   #about {
-    padding-top: 58px !important;
-    padding-bottom: 52px !important;
+    padding: 60px 20px 52px !important;
   }
 
   #about .about {
     gap: 28px !important;
   }
 
-  #about .about-copy h2 {
-    font-size: clamp(38px, 11vw, 50px) !important;
-    line-height: 1 !important;
-  }
-
-  #about .about-copy p {
-    margin-top: 30px !important;
-    font-size: 14px !important;
-    line-height: 1.8 !important;
-  }
-
-  #about .about-copy p + p {
-    margin-top: 24px !important;
-  }
-
-  #about .about-copy .text-link {
-    margin-top: 28px !important;
-  }
-
   #about .about-caption {
-    width: 112px !important;
-    min-height: 52px !important;
-    padding: 8px 10px !important;
-    column-gap: 8px !important;
+    padding: 11px 13px !important;
   }
 
   #about .about-caption span {
-    font-size: 15px !important;
+    font-size: 20px !important;
   }
 
   #about .about-caption b {
-    font-size: 7px !important;
+    font-size: 9px !important;
   }
 
   #about .about-caption small {
-    font-size: 5.5px !important;
+    font-size: 8px !important;
+  }
+
+  #about .about-copy h2 {
+    font-size: clamp(36px, 11vw, 48px) !important;
   }
 }

@@ -4831,7 +4831,7 @@ body.language-en .lang-en { display: inline !important; }
 
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    column-gap: clamp(42px, 5vw, 72px) !important;
+    column-gap: clamp(20px, 2.2vw, 32px) !important;
     row-gap: 0 !important;
 
     align-items: center !important;
@@ -4944,7 +4944,7 @@ body.language-en .lang-en { display: inline !important; }
   }
 
   #about .about {
-    column-gap: 38px !important;
+    column-gap: 24px !important;
   }
 
   #about .about-copy h2 {

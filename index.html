@@ -430,44 +430,141 @@
 }
 </style>
 
-<style>
-  /* OUR BELIEF — Raya Gula icon */
-  .manifesto .seal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 96px;
-    height: 96px;
-    margin: 34px auto 0;
-    padding: 0 !important;
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-    background: transparent !important;
-    border-radius: 50%;
-    overflow: visible;
-  }
 
-  .manifesto .seal img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 0 !important;
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-    background: transparent !important;
-  }
-
-  @media (max-width: 600px) {
-    .manifesto .seal {
-      width: 82px;
-      height: 82px;
-      margin-top: 28px;
+  <style>
+    /* =====================================================
+       HERO CAROUSEL — RAYA GULA
+       ===================================================== */
+    .hero-carousel {
+      isolation: isolate;
     }
-  }
-</style>
+
+    .hero-carousel .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .85s ease, visibility .85s ease;
+      z-index: 0;
+    }
+
+    .hero-carousel .hero-slide.is-active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 1;
+    }
+
+    .hero-carousel .hero-slide picture,
+    .hero-carousel .hero-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-carousel .hero-slide img {
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-carousel-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 50%;
+      background: rgba(37,26,18,.22);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      transform: translateY(-50%);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+    }
+
+    .hero-carousel-arrow:hover {
+      background: rgba(37,26,18,.58);
+      border-color: rgba(255,255,255,.72);
+    }
+
+    .hero-carousel-prev { left: 28px; }
+    .hero-carousel-next { right: 28px; }
+
+    .hero-carousel-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      transform: translateX(-50%);
+    }
+
+    .hero-carousel-dots button {
+      width: 28px;
+      height: 2px;
+      padding: 0;
+      border: 0;
+      background: rgba(255,255,255,.42);
+      cursor: pointer;
+      transition: width .25s ease, background .25s ease;
+    }
+
+    .hero-carousel-dots button.is-active {
+      width: 52px;
+      background: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .hero-carousel-arrow {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero-carousel-prev { left: 18px; }
+      .hero-carousel-next { right: 18px; }
+
+      .hero-carousel-dots {
+        bottom: 22px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+      }
+
+      .hero-carousel-prev { left: 12px; }
+      .hero-carousel-next { right: 12px; }
+
+      .hero-carousel-dots {
+        bottom: 18px;
+        gap: 7px;
+      }
+
+      .hero-carousel-dots button {
+        width: 22px;
+      }
+
+      .hero-carousel-dots button.is-active {
+        width: 38px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-carousel .hero-slide,
+      .hero-carousel-arrow,
+      .hero-carousel-dots button {
+        transition: none;
+      }
+    }
+  </style>
 
 </head>
 
@@ -532,12 +629,52 @@
 
     <section class="hero">
 
-      <div class="hero-photo">
+      <div class="hero-photo hero-carousel" data-hero-carousel aria-roledescription="carousel" aria-label="Raya Gula Hero Banner">
 
-        <img
-          src="raya-gula-hero-1920x900.jpg"
-          alt="Raya Gula — Gula Aren Indonesia dari Nusantara"
-        >
+        <div class="hero-slide is-active" data-hero-slide>
+          <picture>
+            <img
+              src="raya-gula-hero-1920x900.jpg"
+              alt="Raya Gula — Gula Aren Indonesia dari Nusantara"
+            >
+          </picture>
+        </div>
+
+        <div class="hero-slide" data-hero-slide aria-hidden="true">
+          <picture>
+            <source media="(max-width: 900px)" srcset="hero-raya-gula-02-mobile.jpg">
+            <img
+              src="hero-raya-gula-02.jpg"
+              alt="Produk Raya Gula — Gula Aren Indonesia"
+              loading="eager"
+            >
+          </picture>
+        </div>
+
+        <div class="hero-slide" data-hero-slide aria-hidden="true">
+          <picture>
+            <source media="(max-width: 900px)" srcset="hero-raya-gula-03-mobile.jpg">
+            <img
+              src="hero-raya-gula-03.jpg"
+              alt="Pemanenan nira aren Raya Gula di Indonesia"
+              loading="eager"
+            >
+          </picture>
+        </div>
+
+        <button class="hero-carousel-arrow hero-carousel-prev" type="button" data-hero-prev aria-label="Slide sebelumnya">
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <button class="hero-carousel-arrow hero-carousel-next" type="button" data-hero-next aria-label="Slide berikutnya">
+          <span aria-hidden="true">→</span>
+        </button>
+
+        <div class="hero-carousel-dots" role="tablist" aria-label="Pilih Hero Banner">
+          <button type="button" class="is-active" data-hero-dot="0" role="tab" aria-label="Hero 1" aria-selected="true"></button>
+          <button type="button" data-hero-dot="1" role="tab" aria-label="Hero 2" aria-selected="false"></button>
+          <button type="button" data-hero-dot="2" role="tab" aria-label="Hero 3" aria-selected="false"></button>
+        </div>
 
       </div>
 
@@ -804,13 +941,15 @@
         </h2>
 
 
-        <div class="seal" aria-label="Raya Gula">
-          <img
-            src="/favicon.png"
-            alt="Raya Gula"
-            width="96"
-            height="96"
-          >
+        <div class="seal">
+
+          RAYA<br>
+          GULA
+
+          <small>
+            EST. INDONESIA
+          </small>
+
         </div>
 
       </div>
@@ -1467,7 +1606,7 @@
           </span>
 
           <b>
-            +62 812-1121-3090 ↗
+            0812-1121-3090 ↗
           </b>
 
         </a>
@@ -1566,7 +1705,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        +62 812-1121-3090
+        0812-1121-3090
       </a>
 
       <a href="mailto:hello@rayagula.com">
@@ -1713,6 +1852,96 @@
   <!-- =====================================================
        JAVASCRIPT
        ===================================================== -->
+
+
+  <script>
+    /* =====================================================
+       HERO CAROUSEL — AUTO + ARROWS + DOTS + SWIPE
+       ===================================================== */
+    (() => {
+      const carousel = document.querySelector('[data-hero-carousel]');
+      if (!carousel) return;
+
+      const slides = Array.from(carousel.querySelectorAll('[data-hero-slide]'));
+      const dots = Array.from(carousel.querySelectorAll('[data-hero-dot]'));
+      const prev = carousel.querySelector('[data-hero-prev]');
+      const next = carousel.querySelector('[data-hero-next]');
+      if (slides.length < 2) return;
+
+      let index = 0;
+      let timer;
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      const show = (nextIndex) => {
+        index = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, i) => {
+          const active = i === index;
+          slide.classList.toggle('is-active', active);
+          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+        });
+
+        dots.forEach((dot, i) => {
+          const active = i === index;
+          dot.classList.toggle('is-active', active);
+          dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      };
+
+      const start = () => {
+        clearInterval(timer);
+        timer = setInterval(() => show(index + 1), 6000);
+      };
+
+      const restart = () => start();
+
+      prev?.addEventListener('click', () => {
+        show(index - 1);
+        restart();
+      });
+
+      next?.addEventListener('click', () => {
+        show(index + 1);
+        restart();
+      });
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          show(Number(dot.dataset.heroDot));
+          restart();
+        });
+      });
+
+      carousel.addEventListener('mouseenter', () => clearInterval(timer));
+      carousel.addEventListener('mouseleave', start);
+      carousel.addEventListener('focusin', () => clearInterval(timer));
+      carousel.addEventListener('focusout', start);
+
+      carousel.addEventListener('touchstart', (event) => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        clearInterval(timer);
+      }, { passive: true });
+
+      carousel.addEventListener('touchend', (event) => {
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - touchStartX;
+        const dy = touch.clientY - touchStartY;
+
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+          show(dx < 0 ? index + 1 : index - 1);
+        }
+
+        start();
+      }, { passive: true });
+
+      show(0);
+      start();
+    })();
+  </script>
+
   <script src="script.js"></script>
 
 </body>

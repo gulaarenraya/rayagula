@@ -566,6 +566,124 @@
     }
   </style>
 
+
+  <style>
+    /* =====================================================
+       HERO — DISTINCT COPY PER SLIDE
+       ===================================================== */
+    .raya-hero .hero-photo {
+      position: relative;
+    }
+
+    .raya-hero .hero-slide-content {
+      position: absolute;
+      left: clamp(32px, 7vw, 110px);
+      top: 50%;
+      z-index: 4;
+      width: min(560px, 44vw);
+      transform: translateY(-50%);
+      color: #6b4524;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .65s ease, visibility .65s ease, transform .65s ease;
+      text-shadow: none;
+    }
+
+    .raya-hero .hero-slide.is-active .hero-slide-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%);
+    }
+
+    .raya-hero .hero-slide-content .eyebrow {
+      color: #8b6030;
+      letter-spacing: .18em;
+    }
+
+    .raya-hero .hero-slide-content h1 {
+      color: #6b4524;
+      margin-bottom: 18px;
+    }
+
+    .raya-hero .hero-slide-content h1 em {
+      color: #9a6b32;
+    }
+
+    .raya-hero .hero-slide-content p {
+      max-width: 510px;
+      color: #6b4524;
+      line-height: 1.75;
+    }
+
+    .raya-hero .hero-copy-2,
+    .raya-hero .hero-copy-3 {
+      width: min(480px, 38vw);
+    }
+
+    .raya-hero .hero-copy-2 {
+      left: auto;
+      right: clamp(32px, 7vw, 110px);
+      text-align: left;
+    }
+
+    .raya-hero .hero-copy-3 {
+      width: min(520px, 42vw);
+    }
+
+    /* Slide 2: show the complete product composition. */
+    .raya-hero .hero-slide-product img {
+      object-fit: contain;
+      object-position: center;
+      background: #f3eee5;
+    }
+
+    @media (max-width: 900px) {
+      .raya-hero .hero-slide-content,
+      .raya-hero .hero-copy-2,
+      .raya-hero .hero-copy-3 {
+        left: 28px;
+        right: 28px;
+        bottom: 90px;
+        top: auto;
+        width: auto;
+        max-width: 520px;
+        transform: translateY(12px);
+      }
+
+      .raya-hero .hero-slide.is-active .hero-slide-content {
+        transform: translateY(0);
+      }
+
+      .raya-hero .hero-slide-content h1 {
+        margin-bottom: 12px;
+      }
+
+      .raya-hero .hero-slide-content p {
+        max-width: 480px;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .raya-hero .hero-slide-content,
+      .raya-hero .hero-copy-2,
+      .raya-hero .hero-copy-3 {
+        left: 22px;
+        right: 22px;
+        bottom: 72px;
+      }
+
+      .raya-hero .hero-slide-content .eyebrow {
+        font-size: 10px;
+      }
+
+      .raya-hero .hero-slide-content p {
+        font-size: 13px;
+        max-width: 100%;
+      }
+    }
+  </style>
+
 </head>
 
 
@@ -627,7 +745,7 @@
          HERO
          =================================================== -->
 
-    <section class="hero">
+    <section class="hero raya-hero">
 
       <div class="hero-photo hero-carousel" data-hero-carousel aria-roledescription="carousel" aria-label="Raya Gula Hero Banner">
 
@@ -638,9 +756,34 @@
               alt="Raya Gula — Gula Aren Indonesia dari Nusantara"
             >
           </picture>
+
+          <div class="hero-slide-content hero-copy-1">
+            <div class="eyebrow">
+              <span class="lang-id">RAYA GULA / GULA AREN INDONESIA</span>
+              <span class="lang-en">RAYA GULA / INDONESIAN PALM SUGAR</span>
+            </div>
+            <h1>
+              <span class="lang-id">Manis Alami<br><em>dari Nusantara.</em></span>
+              <span class="lang-en">Naturally Sweet<br><em>from Nusantara.</em></span>
+            </h1>
+            <p>
+              <span class="lang-id">Gula aren dari nira pilihan, diolah dengan penuh perhatian untuk menghadirkan rasa alami dan karakter Indonesia di setiap butirnya.</span>
+              <span class="lang-en">Palm sugar made from selected nectar, carefully crafted to bring natural sweetness and Indonesian character to every grain.</span>
+            </p>
+            <div class="hero-buttons">
+              <a class="btn gold" href="#products">
+                <span class="lang-id">Lihat Produk</span><span class="lang-en">View Products</span>
+                <span>→</span>
+              </a>
+              <a class="text-link light" href="#about">
+                <span class="lang-id">Tentang Raya Gula</span><span class="lang-en">About Raya Gula</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-slide" data-hero-slide aria-hidden="true">
+        <div class="hero-slide hero-slide-product" data-hero-slide aria-hidden="true">
           <picture>
             <source media="(max-width: 900px)" srcset="hero-raya-gula-02-mobile.jpg">
             <img
@@ -649,6 +792,21 @@
               loading="eager"
             >
           </picture>
+
+          <div class="hero-slide-content hero-copy-2">
+            <div class="eyebrow">
+              <span class="lang-id">RAYA GULA / PREMIUM PALM SUGAR</span>
+              <span class="lang-en">RAYA GULA / PREMIUM PALM SUGAR</span>
+            </div>
+            <h1>
+              <span class="lang-id">Manis Alami.<br><em>Pilihan Berkualitas.</em></span>
+              <span class="lang-en">Naturally Sweet.<br><em>Quality, Selected.</em></span>
+            </h1>
+            <p>
+              <span class="lang-id">Gula aren pilihan Indonesia, hadir untuk melengkapi setiap sajian dengan rasa dan aroma khas Nusantara.</span>
+              <span class="lang-en">Selected Indonesian palm sugar, made to complement every creation with the distinctive taste and aroma of Nusantara.</span>
+            </p>
+          </div>
         </div>
 
         <div class="hero-slide" data-hero-slide aria-hidden="true">
@@ -660,6 +818,21 @@
               loading="eager"
             >
           </picture>
+
+          <div class="hero-slide-content hero-copy-3">
+            <div class="eyebrow">
+              <span class="lang-id">FROM NATURE TO TASTE</span>
+              <span class="lang-en">FROM NATURE TO TASTE</span>
+            </div>
+            <h1>
+              <span class="lang-id">Dari Nira Pilihan,<br><em>Menjadi Rasa.</em></span>
+              <span class="lang-en">From Selected Nectar,<br><em>Comes the Taste.</em></span>
+            </h1>
+            <p>
+              <span class="lang-id">Dipanen dari alam Indonesia dan diproses dengan perhatian untuk menjaga karakter alami gula aren.</span>
+              <span class="lang-en">Harvested from Indonesia's nature and carefully processed to preserve the natural character of palm sugar.</span>
+            </p>
+          </div>
         </div>
 
         <button class="hero-carousel-arrow hero-carousel-prev" type="button" data-hero-prev aria-label="Slide sebelumnya">
@@ -677,50 +850,6 @@
         </div>
 
       </div>
-
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          <span class="lang-id">RAYA GULA / GULA AREN INDONESIA</span><span class="lang-en">RAYA GULA / INDONESIAN PALM SUGAR</span>
-        </div>
-
-
-        <h1>
-          <span class="lang-id">Manis Alami<br><em>dari Nusantara.</em></span>
-          <span class="lang-en">Naturally Sweet<br><em>from Nusantara.</em></span>
-        </h1>
-
-
-        <p>
-          <span class="lang-id">Gula aren dari nira pilihan, diolah dengan penuh perhatian untuk menghadirkan rasa alami dan karakter Indonesia di setiap butirnya.</span>
-          <span class="lang-en">Palm sugar made from selected nectar, carefully crafted to bring natural sweetness and Indonesian character to every grain.</span>
-        </p>
-
-
-        <div class="hero-buttons">
-
-          <a
-            class="btn gold"
-            href="#products"
-          >
-            <span class="lang-id">Lihat Produk</span><span class="lang-en">View Products</span>
-            <span>→</span>
-          </a>
-
-
-          <a
-            class="text-link light"
-            href="#about"
-          >
-            <span class="lang-id">Tentang Raya Gula</span><span class="lang-en">About Raya Gula</span>
-            <span>→</span>
-          </a>
-
-        </div>
-
-      </div>
-
     </section>
 
 

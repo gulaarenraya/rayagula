@@ -5050,3 +5050,60 @@ body.language-en .lang-en { display: inline !important; }
     font-size: clamp(36px, 11vw, 48px) !important;
   }
 }
+
+/* =========================================================
+   RAYA GULA — FINAL HERO BANNER FIX
+   Keep the 1920x900 banner ratio on desktop so the artwork is
+   not horizontally cropped by 100vh + object-fit: cover.
+   This keeps the product anchored to the right edge.
+   ========================================================= */
+
+@media (min-width: 901px) {
+  .hero {
+    width: 100% !important;
+    height: min(900px, 46.875vw) !important;
+    min-height: 0 !important;
+    max-height: 900px !important;
+  }
+
+  .hero-photo,
+  .hero-photo img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero-photo img {
+    display: block !important;
+    object-fit: cover !important;
+    object-position: right center !important;
+  }
+
+  .hero-content {
+    width: min(var(--max), calc(100% - 48px)) !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: auto !important;
+    padding-top: 120px !important;
+    padding-bottom: 80px !important;
+    padding-left: 0 !important;
+    padding-right: 42% !important;
+  }
+}
+
+/* Mobile: keep the current full-height composition. */
+@media (max-width: 900px) {
+  .hero {
+    min-height: 100vh !important;
+  }
+
+  .hero-photo,
+  .hero-photo img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero-photo img {
+    object-fit: cover !important;
+    object-position: 88% center !important;
+  }
+}

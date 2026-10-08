@@ -577,7 +577,7 @@
 
     .raya-hero .hero-slide-content {
       position: absolute;
-      left: clamp(32px, 7vw, 110px);
+      left: clamp(58px, 11vw, 168px);
       top: 50%;
       z-index: 4;
       width: min(560px, 44vw);
@@ -656,11 +656,20 @@
       width: min(520px, 42vw);
     }
 
-    /* Slide 2: show the complete product composition. */
+    /* Slide 2: product is the hero — show the complete composition, never crop or enlarge it. */
+    .raya-hero .hero-slide-product {
+      background: #f3eee5;
+    }
+
     .raya-hero .hero-slide-product img {
       object-fit: contain;
-      object-position: center;
+      object-position: center center;
       background: #f3eee5;
+    }
+
+    /* Slide 2 copy intentionally hidden so the product remains the sole visual focus. */
+    .raya-hero .hero-copy-2 {
+      display: none;
     }
 
     @media (max-width: 900px) {
@@ -726,6 +735,31 @@
       }
     }
   </style>
+
+  /* OUR BELIEF — use the actual Raya Gula logo, not a text seal. */
+  .manifesto .seal {
+    width: 96px;
+    height: 96px;
+    margin: 34px auto 0;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 50%;
+    overflow: visible;
+  }
+
+  .manifesto .seal img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
 
 </head>
 
@@ -1113,15 +1147,13 @@
         </h2>
 
 
-        <div class="seal">
-
-          RAYA<br>
-          GULA
-
-          <small>
-            EST. INDONESIA
-          </small>
-
+        <div class="seal" aria-label="Raya Gula">
+          <img
+            src="logo.png"
+            alt="Logo Raya Gula"
+            width="96"
+            height="96"
+          >
         </div>
 
       </div>

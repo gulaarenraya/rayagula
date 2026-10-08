@@ -4834,7 +4834,7 @@ body.language-en .lang-en { display: inline !important; }
     column-gap: clamp(8px, 1vw, 14px) !important;
     row-gap: 0 !important;
 
-    align-items: center !important;
+    align-items: stretch !important;
     min-height: 0 !important;
   }
 
@@ -4888,9 +4888,9 @@ body.language-en .lang-en { display: inline !important; }
 
     margin: 0 !important;
     justify-self: stretch !important;
-    align-self: center !important;
+    align-self: stretch !important;
 
-    display: block !important;
+    display: flex !important;
     position: relative !important;
     overflow: visible !important;
   }
@@ -4902,11 +4902,12 @@ body.language-en .lang-en { display: inline !important; }
   #about .about-image {
     display: block !important;
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
     min-height: 0 !important;
     max-width: none !important;
+    flex: 1 1 auto !important;
 
-    aspect-ratio: 1.42 / 1 !important;
+    aspect-ratio: auto !important;
     object-fit: cover !important;
     object-position: center center !important;
 

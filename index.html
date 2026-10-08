@@ -620,10 +620,36 @@
       width: min(480px, 38vw);
     }
 
+    /* Slide 2: copy di kanan bawah, putih */
     .raya-hero .hero-copy-2 {
       left: auto;
-      right: clamp(32px, 7vw, 110px);
-      text-align: left;
+      right: clamp(32px, 6vw, 96px);
+      top: auto;
+      bottom: clamp(42px, 7vw, 88px);
+      width: min(500px, 40vw);
+      text-align: right;
+      transform: translateY(12px);
+      color: #fff;
+    }
+
+    .raya-hero .hero-slide.is-active .hero-copy-2 {
+      transform: translateY(0);
+    }
+
+    .raya-hero .hero-copy-2 .eyebrow,
+    .raya-hero .hero-copy-2 h1,
+    .raya-hero .hero-copy-2 h1 em,
+    .raya-hero .hero-copy-2 p {
+      color: #fff;
+    }
+
+    /* Slide 3: seluruh copy putih */
+    .raya-hero .hero-copy-3,
+    .raya-hero .hero-copy-3 .eyebrow,
+    .raya-hero .hero-copy-3 h1,
+    .raya-hero .hero-copy-3 h1 em,
+    .raya-hero .hero-copy-3 p {
+      color: #fff;
     }
 
     .raya-hero .hero-copy-3 {
@@ -639,7 +665,6 @@
 
     @media (max-width: 900px) {
       .raya-hero .hero-slide-content,
-      .raya-hero .hero-copy-2,
       .raya-hero .hero-copy-3 {
         left: 28px;
         right: 28px;
@@ -647,6 +672,17 @@
         top: auto;
         width: auto;
         max-width: 520px;
+        transform: translateY(12px);
+      }
+
+      .raya-hero .hero-copy-2 {
+        left: auto;
+        right: 28px;
+        bottom: 90px;
+        top: auto;
+        width: min(520px, calc(100% - 56px));
+        max-width: 520px;
+        text-align: right;
         transform: translateY(12px);
       }
 
@@ -666,11 +702,18 @@
 
     @media (max-width: 600px) {
       .raya-hero .hero-slide-content,
-      .raya-hero .hero-copy-2,
       .raya-hero .hero-copy-3 {
         left: 22px;
         right: 22px;
         bottom: 72px;
+      }
+
+      .raya-hero .hero-copy-2 {
+        left: auto;
+        right: 22px;
+        bottom: 72px;
+        width: calc(100% - 44px);
+        text-align: right;
       }
 
       .raya-hero .hero-slide-content .eyebrow {

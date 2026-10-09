@@ -710,6 +710,13 @@
     }
 
     @media (max-width: 600px) {
+      /* Mobile-only adjustment: keep hero headlines balanced on phone screens. */
+      .raya-hero .hero-slide-content h1 {
+        font-size: clamp(28px, 7.5vw, 36px);
+        line-height: 1.12;
+        margin-bottom: 10px;
+      }
+
       .raya-hero .hero-slide-content,
       .raya-hero .hero-copy-3 {
         left: 22px;

@@ -656,14 +656,24 @@
       width: min(520px, 42vw);
     }
 
-    /* Slide 2: product is the hero — show the complete composition, never crop or enlarge it. */
+    /* Slide 2: keep the complete product image visible without cropping or zooming. */
     .raya-hero .hero-slide-product {
       background: #f3eee5;
+      overflow: hidden;
+    }
+
+    .raya-hero .hero-slide-product picture {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .raya-hero .hero-slide-product img {
-      object-fit: contain;
-      object-position: center center;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain !important;
+      object-position: center center !important;
       background: #f3eee5;
     }
 
@@ -780,8 +790,15 @@
     @media (max-width: 767px) {
       .raya-hero .hero-photo { height: 78vh; height: 78svh; min-height: 520px; max-height: 780px; overflow: hidden; }
       .raya-hero .hero-slide { height: 100%; }
+      /* Other slides retain their existing crop; slide 2 must show the full product. */
       .raya-hero .hero-slide img { object-fit: cover; object-position: center center; }
-      .raya-hero .hero-slide-product img { object-fit: contain; object-position: center center; }
+      .raya-hero .hero-slide-product,
+      .raya-hero .hero-slide-product picture,
+      .raya-hero .hero-slide-product img { background: #f3eee5; }
+      .raya-hero .hero-slide-product img {
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
     }
   </style>
 

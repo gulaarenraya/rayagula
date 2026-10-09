@@ -676,6 +676,8 @@
       object-position: center center !important;
       background: #f3eee5;
     }
+    .raya-hero .hero-slide-product picture { overflow: visible; }
+    .raya-hero .hero-slide-product { background: #f3eee5; }
 
     /* Slide 2 copy intentionally hidden so the product remains the sole visual focus. */
     .raya-hero .hero-copy-2 {
@@ -796,6 +798,8 @@
       .raya-hero .hero-slide-product picture,
       .raya-hero .hero-slide-product img { background: #f3eee5; }
       .raya-hero .hero-slide-product img {
+        width: 100% !important;
+        height: 100% !important;
         object-fit: contain !important;
         object-position: center center !important;
       }
@@ -903,7 +907,7 @@
 
         <div class="hero-slide hero-slide-product" data-hero-slide aria-hidden="true">
           <picture>
-            <source media="(max-width: 900px)" srcset="hero-raya-gula-02-mobile.jpg">
+            <!-- Use the primary slide image on all screen sizes to avoid a pre-cropped mobile asset. -->
             <img
               src="hero-raya-gula-02.jpg"
               alt="Produk Raya Gula — Gula Aren Indonesia"
@@ -1829,13 +1833,14 @@
       <div class="contact-main reveal">
 
         <div class="eyebrow">
-          CONTACT RAYA GULA
+          <span class="lang-id">CONTACT RAYA GULA</span>
+          <span class="lang-en">CONTACT RAYA GULA</span>
         </div>
 
 
         <h2>
-          Mari bawa rasa<br>
-          <em>Indonesia</em> lebih jauh.
+          <span class="lang-id">Mari bawa rasa<br><em>Indonesia</em> lebih jauh.</span>
+          <span class="lang-en">Let’s bring the taste<br>of <em>Indonesia</em> further.</span>
         </h2>
 
       </div>
@@ -1854,7 +1859,7 @@
           </span>
 
           <b>
-            0812-1121-3090 ↗
+            +62 812-1121-3090 ↗
           </b>
 
         </a>
@@ -1953,7 +1958,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        0812-1121-3090
+        +62 812-1121-3090
       </a>
 
       <a href="mailto:hello@rayagula.com">

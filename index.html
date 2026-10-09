@@ -763,6 +763,21 @@
   }
   </style>
 
+
+  <style id="raya-language-and-mobile-hero-fix">
+    /* Keep the existing hero design; ensure the carousel has a visible frame on phones. */
+    .raya-hero .hero-photo { position: relative; display: block !important; width: 100%; }
+    .raya-hero .hero-carousel .hero-slide picture { display: block; width: 100%; height: 100%; }
+    .raya-hero .hero-carousel .hero-slide img { display: block; width: 100%; height: 100%; }
+    .lang-id[hidden], .lang-en[hidden] { display: none !important; }
+    @media (max-width: 767px) {
+      .raya-hero .hero-photo { height: 78vh; height: 78svh; min-height: 520px; max-height: 780px; overflow: hidden; }
+      .raya-hero .hero-slide { height: 100%; }
+      .raya-hero .hero-slide img { object-fit: cover; object-position: center center; }
+      .raya-hero .hero-slide-product img { object-fit: contain; object-position: center center; }
+    }
+  </style>
+
 </head>
 
 
@@ -1143,9 +1158,12 @@
 
 
         <h2>
-          “Ketika alam dijaga,<br>
+          <span class="lang-id">“Ketika alam dijaga,<br>
           rasa terbaik akan<br>
-          <em>menemukan jalannya.</em>”
+          <em>menemukan jalannya.</em>”</span>
+          <span class="lang-en">“When nature is cared for,<br>
+          the finest taste will<br>
+          <em>find its way.</em>”</span>
         </h2>
 
 
@@ -1501,8 +1519,8 @@
 
 
         <h2>
-          Rasa autentik.<br>
-          <em>Nilai yang nyata.</em>
+          <span class="lang-id">Rasa autentik.<br><em>Nilai yang nyata.</em></span>
+          <span class="lang-en">Authentic taste.<br><em>Meaningful values.</em></span>
         </h2>
 
 
@@ -1517,11 +1535,11 @@
             <div>
 
               <b>
-                100% Alami
+                <span class="lang-id">100% Alami</span><span class="lang-en">100% Natural</span>
               </b>
 
               <p>
-                Karakter gula aren menjadi pusat rasa.
+                <span class="lang-id">Karakter gula aren menjadi pusat rasa.</span><span class="lang-en">Palm sugar’s natural character is at the heart of every taste.</span>
               </p>
 
             </div>
@@ -1538,11 +1556,11 @@
             <div>
 
               <b>
-                Diproses dengan perhatian
+                <span class="lang-id">Diproses dengan perhatian</span><span class="lang-en">Crafted with care</span>
               </b>
 
               <p>
-                Menjaga kualitas dari bahan baku hingga kemasan.
+                <span class="lang-id">Menjaga kualitas dari bahan baku hingga kemasan.</span><span class="lang-en">Quality is carefully preserved from raw ingredients to final packaging.</span>
               </p>
 
             </div>
@@ -1559,11 +1577,11 @@
             <div>
 
               <b>
-                Mendukung petani lokal
+                <span class="lang-id">Mendukung petani lokal</span><span class="lang-en">Supporting local farmers</span>
               </b>
 
               <p>
-                Mengangkat nilai hasil alam dan kerja petani Indonesia.
+                <span class="lang-id">Mengangkat nilai hasil alam dan kerja petani Indonesia.</span><span class="lang-en">Honoring Indonesia’s natural resources and the work of local farmers.</span>
               </p>
 
             </div>
@@ -1580,11 +1598,11 @@
             <div>
 
               <b>
-                Standar terpercaya
+                <span class="lang-id">Standar terpercaya</span><span class="lang-en">Trusted standards</span>
               </b>
 
               <p>
-                Halal, Organic, dan SNI sesuai sertifikasi .
+                <span class="lang-id">Halal, Organic, dan SNI sesuai sertifikasi.</span><span class="lang-en">Halal, Organic, and SNI standards, in line with applicable certifications.</span>
               </p>
 
             </div>
@@ -2149,6 +2167,30 @@
   </script>
 
   <script src="script.js"></script>
+
+
+  <script id="raya-language-toggle-fix">
+    (() => {
+      const buttons = Array.from(document.querySelectorAll('[data-lang]'));
+      const applyLanguage = (language) => {
+        const lang = language === 'en' ? 'en' : 'id';
+        document.documentElement.lang = lang;
+        document.querySelectorAll('.lang-id').forEach((el) => { el.hidden = lang !== 'id'; });
+        document.querySelectorAll('.lang-en').forEach((el) => { el.hidden = lang !== 'en'; });
+        buttons.forEach((button) => button.classList.toggle('active', button.dataset.lang === lang));
+        try { localStorage.setItem('raya-language', lang); } catch (e) {}
+      };
+      buttons.forEach((button) => {
+        if (!button.dataset.langBound) {
+          button.dataset.langBound = 'true';
+          button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+        }
+      });
+      let initial = 'id';
+      try { initial = localStorage.getItem('raya-language') || 'id'; } catch (e) {}
+      applyLanguage(initial);
+    })();
+  </script>
 
 </body>
 </html>

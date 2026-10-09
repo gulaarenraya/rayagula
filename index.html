@@ -761,6 +761,19 @@
     background: transparent !important;
   }
 
+<style>
+/* Revision 7: robust responsive hero image rendering */
+.raya-hero .hero-photo.hero-carousel { position:relative; overflow:hidden; min-height:520px; }
+.raya-hero .hero-carousel .hero-slide { position:absolute; inset:0; width:100%; height:100%; min-height:inherit; }
+.raya-hero .hero-carousel .hero-slide picture { position:absolute; inset:0; display:block; width:100%; height:100%; }
+.raya-hero .hero-carousel .hero-slide picture img { display:block; width:100%; height:100%; min-height:inherit; object-fit:cover; object-position:center; }
+.raya-hero .hero-carousel .hero-slide-product picture img { object-fit:contain; object-position:center; }
+@media(max-width:600px){
+ .raya-hero .hero-photo.hero-carousel { min-height:620px; height:78svh; max-height:780px; }
+ .raya-hero .hero-carousel .hero-slide picture img { object-fit:cover; object-position:center; }
+ .raya-hero .hero-carousel .hero-slide-product picture img { object-fit:contain; padding:18px 0 38px; box-sizing:border-box; }
+}
+</style>
 </head>
 
 
@@ -1059,14 +1072,14 @@
       <div class="about-copy reveal">
 
         <div class="eyebrow">
-          TENTANG RAYA GULA
+          <span class="lang-id">TENTANG RAYA GULA</span><span class="lang-en">ABOUT RAYA GULA</span>
         </div>
 
 
         <h2>
           <span data-id="Dari alam," data-en="From nature,">Dari alam,</span><br>
           <span data-id="untuk kehidupan" data-en="for a better life">untuk kehidupan</span><br>
-          <em data-id="yang lebih baik." data-en="together.">yang lebih baik.</em>
+          <em data-id="yang lebih baik." data-en="that is better.">yang lebih baik.</em>
         </h2>
 
 
@@ -1141,9 +1154,8 @@
 
 
         <h2>
-          “Ketika alam dijaga,<br>
-          rasa terbaik akan<br>
-          <em>menemukan jalannya.</em>”
+          <span class="lang-id">“Ketika alam dijaga,<br>rasa terbaik akan<br><em>menemukan jalannya.</em>”</span>
+          <span class="lang-en">“When nature is cared for,<br>the finest flavours<br><em>find their way.”</em></span>
         </h2>
 
 
@@ -1790,8 +1802,8 @@
 
 
         <h2>
-          Mari bawa rasa<br>
-          <em>Indonesia</em> lebih jauh.
+          <span class="lang-id">Mari bawa rasa<br><em>Indonesia</em> lebih jauh.</span>
+          <span class="lang-en">Let’s bring<br><em>Indonesian flavour</em> further.</span>
         </h2>
 
       </div>
@@ -1810,7 +1822,7 @@
           </span>
 
           <b>
-            0812-1121-3090 ↗
+            +62 812-1121-3090 ↗
           </b>
 
         </a>
@@ -1867,7 +1879,8 @@
       >
 
       <p>
-        Gula aren Indonesia dengan rasa autentik, alami, dan berkelas.
+        <span class="lang-id">Gula aren Indonesia dengan rasa autentik, alami, dan berkelas.</span>
+        <span class="lang-en">Authentic, naturally crafted Indonesian palm sugar with a refined character.</span>
       </p>
 
     </div>
@@ -1900,16 +1913,14 @@
 
     <div>
 
-      <b>
-        KONTAK
-      </b>
+      <b><span class="lang-id">KONTAK</span><span class="lang-en">CONTACT</span></b>
 
       <a
         href="https://wa.me/6281211213090"
         target="_blank"
         rel="noopener noreferrer"
       >
-        0812-1121-3090
+        +62 812-1121-3090
       </a>
 
       <a href="mailto:hello@rayagula.com">

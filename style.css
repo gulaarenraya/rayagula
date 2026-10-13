@@ -5179,8 +5179,9 @@ body.language-en .lang-en { display: inline !important; }
     position: static !important;
     inset: auto !important;
     flex: 0 1 auto !important;
-    width: 100% !important;
-    height: 100% !important;
+    /* Preserve the desktop source image's natural aspect ratio. */
+    width: auto !important;
+    height: auto !important;
     min-width: 0 !important;
     min-height: 0 !important;
     max-width: 100% !important;
@@ -5188,5 +5189,6 @@ body.language-en .lang-en { display: inline !important; }
     object-fit: contain !important;
     object-position: center center !important;
     transform: none !important;
+    margin: 0 auto !important;
   }
 }

@@ -20,4 +20,6 @@
   <url><loc>https://rayagula.com/terms.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://rayagula.com/articles/perbedaan-jenis-gula-aren.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://rayagula.com/articles/cara-memilih-gula-aren.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://rayagula.com/catalogue.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rayagula.com/en/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

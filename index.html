@@ -2602,16 +2602,15 @@
         for (var x = 0; x < off.width; x += step) {
           var idx = (y * off.width + x) * 4;
           if (pixels[idx + 3] < 140) continue;
-          var shade = .86 + Math.random() * .28;
+          var goldPalette = ['#8b541f', '#a66a27', '#bd8234', '#d09a43', '#e0ad52'];
+          var grainColor = goldPalette[Math.floor(Math.random() * goldPalette.length)];
           grains.push({
             tx: ox + x + (Math.random() - .5) * step,
             ty: oy + y + (Math.random() - .5) * step,
             sx: ox + x + (Math.random() - .5) * vw * .12,
             sy: -20 - Math.random() * vh * .22,
             delay: .12 + 1.15 * (1 - y / off.height) + Math.random() * .25,
-            color: 'rgb(' + Math.min(255, pixels[idx] * shade | 0) + ',' +
-              Math.min(255, pixels[idx + 1] * shade | 0) + ',' +
-              Math.min(255, pixels[idx + 2] * shade | 0) + ')'
+            color: grainColor
           });
         }
       }
@@ -2654,9 +2653,9 @@
             shineCtx.globalCompositeOperation = 'source-atop';
             var shineX = -.3 * lw + shineProgress * 1.6 * lw;
             var gradient = shineCtx.createLinearGradient(shineX, 0, shineX + .3 * lw, lh * .3);
-            gradient.addColorStop(0, 'rgba(255,246,210,0)');
-            gradient.addColorStop(.5, 'rgba(255,246,210,.8)');
-            gradient.addColorStop(1, 'rgba(255,246,210,0)');
+            gradient.addColorStop(0, 'rgba(139,84,31,0)');
+            gradient.addColorStop(.5, 'rgba(208,154,67,.85)');
+            gradient.addColorStop(1, 'rgba(139,84,31,0)');
             shineCtx.fillStyle = gradient;
             shineCtx.fillRect(0, 0, shineCanvas.width, shineCanvas.height);
             ctx.drawImage(shineCanvas, ox, oy, lw, lh);

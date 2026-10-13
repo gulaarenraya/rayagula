@@ -1385,6 +1385,16 @@ h4 em {
     url("product-semut.png");
 }
 
+.journal-img.j5 {
+  background-image:
+    url("product-cair.png");
+}
+
+.journal-img.j6 {
+  background-image:
+    url("product-cetak.png");
+}
+
 .journal-img span {
   position: absolute;
 

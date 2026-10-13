@@ -882,6 +882,54 @@
     }
   </style>
 
+
+  <style id="raya-gula-final-hero-fit">
+    /* Desktop slide 2: size the image itself proportionally, not as a stretched full-frame box. */
+    @media (min-width: 901px) {
+      .raya-hero .hero-photo .hero-slide.hero-slide-product {
+        overflow: hidden !important;
+      }
+      .raya-hero .hero-photo .hero-slide.hero-slide-product picture {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+      }
+      .raya-hero .hero-photo .hero-slide.hero-slide-product img {
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        flex: 0 1 auto !important;
+      }
+    }
+
+    /* Mobile: make the hero and certification section meet without a dark spacer. */
+    @media (max-width: 767px) {
+      .raya-hero,
+      .raya-hero .hero-photo,
+      .raya-hero + .cert-bar {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+      }
+      .raya-hero .hero-photo {
+        display: block !important;
+        vertical-align: top !important;
+      }
+      .raya-hero + .cert-bar {
+        border-top: 0 !important;
+      }
+    }
+  </style>
+
 </head>
 
 

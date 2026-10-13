@@ -844,6 +844,44 @@
     }
   </style>
 
+
+
+  <style id="raya-gula-requested-final-adjustments">
+    /* Desktop: keep the complete second hero product image visible without zooming. */
+    @media (min-width: 901px) {
+      .raya-hero .hero-photo .hero-slide.hero-slide-product picture {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .raya-hero .hero-photo .hero-slide.hero-slide-product img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+    }
+
+    /* Mobile only: keep the existing white gap/background but remove excess spacing. */
+    @media (max-width: 767px) {
+      .raya-hero { margin: 0 !important; padding: 0 !important; }
+      .raya-hero .hero-photo { margin: 0 !important; padding: 0 !important; }
+      .raya-hero + .cert-bar { margin-top: 0 !important; padding-top: 0 !important; }
+
+      /* Slide 1 text only: white for contrast on mobile; desktop and other slides unchanged. */
+      .raya-hero .hero-copy-1,
+      .raya-hero .hero-copy-1 .eyebrow,
+      .raya-hero .hero-copy-1 h1,
+      .raya-hero .hero-copy-1 h1 em,
+      .raya-hero .hero-copy-1 p,
+      .raya-hero .hero-copy-1 .text-link {
+        color: #fff !important;
+      }
+    }
+  </style>
+
 </head>
 
 
@@ -1876,8 +1914,8 @@
 
 
         <h2>
-          Mari bawa rasa<br>
-          <em>Indonesia</em> lebih jauh.
+          <span class="lang-id">Mari bawa rasa<br><em>Indonesia</em> lebih jauh.</span>
+          <span class="lang-en">Let’s bring the taste<br>of <em>Indonesia</em> further.</span>
         </h2>
 
       </div>
@@ -1896,7 +1934,7 @@
           </span>
 
           <b>
-            0812-1121-3090 ↗
+            +62 812-1121-3090 ↗
           </b>
 
         </a>
@@ -1995,7 +2033,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        0812-1121-3090
+        +62 812-1121-3090
       </a>
 
       <a href="mailto:hello@rayagula.com">

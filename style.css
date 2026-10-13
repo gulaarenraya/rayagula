@@ -5108,3 +5108,36 @@ body.language-en .lang-en { display: inline !important; }
     object-position: 88% center !important;
   }
 }
+
+
+/* RAYA GULA — definitive desktop slide 2 image-fit override.
+   Keep the desktop asset intact and fit the whole artwork inside the banner. */
+@media (min-width: 901px) {
+  section.hero.raya-hero > .hero-photo.hero-carousel > .hero-slide.hero-slide-product {
+    overflow: hidden !important;
+    background: #f3eee5 !important;
+  }
+  section.hero.raya-hero > .hero-photo.hero-carousel > .hero-slide.hero-slide-product > picture {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  section.hero.raya-hero > .hero-photo.hero-carousel > .hero-slide.hero-slide-product > picture > img {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    flex: 0 1 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+  }
+}

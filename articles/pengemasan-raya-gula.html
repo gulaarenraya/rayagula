@@ -24,7 +24,7 @@ footer{background:var(--brown);color:#fff;text-align:center;padding:40px;font-si
 @media(max-width:768px){.article-hero{height:520px}.article-content h1{font-size:34px}.article-body h2{font-size:25px}.article-navigation{flex-direction:column}}
 .language-switch{display:flex;gap:6px}.language-switch button{padding:8px 12px;border:1px solid #cbb99f;background:transparent;color:var(--brown);cursor:pointer}.language-switch button.active{background:var(--brown);color:#fff}.lang-en[hidden],.lang-id[hidden]{display:none!important}
 </style>
-</head>
+<style>.raya-whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:9999;background:#287d4f;color:#fff;padding:13px 18px;border-radius:40px;box-shadow:0 4px 18px #0002;font:600 13px Arial,sans-serif;text-decoration:none}</style></head>
 <body>
 <header class="article-header">
 <a href="../index.html"><img src="../logo.png" alt="Raya Gula Logo"></a><div class="language-switch"><button type="button" data-lang="id">ID</button><button type="button" data-lang="en">EN</button></div>
@@ -58,5 +58,5 @@ footer{background:var(--brown);color:#fff;text-align:center;padding:40px;font-si
 <a href="../index.html#process"><span class="lang-id">Kembali ke Semua Proses →</span><span class="lang-en">Back to All Processes →</span></a>
 </div>
 <footer>© 2026 Raya Gula<br>Gula Aren Indonesia — Manis Alami dari Nusantara</footer>
-<script>(function(){const bs=[...document.querySelectorAll('[data-lang]')];function setLang(l){l=l==='en'?'en':'id';document.documentElement.lang=l;document.querySelectorAll('.lang-id').forEach(e=>e.hidden=l!=='id');document.querySelectorAll('.lang-en').forEach(e=>e.hidden=l!=='en');bs.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));try{localStorage.setItem('raya-language',l)}catch(e){}}bs.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));let l='id';try{l=localStorage.getItem('raya-language')||'id'}catch(e){}setLang(l)})();</script></body>
+<script>(function(){const bs=[...document.querySelectorAll('[data-lang]')];function setLang(l){l=l==='en'?'en':'id';document.documentElement.lang=l;document.querySelectorAll('.lang-id').forEach(e=>e.hidden=l!=='id');document.querySelectorAll('.lang-en').forEach(e=>e.hidden=l!=='en');bs.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));try{localStorage.setItem('raya-language',l)}catch(e){}}bs.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));let l='id';try{l=localStorage.getItem('raya-language')||'id'}catch(e){}setLang(l)})();</script><a class="raya-whatsapp-float" href="https://wa.me/6281211213090" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Raya Gula">WhatsApp ↗</a></body>
 </html>

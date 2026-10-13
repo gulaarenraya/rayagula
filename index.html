@@ -2601,9 +2601,12 @@
         pixels = imageData.data;
         for (var q = 0; q < pixels.length; q += 4) {
           var red = pixels[q], green = pixels[q + 1], blue = pixels[q + 2];
-          var isCream = red > 185 && green > 150 && blue > 95 &&
-                        red >= green && green >= blue * .78 &&
-                        (red - blue) > 28;
+          // Use a broader warm-light mask: the logo's cream circle can be
+          // closer to ivory than yellow, so a narrow gold threshold misses it.
+          var isCream = red > 155 && green > 130 && blue > 95 &&
+                        red >= green && green >= blue &&
+                        (red - blue) > 10 && (red - green) < 100 &&
+                        (red + green + blue) / 3 > 145;
           if (isCream) pixels[q + 3] = 0;
         }
         o.putImageData(imageData, 0, 0);

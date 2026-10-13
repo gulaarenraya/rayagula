@@ -959,35 +959,37 @@
 
 
 <style id="raya-slide2-desktop-fit-correction">
+/* Desktop slide 2: place the original desktop artwork inside the banner frame.
+   Absolute inset + object-fit:contain prevents the image element from being cropped. */
 @media (min-width: 901px) {
   section.hero.raya-hero .hero-carousel .hero-slide.hero-slide-product {
+    position: absolute !important;
+    inset: 0 !important;
     overflow: hidden !important;
     background: #f3eee5 !important;
   }
-  section.hero.raya-hero .hero-carousel .hero-slide.hero-slide-product picture {
+  section.hero.raya-hero .hero-carousel .hero-slide.hero-slide-product > picture {
     position: absolute !important;
     inset: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
     overflow: hidden !important;
   }
-  section.hero.raya-hero .hero-carousel .hero-slide.hero-slide-product picture img {
-    position: relative !important;
-    inset: auto !important;
+  section.hero.raya-hero .hero-carousel .hero-slide.hero-slide-product > picture > img {
+    position: absolute !important;
+    inset: 0 !important;
     display: block !important;
-    width: auto !important;
-    height: auto !important;
+    width: 100% !important;
+    height: 100% !important;
     min-width: 0 !important;
     min-height: 0 !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
     object-fit: contain !important;
-    object-position: center !important;
+    object-position: center center !important;
     transform: none !important;
-    flex: 0 1 auto !important;
+    margin: 0 !important;
   }
 }
 </style>

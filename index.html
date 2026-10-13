@@ -2593,9 +2593,23 @@
       var o = off.getContext('2d');
       o.drawImage(logo, 0, 0, off.width, off.height);
 
-      var pixels;
-      try { pixels = o.getImageData(0, 0, off.width, off.height).data; }
-      catch (e) { closeIntro(); return; }
+      // Remove the cream circle/background from the logo asset itself.
+      // Keep the darker artwork (palm tree climber + RAYA GULA lettering).
+      var imageData, pixels;
+      try {
+        imageData = o.getImageData(0, 0, off.width, off.height);
+        pixels = imageData.data;
+        for (var q = 0; q < pixels.length; q += 4) {
+          var red = pixels[q], green = pixels[q + 1], blue = pixels[q + 2];
+          var isCream = red > 185 && green > 150 && blue > 95 &&
+                        red >= green && green >= blue * .78 &&
+                        (red - blue) > 28;
+          if (isCream) pixels[q + 3] = 0;
+        }
+        o.putImageData(imageData, 0, 0);
+        pixels = o.getImageData(0, 0, off.width, off.height).data;
+      } catch (e) { closeIntro(); return; }
+      var logoOnly = off;
       var step = Math.max(2, Math.round(lw / 100));
       var grains = [];
       for (var y = 0; y < off.height; y += step) {
@@ -2649,7 +2663,7 @@
           if (shineProgress > 0 && shineProgress < 1 && shineCtx) {
             shineCtx.globalCompositeOperation = 'source-over';
             shineCtx.clearRect(0, 0, shineCanvas.width, shineCanvas.height);
-            shineCtx.drawImage(logo, 0, 0, shineCanvas.width, shineCanvas.height);
+            shineCtx.drawImage(logoOnly, 0, 0, shineCanvas.width, shineCanvas.height);
             shineCtx.globalCompositeOperation = 'source-atop';
             var shineX = -.3 * lw + shineProgress * 1.6 * lw;
             var gradient = shineCtx.createLinearGradient(shineX, 0, shineX + .3 * lw, lh * .3);
@@ -2660,7 +2674,7 @@
             shineCtx.fillRect(0, 0, shineCanvas.width, shineCanvas.height);
             ctx.drawImage(shineCanvas, ox, oy, lw, lh);
           } else {
-            ctx.drawImage(logo, ox, oy, lw, lh);
+            ctx.drawImage(logoOnly, ox, oy, lw, lh);
           }
         }
         ctx.globalAlpha = 1;

@@ -1380,6 +1380,11 @@ h4 em {
     url("product-back.png");
 }
 
+.journal-img.j4 {
+  background-image:
+    url("product-semut.png");
+}
+
 .journal-img span {
   position: absolute;
 

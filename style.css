@@ -834,14 +834,29 @@ h4 em {
   isolation: isolate;
   overflow: hidden;
   width: 100%;
-  padding: 145px 24px;
-  /* A quiet warm-ivory backdrop fits Raya Gula's existing natural, premium palette. */
+  padding: 132px 24px 126px;
+  /* Elevated natural backdrop: warm ivory, soft caramel glow and deep botanical green. */
   background:
-    radial-gradient(ellipse at 8% 18%, rgba(201, 160, 74, .10), transparent 34%),
-    radial-gradient(ellipse at 92% 82%, rgba(74, 48, 36, .07), transparent 32%),
-    linear-gradient(135deg, #f7f2e8 0%, #efe5d4 52%, #f8f4ec 100%);
+    radial-gradient(ellipse at 16% 12%, rgba(255, 252, 241, .96) 0%, rgba(255, 252, 241, .45) 28%, transparent 52%),
+    radial-gradient(ellipse at 88% 82%, rgba(156, 111, 49, .18) 0%, transparent 34%),
+    linear-gradient(125deg, #f7f0e2 0%, #e8dcc5 48%, #f3ead9 100%);
   color: var(--brown-dark);
   text-align: center;
+}
+
+.manifesto-copy {
+  max-width: 700px;
+  margin: 28px auto 0;
+  color: #5c4b39;
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.9;
+  letter-spacing: .015em;
+  text-wrap: pretty;
+}
+
+.manifesto-copy .lang-id,
+.manifesto-copy .lang-en {
+  display: inline;
 }
 
 .manifesto::before,
@@ -853,7 +868,9 @@ h4 em {
   width: 300px;
   height: 420px;
   border-radius: 100% 0 100% 0;
-  border: 1px solid rgba(91, 105, 64, .12);
+  border: 1px solid rgba(66, 79, 43, .16);
+  background: linear-gradient(145deg, rgba(78, 91, 53, .055), rgba(255,255,255,0));
+  filter: drop-shadow(0 12px 24px rgba(80, 59, 35, .04));
   transform: rotate(32deg);
 }
 

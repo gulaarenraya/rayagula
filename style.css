@@ -830,31 +830,65 @@ h4 em {
    ========================================================= */
 
 .manifesto {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   width: 100%;
-
-  padding:
-    145px 24px;
-
+  padding: 145px 24px;
+  /* A quiet warm-ivory backdrop fits Raya Gula's existing natural, premium palette. */
   background:
-    var(--brown-dark);
-
-  color: #fff;
-
+    radial-gradient(ellipse at 8% 18%, rgba(201, 160, 74, .10), transparent 34%),
+    radial-gradient(ellipse at 92% 82%, rgba(74, 48, 36, .07), transparent 32%),
+    linear-gradient(135deg, #f7f2e8 0%, #efe5d4 52%, #f8f4ec 100%);
+  color: var(--brown-dark);
   text-align: center;
 }
 
-.manifesto-inner {
-  max-width: 900px;
+.manifesto::before,
+.manifesto::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 300px;
+  height: 420px;
+  border-radius: 100% 0 100% 0;
+  border: 1px solid rgba(91, 105, 64, .12);
+  transform: rotate(32deg);
+}
 
+.manifesto::before {
+  left: -150px;
+  top: -120px;
+  box-shadow:
+    24px 24px 0 -1px rgba(0, 0, 0, 0),
+    42px 48px 0 -1px rgba(91, 105, 64, .05),
+    84px 96px 0 -1px rgba(91, 105, 64, .04);
+}
+
+.manifesto::after {
+  right: -180px;
+  bottom: -230px;
+  transform: rotate(212deg);
+  box-shadow:
+    42px 48px 0 -1px rgba(91, 105, 64, .05),
+    84px 96px 0 -1px rgba(91, 105, 64, .04);
+}
+
+.manifesto-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
   margin: auto;
 }
 
+.manifesto .eyebrow {
+  color: #98743a;
+}
+
 .manifesto h2 {
-  color: #fff;
-
-  font-size:
-    clamp(44px, 6vw, 78px);
-
+  color: var(--brown-dark);
+  font-size: clamp(44px, 6vw, 78px);
   line-height: 1.03;
 }
 

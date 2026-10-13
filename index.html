@@ -677,26 +677,6 @@
       background: #f3eee5;
     }
 
-
-    /* Desktop only: fit the complete slide-2 product image inside the hero frame.
-       Keep the dedicated mobile source and mobile styling unchanged. */
-    @media (min-width: 901px) {
-      .raya-hero .hero-slide-product picture {
-        display: grid !important;
-        place-items: center;
-        width: 100%;
-        height: 100%;
-      }
-      .raya-hero .hero-slide-product img {
-        width: auto !important;
-        height: auto !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
-        object-fit: contain !important;
-        object-position: center center !important;
-      }
-    }
-
     /* Slide 2 copy intentionally hidden so the product remains the sole visual focus. */
     .raya-hero .hero-copy-2 {
       display: none;
@@ -818,6 +798,48 @@
       .raya-hero .hero-slide-product img {
         object-fit: contain !important;
         object-position: center center !important;
+      }
+    }
+  </style>
+
+
+  <style id="raya-gula-slide2-desktop-and-mobile-gap-fix">
+    /* Desktop only: fit the full slide-2 image inside the hero frame. */
+    @media (min-width: 901px) {
+      .raya-hero .hero-carousel .hero-slide.hero-slide-product {
+        overflow: hidden !important;
+      }
+      .raya-hero .hero-carousel .hero-slide.hero-slide-product picture {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+      }
+      .raya-hero .hero-carousel .hero-slide.hero-slide-product img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+      }
+    }
+
+    /* Mobile only: remove unwanted black space after the hero, before certification. */
+    @media (max-width: 767px) {
+      .raya-hero {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        background: transparent !important;
+      }
+      .raya-hero .hero-photo {
+        margin-bottom: 0 !important;
+      }
+      .raya-hero + .cert-bar {
+        margin-top: 0 !important;
       }
     }
   </style>

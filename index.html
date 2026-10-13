@@ -2472,5 +2472,212 @@
     })();
   </script>
 
+  <!-- RAYA GULA INTRO — particle logo reveal -->
+  <style id="raya-gula-intro-style">
+    #rg-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      overflow: hidden;
+      background: #251a12;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .55s ease, visibility .55s ease;
+    }
+    #rg-intro.out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #rg-intro canvas {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    #rg-skip {
+      position: absolute;
+      top: calc(14px + env(safe-area-inset-top, 0px));
+      right: 16px;
+      padding: 8px 16px;
+      border: 1px solid rgba(224,181,106,.6);
+      border-radius: 999px;
+      background: rgba(37,26,18,.35);
+      color: #e0b56a;
+      font: 14px system-ui, sans-serif;
+      cursor: pointer;
+    }
+    #rg-skip:focus-visible { outline: 3px solid #e0b56a; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      #rg-intro { transition: none; }
+    }
+  </style>
+  <div id="rg-intro" role="dialog" aria-label="Raya Gula opening animation">
+    <canvas id="rg-c" aria-hidden="true"></canvas>
+    <button id="rg-skip" type="button">Lewati / Skip</button>
+  </div>
+  <script>
+  (function () {
+    var intro = document.getElementById('rg-intro');
+    var canvas = document.getElementById('rg-c');
+    var skip = document.getElementById('rg-skip');
+    if (!intro || !canvas || !skip) return;
+
+    var LOGO_SRC = '/logo.png';
+    var SHOW_ONCE_PER_TAB_SESSION = true;
+    var closed = false;
+    var raf = 0;
+    var timeout = 0;
+    var previousOverflow = document.documentElement.style.overflow;
+
+    function hasSeenIntro() {
+      try { return sessionStorage.getItem('rgIntroSeen') === '1'; }
+      catch (e) { return false; }
+    }
+    function closeIntro() {
+      if (closed) return;
+      closed = true;
+      if (raf) cancelAnimationFrame(raf);
+      if (timeout) clearTimeout(timeout);
+      intro.classList.add('out');
+      document.documentElement.style.overflow = previousOverflow;
+      try { sessionStorage.setItem('rgIntroSeen', '1'); } catch (e) {}
+      timeout = setTimeout(function () {
+        if (intro.parentNode) intro.parentNode.removeChild(intro);
+      }, 600);
+    }
+
+    if ((window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+        (SHOW_ONCE_PER_TAB_SESSION && hasSeenIntro())) {
+      intro.remove();
+      return;
+    }
+
+    document.documentElement.style.overflow = 'hidden';
+    skip.addEventListener('click', closeIntro);
+    intro.addEventListener('click', function (event) {
+      if (event.target === intro || event.target === canvas) closeIntro();
+    });
+    document.addEventListener('keydown', onKeyDown);
+    function onKeyDown(event) {
+      if (event.key === 'Escape') closeIntro();
+    }
+
+    var logo = new Image();
+    logo.onload = startAnimation;
+    logo.onerror = closeIntro;
+    logo.src = LOGO_SRC;
+
+    function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+    function ease(v) { v = clamp(v, 0, 1); return 1 - Math.pow(1 - v, 3); }
+
+    function startAnimation() {
+      if (closed) return;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      canvas.width = Math.round(vw * dpr);
+      canvas.height = Math.round(vh * dpr);
+      var ctx = canvas.getContext('2d');
+      if (!ctx) { closeIntro(); return; }
+
+      var lw = Math.min(vw * .84, 560);
+      var lh = lw * logo.naturalHeight / logo.naturalWidth;
+      if (lh > vh * .68) { lh = vh * .68; lw = lh * logo.naturalWidth / logo.naturalHeight; }
+      var ox = (vw - lw) / 2;
+      var oy = (vh - lh) / 2;
+      var off = document.createElement('canvas');
+      off.width = Math.max(1, Math.round(lw));
+      off.height = Math.max(1, Math.round(lh));
+      var o = off.getContext('2d');
+      o.drawImage(logo, 0, 0, off.width, off.height);
+
+      var pixels;
+      try { pixels = o.getImageData(0, 0, off.width, off.height).data; }
+      catch (e) { closeIntro(); return; }
+      var step = Math.max(2, Math.round(lw / 100));
+      var grains = [];
+      for (var y = 0; y < off.height; y += step) {
+        for (var x = 0; x < off.width; x += step) {
+          var idx = (y * off.width + x) * 4;
+          if (pixels[idx + 3] < 140) continue;
+          var shade = .86 + Math.random() * .28;
+          grains.push({
+            tx: ox + x + (Math.random() - .5) * step,
+            ty: oy + y + (Math.random() - .5) * step,
+            sx: ox + x + (Math.random() - .5) * vw * .12,
+            sy: -20 - Math.random() * vh * .22,
+            delay: .12 + 1.15 * (1 - y / off.height) + Math.random() * .25,
+            color: 'rgb(' + Math.min(255, pixels[idx] * shade | 0) + ',' +
+              Math.min(255, pixels[idx + 1] * shade | 0) + ',' +
+              Math.min(255, pixels[idx + 2] * shade | 0) + ')'
+          });
+        }
+      }
+
+      var shineCanvas = document.createElement('canvas');
+      shineCanvas.width = off.width;
+      shineCanvas.height = off.height;
+      var shineCtx = shineCanvas.getContext('2d');
+      var grainSize = Math.max(2, Math.round(lw / 150));
+      var startTime = null;
+
+      function draw(now) {
+        if (closed) return;
+        if (startTime === null) startTime = now;
+        var t = (now - startTime) / 1000;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, vw, vh);
+
+        var particleFade = 1 - ease((t - 2.35) / .55);
+        if (particleFade > 0) {
+          ctx.globalAlpha = particleFade;
+          for (var k = 0; k < grains.length; k++) {
+            var g = grains[k];
+            var progress = clamp((t - g.delay) / .9, 0, 1);
+            if (progress <= 0) continue;
+            var e = Math.pow(progress, 1.8);
+            ctx.fillStyle = g.color;
+            ctx.fillRect(g.sx + (g.tx - g.sx) * e, g.sy + (g.ty - g.sy) * e, grainSize, grainSize);
+          }
+        }
+
+        var logoAlpha = ease((t - 2.05) / .7);
+        if (logoAlpha > 0) {
+          ctx.globalAlpha = logoAlpha;
+          var shineProgress = (t - 2.65) / .85;
+          if (shineProgress > 0 && shineProgress < 1 && shineCtx) {
+            shineCtx.globalCompositeOperation = 'source-over';
+            shineCtx.clearRect(0, 0, shineCanvas.width, shineCanvas.height);
+            shineCtx.drawImage(logo, 0, 0, shineCanvas.width, shineCanvas.height);
+            shineCtx.globalCompositeOperation = 'source-atop';
+            var shineX = -.3 * lw + shineProgress * 1.6 * lw;
+            var gradient = shineCtx.createLinearGradient(shineX, 0, shineX + .3 * lw, lh * .3);
+            gradient.addColorStop(0, 'rgba(255,246,210,0)');
+            gradient.addColorStop(.5, 'rgba(255,246,210,.8)');
+            gradient.addColorStop(1, 'rgba(255,246,210,0)');
+            shineCtx.fillStyle = gradient;
+            shineCtx.fillRect(0, 0, shineCanvas.width, shineCanvas.height);
+            ctx.drawImage(shineCanvas, ox, oy, lw, lh);
+          } else {
+            ctx.drawImage(logo, ox, oy, lw, lh);
+          }
+        }
+        ctx.globalAlpha = 1;
+        if (t >= 3.65) { closeIntro(); return; }
+        raf = requestAnimationFrame(draw);
+      }
+      raf = requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('pagehide', function () {
+      if (raf) cancelAnimationFrame(raf);
+      document.documentElement.style.overflow = previousOverflow;
+    }, { once: true });
+  })();
+  </script>
+  <!-- END RAYA GULA INTRO -->
+
 </body>
 </html>

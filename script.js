@@ -680,8 +680,9 @@
 
   const products = [
     {
-      image: "product-semut.png",
-      alt: "Gula Aren Semut Raya Gula 500 gram",
+      image: "/product-semut.png",
+      altId: "Gula Aren Semut Raya Gula 500 gram",
+      altEn: "Raya Gula Granulated Palm Sugar, 500 g",
       titleId: "Gula Aren<br>Semut",
       titleEn: "Granulated Palm<br>Sugar",
       leadId: "Manis alami dalam bentuk kristal.",
@@ -691,8 +692,9 @@
       specs: [["500 g", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
     },
     {
-      image: "product-cair.png",
-      alt: "Gula Aren Cair Raya Gula 1 Liter",
+      image: "/product-cair.png",
+      altId: "Gula Aren Cair Raya Gula 1 Liter",
+      altEn: "Raya Gula Liquid Palm Sugar, 1 litre",
       titleId: "Gula Aren<br>Cair",
       titleEn: "Liquid Palm<br>Sugar",
       leadId: "Praktis dengan rasa manis khas nira aren.",
@@ -702,8 +704,9 @@
       specs: [["1 L", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
     },
     {
-      image: "product-cetak.png",
-      alt: "Gula Aren Cetak Raya Gula 1 Kg",
+      image: "/product-cetak.png",
+      altId: "Gula Aren Cetak Raya Gula 1 Kg",
+      altEn: "Raya Gula Traditional Palm Sugar, 1 kg",
       titleId: "Gula Aren<br>Cetak",
       titleEn: "Traditional Palm<br>Sugar",
       leadId: "Tradisional dengan karakter rasa autentik.",
@@ -744,7 +747,7 @@
 
       const apply = () => {
         image.src = product.image;
-        image.alt = product.alt;
+        image.alt = isEnglish ? product.altEn : product.altId;
         title.innerHTML = isEnglish ? product.titleEn : product.titleId;
         lead.textContent = isEnglish ? product.leadEn : product.leadId;
         description.textContent = isEnglish ? product.descriptionEn : product.descriptionId;
@@ -792,9 +795,11 @@
      Prevents "BerandaHome" and conflicting translation passes.
      ===================================================== */
   function initLanguage() {
-    const buttons = document.querySelectorAll(".lang-btn");
+    const buttons = document.querySelectorAll(".lang-btn, [data-lang]");
     const langSpansId = document.querySelectorAll(".lang-id");
     const langSpansEn = document.querySelectorAll(".lang-en");
+    const isEnglishPath = window.location.pathname === "/en" || window.location.pathname.startsWith("/en/");
+    const pageLanguage = isEnglishPath ? "en" : "id";
 
     function setLanguage(lang) {
       const activeLang = lang === "en" ? "en" : "id";
@@ -809,13 +814,21 @@
         el.textContent = activeLang === "en" ? el.dataset.en : el.dataset.id;
       });
 
-      buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === activeLang));
-      localStorage.setItem("raya-language", activeLang);
+      buttons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === activeLang);
+        btn.setAttribute("aria-pressed", String(btn.dataset.lang === activeLang));
+      });
       window.dispatchEvent(new CustomEvent("raya:language", { detail: activeLang }));
     }
 
-    buttons.forEach(btn => btn.addEventListener("click", () => setLanguage(btn.dataset.lang)));
-    setLanguage(localStorage.getItem("raya-language") || "id");
+    buttons.forEach(btn => btn.addEventListener("click", event => {
+      const targetLanguage = btn.dataset.lang === "en" ? "en" : "id";
+      if (targetLanguage === pageLanguage) return;
+      event.preventDefault();
+      const target = targetLanguage === "en" ? "/en/" : "/";
+      window.location.href = target;
+    }));
+    setLanguage(pageLanguage);
   }
 
   document.addEventListener("DOMContentLoaded", () => {

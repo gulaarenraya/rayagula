@@ -5698,3 +5698,32 @@ body.language-en .lang-en { display: inline !important; }
     object-position: center !important;
   }
 }
+
+
+/* ABOUT image: crop vertically to match the complete copy block height */
+@media (min-width: 901px) {
+  #about.section.about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    gap: 32px !important;
+  }
+  #about.section.about > .about-copy {
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  #about.section.about > .about-visual {
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  #about.section.about > .about-visual > .about-image {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}

@@ -5661,3 +5661,40 @@ body.language-en .lang-en { display: inline !important; }
     object-position: center !important;
   }
 }
+
+
+/* FINAL ABOUT ALIGNMENT: image top/bottom must match the full text block */
+@media (min-width: 901px) {
+  #about.section.about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    gap: 32px !important;
+  }
+  #about.section.about > .about-copy {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #about.section.about > .about-visual {
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+  #about.section.about > .about-visual > .about-image {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}

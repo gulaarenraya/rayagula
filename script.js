@@ -48,6 +48,18 @@
       console.error("Raya Gula: sugar scroll error", error);
     }
 
+    try {
+      initProductSlider();
+    } catch (error) {
+      console.error("Raya Gula: product slider error", error);
+    }
+
+    try {
+      initLanguage();
+    } catch (error) {
+      console.error("Raya Gula: language switcher error", error);
+    }
+
     console.log("Raya Gula website initialized — stable version.");
   }
 
@@ -938,8 +950,4 @@
     setLanguage(pageLanguage);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initProductSlider();
-    initLanguage();
-  });
 })();

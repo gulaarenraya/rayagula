@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://rayagula.com/</loc><priority>1.0</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://rayagula.com/</loc><xhtml:link rel="alternate" hreflang="id" href="https://rayagula.com/"/><xhtml:link rel="alternate" hreflang="en" href="https://rayagula.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://rayagula.com/"/><priority>1.0</priority></url>
   <url><loc>https://rayagula.com/articles/pemanenan-nira.html</loc><priority>0.7</priority></url>
   <url><loc>https://rayagula.com/articles/penyaringan-nira.html</loc><priority>0.7</priority></url>
   <url><loc>https://rayagula.com/articles/pemasakan-nira.html</loc><priority>0.7</priority></url>
@@ -21,5 +21,5 @@
   <url><loc>https://rayagula.com/articles/perbedaan-jenis-gula-aren.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://rayagula.com/articles/cara-memilih-gula-aren.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://rayagula.com/catalogue.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://rayagula.com/en/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://rayagula.com/en/</loc><xhtml:link rel="alternate" hreflang="id" href="https://rayagula.com/"/><xhtml:link rel="alternate" hreflang="en" href="https://rayagula.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://rayagula.com/"/><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

@@ -57,6 +57,7 @@
       <a href="journal.html">Journal</a>
       <a href="kontak.html"><span class="lang-id">Kontak</span><span class="lang-en" hidden>Contact</span></a>
     </nav>
+    <div class="language-switch" aria-label="Choose language"><button type="button" data-lang="id">ID</button><button type="button" data-lang="en">EN</button></div>
   </header>
   <main>
     <section class="products-intro">
@@ -69,7 +70,7 @@
         <a class="product-card-visual" href="produk-gula-aren-semut.html" aria-label="View Granulated Palm Sugar"><img src="product-semut.png" alt="Raya Gula Granulated Palm Sugar packaging" loading="eager"></a>
         <div class="product-card-body">
           <span class="product-card-index">01 / GRANULATED</span>
-          <h2>Gula Aren Semut</h2>
+          <h2><span class="lang-id">Gula Aren Semut</span><span class="lang-en" hidden>Granulated Palm Sugar</span></h2>
           <p><span class="lang-id">Butiran gula aren dengan rasa autentik untuk kopi, teh, minuman kekinian, baking, dan aneka dessert. Praktis untuk kebutuhan rumah tangga maupun usaha kuliner.</span><span class="lang-en" hidden>Authentic palm sugar granules for coffee, tea, modern beverages, baking, and desserts. A practical choice for home kitchens and food businesses.</span></p>
           <a class="product-card-link" href="produk-gula-aren-semut.html"><span class="lang-id">Lihat detail produk</span><span class="lang-en" hidden>View product details</span> <span>→</span></a>
         </div>
@@ -105,5 +106,6 @@
     <a href="mailto:hello@rayagula.com">hello@rayagula.com</a>
     <div>© 2026 Raya Gula</div>
   </footer>
+  <script>(()=>{const buttons=[...document.querySelectorAll("[data-lang]")];function setLang(lang){lang=lang==="en"?"en":"id";document.documentElement.lang=lang;document.querySelectorAll(".lang-id").forEach(e=>e.hidden=lang!=="id");document.querySelectorAll(".lang-en").forEach(e=>e.hidden=lang!=="en");buttons.forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));try{localStorage.setItem("raya-language",lang)}catch(e){}}buttons.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));let lang="id";try{lang=localStorage.getItem("raya-language")||"id"}catch(e){}setLang(lang)})();</script>
 </body>
 </html>

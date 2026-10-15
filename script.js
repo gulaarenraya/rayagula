@@ -722,6 +722,7 @@
     if (!slider) return;
 
     const image = slider.querySelector("[data-product-image]");
+    const imageStage = slider.querySelector(".product-image-stage");
     const number = slider.querySelector("[data-product-number]");
     const title = slider.querySelector("[data-product-title]");
     const lead = slider.querySelector("[data-product-lead]");
@@ -731,18 +732,98 @@
     const prev = slider.querySelector("[data-product-prev]");
     const next = slider.querySelector("[data-product-next]");
 
-    if (!image || !number || !title || !lead || !description || !specs || !progress || !prev || !next) {
+    if (!image || !imageStage || !number || !title || !lead || !description || !specs || !progress || !prev || !next) {
       console.warn("Raya Gula: product slider elements are incomplete.");
       return;
     }
 
     let currentIndex = 0;
     let language = document.documentElement.lang === "en" ? "en" : "id";
+    let modal = null;
+    let previousFocus = null;
+
+    function productTitle(product, isEnglish) {
+      return isEnglish ? product.titleEn.replace(/<br\\s*\\/?\\s*>/gi, " ") : product.titleId.replace(/<br\\s*\\/?\\s*>/gi, " ");
+    }
+
+    function ensureModal() {
+      if (modal) return modal;
+      modal = document.createElement("div");
+      modal.className = "rg-product-modal";
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      modal.innerHTML = `
+        <div class="rg-product-modal__backdrop" data-modal-close></div>
+        <section class="rg-product-modal__panel" role="dialog" aria-modal="true" aria-labelledby="rg-product-modal-title" tabindex="-1">
+          <button class="rg-product-modal__close" type="button" aria-label="Close product details" data-modal-close>×</button>
+          <div class="rg-product-modal__visual"><img class="rg-product-modal__image" alt=""></div>
+          <div class="rg-product-modal__content">
+            <span class="rg-product-modal__eyebrow"></span>
+            <h3 id="rg-product-modal-title"></h3>
+            <div class="rg-product-modal__rule"></div>
+            <p class="rg-product-modal__lead"></p>
+            <p class="rg-product-modal__description"></p>
+            <div class="rg-product-modal__specs"></div>
+            <div class="rg-product-modal__actions">
+              <a class="rg-product-modal__buy" href="https://shopee.co.id/rayagula" target="_blank" rel="noopener noreferrer"></a>
+              <a class="rg-product-modal__contact" href="https://wa.me/6281211213090" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+          </div>
+        </section>`;
+      document.body.appendChild(modal);
+      modal.querySelectorAll("[data-modal-close]").forEach(el => el.addEventListener("click", closeModal));
+      modal.querySelector(".rg-product-modal__panel").addEventListener("click", event => event.stopPropagation());
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && modal && !modal.hidden) closeModal();
+      });
+      return modal;
+    }
+
+    function openModal() {
+      const product = products[currentIndex];
+      const isEnglish = language === "en";
+      const dialog = ensureModal();
+      previousFocus = document.activeElement;
+      dialog.querySelector(".rg-product-modal__image").src = product.image;
+      dialog.querySelector(".rg-product-modal__image").alt = isEnglish ? product.altEn : product.altId;
+      dialog.querySelector(".rg-product-modal__eyebrow").textContent = isEnglish
+        ? `SIGNATURE PRODUCT · ${String(currentIndex + 1).padStart(2, "0")} / ${String(products.length).padStart(2, "0")}`
+        : `PRODUK UNGGULAN · ${String(currentIndex + 1).padStart(2, "0")} / ${String(products.length).padStart(2, "0")}`;
+      dialog.querySelector(".rg-product-modal__content h3").textContent = productTitle(product, isEnglish);
+      dialog.querySelector(".rg-product-modal__lead").textContent = isEnglish ? product.leadEn : product.leadId;
+      dialog.querySelector(".rg-product-modal__description").textContent = isEnglish ? product.descriptionEn : product.descriptionId;
+      dialog.querySelector(".rg-product-modal__specs").innerHTML = product.specs.map(spec => `
+        <div><b>${spec[0]}</b><small>${isEnglish ? spec[2] : spec[1]}</small></div>
+      `).join("");
+      dialog.querySelector(".rg-product-modal__buy").textContent = isEnglish ? "Buy on Shopee ↗" : "Beli di Shopee ↗";
+      dialog.querySelector(".rg-product-modal__contact").textContent = isEnglish ? "Wholesale & Export →" : "Grosir & Ekspor →";
+      dialog.querySelector(".rg-product-modal__contact").href = "https://wa.me/6281211213090?text=" + encodeURIComponent(isEnglish
+        ? "Hello Raya Gula, I am interested in " + productTitle(product, true) + " for wholesale / export."
+        : "Halo Raya Gula, saya tertarik dengan " + productTitle(product, false) + " untuk kebutuhan grosir / ekspor.");
+      dialog.hidden = false;
+      dialog.setAttribute("aria-hidden", "false");
+      document.body.classList.add("rg-product-modal-open");
+      requestAnimationFrame(() => {
+        dialog.classList.add("is-visible");
+        dialog.querySelector(".rg-product-modal__close").focus();
+      });
+    }
+
+    function closeModal() {
+      if (!modal || modal.hidden) return;
+      modal.classList.remove("is-visible");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("rg-product-modal-open");
+      window.setTimeout(() => {
+        if (!modal) return;
+        modal.hidden = true;
+        if (previousFocus && typeof previousFocus.focus === "function") previousFocus.focus();
+      }, 220);
+    }
 
     function render(index, animate = true) {
       const product = products[index];
       const isEnglish = language === "en";
-
       if (animate) image.classList.remove("is-active");
 
       const apply = () => {
@@ -753,16 +834,15 @@
         description.textContent = isEnglish ? product.descriptionEn : product.descriptionId;
         number.textContent = `${String(index + 1).padStart(2, "0")} / ${String(products.length).padStart(2, "0")}`;
         progress.textContent = number.textContent;
-
         specs.innerHTML = product.specs.map(spec => `
-          <div>
-            <b>${spec[0]}</b>
-            <small>${isEnglish ? spec[2] : spec[1]}</small>
-          </div>
+          <div><b>${spec[0]}</b><small>${isEnglish ? spec[2] : spec[1]}</small></div>
         `).join("");
-
         if (animate) requestAnimationFrame(() => image.classList.add("is-active"));
         else image.classList.add("is-active");
+        if (modal && !modal.hidden) {
+          closeModal();
+          window.setTimeout(openModal, 230);
+        }
       };
 
       if (animate) window.setTimeout(apply, 160);
@@ -774,6 +854,17 @@
       render(currentIndex);
     }
 
+    imageStage.setAttribute("role", "button");
+    imageStage.setAttribute("tabindex", "0");
+    imageStage.setAttribute("aria-haspopup", "dialog");
+    imageStage.setAttribute("aria-label", language === "en" ? "View product details" : "Lihat detail produk");
+    imageStage.addEventListener("click", openModal);
+    imageStage.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openModal();
+      }
+    });
     prev.addEventListener("click", () => goTo(currentIndex - 1));
     next.addEventListener("click", () => goTo(currentIndex + 1));
 
@@ -784,6 +875,7 @@
 
     window.addEventListener("raya:language", event => {
       language = event.detail === "en" ? "en" : "id";
+      imageStage.setAttribute("aria-label", language === "en" ? "View product details" : "Lihat detail produk");
       render(currentIndex, false);
     });
 

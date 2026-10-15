@@ -84,7 +84,7 @@
           <span class="product-card-index">02 / LIQUID</span>
           <h2><span class="lang-id">Gula Aren Cair</span><span class="lang-en" hidden>Liquid Palm Sugar</span></h2>
           <p><span class="lang-id">Format cair yang mudah digunakan untuk kopi susu, minuman, saus, dan kreasi dessert. Membantu proses pencampuran menjadi lebih praktis.</span><span class="lang-en" hidden>An easy-to-use liquid format for milk coffee, beverages, sauces, and desserts, making mixing and preparation more convenient.</span></p>
-          <a class="product-card-link" href="produk-gula-aren-cair.html">Lihat detail produk <span>→</span></a>
+          <a class="product-card-link" href="produk-gula-aren-cair.html"><span class="lang-id">Lihat detail produk</span><span class="lang-en" hidden>View product details</span> <span>→</span></a>
         </div>
       </article>
       <article class="product-card">
@@ -109,6 +109,6 @@
     <a href="mailto:hello@rayagula.com">hello@rayagula.com</a>
     <div>© 2026 Raya Gula</div>
   </footer>
-  <script>(()=>{const buttons=[...document.querySelectorAll("[data-lang]")];function setLang(lang){lang=lang==="en"?"en":"id";document.documentElement.lang=lang;document.querySelectorAll(".lang-id").forEach(e=>e.hidden=lang!=="id");document.querySelectorAll(".lang-en").forEach(e=>e.hidden=lang!=="en");buttons.forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));try{localStorage.setItem("raya-language",lang)}catch(e){}}buttons.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));let lang="id";try{lang=localStorage.getItem("raya-language")||"id"}catch(e){}setLang(lang)})();</script>
+  <script>(()=>{const buttons=[...document.querySelectorAll('[data-lang]')];const path=window.location.pathname;const isEnglish=path==='/en'||path.startsWith('/en/');const lang=isEnglish?'en':'id';document.documentElement.lang=lang;document.querySelectorAll('.lang-id').forEach(el=>el.hidden=lang!=='id');document.querySelectorAll('.lang-en').forEach(el=>el.hidden=lang!=='en');buttons.forEach(button=>{button.classList.toggle('active',button.dataset.lang===lang);button.setAttribute('aria-pressed',String(button.dataset.lang===lang));button.addEventListener('click',()=>{const target=lang==='en'?path.replace(/^\/en(?=\/|$)/,''):'/en'+(path.startsWith('/')?path:'/'+path);window.location.href=target+(window.location.search||'')+(window.location.hash||'')})})})();</script>
 </body>
 </html>

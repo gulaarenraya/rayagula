@@ -858,15 +858,30 @@
     imageStage.setAttribute("tabindex", "0");
     imageStage.setAttribute("aria-haspopup", "dialog");
     imageStage.setAttribute("aria-label", language === "en" ? "View product details" : "Lihat detail produk");
-    imageStage.addEventListener("click", openModal);
+    const detailButton = slider.querySelector("[data-product-open]");
+    if (detailButton) detailButton.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+      openModal();
+    });
+    imageStage.addEventListener("click", event => {
+      if (event.target.closest("[data-product-open]")) return;
+      openModal();
+    });
     imageStage.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         openModal();
       }
     });
-    prev.addEventListener("click", () => goTo(currentIndex - 1));
-    next.addEventListener("click", () => goTo(currentIndex + 1));
+    prev.addEventListener("click", event => {
+      event.preventDefault();
+      goTo(currentIndex - 1);
+    });
+    next.addEventListener("click", event => {
+      event.preventDefault();
+      goTo(currentIndex + 1);
+    });
 
     slider.addEventListener("keydown", event => {
       if (event.key === "ArrowLeft") goTo(currentIndex - 1);

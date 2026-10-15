@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-site-language="bilingual">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Raya Gula Products | Indonesian Palm Sugar</title>
+  <meta name="description" content="Explore Raya Gula granulated, liquid, and moulded palm sugar for beverages, baking, desserts, and business needs.">
+  <link rel="canonical" href="https://rayagula.com/en/produk.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../favicon.png>
+  <style>
+    :root{--rg-ink:#38271b;--rg-muted:#765f4a;--rg-gold:#b78437;--rg-line:rgba(110,76,42,.18);--rg-paper:#f8f3eb;--rg-cream:#efe3cf}
+    body.products-page{margin:0;background:var(--rg-paper);color:var(--rg-ink)}
+    .products-nav{min-height:72px;padding:0 clamp(20px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--rg-line);background:rgba(250,247,241,.96)}
+    .products-nav .brand{font-weight:800;letter-spacing:.03em;color:var(--rg-ink);text-decoration:none;white-space:nowrap}
+    .products-nav nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(10px,1.5vw,24px);flex-wrap:wrap}
+    .products-nav nav a{color:#594433;text-decoration:none;font-size:14px;transition:color .2s}
+    .products-nav nav a:hover{color:var(--rg-gold)}\n    .products-nav .language-switch{display:flex;gap:5px;align-items:center;white-space:nowrap}.products-nav .language-switch button{border:1px solid var(--rg-line);background:transparent;color:var(--rg-ink);padding:6px 10px;border-radius:20px;cursor:pointer;font:inherit;font-size:12px}.products-nav .language-switch button.active{background:var(--rg-ink);color:#fffaf3}\n    .lang-en[hidden],.lang-id[hidden]{display:none!important}
+    .products-intro{max-width:1280px;margin:auto;padding:clamp(52px,7vw,94px) clamp(20px,5vw,72px) 30px}
+    .products-eyebrow{font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--rg-gold);text-transform:uppercase;margin-bottom:18px}
+    .products-intro h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(42px,5.6vw,72px);font-weight:500;line-height:1.04;letter-spacing:-.04em;margin:0 0 20px;max-width:800px}
+    .products-intro p{font-size:clamp(15px,1.3vw,18px);line-height:1.85;color:var(--rg-muted);max-width:760px;margin:0}
+    .products-grid{max-width:1280px;margin:0 auto;padding:26px clamp(20px,5vw,72px) clamp(70px,8vw,112px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .product-card{display:flex;flex-direction:column;min-width:0;background:#fffaf3;border:1px solid var(--rg-line);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+    .product-card:hover{transform:translateY(-5px);box-shadow:0 18px 42px rgba(68,43,20,.09);border-color:rgba(183,132,55,.42)}
+    .product-card-visual{height:clamp(260px,28vw,370px);padding:22px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#f0e3ce,#f9f4eb);overflow:hidden}
+    .product-card-visual img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .35s ease}
+    .product-card:hover .product-card-visual img{transform:scale(1.035)}
+    .product-card-body{display:flex;flex-direction:column;align-items:flex-start;flex:1;padding:26px 26px 28px}
+    .product-card-index{font-size:11px;letter-spacing:.18em;color:var(--rg-gold);font-weight:800}
+    .product-card h2{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(26px,2.3vw,34px);line-height:1.12;letter-spacing:-.025em;margin:12px 0}
+    .product-card p{font-size:14px;line-height:1.85;color:var(--rg-muted);margin:0 0 22px}
+    .product-card-link{margin-top:auto;display:inline-flex;align-items:center;gap:12px;padding:13px 0 4px;color:var(--rg-ink);font-size:13px;font-weight:800;text-decoration:none;border-bottom:1px solid #b78437}
+    .product-card-link span{font-size:18px;transition:transform .2s}
+    .product-card-link:hover span{transform:translateX(4px)}
+    .products-business{max-width:1136px;margin:0 auto clamp(60px,7vw,92px);padding:clamp(24px,4vw,42px);width:calc(100% - clamp(40px,10vw,144px));box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:28px;background:#eee0c9;border-left:3px solid var(--rg-gold)}
+    .products-business h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(25px,3vw,36px);font-weight:500;margin:0 0 8px}
+    .products-business p{color:var(--rg-muted);font-size:14px;line-height:1.75;margin:0}
+    .products-business a{flex-shrink:0;background:var(--rg-ink);color:#fffaf3;text-decoration:none;padding:15px 20px;font-size:13px;font-weight:800}
+    .products-footer{border-top:1px solid var(--rg-line);padding:25px 20px;text-align:center;color:var(--rg-muted);font-size:12px;line-height:1.8}
+    .products-footer a{color:inherit;text-decoration:none;margin:0 8px}
+    .wa-float{position:fixed;right:20px;bottom:20px;z-index:20;background:#287d4f;color:#fff;text-decoration:none;padding:13px 18px;border-radius:40px;box-shadow:0 4px 18px #0002;font-weight:700;font-size:13px}
+    @media(max-width:900px){.products-nav{padding:18px 22px;align-items:flex-start;flex-direction:column;gap:14px}.products-nav nav{justify-content:flex-start;gap:10px 16px}.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-card-visual{height:clamp(250px,42vw,340px)}.products-business{align-items:flex-start;flex-direction:column}.products-business a{align-self:flex-start}}
+    @media(max-width:600px){.products-intro{padding-top:48px}.products-grid{grid-template-columns:1fr;gap:18px;padding-top:18px}.product-card-visual{height:320px}.product-card-body{padding:23px}.products-business{width:calc(100% - 40px);margin-bottom:56px;padding:24px}.products-nav nav a{font-size:13px}.wa-float{right:14px;bottom:14px}}
+    @media(prefers-reduced-motion:reduce){.product-card,.product-card-visual img,.product-card-link span{transition:none}}
+  </style>
+  <link rel="alternate" hreflang="id" href="https://rayagula.com/produk.html">
+  <link rel="alternate" hreflang="en" href="https://rayagula.com/en/produk.html">
+  <link rel="alternate" hreflang="x-default" href="https://rayagula.com/produk.html">
+</head>
+<body class="products-page">
+  <header class="products-nav">
+    <a class="brand" href="index.html">RAYA GULA</a>
+    <nav aria-label="Navigasi utama">
+      <a href="index.html#home"><span class="lang-id">Beranda</span><span class="lang-en" hidden>Home</span></a>
+      <a href="tentang.html"><span class="lang-id">Tentang</span><span class="lang-en" hidden>About</span></a>
+      <a href="produk.html" aria-current="page"><span class="lang-id">Produk</span><span class="lang-en" hidden>Products</span></a>
+      <a href="export.html"><span class="lang-id">Untuk Bisnis</span><span class="lang-en" hidden>For Business</span></a>
+      <a href="sertifikasi.html"><span class="lang-id">Sertifikasi</span><span class="lang-en" hidden>Quality</span></a>
+      <a href="journal.html">Journal</a>
+      <a href="kontak.html"><span class="lang-id">Kontak</span><span class="lang-en" hidden>Contact</span></a>
+    </nav>
+    <div class="language-switch" aria-label="Choose language"><button type="button" data-lang="id">ID</button><button type="button" data-lang="en">EN</button></div>
+  </header>
+  <main>
+    <section class="products-intro">
+      <div class="products-eyebrow">OUR PRODUCTS · RAYA GULA</div>
+      <h1><span class="lang-id">Pilihan Gula Aren<br>untuk Beragam Kebutuhan</span><span class="lang-en" hidden>Palm Sugar for<br>Everyday Creativity</span></h1>
+      <p><span class="lang-id">Temukan karakter gula aren Indonesia dalam tiga pilihan produk—dari butiran praktis untuk minuman dan baking, gula aren cair untuk kreasi kuliner, hingga gula aren cetak dengan cita rasa tradisional.</span><span class="lang-en" hidden>Discover the authentic character of Indonesian palm sugar in three formats: versatile granules for drinks and baking, convenient liquid syrup for culinary creations, and traditional moulded palm sugar.</span></p>
+    </section>
+    <section class="products-grid" aria-label="Raya Gula product selection">
+      <article class="product-card">
+        <a class="product-card-visual" href="produk-gula-aren-semut.html" aria-label="View Granulated Palm Sugar"><img src="../product-semut.png" alt="Raya Gula Granulated Palm Sugar packaging" loading="eager"></a>
+        <div class="product-card-body">
+          <span class="product-card-index">01 / GRANULATED</span>
+          <h2><span class="lang-id">Gula Aren Semut</span><span class="lang-en" hidden>Granulated Palm Sugar</span></h2>
+          <p><span class="lang-id">Butiran gula aren dengan rasa autentik untuk kopi, teh, minuman kekinian, baking, dan aneka dessert. Praktis untuk kebutuhan rumah tangga maupun usaha kuliner.</span><span class="lang-en" hidden>Authentic palm sugar granules for coffee, tea, modern beverages, baking, and desserts. A practical choice for home kitchens and food businesses.</span></p>
+          <a class="product-card-link" href="produk-gula-aren-semut.html"><span class="lang-id">Lihat detail produk</span><span class="lang-en" hidden>View product details</span> <span>→</span></a>
+        </div>
+      </article>
+      <article class="product-card">
+        <a class="product-card-visual" href="produk-gula-aren-cair.html" aria-label="View Liquid Palm Sugar"><img src="../product-cair.png" alt="Raya Gula Liquid Palm Sugar bottle" loading="lazy"></a>
+        <div class="product-card-body">
+          <span class="product-card-index">02 / LIQUID</span>
+          <h2><span class="lang-id">Gula Aren Cair</span><span class="lang-en" hidden>Liquid Palm Sugar</span></h2>
+          <p><span class="lang-id">Format cair yang mudah digunakan untuk kopi susu, minuman, saus, dan kreasi dessert. Membantu proses pencampuran menjadi lebih praktis.</span><span class="lang-en" hidden>An easy-to-use liquid format for milk coffee, beverages, sauces, and desserts, making mixing and preparation more convenient.</span></p>
+          <a class="product-card-link" href="produk-gula-aren-cair.html">Lihat detail produk <span>→</span></a>
+        </div>
+      </article>
+      <article class="product-card">
+        <a class="product-card-visual" href="produk-gula-aren-cetak.html" aria-label="View Moulded Palm Sugar"><img src="../product-cetak.png" alt="Raya Gula Moulded Palm Sugar packaging" loading="lazy"></a>
+        <div class="product-card-body">
+          <span class="product-card-index">03 / MOULDED</span>
+          <h2><span class="lang-id">Gula Aren Cetak</span><span class="lang-en" hidden>Moulded Palm Sugar</span></h2>
+          <p><span class="lang-id">Gula aren berbentuk padat dengan karakter rasa tradisional. Cocok untuk resep Nusantara, minuman hangat, dan berbagai kebutuhan kuliner.</span><span class="lang-en" hidden>Solid palm sugar with a traditional flavour profile, suitable for Indonesian recipes, warm drinks, and a variety of culinary uses.</span></p>
+          <a class="product-card-link" href="produk-gula-aren-cetak.html">Lihat detail produk <span>→</span></a>
+        </div>
+      </article>
+    </section>
+    <section class="products-business">
+      <div><h2><span class="lang-id">Untuk kebutuhan bisnis dan ekspor</span><span class="lang-en" hidden>Wholesale &amp; Export Enquiries</span></h2><p><span class="lang-id">Hubungi tim Raya Gula untuk mendiskusikan kebutuhan grosir, reseller, kemasan, dan pengiriman ekspor.</span><span class="lang-en" hidden>Contact Raya Gula to discuss wholesale orders, reseller opportunities, packaging, and export shipments.</span></p></div>
+      <a href="export.html#inquiry">Wholesale &amp; Export ↗</a>
+    </section>
+  </main>
+  <a class="wa-float" href="https://wa.me/6281211213090" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+  <footer class="products-footer">
+    <a href="privacy.html"><span class="lang-id">Kebijakan Privasi</span><span class="lang-en" hidden>Privacy Policy</span></a>
+    <a href="terms.html"><span class="lang-id">Syarat &amp; Ketentuan</span><span class="lang-en" hidden>Terms &amp; Conditions</span></a>
+    <a href="mailto:hello@rayagula.com">hello@rayagula.com</a>
+    <div>© 2026 Raya Gula</div>
+  </footer>
+  <script>(()=>{const buttons=[...document.querySelectorAll("[data-lang]")];function setLang(lang){lang=lang==="en"?"en":"id";document.documentElement.lang=lang;document.querySelectorAll(".lang-id").forEach(e=>e.hidden=lang!=="id");document.querySelectorAll(".lang-en").forEach(e=>e.hidden=lang!=="en");buttons.forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));try{localStorage.setItem("raya-language",lang)}catch(e){}}buttons.forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));let lang="id";try{lang=localStorage.getItem("raya-language")||"id"}catch(e){}setLang(lang)})();</script>
+</body>
+</html>

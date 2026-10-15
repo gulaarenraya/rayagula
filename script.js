@@ -755,7 +755,8 @@
     let previousFocus = null;
 
     function productTitle(product, isEnglish) {
-      return isEnglish ? product.titleEn.replace(/<br\\s*\\/?\\s*>/gi, " ") : product.titleId.replace(/<br\\s*\\/?\\s*>/gi, " ");
+      const title = isEnglish ? product.titleEn : product.titleId;
+      return title.replace(/<br\s*\/?\s*>/gi, " ");
     }
 
     function ensureModal() {

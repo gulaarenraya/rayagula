@@ -23,6 +23,28 @@ body{margin:0;font-family:Montserrat,sans-serif;background:var(--cream);color:va
 footer{background:var(--brown);color:#fff;text-align:center;padding:40px;font-size:14px}
 @media(max-width:768px){.article-hero{height:520px}.article-content h1{font-size:34px}.article-body h2{font-size:25px}.article-navigation{flex-direction:column}}
 .language-switch{display:flex;gap:6px}.language-switch button{padding:8px 12px;border:1px solid #cbb99f;background:transparent;color:var(--brown);cursor:pointer}.language-switch button.active{background:var(--brown);color:#fff}.lang-en[hidden],.lang-id[hidden]{display:none!important}
+
+/* Compact, consistent article header logo */
+.article-header img{display:block;width:112px!important;max-width:112px!important;height:auto!important;max-height:68px!important;object-fit:contain!important;object-position:center!important}
+.article-header{min-height:92px;padding:16px 6%;gap:18px}
+@media(max-width:768px){.article-header{min-height:76px;padding:12px 5%;gap:10px;flex-wrap:wrap}.article-header img{width:92px!important;max-width:92px!important;max-height:56px!important}.language-switch{margin-left:auto}.language-switch button{padding:7px 9px;font-size:12px}}
+/* Floating Shopee, Instagram and WhatsApp menu */
+.floating-social{position:fixed!important;right:24px!important;bottom:24px!important;width:82px;height:82px;z-index:99999!important;pointer-events:none!important;font-family:Montserrat,sans-serif}
+.floating-main{position:absolute;right:0;bottom:0;width:64px;height:64px;padding:0;margin:0;border:1px solid rgba(201,160,74,.75);border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;pointer-events:auto;overflow:hidden;box-shadow:0 8px 25px rgba(43,26,18,.18),0 0 0 4px rgba(246,233,210,.45);transition:transform .3s ease}
+.floating-main:hover{transform:scale(1.05)}
+.floating-main img{display:block!important;width:42px!important;height:42px!important;max-width:42px!important;max-height:42px!important;object-fit:contain!important}
+.floating-items{position:absolute;inset:0;pointer-events:none}
+.floating-item{position:absolute;right:9px;bottom:9px;width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transform:translate(0,0) scale(.35);box-shadow:0 8px 25px rgba(43,26,18,.2);transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .2s ease,visibility .2s}
+.floating-item img{width:29px;height:29px;max-width:29px;max-height:29px;object-fit:contain;display:block}
+.floating-item span{position:absolute;right:61px;padding:6px 10px;border-radius:5px;background:#251a12;color:#fff;font-size:11px;white-space:nowrap;opacity:0;transform:translateX(5px);pointer-events:none;transition:all .2s ease}
+.floating-item:hover span{opacity:1;transform:translateX(0)}
+.floating-social.open .floating-items,.floating-social.open .floating-item{pointer-events:auto}
+.floating-social.open .floating-item{opacity:1;visibility:visible}
+.floating-social.open .floating-whatsapp{transform:translate(-72px,-18px) scale(1)}
+.floating-social.open .floating-instagram{transform:translate(-72px,-82px) scale(1)}
+.floating-social.open .floating-shopee{transform:translate(-20px,-128px) scale(1)}
+@media(max-width:768px){.floating-social{right:14px!important;bottom:16px!important;transform:scale(.88);transform-origin:bottom right}}
+
 </style>
 <style>.raya-whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:9999;background:#287d4f;color:#fff;padding:13px 18px;border-radius:40px;box-shadow:0 4px 18px #0002;font:600 13px Arial,sans-serif;text-decoration:none}</style><link rel="alternate" hreflang="id" href="https://rayagula.com/articles/pemasakan-nira.html"><link rel="alternate" hreflang="en" href="https://rayagula.com/en/articles/pemasakan-nira.html"><link rel="alternate" hreflang="x-default" href="https://rayagula.com/articles/pemasakan-nira.html"></head>
 <body>
@@ -57,5 +79,24 @@ footer{background:var(--brown);color:#fff;text-align:center;padding:40px;font-si
 <a href="pengkristalan-gula-aren.html"><span class="lang-id">Proses Berikutnya →</span><span class="lang-en">Next Process →</span></a>
 </div>
 <footer>© 2026 Raya Gula<br>Gula Aren Indonesia — Manis Alami dari Nusantara</footer>
-<script>(()=>{const path=window.location.pathname;const isEn=path.startsWith('/en/');const lang=isEn?'en':'id';document.documentElement.lang=lang;document.querySelectorAll('.lang-id').forEach(el=>el.hidden=lang!=='id');document.querySelectorAll('.lang-en').forEach(el=>el.hidden=lang!=='en');document.querySelectorAll('[data-lang]').forEach(btn=>{btn.classList.toggle('active',btn.dataset.lang===lang);btn.setAttribute('aria-pressed',String(btn.dataset.lang===lang));btn.addEventListener('click',()=>{const idPath=path.replace(/^\/en(?=\/)/,'');window.location.href=(btn.dataset.lang==='en'?'/en'+idPath:idPath)+(window.location.search||'')+(window.location.hash||'')})})})();</script><a class="raya-whatsapp-float" href="https://wa.me/6281211213090" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Raya Gula">WhatsApp ↗</a></body>
+<script>(()=>{const path=window.location.pathname;const isEn=path.startsWith('/en/');const lang=isEn?'en':'id';document.documentElement.lang=lang;document.querySelectorAll('.lang-id').forEach(el=>el.hidden=lang!=='id');document.querySelectorAll('.lang-en').forEach(el=>el.hidden=lang!=='en');document.querySelectorAll('[data-lang]').forEach(btn=>{btn.classList.toggle('active',btn.dataset.lang===lang);btn.setAttribute('aria-pressed',String(btn.dataset.lang===lang));btn.addEventListener('click',()=>{const idPath=path.replace(/^\/en(?=\/)/,'');window.location.href=(btn.dataset.lang==='en'?'/en'+idPath:idPath)+(window.location.search||'')+(window.location.hash||'')})})})();</script>
+<div class="floating-social" id="floatingSocial">
+  <div class="floating-items">
+    <a href="https://wa.me/6281211213090" class="floating-item floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Raya Gula">
+      <img width="512" height="512" loading="lazy" decoding="async" src="../icon-whatsapp.png" alt="WhatsApp Raya Gula"><span>WhatsApp</span>
+    </a>
+    <a href="https://www.instagram.com/rayagulaaren/" class="floating-item floating-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram Raya Gula">
+      <img width="512" height="512" loading="lazy" decoding="async" src="../icon-instagram.png" alt="Instagram Raya Gula"><span>Instagram</span>
+    </a>
+    <a href="https://shopee.co.id/rayagula" class="floating-item floating-shopee" target="_blank" rel="noopener noreferrer" aria-label="Shopee Raya Gula">
+      <img width="512" height="512" loading="lazy" decoding="async" src="../icon-shopee.png" alt="Shopee Raya Gula"><span>Shopee</span>
+    </a>
+  </div>
+  <button type="button" class="floating-main" id="floatingMain" aria-label="Buka menu Raya Gula" aria-expanded="false">
+    <img width="512" height="512" src="../logo.png" alt="Logo Raya Gula - Gula Aren Indonesia">
+  </button>
+</div>
+<script>
+(()=>{const menu=document.getElementById('floatingSocial');const button=document.getElementById('floatingMain');if(!menu||!button)return;button.addEventListener('click',()=>{const open=menu.classList.toggle('open');button.setAttribute('aria-expanded',String(open));});document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.classList.remove('open');button.setAttribute('aria-expanded','false');}});})();
+</script></body>
 </html>

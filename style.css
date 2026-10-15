@@ -5209,3 +5209,255 @@ body.language-en .lang-en { display: inline !important; }
     margin: 0 auto !important;
   }
 }
+
+
+/* =========================================================
+   RAYA GULA — HERO SLIDE 2: SHOW THE COMPLETE DESKTOP ARTWORK
+   The desktop image has a wide banner ratio. Fit the entire
+   image inside the slide rather than cropping any product.
+   ========================================================= */
+@media (min-width: 901px) {
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    background: #f3eee5 !important;
+  }
+
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product > picture {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product > picture > img {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+}
+
+/* =========================================================
+   RAYA GULA — PRODUCT SECTION POLISH
+   Keep the existing product slider and content, improve its
+   presentation when visitors click the Products navigation.
+   ========================================================= */
+#products.product-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(72px, 8vw, 112px) !important;
+  padding-bottom: clamp(76px, 8vw, 116px) !important;
+  background:
+    radial-gradient(ellipse at 18% 35%, rgba(196, 151, 82, .12), transparent 38%),
+    linear-gradient(135deg, #f7f1e7 0%, #efe3cf 52%, #f8f4ec 100%) !important;
+}
+
+#products .product-heading {
+  width: min(1200px, calc(100% - 64px)) !important;
+  margin: 0 auto !important;
+  align-items: end !important;
+  gap: clamp(24px, 5vw, 72px) !important;
+}
+
+#products .product-heading h2 {
+  color: #3a281b !important;
+  letter-spacing: -.035em;
+}
+
+#products .product-heading h2 em {
+  color: #9a692e !important;
+}
+
+#products .product-heading > p {
+  max-width: 470px !important;
+  color: #6d5743 !important;
+  line-height: 1.85 !important;
+}
+
+#products .product-slider {
+  width: min(1200px, calc(100% - 64px)) !important;
+  margin: clamp(34px, 5vw, 64px) auto 0 !important;
+  padding: clamp(22px, 3.5vw, 46px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr) !important;
+  align-items: center !important;
+  gap: clamp(28px, 5vw, 76px) !important;
+  border: 1px solid rgba(129, 89, 43, .17) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 253, 248, .82) !important;
+  box-shadow: 0 22px 60px rgba(66, 43, 22, .09) !important;
+}
+
+#products .product-slider-visual {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: clamp(16px, 3vw, 34px) !important;
+  border-radius: 6px !important;
+  background: linear-gradient(145deg, #f2e6d2, #fbf7ef) !important;
+}
+
+#products .product-image-stage {
+  min-height: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+}
+
+#products .product-slide-image {
+  display: block !important;
+  width: 100% !important;
+  height: clamp(300px, 35vw, 440px) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  filter: drop-shadow(0 14px 14px rgba(53, 34, 18, .12));
+}
+
+#products .product-slider-content {
+  min-width: 0 !important;
+  padding: clamp(6px, 1.4vw, 18px) 0 !important;
+}
+
+#products .product-number,
+#products .product-slider-progress {
+  color: #98703e !important;
+  letter-spacing: .15em !important;
+  font-size: 11px !important;
+}
+
+#products .product-slide-title {
+  margin: 18px 0 14px !important;
+  color: #352519 !important;
+  font-size: clamp(36px, 4vw, 54px) !important;
+  line-height: 1.03 !important;
+  letter-spacing: -.035em !important;
+}
+
+#products .product-slide-lead {
+  color: #8b5e2b !important;
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+}
+
+#products .product-slide-description {
+  max-width: 560px !important;
+  color: #6d5743 !important;
+  font-size: 14px !important;
+  line-height: 1.9 !important;
+}
+
+#products .product-business-info {
+  margin-top: 22px !important;
+  padding: 16px 18px !important;
+  border-left: 2px solid #b88743 !important;
+  background: rgba(190, 145, 78, .09) !important;
+  color: #6d5743 !important;
+  line-height: 1.7 !important;
+}
+
+#products .product-actions {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 14px 22px !important;
+  margin-top: 26px !important;
+}
+
+#products .product-actions .btn {
+  min-height: 48px !important;
+  padding: 14px 22px !important;
+  border-radius: 2px !important;
+}
+
+#products .product-slider-navigation {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  margin-top: 30px !important;
+}
+
+#products .product-slider-arrow {
+  width: 42px !important;
+  height: 42px !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid rgba(129, 89, 43, .35) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: #6e4824 !important;
+  cursor: pointer !important;
+  transition: background .2s ease, color .2s ease !important;
+}
+
+#products .product-slider-arrow:hover,
+#products .product-slider-arrow:focus-visible {
+  background: #6e4824 !important;
+  color: #fffaf1 !important;
+}
+
+@media (max-width: 900px) {
+  #products.product-section {
+    padding: 68px 0 72px !important;
+  }
+  #products .product-heading,
+  #products .product-slider {
+    width: calc(100% - 40px) !important;
+  }
+  #products .product-heading {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    align-items: start !important;
+  }
+  #products .product-slider {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+    padding: 20px !important;
+  }
+  #products .product-slider-visual {
+    padding: 16px !important;
+  }
+  #products .product-slide-image {
+    height: clamp(260px, 72vw, 360px) !important;
+  }
+  #products .product-slider-content {
+    padding: 4px 2px 8px !important;
+  }
+  #products .product-slide-title {
+    font-size: clamp(36px, 9vw, 48px) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #products .product-heading,
+  #products .product-slider {
+    width: calc(100% - 32px) !important;
+  }
+  #products .product-slider {
+    padding: 14px !important;
+    border-radius: 5px !important;
+  }
+  #products .product-slide-image {
+    height: 290px !important;
+  }
+  #products .product-actions {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+  #products .product-actions .btn {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}

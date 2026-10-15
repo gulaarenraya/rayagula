@@ -5522,3 +5522,96 @@ body.language-en .lang-en { display: inline !important; }
     background: transparent !important;
   }
 }
+
+
+/* =========================================================
+   SIGNATURE PRODUCT — LARGER PACKSHOT, ALIGNED TO COPY
+   The product image area should visually match the height of
+   the complete copy column on desktop, not float as a small
+   image in the middle of the section.
+   ========================================================= */
+@media (min-width: 901px) {
+  #products .product-slider {
+    display: grid !important;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr) !important;
+    align-items: stretch !important;
+    gap: clamp(42px, 5vw, 76px) !important;
+    min-height: 720px !important;
+  }
+
+  #products .product-slider-visual {
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    min-height: 720px !important;
+    height: 100% !important;
+  }
+
+  #products .product-image-stage {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 720px !important;
+    height: 100% !important;
+  }
+
+  #products .product-slide-image {
+    display: block !important;
+    width: 100% !important;
+    height: 690px !important;
+    max-height: 690px !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: none !important;
+  }
+
+  #products .product-slider-content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-self: stretch !important;
+    min-height: 720px !important;
+    height: 100% !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  #products .product-slider {
+    min-height: 650px !important;
+    gap: 34px !important;
+  }
+  #products .product-slider-visual,
+  #products .product-image-stage,
+  #products .product-slider-content {
+    min-height: 650px !important;
+  }
+  #products .product-slide-image {
+    height: 620px !important;
+    max-height: 620px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #products .product-slider-visual {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #products .product-image-stage {
+    width: 100% !important;
+    min-height: 0 !important;
+  }
+  #products .product-slide-image {
+    width: 100% !important;
+    height: clamp(320px, 82vw, 440px) !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+}
+
+/* Navigation links should land at the start of the complete product showcase. */
+#products.product-section {
+  scroll-margin-top: 104px !important;
+}

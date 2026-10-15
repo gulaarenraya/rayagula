@@ -5727,3 +5727,52 @@ body.language-en .lang-en { display: inline !important; }
     object-position: center center !important;
   }
 }
+
+
+/* ABOUT FINAL FIX: image frame follows the complete text column and crops top/bottom */
+@media (min-width: 901px) {
+  #about.section.about {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    gap: clamp(24px, 2.2vw, 40px) !important;
+  }
+  #about.section.about > .about-copy {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    align-self: stretch !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+  }
+  #about.section.about > .about-visual {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    align-self: stretch !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  #about.section.about > .about-visual > .about-image {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}

@@ -5615,3 +5615,49 @@ body.language-en .lang-en { display: inline !important; }
 #products.product-section {
   scroll-margin-top: 104px !important;
 }
+
+
+/* ABOUT: balanced 50/50 columns with aligned top and bottom edges */
+@media (min-width: 901px) {
+  #about.section.about {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 32px !important;
+    align-items: stretch !important;
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+  #about.section.about > .about-copy,
+  #about.section.about > .about-visual {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    align-self: stretch !important;
+    box-sizing: border-box !important;
+  }
+  #about.section.about > .about-copy {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 34px clamp(24px, 3.2vw, 60px) 34px max(24px, 3.2vw) !important;
+  }
+  #about.section.about > .about-visual {
+    display: flex !important;
+    align-items: stretch !important;
+    position: relative !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  #about.section.about > .about-visual > .about-image {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}

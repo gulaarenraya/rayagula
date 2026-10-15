@@ -5461,3 +5461,64 @@ body.language-en .lang-en { display: inline !important; }
     width: 100% !important;
   }
 }
+
+
+/* =========================================================
+   RAYA GULA — FIX 2 REMAINING DESKTOP VISUAL ISSUES
+   1) Disable carousel zoom/transform on slide 2 so the source
+      artwork fits the whole hero viewport.
+   2) Remove the large white card behind the signature product.
+   ========================================================= */
+@media (min-width: 901px) {
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product,
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product.is-active {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    scale: 1 !important;
+    overflow: hidden !important;
+    background: #f3eee5 !important;
+  }
+
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product > picture,
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product > picture > img {
+    transform: none !important;
+    scale: 1 !important;
+  }
+
+  section.hero.raya-hero .hero-photo.hero-carousel .hero-slide.hero-slide-product > picture > img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
+  /* No white card: let the product content sit directly on the section background. */
+  #products .product-slider {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    gap: clamp(36px, 6vw, 88px) !important;
+  }
+
+  #products .product-slider-visual {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  #products .product-image-stage {
+    background: transparent !important;
+  }
+}

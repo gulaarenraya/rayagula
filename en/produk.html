@@ -43,7 +43,18 @@
     @media(max-width:900px){.products-nav{padding:18px 22px;align-items:flex-start;flex-direction:column;gap:14px}.products-nav nav{justify-content:flex-start;gap:10px 16px}.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-card-visual{height:clamp(250px,42vw,340px)}.products-business{align-items:flex-start;flex-direction:column}.products-business a{align-self:flex-start}}
     @media(max-width:600px){.products-intro{padding-top:48px}.products-grid{grid-template-columns:1fr;gap:18px;padding-top:18px}.product-card-visual{height:320px}.product-card-body{padding:23px}.products-business{width:calc(100% - 40px);margin-bottom:56px;padding:24px}.products-nav nav a{font-size:13px}.wa-float{right:14px;bottom:14px}}
     @media(prefers-reduced-motion:reduce){.product-card,.product-card-visual img,.product-card-link span{transition:none}}
-  </style>
+  
+/* English catalogue: make the selected language visible even when global bilingual CSS is loaded. */
+.products-page .lang-id[hidden],
+.products-page .lang-en[hidden] { display:none !important; }
+.products-page .lang-en:not([hidden]) { display:revert !important; }
+.products-page .lang-id:not([hidden]) { display:revert !important; }
+.products-page .product-card h2,
+.products-page .product-card p,
+.products-page .product-card-link { color:var(--rg-ink); }
+.products-page .product-card h2 { display:block; }
+.products-page .product-card p { display:block; }
+</style>
   <link rel="alternate" hreflang="id" href="https://rayagula.com/produk.html">
   <link rel="alternate" hreflang="en" href="https://rayagula.com/en/produk.html">
   <link rel="alternate" hreflang="x-default" href="https://rayagula.com/produk.html">
@@ -109,6 +120,6 @@
     <a href="mailto:hello@rayagula.com">hello@rayagula.com</a>
     <div>© 2026 Raya Gula</div>
   </footer>
-  <script>(()=>{const buttons=[...document.querySelectorAll('[data-lang]')];const path=window.location.pathname;const isEnglish=path==='/en'||path.startsWith('/en/');const lang=isEnglish?'en':'id';document.documentElement.lang=lang;document.querySelectorAll('.lang-id').forEach(el=>el.hidden=lang!=='id');document.querySelectorAll('.lang-en').forEach(el=>el.hidden=lang!=='en');buttons.forEach(button=>{button.classList.toggle('active',button.dataset.lang===lang);button.setAttribute('aria-pressed',String(button.dataset.lang===lang));button.addEventListener('click',()=>{const target=lang==='en'?path.replace(/^\/en(?=\/|$)/,''):'/en'+(path.startsWith('/')?path:'/'+path);window.location.href=target+(window.location.search||'')+(window.location.hash||'')})})})();</script>
+  <script>(()=>{const buttons=[...document.querySelectorAll('[data-lang]')];const path=window.location.pathname;const lang=(path==='/en'||path.startsWith('/en/'))?'en':'id';document.documentElement.lang=lang;document.querySelectorAll('.lang-id').forEach(el=>{el.hidden=lang!=='id';el.style.setProperty('display',lang==='id'?'revert':'none','important')});document.querySelectorAll('.lang-en').forEach(el=>{el.hidden=lang!=='en';el.style.setProperty('display',lang==='en'?'revert':'none','important')});buttons.forEach(button=>{button.classList.toggle('active',button.dataset.lang===lang);button.setAttribute('aria-pressed',String(button.dataset.lang===lang));button.addEventListener('click',()=>{if(button.dataset.lang===lang)return;const idPath=path.replace(/^\/en(?=\/|$)/,'')||'/';const target=button.dataset.lang==='en'?('/en'+(idPath==='/'?'/':idPath)):idPath;window.location.href=target+(window.location.search||'')+(window.location.hash||'')})})})();</script>
 </body>
 </html>

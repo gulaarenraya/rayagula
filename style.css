@@ -766,7 +766,7 @@ h4 em {
       rgba(37, 26, 18, .02),
       rgba(37, 26, 18, .08)
     ),
-    url("BANNER-MARKETPLAC-SHOPEE.jpg")
+    url("BANNER-MARKETPLAC-SHOPEE.webp")
     center / cover
     no-repeat;
 
@@ -959,7 +959,7 @@ h4 em {
       rgba(34, 24, 17, 0.28),
       rgba(34, 24, 17, 0.28)
     ),
-    url("images/process/background-process.jpg");
+    url("images/process/background-process.webp");
 
   background-size: cover;
   background-position: center;
@@ -1005,7 +1005,7 @@ h4 em {
       rgba(201, 160, 74, .20),
       rgba(37, 26, 18, .35)
     ),
-    url("BANNER-MARKETPLAC-SHOPEE.jpg");
+    url("BANNER-MARKETPLAC-SHOPEE.webp");
 }
 
 .process-art.filter {
@@ -1015,7 +1015,7 @@ h4 em {
       rgba(255, 255, 255, .10),
       rgba(201, 160, 74, .20)
     ),
-    url("product-front.png");
+    url("product-front.webp");
 }
 
 .process-art.boil {
@@ -1025,7 +1025,7 @@ h4 em {
       rgba(37, 26, 18, .10),
       rgba(201, 160, 74, .25)
     ),
-    url("BANNER-MARKETPLAC-SHOPEE.jpg");
+    url("BANNER-MARKETPLAC-SHOPEE.webp");
 }
 
 .process-art.crystal {
@@ -1035,7 +1035,7 @@ h4 em {
       rgba(255, 255, 255, .08),
       rgba(37, 26, 18, .25)
     ),
-    url("product-back.png");
+    url("product-back.webp");
 }
 
 .process-art.pack {
@@ -1045,7 +1045,7 @@ h4 em {
       rgba(201, 160, 74, .25),
       rgba(37, 26, 18, .28)
     ),
-    url("product-front.png");
+    url("product-front.webp");
 }
 
 .process-card h3 {
@@ -1287,7 +1287,7 @@ h4 em {
     rgba(37, 26, 18, .08),
     rgba(37, 26, 18, .30)
   ),
-  url("why-raya-gula.jpg")
+  url("why-raya-gula.webp")
   20% center / cover
   no-repeat;
 }
@@ -1418,32 +1418,32 @@ h4 em {
 
 .journal-img.j1 {
   background-image:
-    url("BANNER-MARKETPLAC-SHOPEE.jpg");
+    url("BANNER-MARKETPLAC-SHOPEE.webp");
 }
 
 .journal-img.j2 {
   background-image:
-    url("product-front.png");
+    url("product-front.webp");
 }
 
 .journal-img.j3 {
   background-image:
-    url("product-back.png");
+    url("product-back.webp");
 }
 
 .journal-img.j4 {
   background-image:
-    url("product-semut.png");
+    url("product-semut.webp");
 }
 
 .journal-img.j5 {
   background-image:
-    url("product-cair.png");
+    url("product-cair.webp");
 }
 
 .journal-img.j6 {
   background-image:
-    url("product-cetak.png");
+    url("product-cetak.webp");
 }
 
 .journal-img span {
@@ -1535,7 +1535,7 @@ h4 em {
       rgba(37, 26, 18, .82),
       rgba(37, 26, 18, .48)
     ),
-    url("manis-alami-berkelanjutan.jpg")
+    url("manis-alami-berkelanjutan.webp")
     center / cover
     no-repeat;
 }
@@ -2800,7 +2800,7 @@ h4 em {
   aspect-ratio: 580 / 450;
 
   background-image:
-    url("dari-alam-raya-raya-gula.png");
+    url("dari-alam-raya-raya-gula.webp");
 
   background-size: 100% 100%;
 
@@ -2900,7 +2900,7 @@ h4 em {
       rgba(34,24,17,0.92),
       rgba(34,24,17,0.92)
     ),
-    url("images/process/background-process.jpg");
+    url("images/process/background-process.webp");
 
   background-size: cover;
 
@@ -3787,7 +3787,7 @@ h4 em {
   aspect-ratio: 1.55 / 1;
 
   background-image:
-    url("dari-alam-raya-raya-gula.png");
+    url("dari-alam-raya-raya-gula.webp");
 
   background-size: 100% 100%;
 
@@ -5774,5 +5774,23 @@ body.language-en .lang-en { display: inline !important; }
     aspect-ratio: auto !important;
     object-fit: cover !important;
     object-position: center center !important;
+  }
+}
+
+
+/* RG RAPI: sejajarkan tepi kiri konten antar bagian (lebar konten 1240 px, rata tengah) */
+@media (min-width: 901px) {
+  #about.section.about,
+  #contact.contact,
+  section.contact {
+    padding-left: max(4vw, calc((100% - 1240px) / 2)) !important;
+    padding-right: max(4vw, calc((100% - 1240px) / 2)) !important;
+  }
+  #products .product-heading,
+  #products .product-slider {
+    width: min(1240px, 100%) !important;
+    max-width: 1240px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }

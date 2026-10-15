@@ -1,86 +1,28 @@
-RAYA GULA V2 — SEO + JOURNAL + AI SEARCH READY
+RAYA GULA — website statis (ID + EN)
 
-- Website utama: index.html
-- Journal: articles/index.html
-- Artikel: 4 halaman HTML
-- robots.txt: mengizinkan OAI-SearchBot dan crawler umum
-- sitemap.xml: siap disubmit ke Google Search Console
-- JSON-LD: Organization, WebSite, Product, Article
-- WhatsApp: 0812-1121-3090
-- Email: gulaarenraya@gmail.com
-- Instagram: @rayagulaaren
+STRUKTUR
+- index.html, produk.html, export.html, sertifikasi.html, the-origin.html, journal.html, kontak.html, faq.html, tentang.html, privacy.html, terms.html, catalogue.html
+- en/  : versi Inggris dengan struktur yang sama
+- articles/ dan en/articles/ : artikel Journal dan proses
+- images/process, images/products : foto proses dan produk (WebP)
 
-DOMAIN
-Canonical saat ini menggunakan https://rayagula.com/. Jika domain final berbeda, ganti URL tersebut di HTML, robots.txt, dan sitemap.xml.
+KONTAK
+WhatsApp +62 812-1121-3090 | Instagram @rayagulaaren | Shopee: shopee.co.id/rayagula
+(Email di HTML dilindungi; pastikan alamat yang dipakai konsisten di seluruh halaman.)
+
+CATATAN GAMBAR
+- Foto produk dan proses memakai WebP. File JPG -og hanya untuk pratinjau link (WhatsApp/Facebook).
+- Hero slide 1 (raya-gula-hero-1920x900.jpg) juga dipakai sebagai og:image, jadi tetap JPG.
+- Saat mengganti gambar, simpan WebP maksimal sekitar 1600 px lebar, target di bawah 300 KB.
 
 HERO
-Saat ini menggunakan hero-landscape.svg sebagai placeholder. Ganti dengan foto asli kebun aren + petani untuk hasil final.
+- Rasio hero desktop/tablet 1920:900, HP 4:5. Hero diberi jarak sebesar tinggi header (variabel --rg-header-h)
+  supaya gambar tidak tertutup header. Slide 2 selalu ditampilkan utuh (object-fit: contain).
+- Slide 1 di HP memakai hero-raya-gula-01-mobile.webp (rasio 4:5, area atas dikosongkan untuk teks).
+- Hanya slide 1 yang memakai <h1>; slide 2 dan 3 memakai <h2>.
+
+DOMAIN
+Canonical memakai https://rayagula.com/. Jika domain berubah, ganti di HTML, robots.txt, dan sitemap.xml.
 
 SERTIFIKASI
-Halal, Organic, dan SNI ditampilkan berdasarkan informasi yang diberikan. Tambahkan nomor sertifikat/link verifikasi resmi sebelum publikasi jika tersedia.
-
-KEAMANAN
-.htaccess berisi hardening dasar. Jika hosting memakai Nginx, setara header perlu diatur di server/hosting.
-
-SEO/CHATGPT
-Tidak ada implementasi yang menjamin ranking #1 Google atau posisi tertentu di ChatGPT Search. Struktur ini dibuat crawlable, terdeskripsi, dan siap untuk indexing.
-
-
-11. MARKETPLACE — SHOPEE & TIKTOK SHOP
----------------------------------------
-The website already has Shopee and TikTok Shop buttons.
-They currently show "Coming Soon" because the official store URLs do not exist yet.
-
-When the accounts are ready, edit script.js:
-const MARKETPLACE_URLS = {
-  shopee: "https://shopee.co.id/USERNAME_TOKO",
-  tiktok: "https://www.tiktok.com/@USERNAME_TOKO/shop"
-};
-
-Use the exact official store URLs after the accounts are created.
-Do not publish guessed/fake marketplace URLs.
-
-
-12. MARKETPLACE TAMPIL DI WEBSITE
-----------------------------------
-Shopee dan TikTok Shop sekarang tampil jelas di:
-- Header
-- Area produk
-- Contact
-- Footer
-
-Karena URL toko resmi belum dibuat, statusnya "Coming Soon".
-Setelah toko resmi tersedia, isi URL di script.js pada MARKETPLACE_URLS.
-
-
-13. UI MARKETPLACE UPDATE
--------------------------
-Marketplace UI has been redesigned to be more premium and less "marketplace-heavy":
-- Header: subtle Shopee + TikTok text links
-- Product section: compact "Shop Raya Gula" cards
-- Dedicated "Where to Buy" section before Journal
-- Footer: shop links remain available
-- WhatsApp remains the primary floating CTA
-
-The Shopee/TikTok URLs remain blank until official accounts are created.
-
-
-14. WEBSITE V5 — BRAND GROWTH UPDATE
-------------------------------------
-Added:
-- Our Origin section
-- Quality & Certification section with certificate placeholders
-- Raya Gula For Business / B2B
-- FAQ section
-- Raya Table / Recipe section
-- More internal navigation
-- FAQPage structured data
-- More explicit brand storytelling and conversion paths
-
-Recommended content replacement before public launch:
-- Replace hero-landscape.svg with real Raya Gula photography
-- Replace origin image with real palm grove/farmer photography
-- Add official Halal/Organic/SNI certificate numbers and verification URLs
-- Add real recipe photos
-- Add real B2B pack sizes/pricing if applicable
-- Add real customer testimonials when available
+Halal, Organik, SNI: tambahkan nomor sertifikat, lembaga penerbit, masa berlaku di sertifikasi.html dan export.html.

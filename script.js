@@ -230,19 +230,19 @@
 
     const floatingIcons = [
       {
-        src: "logo.png",
+        src: "/logo.png",
         alt: "Raya Gula"
       },
       {
-        src: "icon-whatsapp.png",
+        src: "/icon-whatsapp.png",
         alt: "WhatsApp Raya Gula"
       },
       {
-        src: "icon-instagram.png",
+        src: "/icon-instagram.png",
         alt: "Instagram Raya Gula"
       },
       {
-        src: "icon-shopee.png",
+        src: "/icon-shopee.png",
         alt: "Shopee Raya Gula"
       }
     ];
@@ -680,7 +680,7 @@
 
   const products = [
     {
-      image: "/product-semut.png",
+      image: "/product-semut.webp",
       altId: "Gula Aren Semut Raya Gula 500 gram",
       altEn: "Raya Gula Granulated Palm Sugar, 500 g",
       titleId: "Gula Aren<br>Semut",
@@ -692,7 +692,7 @@
       specs: [["500 g", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
     },
     {
-      image: "/product-cair.png",
+      image: "/product-cair.webp",
       altId: "Gula Aren Cair Raya Gula 1 Liter",
       altEn: "Raya Gula Liquid Palm Sugar, 1 litre",
       titleId: "Gula Aren<br>Cair",
@@ -704,7 +704,7 @@
       specs: [["1 L", "Netto", "Net weight"], ["100%", "Gula Aren", "Palm Sugar"], ["ID", "Indonesia", "Indonesia"]]
     },
     {
-      image: "/product-cetak.png",
+      image: "/product-cetak.webp",
       altId: "Gula Aren Cetak Raya Gula 1 Kg",
       altEn: "Raya Gula Traditional Palm Sugar, 1 kg",
       titleId: "Gula Aren<br>Cetak",

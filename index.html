@@ -2453,27 +2453,25 @@
 
 
   <script id="raya-language-toggle-fix">
-    (() => {
-      const buttons = Array.from(document.querySelectorAll('[data-lang]'));
-      const applyLanguage = (language) => {
-        const lang = language === 'en' ? 'en' : 'id';
-        document.documentElement.lang = lang;
-        document.querySelectorAll('.lang-id').forEach((el) => { el.hidden = lang !== 'id'; });
-        document.querySelectorAll('.lang-en').forEach((el) => { el.hidden = lang !== 'en'; });
-        buttons.forEach((button) => button.classList.toggle('active', button.dataset.lang === lang));
-        try { localStorage.setItem('raya-language', lang); } catch (e) {}
-      };
-      buttons.forEach((button) => {
-        if (!button.dataset.langBound) {
-          button.dataset.langBound = 'true';
-          button.addEventListener('click', () => applyLanguage(button.dataset.lang));
-        }
-      });
-      let initial = 'id';
-      try { initial = localStorage.getItem('raya-language') || 'id'; } catch (e) {}
-      applyLanguage(initial);
-    })();
-  </script>
+(() => {
+  const buttons = Array.from(document.querySelectorAll('[data-lang]'));
+  const currentPath = window.location.pathname;
+  const isEnglish = currentPath === '/en/' || currentPath.startsWith('/en/');
+  const currentLanguage = isEnglish ? 'en' : 'id';
+  document.documentElement.lang = currentLanguage;
+  document.querySelectorAll('.lang-id').forEach(el => { el.hidden = currentLanguage !== 'id'; });
+  document.querySelectorAll('.lang-en').forEach(el => { el.hidden = currentLanguage !== 'en'; });
+  buttons.forEach(button => {
+    const active = button.dataset.lang === currentLanguage;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+    button.addEventListener('click', () => {
+      if (button.dataset.lang === currentLanguage) return;
+      window.location.href = button.dataset.lang === 'en' ? '/en/' : '/';
+    });
+  });
+})();
+</script>
 
   <!-- RAYA GULA INTRO — logo only, brown-gold particles; no circle or frame -->
   <style id="raya-gula-intro-style">

@@ -55,8 +55,10 @@
 .products-page .product-card h2 { display:block; }
 .products-page .product-card p { display:block; }
 
-/* Fail-safe English content visibility */
-.lang-id{display:none!important}.lang-en[hidden]{display:inline!important}
+/* Fail-safe English content visibility, overriding catalogue-specific hidden rules */
+.products-page .lang-id{display:none!important}
+.products-page .lang-en[hidden]{display:inline!important}
+.products-page .lang-en:not([hidden]){display:revert!important}
 </style>
   <link rel="alternate" hreflang="id" href="https://rayagula.com/produk.html">
   <link rel="alternate" hreflang="en" href="https://rayagula.com/en/produk.html">

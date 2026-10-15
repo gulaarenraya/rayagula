@@ -276,7 +276,7 @@
         "name": "Raya Gula Gula Aren Semut Premium",
         "url": "https://rayagula.com/#products",
         "image": [
-          "https://rayagula.com/product-semut.png"
+          "https://rayagula.com/product-semut.webp"
         ],
         "description": "Gula aren semut premium dari nira aren pilihan Indonesia. Alami, tanpa campuran, dengan aroma khas gula aren Nusantara.",
         "brand": {
@@ -319,7 +319,7 @@
         "name": "Raya Gula Gula Aren Cair",
         "url": "https://rayagula.com/#products",
         "image": [
-          "https://rayagula.com/product-cair.png"
+          "https://rayagula.com/product-cair.webp"
         ],
         "description": "Gula aren cair dari nira aren Indonesia dengan rasa manis alami dan karakter khas Nusantara.",
         "brand": {
@@ -341,7 +341,7 @@
         "name": "Raya Gula Gula Aren Cetak",
         "url": "https://rayagula.com/#products",
         "image": [
-          "https://rayagula.com/product-cetak.png"
+          "https://rayagula.com/product-cetak.webp"
         ],
         "description": "Gula aren cetak dengan rasa dan aroma khas nira aren Indonesia untuk kebutuhan rumah tangga dan kuliner.",
         "brand": {
@@ -595,12 +595,12 @@
       letter-spacing: .18em;
     }
 
-    .raya-hero .hero-slide-content h1 {
+    .raya-hero .hero-slide-content :is(h1,h2) {
       color: #6b4524;
       margin-bottom: 18px;
     }
 
-    .raya-hero .hero-slide-content h1 em {
+    .raya-hero .hero-slide-content :is(h1,h2) em {
       color: #9a6b32;
     }
 
@@ -632,8 +632,8 @@
     }
 
     .raya-hero .hero-copy-2 .eyebrow,
-    .raya-hero .hero-copy-2 h1,
-    .raya-hero .hero-copy-2 h1 em,
+    .raya-hero .hero-copy-2 :is(h1,h2),
+    .raya-hero .hero-copy-2 :is(h1,h2) em,
     .raya-hero .hero-copy-2 p {
       color: #fff;
     }
@@ -641,8 +641,8 @@
     /* Slide 3: seluruh copy putih */
     .raya-hero .hero-copy-3,
     .raya-hero .hero-copy-3 .eyebrow,
-    .raya-hero .hero-copy-3 h1,
-    .raya-hero .hero-copy-3 h1 em,
+    .raya-hero .hero-copy-3 :is(h1,h2),
+    .raya-hero .hero-copy-3 :is(h1,h2) em,
     .raya-hero .hero-copy-3 p {
       color: #fff;
     }
@@ -704,7 +704,7 @@
         transform: translateY(0);
       }
 
-      .raya-hero .hero-slide-content h1 {
+      .raya-hero .hero-slide-content :is(h1,h2) {
         margin-bottom: 12px;
       }
 
@@ -716,7 +716,7 @@
 
     @media (max-width: 600px) {
       /* Mobile-only adjustment: keep hero headlines balanced on phone screens. */
-      .raya-hero .hero-slide-content h1 {
+      .raya-hero .hero-slide-content :is(h1,h2) {
         font-size: clamp(28px, 7.5vw, 36px);
         line-height: 1.12;
         margin-bottom: 10px;
@@ -868,8 +868,8 @@
       /* Slide 1 text only: white for contrast on mobile; desktop and other slides unchanged. */
       .raya-hero .hero-copy-1,
       .raya-hero .hero-copy-1 .eyebrow,
-      .raya-hero .hero-copy-1 h1,
-      .raya-hero .hero-copy-1 h1 em,
+      .raya-hero .hero-copy-1 :is(h1,h2),
+      .raya-hero .hero-copy-1 :is(h1,h2) em,
       .raya-hero .hero-copy-1 p,
       .raya-hero .hero-copy-1 .text-link {
         color: #fff !important;
@@ -1009,7 +1009,7 @@
       href="/en/#home"
       aria-label="Raya Gula"
     >
-      <img
+      <img width="512" height="512"
         src="/logo.png"
         alt="Logo Raya Gula - Gula Aren Indonesia"
       >
@@ -1061,6 +1061,7 @@
 
         <div class="hero-slide is-active" data-hero-slide>
           <picture>
+            <source media="(max-width: 767px)" srcset="/hero-raya-gula-01-mobile.webp">
             <img
               src="/raya-gula-hero-1920x900.jpg"
               alt="Raya Gula — Gula Aren Indonesia dari Nusantara"
@@ -1095,9 +1096,9 @@
 
         <div class="hero-slide hero-slide-product" data-hero-slide aria-hidden="true">
           <picture>
-            <source media="(max-width: 900px)" srcset="hero-raya-gula-02-mobile.jpg">
+            <source media="(max-width: 767px)" srcset="/hero-raya-gula-02-mobile.webp">
             <img
-              src="/hero-raya-gula-02.jpg"
+              src="/hero-raya-gula-02.webp"
               alt="Produk Raya Gula — Gula Aren Indonesia"
               loading="eager"
             >
@@ -1108,10 +1109,10 @@
               <span class="lang-id">RAYA GULA / PREMIUM PALM SUGAR</span>
               <span class="lang-en">RAYA GULA / PREMIUM PALM SUGAR</span>
             </div>
-            <h1>
+            <h2>
               <span class="lang-id">Manis Alami.<br><em>Pilihan Berkualitas.</em></span>
               <span class="lang-en">Naturally Sweet.<br><em>Quality, Selected.</em></span>
-            </h1>
+            </h2>
             <p>
               <span class="lang-id">Gula aren pilihan Indonesia, hadir untuk melengkapi setiap sajian dengan rasa dan aroma khas Nusantara.</span>
               <span class="lang-en">Selected Indonesian palm sugar, made to complement every creation with the distinctive taste and aroma of Nusantara.</span>
@@ -1121,9 +1122,9 @@
 
         <div class="hero-slide" data-hero-slide aria-hidden="true">
           <picture>
-            <source media="(max-width: 900px)" srcset="hero-raya-gula-03-mobile.jpg">
+            <source media="(max-width: 767px)" srcset="/hero-raya-gula-03-mobile.webp">
             <img
-              src="/hero-raya-gula-03.jpg"
+              src="/hero-raya-gula-03.webp"
               alt="Pemanenan nira aren Raya Gula di Indonesia"
               loading="eager"
             >
@@ -1134,10 +1135,10 @@
               <span class="lang-id">FROM NATURE TO TASTE</span>
               <span class="lang-en">FROM NATURE TO TASTE</span>
             </div>
-            <h1>
+            <h2>
               <span class="lang-id">Dari Nira Pilihan,<br><em>Menjadi Rasa.</em></span>
               <span class="lang-en">From Selected Nectar,<br><em>Comes the Taste.</em></span>
-            </h1>
+            </h2>
             <p>
               <span class="lang-id">Dipanen dari alam Indonesia dan diproses dengan perhatian untuk menjaga karakter alami gula aren.</span>
               <span class="lang-en">Harvested from Indonesia's nature and carefully processed to preserve the natural character of palm sugar.</span>
@@ -1177,7 +1178,7 @@
 
         <div class="cert-icon">
 
-          <img
+          <img width="100" height="100" loading="lazy" decoding="async"
             src="/icon-halal.png"
             alt="Logo Halal"
           >
@@ -1203,7 +1204,7 @@
 
         <div class="cert-icon">
 
-          <img
+          <img width="100" height="100" loading="lazy" decoding="async"
             src="/icon-organic.png"
             alt="Logo Organic"
           >
@@ -1229,7 +1230,7 @@
 
         <div class="cert-icon">
 
-          <img
+          <img width="100" height="100" loading="lazy" decoding="async"
             src="/icon-sni.png"
             alt="Logo SNI"
           >
@@ -1255,7 +1256,7 @@
 
         <div class="cert-icon">
 
-          <img
+          <img width="100" height="100" loading="lazy" decoding="async"
             src="/icon-natural.png"
             alt="100 persen alami"
           >
@@ -1330,7 +1331,7 @@
 
         <img
           class="about-image"
-          src="/dari-alam-raya-raya-gula.png"
+          src="/dari-alam-raya-raya-gula.webp"
           alt="Raya Gula — gula aren Indonesia dan asalnya dari perkebunan aren"
           width="1792"
           height="877"
@@ -1453,8 +1454,8 @@
 
         <div class="process-image">
 
-          <img 
-          src="/images/process/01-pemanenan-nira-aren.jpg"
+          <img width="1200" height="800" 
+          src="/images/process/01-pemanenan-nira-aren.webp"
           alt="Proses pemanenan nira aren Raya Gula"
           loading="lazy">
 
@@ -1490,8 +1491,8 @@
 
         <div class="process-image">
 
-          <img 
-          src="/images/process/02-penyaringan-nira-aren.jpg"
+          <img width="1200" height="800" 
+          src="/images/process/02-penyaringan-nira-aren.webp"
           alt="Proses penyaringan nira aren Raya Gula"
           loading="lazy">
 
@@ -1527,8 +1528,8 @@
 
         <div class="process-image">
 
-          <img 
-          src="/images/process/03-pemasakan-nira-aren.jpg"
+          <img width="1200" height="800" 
+          src="/images/process/03-pemasakan-nira-aren.webp"
           alt="Proses pemasakan nira aren Raya Gula"
           loading="lazy">
 
@@ -1564,8 +1565,8 @@
 
         <div class="process-image">
 
-          <img 
-          src="/images/process/04-pengkristalan-gula-aren.jpg"
+          <img width="1200" height="800" 
+          src="/images/process/04-pengkristalan-gula-aren.webp"
           alt="Proses pengkristalan gula aren Raya Gula"
           loading="lazy">
 
@@ -1601,8 +1602,8 @@
 
         <div class="process-image">
 
-          <img 
-          src="/images/process/05-pengemasan-raya-gula.jpg"
+          <img width="1200" height="800" 
+          src="/images/process/05-pengemasan-raya-gula.webp"
           alt="Proses pengemasan Raya Gula"
           loading="lazy">
 
@@ -1662,10 +1663,10 @@
 
     <div class="product-slider-visual">
       <div class="product-image-stage">
-        <img
+        <img loading="lazy" decoding="async"
           class="product-slide-image is-active"
           data-product-image
-          src="/product-semut.png"
+          src="/product-semut.webp"
           alt="Gula Aren Semut Raya Gula 500 gram"
           width="800"
           height="1000"
@@ -2147,7 +2148,7 @@
 
     <div class="footer-brand">
 
-      <img
+      <img width="512" height="512"
         src="/logo.png"
         alt="Logo Raya Gula - Gula Aren Indonesia"
       >
@@ -2267,7 +2268,7 @@
         aria-label="WhatsApp Raya Gula"
       >
 
-        <img
+        <img width="512" height="512" loading="lazy" decoding="async"
           src="/icon-whatsapp.png"
           alt="WhatsApp Raya Gula"
         >
@@ -2290,7 +2291,7 @@
         aria-label="Instagram Raya Gula"
       >
 
-        <img
+        <img width="512" height="512" loading="lazy" decoding="async"
           src="/icon-instagram.png"
           alt="Instagram Raya Gula"
         >
@@ -2313,7 +2314,7 @@
         aria-label="Shopee Raya Gula"
       >
 
-        <img
+        <img width="512" height="512" loading="lazy" decoding="async"
           src="/icon-shopee.png"
           alt="Shopee Raya Gula"
         >
@@ -2338,7 +2339,7 @@
       aria-expanded="false"
     >
 
-      <img
+      <img width="512" height="512"
         id="floatingMainIcon"
         src="/logo.png"
         alt="Logo Raya Gula - Gula Aren Indonesia"
@@ -2685,5 +2686,51 @@
   </script>
   <!-- END RAYA GULA INTRO -->
 
+
+<style id="rg-hero-final">
+/* RG FIX: hero konsisten. Slide 2 tampil utuh (botol tidak terpotong), tidak tertutup header, dan tidak kolaps di tablet. */
+.raya-hero.hero{height:auto!important;min-height:0!important;max-height:none!important;margin:0!important;padding:var(--rg-header-h,103px) 0 0!important;background:#f3eee5!important}
+.raya-hero .hero-photo.hero-carousel{position:relative!important;display:block!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:1920/900;overflow:hidden!important;margin:0!important;padding:0!important}
+@media (max-width:767px){.raya-hero .hero-photo.hero-carousel{aspect-ratio:4/5}}
+.raya-hero .hero-carousel .hero-slide{position:absolute!important;inset:0!important;height:100%!important}
+.raya-hero .hero-carousel .hero-slide picture{display:block!important;width:100%!important;height:100%!important}
+.raya-hero .hero-carousel .hero-slide img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center!important}
+.raya-hero .hero-carousel .hero-slide.hero-slide-product{background:#f3eee5!important}
+.raya-hero .hero-carousel .hero-slide.hero-slide-product img{object-fit:contain!important;object-position:center!important}
+/* label "THE ORIGIN" tidak boleh melebihi lebar layar di HP */
+.about-caption{max-width:100%!important;box-sizing:border-box!important}
+.about-caption small{white-space:normal!important;overflow-wrap:anywhere}
+html,body{overflow-x:clip}
+</style>
+<script>
+(function(){var h=document.querySelector('header');function s(){if(h&&window.scrollY<5){document.documentElement.style.setProperty('--rg-header-h',h.offsetHeight+'px')}}
+s();window.addEventListener('load',s);window.addEventListener('resize',s)})();
+</script>
+
+<style id="rg-hero-polish">
+/* Slide 1: gambar & teks khusus HP (teks gelap di area kosong atas, produk tidak tertimpa) */
+@media (max-width:767px){
+  .raya-hero .hero-slide-content.hero-copy-1{top:22px!important;bottom:auto!important;left:22px!important;right:22px!important;width:auto!important;max-width:none!important;transform:none!important}
+  .raya-hero .hero-copy-1 .eyebrow{color:#8b6030!important}
+  .raya-hero .hero-copy-1 :is(h1,h2){color:#5f3c1e!important;font-size:clamp(28px,8vw,34px)!important;margin-bottom:8px!important}
+  .raya-hero .hero-copy-1 :is(h1,h2) em{color:#a8742f!important}
+  .raya-hero .hero-copy-1 p{color:#5a3d24!important;font-size:14px!important;line-height:1.5!important;max-width:34ch;margin-bottom:12px!important}
+  .raya-hero .hero-copy-1 .text-link.light{display:none!important}
+}
+/* tautan kedua "Tentang Raya Gula" terbaca di latar terang */
+.raya-hero .hero-copy-1 .text-link.light{color:#6b4524!important}
+/* tombol panah dipindah ke bawah, mengapit titik indikator, supaya tidak menutupi produk */
+.raya-hero .hero-carousel .hero-carousel-arrow{top:auto!important;bottom:12px!important;transform:none!important;width:34px!important;height:34px!important;font-size:15px!important;background:rgba(251,248,242,.85)!important;color:#5f3c1e!important;border:1px solid rgba(107,69,36,.35)!important}
+.raya-hero .hero-carousel .hero-carousel-prev{left:calc(50% - 104px)!important;right:auto!important}
+.raya-hero .hero-carousel .hero-carousel-next{left:calc(50% + 70px)!important;right:auto!important}
+.raya-hero .hero-carousel .hero-carousel-dots{bottom:20px!important}
+</style>
+<style id="rg-hero-tablet">
+@media (min-width:768px) and (max-width:900px){
+  .raya-hero .hero-slide-content.hero-copy-1{left:28px!important;right:auto!important;top:50%!important;bottom:auto!important;width:min(400px,46vw)!important;transform:translateY(-50%)!important}
+  .raya-hero .hero-copy-1 :is(h1,h2){font-size:clamp(30px,4.6vw,40px)!important;line-height:1.1!important;margin-bottom:8px!important}
+  .raya-hero .hero-copy-1 p{font-size:14px!important;line-height:1.5!important;margin-bottom:12px!important}
+}
+</style>
 </body>
 </html>

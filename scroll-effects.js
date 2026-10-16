@@ -22,7 +22,7 @@
     #rg-liquid-wave { position: fixed; z-index: 9998; left: 0; right: 0; height: clamp(120px, 25vh, 250px); pointer-events: none; opacity: 0; overflow: hidden; will-change: transform, opacity; }
     #rg-liquid-wave svg { display: block; width: 100%; height: 100%; }
     #rg-liquid-wave.rg-wave-down { bottom: 0; top: auto; animation: rgWaveDown .78s cubic-bezier(.65,0,.35,1) both; }
-    #rg-liquid-wave.rg-wave-up { top: 0; bottom: auto; animation: rgWaveUp .78s cubic-bezier(.65,0,.35,1) both; }
+    #rg-liquid-wave.rg-wave-up { top: 0; bottom: auto; animation: rgWaveUp .78s cubic-bezier(.65,0,.35,1) both; }\n    #rg-liquid-wave.rg-wave-up svg { transform: scaleY(-1); }
     @keyframes rgWaveDown { 0% { transform: translateY(105%); opacity: 0; } 12% { opacity: .88; } 48% { transform: translateY(0); opacity: .88; } 88% { opacity: .72; } 100% { transform: translateY(-105%); opacity: 0; } }
     @keyframes rgWaveUp { 0% { transform: translateY(-105%); opacity: 0; } 12% { opacity: .88; } 48% { transform: translateY(0); opacity: .88; } 88% { opacity: .72; } 100% { transform: translateY(105%); opacity: 0; } }
     @media (max-width: 767px) { #rg-liquid-wave { height: clamp(100px, 21vh, 180px); } }

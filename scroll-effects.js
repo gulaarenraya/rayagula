@@ -1,36 +1,49 @@
-/* Raya Gula scroll transitions: subtle reveal + moving liquid-wave wipe.
-   Keeps document flow and existing section layouts unchanged. */
+/* Raya Gula — refined organic scroll transitions.
+   Lightweight liquid wave accents that blend into the brand palette without
+   changing section dimensions, content, or page layout. */
 (function () {
-  var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var selectors = [
     "main > section", "body > section", ".section", ".manifesto", ".why",
     ".cta-banner", ".contact", ".origin-intro", ".origin-image", ".story-section",
     ".process-section", ".origin-quote", ".origin-cta", ".products-intro",
     ".products-grid", ".products-business", ".journal-grid", ".journal-cta"
   ];
-  var sections = Array.from(document.querySelectorAll(selectors.join(",")));
-  sections = sections.filter(function (el, i, arr) {
+  var sections = Array.from(document.querySelectorAll(selectors.join(","))).filter(function (el, i, arr) {
     return arr.indexOf(el) === i && !el.closest("header") &&
       !el.classList.contains("raya-hero") && !el.classList.contains("cert-bar");
-  }).sort(function (a, b) { return a.getBoundingClientRect().top - b.getBoundingClientRect().top; });
+  });
   if (!sections.length) return;
 
   var style = document.createElement("style");
   style.textContent = `
-    .rg-scroll-reveal { opacity: 0; transform: translateY(13px); transition: opacity .55s ease, transform .55s cubic-bezier(.2,.7,.2,1); }
-    .rg-scroll-reveal.rg-revealed { opacity: 1; transform: translateY(0); }
-    #rg-liquid-wave { position: fixed; z-index: 9998; left: 0; right: 0; height: clamp(120px, 25vh, 250px); pointer-events: none; opacity: 0; overflow: hidden; will-change: transform, opacity; }
-    #rg-liquid-wave svg { display: block; width: 100%; height: 100%; }
-    #rg-liquid-wave.rg-wave-down { bottom: 0; top: auto; animation: rgWaveDown .78s cubic-bezier(.65,0,.35,1) both; }
-    #rg-liquid-wave.rg-wave-up { top: 0; bottom: auto; animation: rgWaveUp .78s cubic-bezier(.65,0,.35,1) both; }\n    #rg-liquid-wave.rg-wave-up svg { transform: scaleY(-1); }
-    @keyframes rgWaveDown { 0% { transform: translateY(105%); opacity: 0; } 12% { opacity: .88; } 48% { transform: translateY(0); opacity: .88; } 88% { opacity: .72; } 100% { transform: translateY(-105%); opacity: 0; } }
-    @keyframes rgWaveUp { 0% { transform: translateY(-105%); opacity: 0; } 12% { opacity: .88; } 48% { transform: translateY(0); opacity: .88; } 88% { opacity: .72; } 100% { transform: translateY(105%); opacity: 0; } }
-    @media (max-width: 767px) { #rg-liquid-wave { height: clamp(100px, 21vh, 180px); } }
+    .rg-scroll-reveal { opacity: 0; transform: translate3d(0, 10px, 0); transition: opacity .72s ease, transform .72s cubic-bezier(.22,.68,0,1); }
+    .rg-scroll-reveal.rg-revealed { opacity: 1; transform: translate3d(0,0,0); }
+    #rg-liquid-wave { position: fixed; z-index: 9998; left: -2%; width: 104%; height: clamp(84px, 17vh, 170px); pointer-events: none; opacity: 0; overflow: hidden; will-change: transform, opacity; contain: strict; }
+    #rg-liquid-wave svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 -5px 12px rgba(95,60,30,.035)); }
+    #rg-liquid-wave.rg-wave-down { bottom: -1px; top: auto; animation: rgWaveDown 1.05s cubic-bezier(.42,0,.18,1) both; }
+    #rg-liquid-wave.rg-wave-up { top: -1px; bottom: auto; animation: rgWaveUp 1.05s cubic-bezier(.42,0,.18,1) both; }
+    #rg-liquid-wave.rg-wave-up svg { transform: scaleY(-1); }
+    @keyframes rgWaveDown {
+      0% { transform: translate3d(0,110%,0); opacity: 0; }
+      14% { opacity: .54; }
+      42% { transform: translate3d(0,8%,0); opacity: .58; }
+      70% { transform: translate3d(0,-5%,0); opacity: .34; }
+      100% { transform: translate3d(0,-112%,0); opacity: 0; }
+    }
+    @keyframes rgWaveUp {
+      0% { transform: translate3d(0,-110%,0); opacity: 0; }
+      14% { opacity: .54; }
+      42% { transform: translate3d(0,-8%,0); opacity: .58; }
+      70% { transform: translate3d(0,5%,0); opacity: .34; }
+      100% { transform: translate3d(0,112%,0); opacity: 0; }
+    }
+    @media (max-width: 767px) { #rg-liquid-wave { height: clamp(74px, 14vh, 125px); } }
     @media (prefers-reduced-motion: reduce) { .rg-scroll-reveal { opacity: 1; transform: none; transition: none; } #rg-liquid-wave { display: none !important; } }
   `;
   document.head.appendChild(style);
 
-  if (!reducedMotion && "IntersectionObserver" in window) {
+  if (!reduce && "IntersectionObserver" in window) {
     sections.forEach(function (el) { el.classList.add("rg-scroll-reveal"); });
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -39,50 +52,58 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.06, rootMargin: "0px 0px -24px 0px" });
+    }, { threshold: 0.04, rootMargin: "0px 0px -18px 0px" });
     sections.forEach(function (el) { revealObserver.observe(el); });
   }
+  if (reduce || sections.length < 2) return;
 
-  if (reducedMotion || sections.length < 2) return;
   var wave = document.createElement("div");
   wave.id = "rg-liquid-wave";
   wave.setAttribute("aria-hidden", "true");
-  wave.innerHTML = '<svg viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rgWaveFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f4ead9"/><stop offset="58%" stop-color="#d8b77a"/><stop offset="100%" stop-color="#9a6a3c"/></linearGradient></defs><path d="M0 54 C180 120 300 8 480 62 S760 130 940 62 S1240 8 1440 58 L1440 300 L0 300 Z" fill="url(#rgWaveFill)" fill-opacity=".94"/><path d="M0 38 C180 104 300 -8 480 46 S760 114 940 46 S1240 -8 1440 42" fill="none" stroke="#fff7e9" stroke-opacity=".85" stroke-width="5"/><path d="M0 70 C180 136 300 24 480 78 S760 146 940 78 S1240 24 1440 74" fill="none" stroke="#a8742f" stroke-opacity=".55" stroke-width="3"/></svg>';
+  wave.innerHTML = '<svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rgWaveFill" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0%" stop-color="#f7f0e5" stop-opacity=".86"/><stop offset="55%" stop-color="#d7b77f" stop-opacity=".74"/><stop offset="100%" stop-color="#a87948" stop-opacity=".68"/></linearGradient><linearGradient id="rgWaveEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f7f0e5" stop-opacity=".12"/><stop offset="50%" stop-color="#fff8ed" stop-opacity=".72"/><stop offset="100%" stop-color="#d7b77f" stop-opacity=".12"/></linearGradient></defs><path d="M0 62 C150 20 260 112 420 73 S690 22 850 68 S1130 112 1280 66 S1380 40 1440 56 L1440 220 L0 220 Z" fill="url(#rgWaveFill)"/><path d="M0 62 C150 20 260 112 420 73 S690 22 850 68 S1130 112 1280 66 S1380 40 1440 56" fill="none" stroke="url(#rgWaveEdge)" stroke-width="4"/><path d="M0 81 C170 42 260 130 440 91 S700 44 870 86 S1140 129 1300 84 S1390 62 1440 74 L1440 220 L0 220 Z" fill="#c9a04a" fill-opacity=".10"/></svg>';
   document.body.appendChild(wave);
 
   var lastY = window.scrollY || 0;
-  var activeIndex = -1;
+  var activeIndex = 0;
   var ticking = false;
-  var waveTimer = null;
-  function animateWave(direction) {
+  var waveTimer = 0;
+  function getIndex(y) {
+    var marker = y + Math.min(window.innerHeight * .52, 430);
+    var index = 0;
+    for (var i = 0; i < sections.length; i++) {
+      var top = sections[i].getBoundingClientRect().top + y;
+      if (top <= marker) index = i;
+      else break;
+    }
+    return index;
+  }
+  function play(direction) {
     wave.classList.remove("rg-wave-down", "rg-wave-up");
     void wave.offsetWidth;
     wave.classList.add(direction > 0 ? "rg-wave-down" : "rg-wave-up");
-    if (waveTimer) window.clearTimeout(waveTimer);
+    window.clearTimeout(waveTimer);
     waveTimer = window.setTimeout(function () {
       wave.classList.remove("rg-wave-down", "rg-wave-up");
-    }, 850);
+    }, 1100);
   }
-  function checkSections() {
+  function update() {
     var y = window.scrollY || 0;
     var direction = y >= lastY ? 1 : -1;
-    var marker = y + Math.max(100, window.innerHeight * 0.38);
-    var nextIndex = 0;
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].getBoundingClientRect().top + y <= marker) nextIndex = i;
-      else break;
-    }
-    if (activeIndex !== -1 && nextIndex !== activeIndex) animateWave(direction);
-    activeIndex = nextIndex;
+    var next = getIndex(y);
+    if (next !== activeIndex && Math.abs(y - lastY) > 2) play(direction);
+    activeIndex = next;
     lastY = y;
     ticking = false;
   }
   window.addEventListener("scroll", function () {
     if (!ticking) {
       ticking = true;
-      window.requestAnimationFrame(checkSections);
+      window.requestAnimationFrame(update);
     }
   }, { passive: true });
-  window.addEventListener("resize", function () { lastY = window.scrollY || 0; }, { passive: true });
-  checkSections();
+  window.addEventListener("resize", function () {
+    activeIndex = getIndex(window.scrollY || 0);
+    lastY = window.scrollY || 0;
+  }, { passive: true });
+  activeIndex = getIndex(lastY);
 })();

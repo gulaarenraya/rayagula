@@ -19,7 +19,27 @@
 <link rel="alternate" hreflang="id" href="https://rayagula.com/produk-gula-aren-semut.html"><link rel="alternate" hreflang="en" href="https://rayagula.com/en/produk-gula-aren-semut.html"><link rel="alternate" hreflang="x-default" href="https://rayagula.com/produk-gula-aren-semut.html">
 </head>
 <body>
-<header class="topbar"><a class="brand" href="/en/">RAYA GULA</a><nav class="nav" aria-label="Main navigation"><a href="/en/produk.html">All Products</a><a href="/en/export.html#inquiry">Export &amp; Wholesale</a><a href="/en/kontak.html">Contact</a><a href="/produk-gula-aren-semut.html">Bahasa Indonesia</a></nav></header>
+<header class="site-header">
+  <a class="brand" href="/en/#home" aria-label="Raya Gula">
+    <img width="512" height="512" src="/logo.png" alt="Raya Gula logo - Indonesian palm sugar">
+  </a>
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" type="button">☰</button>
+  <nav class="nav nav-right" aria-label="Main navigation">
+    <a href="/en/#home">Home</a>
+    <a href="/en/#about">About Us</a>
+    <a href="/en/produk.html">Products</a>
+    <a href="/en/export.html">For Business</a>
+    <a href="/en/sertifikasi.html">Quality</a>
+    <a href="/en/the-origin.html">Process</a>
+    <a href="/en/journal.html">Journal</a>
+    <a href="/en/kontak.html">Contact</a>
+  </nav>
+  <div class="language-switcher" aria-label="Language switcher">
+    <button class="lang-btn" data-lang="id" type="button">ID</button>
+    <span aria-hidden="true">|</span>
+    <button class="lang-btn active" data-lang="en" type="button">EN</button>
+  </div>
+</header>
 <main>
 <section class="product">
 <div class="visual"><img src="/product-semut.webp" alt="Granulated Palm Sugar by Raya Gula" width="900" height="900" fetchpriority="high"></div>
@@ -30,5 +50,27 @@
 <p>For business purchasing, review the ingredient statement, net weight, packaging format, production code, storage instructions, and shelf-life information in the product documents. Technical specifications such as moisture content, granule size, test results, MOQ, and available capacity for this product must be confirmed with Raya Gula.</p><div class="buyer"><h3>Information for buyers</h3><p>MOQ, available capacity, technical specifications, shelf-life details, packaging suitability, and certification documents must be confirmed for the specific product ordered. Certifications reported by the company have not been independently verified on this page. Request current supporting documents before purchase or export.</p></div><div class="back"><a href="/en/produk.html">← Back to all products</a><a href="/en/export.html#inquiry">Contact Raya Gula for specifications ↗</a></div></section>
 </main>
 <footer class="footer"><a href="/en/">Raya Gula</a> · <a href="/en/export.html">Export &amp; Wholesale</a> · <a href="/en/privacy.html">Privacy Policy</a> · <a href="/en/terms.html">Terms</a> · <a href="mailto:hello@rayagula.com">hello@rayagula.com</a><div>© 2026 Raya Gula</div></footer>
+<script>
+(()=> {
+ const toggle=document.querySelector('.menu-toggle');
+ const nav=document.querySelector('.nav-right');
+ if(toggle&&nav){
+  toggle.addEventListener('click',()=>{
+   const open=nav.classList.toggle('open');
+   toggle.setAttribute('aria-expanded',String(open));
+  });
+ }
+ const buttons=[...document.querySelectorAll('[data-lang]')];
+ const path=window.location.pathname;
+ buttons.forEach(button=>{
+  button.addEventListener('click',()=>{
+   const target=button.dataset.lang==='en'
+    ? (path.startsWith('/en/')?path:'/en'+(path==='/'?'/':path))
+    : (path.startsWith('/en/')?path.replace(/^\/en(?=\/|$)/,'') : path);
+   window.location.href=target+(window.location.search||'')+(window.location.hash||'');
+  });
+ });
+})();
+</script>
 </body>
 </html>

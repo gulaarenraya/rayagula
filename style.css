@@ -5794,3 +5794,37 @@ body.language-en .lang-en { display: inline !important; }
     margin-right: auto !important;
   }
 }
+
+
+/* =========================================================
+   PRODUCT DETAILS TRIGGER — shared Raya Gula styling
+   ========================================================= */
+.product-image-stage{position:relative}
+.product-detail-trigger{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  margin-top:18px;
+  padding:13px 18px;
+  min-height:44px;
+  border:1px solid rgba(107,69,36,.45);
+  border-radius:2px;
+  background:rgba(251,248,242,.94);
+  color:var(--brown,#5f3c1e);
+  font:600 12px/1.2 inherit;
+  letter-spacing:.04em;
+  cursor:pointer;
+  box-shadow:0 5px 18px rgba(43,26,18,.07);
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.product-detail-trigger:hover{
+  background:var(--brown-dark,#2b1a12);
+  border-color:var(--brown-dark,#2b1a12);
+  color:#fff;
+  transform:translateY(-1px);
+}
+.product-detail-trigger:focus-visible{outline:2px solid var(--gold,#b78437);outline-offset:3px}
+@media(max-width:900px){
+ .product-detail-trigger{margin-top:12px;padding:12px 15px;font-size:11px}
+}

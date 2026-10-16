@@ -107,5 +107,7 @@
     <div>© 2026 Raya Gula</div>
   </footer>
   <script>(()=>{const buttons=[...document.querySelectorAll('[data-lang]')];const path=window.location.pathname;const isEnglish=path==='/en'||path.startsWith('/en/');const lang=isEnglish?'en':'id';document.documentElement.lang=lang;document.querySelectorAll('.lang-id').forEach(el=>el.hidden=lang!=='id');document.querySelectorAll('.lang-en').forEach(el=>el.hidden=lang!=='en');buttons.forEach(button=>{button.classList.toggle('active',button.dataset.lang===lang);button.setAttribute('aria-pressed',String(button.dataset.lang===lang));button.addEventListener('click',()=>{const target=lang==='en'?path.replace(/^\/en(?=\/|$)/,''):'/en'+(path.startsWith('/')?path:'/'+path);window.location.href=target+(window.location.search||'')+(window.location.hash||'')})})})();</script>
+
+<script src="/scroll-effects.js" defer></script>
 </body>
 </html>

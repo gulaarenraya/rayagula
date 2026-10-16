@@ -5875,3 +5875,25 @@ body.about-page .footlinks a{margin:0 8px;color:#72563e;text-decoration:none}
     background-size:cover;
   }
 }
+
+
+/* Raya Journal article cover images: desktop and mobile */
+.journal-img.j3,
+.journal-img.j4,
+.journal-img.j5,
+.journal-img.j6{
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.journal-img.j3{background-image:url("/journal-ide-sajian-desktop.webp") !important;}
+.journal-img.j4{background-image:url("/journal-gula-aren-semut-desktop.webp") !important;}
+.journal-img.j5{background-image:url("/journal-perbedaan-gula-aren-desktop.webp") !important;}
+.journal-img.j6{background-image:url("/journal-cara-memilih-gula-aren-desktop.webp") !important;}
+
+@media(max-width:767px){
+  .journal-img.j3{background-image:url("/journal-ide-sajian-mobile.webp") !important;}
+  .journal-img.j4{background-image:url("/journal-gula-aren-semut-mobile.webp") !important;}
+  .journal-img.j5{background-image:url("/journal-perbedaan-gula-aren-mobile.webp") !important;}
+  .journal-img.j6{background-image:url("/journal-cara-memilih-gula-aren-mobile.webp") !important;}
+}

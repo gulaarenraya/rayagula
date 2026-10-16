@@ -1023,7 +1023,7 @@
 
   <header class="site-header">
   <a class="brand" href="/#home" aria-label="Raya Gula"><img width="512" height="512" src="/logo.png" alt="Logo Raya Gula - Gula Aren Indonesia"></a>
-  <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false" type="button">☰</button>
+  <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false" type="button" onclick="toggleMobileMenu()">☰</button>
   <nav class="nav nav-right" aria-label="Navigasi utama">
     <a href="/#home">Beranda</a>
     <a href="/tentang.html">Tentang Kami</a>
@@ -1552,73 +1552,21 @@
        ===================================================== -->
 
   <script>
-
     function toggleMobileMenu() {
-
       const nav = document.querySelector(".nav-right");
-
-      if (!nav) return;
-
-      if (window.innerWidth <= 900) {
-
-        const isOpen =
-          nav.style.display === "flex";
-
-        nav.style.display =
-          isOpen ? "none" : "flex";
-
-        if (!isOpen) {
-
-          nav.style.position = "absolute";
-          nav.style.top = "90px";
-          nav.style.left = "6vw";
-          nav.style.right = "6vw";
-
-          nav.style.padding = "20px";
-
-          nav.style.flexDirection = "column";
-          nav.style.alignItems = "flex-start";
-
-          nav.style.gap = "20px";
-
-          nav.style.background =
-            "rgba(43,26,18,0.96)";
-
-          nav.style.borderRadius = "12px";
-
-        }
-
-      }
-
+      const button = document.querySelector(".menu-toggle");
+      if (!nav || !button) return;
+      const isOpen = nav.classList.toggle("open");
+      button.setAttribute("aria-expanded", String(isOpen));
     }
-
-
     window.addEventListener("resize", function () {
-
-      const nav =
-        document.querySelector(".nav-right");
-
-      if (!nav) return;
-
       if (window.innerWidth > 900) {
-
-        nav.style.display = "";
-
-        nav.style.position = "";
-        nav.style.top = "";
-        nav.style.left = "";
-        nav.style.right = "";
-        nav.style.padding = "";
-        nav.style.flexDirection = "";
-        nav.style.alignItems = "";
-        nav.style.gap = "";
-        nav.style.background = "";
-        nav.style.borderRadius = "";
-
+        const nav = document.querySelector(".nav-right");
+        const button = document.querySelector(".menu-toggle");
+        if (nav) nav.classList.remove("open");
+        if (button) button.setAttribute("aria-expanded", "false");
       }
-
     });
-
   </script>
 
 

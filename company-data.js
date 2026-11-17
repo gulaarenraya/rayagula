@@ -16,7 +16,6 @@ window.RG_DATA = {
   company: {
     legalName: "PT Raya Gula Indonesia",
     address: "Jl. Raya Pasar Ciminyak No. 13, RT 003/RW 001, Ciminyak, Kec. Muncang, Kabupaten Lebak, Banten 42364, Indonesia",
-    capacity: { id: "Sekitar 5 ton per bulan (pembagian per produk dikonfirmasi saat pemesanan)", en: "Approximately 5 tonnes per month (allocation by product confirmed at order)" },
     markets: { id: "Indonesia dan pasar ekspor", en: "Indonesia and export markets" },
     privateLabel: { id: "Tersedia (desain kemasan dan syarat dibahas saat inquiry)", en: "Available (artwork and conditions discussed at inquiry)" }
   },

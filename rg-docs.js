@@ -9,7 +9,7 @@
     download:{id:'Unduh salinan (PDF)',en:'Download copy (PDF)'},ask:{id:'Minta salinan via WhatsApp',en:'Request copy via WhatsApp'},
     bpjph:{id:'Cek di BPJPH ↗',en:'Check on BPJPH ↗'},listed:{id:'Data tercantum',en:'Details listed'},onreq:{id:'Salinan atas permintaan',en:'Copy on request'},
     legalName:{id:'Nama badan usaha',en:'Legal business name'},address:{id:'Alamat usaha / produksi',en:'Business / production address'},
-    capacity:{id:'Kapasitas produksi bulanan',en:'Monthly production capacity'},markets:{id:'Pasar',en:'Markets'},privateLabel:{id:'Private label',en:'Private label'},
+markets:{id:'Pasar',en:'Markets'},privateLabel:{id:'Private label',en:'Private label'},
     productTypes:{id:'Jenis produk',en:'Product types'},composition:{id:'Komposisi',en:'Composition'},moisture:{id:'Kadar air',en:'Moisture content'},
     color:{id:'Warna dan tampilan',en:'Color & appearance'},granuleSize:{id:'Ukuran butir (gula semut)',en:'Granule size (granulated)'},
     shelfLife:{id:'Masa simpan',en:'Shelf life'},packaging:{id:'Kemasan',en:'Packaging'},moq:{id:'MOQ (pesanan minimum)',en:'MOQ (minimum order)'},
@@ -88,7 +88,7 @@
   }
   css();
   var c=document.querySelector('[data-rg-certs]');if(c)certs(c);
-  var co=document.querySelector('[data-rg-company]');if(co)table(co,['legalName','address','capacity','markets','privateLabel'],D.company||{});
-  var sp=document.querySelector('[data-rg-specs]');if(sp)table(sp,['productTypes','composition','moisture','color','granuleSize','shelfLife','packaging','moq','capacity','privateLabel','hsCode','incoterms','leadTime','payment','certs','coa'],Object.assign({},D.specs,{capacity:(D.company||{}).capacity,privateLabel:(D.company||{}).privateLabel}));
+  var co=document.querySelector('[data-rg-company]');if(co)table(co,['legalName','address','markets','privateLabel'],D.company||{});
+  var sp=document.querySelector('[data-rg-specs]');if(sp)table(sp,['productTypes','composition','moisture','color','granuleSize','shelfLife','packaging','moq','privateLabel','hsCode','incoterms','leadTime','payment','certs','coa'],Object.assign({},D.specs,{privateLabel:(D.company||{}).privateLabel}));
   tags();form();
 })();
